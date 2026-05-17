@@ -1,0 +1,53 @@
+{
+  "uid": "external-federation-view",
+  "title": "External Federation View",
+  "tags": ["external", "executive", "operations"],
+  "timezone": "browser",
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "Federation Operations Status",
+      "gridPos": {"x": 0, "y": 0, "w": 24, "h": 4},
+      "options": {
+        "mode": "markdown",
+        "content": "# Federation Operations Status\n\nIntegrated operational synchronization across urban operation, fleet operation, service hub, energy, and dispatch execution.\n\nVisible states:\n- AUTHORIZED\n- HOLD\n- STOP\n\nThis dashboard intentionally excludes internal propagation logic and business control equations."
+      }
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Federation State",
+      "gridPos": {"x": 0, "y": 4, "w": 6, "h": 4},
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "textMode": "value"
+      },
+      "targets": [
+        {
+          "scenarioId": "csv_content",
+          "csvContent": "state,value\nAUTHORIZED,1",
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "grafana"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "title": "Visible Synchronization Layers",
+      "gridPos": {"x": 6, "y": 4, "w": 18, "h": 8},
+      "options": {
+        "mode": "markdown",
+        "content": "| Layer | Visible State |\n|---|---|\n| Urban Operation | synchronized |\n| Fleet Operation | synchronized |\n| Service Hub | synchronized |\n| Dispatch | feasible |\n| Energy | stable |\n| ODD | within operating range |\n| ETA | within threshold |\n| Capacity | within threshold |\n| Queue | controlled |"
+      }
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 1
+}
