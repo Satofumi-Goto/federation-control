@@ -1,0 +1,23 @@
+name: Deploy Grafana Dashboards
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'dashboards/**.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate dashboard JSON
+        run: |
+          for file in dashboards/*.json; do
+            echo "Checking $file"
+            python -m json.tool "$file" > /dev/null
+          done
