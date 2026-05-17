@@ -1,0 +1,63 @@
+{
+  "title": "Toyota Federation Control",
+  "tags": ["federation", "collapse-control"],
+  "timezone": "browser",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Federation State",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 6,
+        "h": 4
+      },
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "textMode": "value"
+      },
+      "targets": [
+        {
+          "scenarioId": "csv_content",
+          "csvContent": "state,value\nAUTHORIZED,1",
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "grafana"
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "1": {
+                  "text": "AUTHORIZED"
+                }
+              }
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 1
+}
