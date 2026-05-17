@@ -1,0 +1,98 @@
+{
+  "visibility": "internal-only",
+  "title": "Internal Service Hub Development Logic",
+  "purpose": "Define non-public service hub development logic, node architecture propagation, energy infrastructure tradeoffs, and operating-business linkage.",
+  "doNotExpose": true,
+  "developmentDomains": [
+    "hydrogen infrastructure",
+    "swap-body infrastructure",
+    "berth architecture",
+    "energy storage",
+    "distributed node control",
+    "queue optimization",
+    "fleet synchronization",
+    "urban synchronization"
+  ],
+  "internalVariables": {
+    "infrastructure": [
+      "berthCount",
+      "dockCapacity",
+      "swapCycleTime",
+      "queueThreshold",
+      "equipmentHealth",
+      "maintenanceInterval"
+    ],
+    "energy": [
+      "h2Storage",
+      "refillRate",
+      "socCapacity",
+      "energyDemand",
+      "supplyContinuity",
+      "fuelCost"
+    ],
+    "business": [
+      "tripsPerDay",
+      "fleetAvailability",
+      "dispatchDelay",
+      "utilization",
+      "operatingCost",
+      "contribution"
+    ]
+  },
+  "hiddenEquations": {
+    "nodePropagation": "berth saturation → queue increase → dispatch delay → utilization decrease → contribution deterioration",
+    "energyPropagation": "energy shortage → refill delay → downtime increase → trips decrease",
+    "swapPropagation": "swap cycle increase → idle fleet increase → fleet availability decrease",
+    "maintenancePropagation": "equipment degradation → dock capacity decrease → node throughput decrease"
+  },
+  "internalPropagation": [
+    {
+      "id": "queue-collapse",
+      "if": "queueThreshold is exceeded",
+      "then": [
+        "dispatch delay increases",
+        "fleet idle time increases",
+        "utilization decreases",
+        "service continuity deteriorates"
+      ]
+    },
+    {
+      "id": "energy-shortage-collapse",
+      "if": "h2Storage or refillRate decreases",
+      "then": [
+        "queueTime increases",
+        "fleet availability decreases",
+        "dispatch feasibility deteriorates",
+        "trips decrease"
+      ]
+    },
+    {
+      "id": "dock-capacity-collapse",
+      "if": "dockCapacity decreases",
+      "then": [
+        "turnaround increases",
+        "queue increases",
+        "ETA stability decreases",
+        "contribution decreases"
+      ]
+    }
+  ],
+  "publicProjection": {
+    "allowedToShow": [
+      "node synchronization",
+      "energy continuity",
+      "queue stability",
+      "fleet readiness",
+      "service continuity",
+      "operational stability"
+    ],
+    "hiddenFromExternalView": [
+      "queue propagation equations",
+      "energy tradeoff logic",
+      "node-to-business linkage",
+      "throughput formulas",
+      "threshold logic",
+      "internal development architecture"
+    ]
+  }
+}
