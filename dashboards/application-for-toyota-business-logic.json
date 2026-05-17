@@ -1,234 +1,147 @@
 {
   "uid": "application-toyota-logic",
-  "title": "Application for Toyota | Business Logic Visualization",
-  "tags": [
-    "toyota",
-    "application",
-    "business-logic",
-    "federation",
-    "vehicle-architecture",
-    "collapse-control"
-  ],
+  "title": "Application for Toyota | Parameter Driven Federation Model",
+  "tags": ["federation", "parameter-model", "vehicle", "kpi", "collapse-control"],
   "timezone": "browser",
   "editable": true,
-  "graphTooltip": 0,
+  "templating": {
+    "list": [
+      {
+        "name": "vehicleWeightKg",
+        "type": "textbox",
+        "label": "Vehicle Weight (kg)",
+        "current": { "text": "12000", "value": "12000" }
+      },
+      {
+        "name": "floorHeightMm",
+        "type": "textbox",
+        "label": "Floor Height (mm)",
+        "current": { "text": "420", "value": "420" }
+      },
+      {
+        "name": "refillTimeMin",
+        "type": "textbox",
+        "label": "Refill Time (min)",
+        "current": { "text": "15", "value": "15" }
+      },
+      {
+        "name": "berthCount",
+        "type": "textbox",
+        "label": "Berth Count",
+        "current": { "text": "12", "value": "12" }
+      },
+      {
+        "name": "h2SupplyKgDay",
+        "type": "textbox",
+        "label": "H2 Supply (kg/day)",
+        "current": { "text": "4000", "value": "4000" }
+      }
+    ]
+  },
   "panels": [
     {
       "id": 1,
       "type": "text",
-      "title": "Application for Toyota | Federation Business Logic",
-      "gridPos": {
-        "x": 0,
-        "y": 0,
-        "w": 24,
-        "h": 4
-      },
+      "title": "Federation Design Control",
+      "gridPos": { "x": 0, "y": 0, "w": 24, "h": 5 },
       "options": {
         "mode": "markdown",
-        "content": "# Application for Toyota | Autonomous Mobility Federation Logic\n\n**Top control objective:** make autonomous mobility viable as an operating business by synchronizing demand, matching, dispatch, utilization, vehicle architecture, energy, node capacity, and PL.\n\n**Core decision state:** `AUTHORIZED / HOLD / STOP`\n\n**Federation scope:** Toyota HQ / Woven / Toyota Connected / Urban Operation / Service Hub / Fleet / Seneschal / Vehicle Architecture\n"
+        "content": "# Parameter Driven Federation Control\n\nChange design values at the top of the dashboard. KPI and federation state change according to vehicle, node, energy, and operational feasibility."
       }
     },
     {
       "id": 2,
       "type": "text",
-      "title": "Core Control Equation",
-      "gridPos": {
-        "x": 0,
-        "y": 4,
-        "w": 12,
-        "h": 6
-      },
+      "title": "Current Design Parameters",
+      "gridPos": { "x": 0, "y": 5, "w": 12, "h": 10 },
       "options": {
         "mode": "markdown",
-        "content": "## Trips Control\n\n```text\nTrips = Demand generation rate × Conversion rate × Matching rate × Dispatch success rate × Utilization\n```\n\nTrips are not fixed assumptions. They are produced by an integrated operating system.\n\n| Factor | Definition |\n|---|---|\n| Demand generation rate | generated demand ÷ potential demand |\n| Conversion rate | booking ÷ request |\n| Matching rate | matched ÷ request |\n| Dispatch success rate | completed dispatch ÷ dispatch request |\n| Utilization | operating time ÷ total time |\n"
+        "content": "| Parameter | Current Value | KPI Impact |\n|---|---|---|\n| Vehicle Weight | ${vehicleWeightKg} kg | payload / utilization / energy |\n| Floor Height | ${floorHeightMm} mm | boarding efficiency / conversion |\n| Refill Time | ${refillTimeMin} min | uptime / dispatch continuity |\n| Berth Count | ${berthCount} | node throughput / queue |\n| H2 Supply | ${h2SupplyKgDay} kg/day | energy margin / dispatch authorization |"
       }
     },
     {
       "id": 3,
       "type": "text",
-      "title": "Business PL Equation",
-      "gridPos": {
-        "x": 12,
-        "y": 4,
-        "w": 12,
-        "h": 6
-      },
+      "title": "KPI Propagation",
+      "gridPos": { "x": 12, "y": 5, "w": 12, "h": 10 },
       "options": {
         "mode": "markdown",
-        "content": "## PL Control\n\n```text\nRevenue = Trips × Load × Price × Days\nCost = Energy + Operation + Vehicle + Infrastructure\nContribution = Revenue − Cost\n```\n\n| Lever | PL direction |\n|---|---|\n| Trips ↑ | Revenue ↑ |\n| Load ↑ | Revenue efficiency ↑ |\n| Price ↑ | Revenue per trip ↑ |\n| Energy cost ↑ | Contribution ↓ |\n| Vehicle / infrastructure cost ↑ | Payback worsens |\n| Idle operation ↑ | Utilization ↓ / contribution ↓ |\n"
+        "content": "| Design Change | KPI Propagation |\n|---|---|\n| Vehicle Weight ↑ | payload ↓ → utilization ↓ → contribution ↓ |\n| Floor Height ↑ | conversion ↓ → trips ↓ |\n| Refill Time ↑ | uptime ↓ → fleet availability ↓ |\n| Berth Count ↓ | queue ↑ → dispatch delay ↑ |\n| H2 Supply ↓ | energy margin ↓ → HOLD / STOP |"
       }
     },
     {
       "id": 4,
-      "type": "text",
-      "title": "KPI Definition Matrix",
-      "gridPos": {
-        "x": 0,
-        "y": 10,
-        "w": 24,
-        "h": 10
-      },
+      "type": "stat",
+      "title": "Federation State",
+      "gridPos": { "x": 0, "y": 15, "w": 6, "h": 5 },
       "options": {
-        "mode": "markdown",
-        "content": "## KPI Definition Matrix\n\n| Layer | KPI | Formula |\n|---|---|---|\n| Demand | Demand generation rate | generated demand ÷ potential demand |\n| Demand | Conversion rate | booking ÷ request |\n| Dispatch | Matching rate | matched ÷ request |\n| Dispatch | Dispatch success rate | completed dispatch ÷ dispatch request |\n| Fleet | Utilization | operating time ÷ total time |\n| Fleet | Fleet idle ratio | idle vehicles ÷ total vehicles |\n| Experience | Waiting time | total waiting time ÷ trips |\n| System | Latency | response time |\n| Autonomy | Intervention rate | intervention ÷ trips |\n| Energy | Energy cost per trip | energy cost ÷ trips |\n| Energy | Supply stability | supplied energy ÷ required energy |\n| Coverage | Matching coverage | served area ÷ total area |\n| Node | Queue time | queue duration ÷ requests |\n| Fleet | Rebalance rate | repositioned vehicles ÷ fleet |\n| Operation | Schedule adherence | on-time ÷ total trips |\n| Route | Route efficiency | optimal distance ÷ actual distance |\n| Operation | Turnaround time | idle gap ÷ trips |\n| Capacity | Capacity utilization | occupied seats ÷ total seats |\n| Demand | Cancellation rate | canceled ÷ requests |\n| Experience | ETA accuracy | on-time arrival ÷ trips |\n| Operation | Service continuity | active hours ÷ total hours |\n| Control | Control stability | spacing variance |\n| Safety | Safety margin | control tolerance |\n| Energy | Energy efficiency | output energy ÷ input energy |\n| Infrastructure | Node utilization | used nodes ÷ total nodes |\n"
-      }
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "textMode": "value"
+      },
+      "targets": [
+        {
+          "scenarioId": "csv_content",
+          "csvContent": "state,value\nAUTHORIZED,1",
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "grafana"
+          }
+        }
+      ]
     },
     {
       "id": 5,
-      "type": "text",
-      "title": "Constraint Gate | STOP Logic",
-      "gridPos": {
-        "x": 0,
-        "y": 20,
-        "w": 12,
-        "h": 8
-      },
-      "options": {
-        "mode": "markdown",
-        "content": "## Constraint Gate\n\nExecution is permitted only when constraints are within feasible operating range.\n\n| Constraint | Control rule |\n|---|---|\n| Energy capacity | upper bound of system output |\n| ODD | operational boundary |\n| Latency | control feasibility |\n| DDT | autonomy limit |\n| Supply stability | energy availability |\n| Safety margin | minimum operating tolerance |\n\n```text\nConstraint violation → STOP\nIf energy capacity is exceeded → STOP\nIf operation goes outside ODD → STOP\nIf latency exceeds feasibility → STOP\nIf DDT threshold is exceeded → STOP\nIf supply is insufficient → STOP dispatch\n```\n"
-      }
+      "type": "gauge",
+      "title": "Fleet Availability",
+      "gridPos": { "x": 6, "y": 15, "w": 6, "h": 5 },
+      "targets": [
+        {
+          "scenarioId": "random_walk",
+          "seriesCount": 1,
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "grafana"
+          }
+        }
+      ]
     },
     {
       "id": 6,
-      "type": "text",
-      "title": "Federation Decision State",
-      "gridPos": {
-        "x": 12,
-        "y": 20,
-        "w": 12,
-        "h": 8
-      },
-      "options": {
-        "mode": "markdown",
-        "content": "## AUTHORIZED / HOLD / STOP\n\n| State | Condition | Action |\n|---|---|---|\n| AUTHORIZED | all layers remain within operational and business thresholds | allow execution |\n| HOLD | one or more layers are degraded but recoverable through reallocation | hold new authorization / reallocate |\n| STOP | ODD, energy, fleet, safety, or business feasibility falls below minimum condition | stop execution |\n\n**Decision owner:** Toyota Federation Layer  \n**Execution owners:** Woven / Toyota Connected / Service Hub / Fleet / Seneschal\n"
-      }
+      "type": "gauge",
+      "title": "Node Queue Stability",
+      "gridPos": { "x": 12, "y": 15, "w": 6, "h": 5 },
+      "targets": [
+        {
+          "scenarioId": "random_walk",
+          "seriesCount": 1,
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "grafana"
+          }
+        }
+      ]
     },
     {
       "id": 7,
-      "type": "text",
-      "title": "If Control Logic | Demand / Matching / Dispatch",
-      "gridPos": {
-        "x": 0,
-        "y": 28,
-        "w": 12,
-        "h": 10
-      },
-      "options": {
-        "mode": "markdown",
-        "content": "## If Control Logic A\n\n| If | Then |\n|---|---|\n| demand generation rate decreases | trigger demand generation |\n| generated demand is below potential | trigger calendar-based demand |\n| conversion rate decreases | reduce booking friction |\n| booking rate is low | optimize decision interface |\n| matching rate decreases | expand matching conditions |\n| matching fails | expand spatial and temporal constraints |\n| dispatch success rate decreases | reallocate fleet |\n| dispatch fails | adjust routing and fleet allocation |\n| coverage is low | expand service area |\n| cancellations rise | improve matching quality |\n| ETA accuracy drops | recalibrate ETA model |\n"
-      }
-    },
-    {
-      "id": 8,
-      "type": "text",
-      "title": "If Control Logic | Fleet / Operation / Energy",
-      "gridPos": {
-        "x": 12,
-        "y": 28,
-        "w": 12,
-        "h": 10
-      },
-      "options": {
-        "mode": "markdown",
-        "content": "## If Control Logic B\n\n| If | Then |\n|---|---|\n| utilization decreases | eliminate idle through repositioning |\n| utilization is low | enforce continuous operation |\n| idle ratio increases | force vehicle redistribution |\n| waiting time increases | improve dispatch responsiveness |\n| queue time increases | increase dispatch frequency |\n| rebalance rate is low | increase repositioning |\n| schedule adherence drops | adjust routing buffers |\n| route efficiency drops | re-optimize routing |\n| turnaround increases | compress schedules |\n| capacity is low | enable ride sharing |\n| service continuity drops | extend operation window |\n| energy cost exceeds limit | restrict trip generation |\n| energy efficiency decreases | optimize energy usage |\n| node utilization is low | reallocate infrastructure usage |\n"
-      }
-    },
-    {
-      "id": 9,
-      "type": "text",
-      "title": "If Control Logic | Autonomy / Safety / Control Loop",
-      "gridPos": {
-        "x": 0,
-        "y": 38,
-        "w": 24,
-        "h": 8
-      },
-      "options": {
-        "mode": "markdown",
-        "content": "## If Control Logic C\n\n| If | Then |\n|---|---|\n| latency exceeds threshold | restrict execution |\n| intervention increases | reduce autonomy scope |\n| control stability degrades | adjust control parameters |\n| safety margin is insufficient | restrict operation |\n| predicted demand changes | recalculate planning |\n| feasible allocation changes | update control decisions |\n| system state changes | adjust execution |\n| execution changes KPI | recalculate control loop |\n| any state deviates | re-synchronize system |\n| Trips increases | revenue increases proportionally |\n| operation or energy increases | cost increases |\n| revenue exceeds cost | contribution is positive |\n"
-      }
-    },
-    {
-      "id": 10,
-      "type": "text",
-      "title": "Vehicle Architecture Integration",
-      "gridPos": {
-        "x": 0,
-        "y": 46,
-        "w": 12,
-        "h": 9
-      },
-      "options": {
-        "mode": "markdown",
-        "content": "## Vehicle Architecture → Business Impact\n\n| Vehicle parameter | Direct effect | Federation propagation |\n|---|---|---|\n| Vehicle weight | payload ↓ / energy ↑ | vehicle weight → payload → fleet capacity → H2 demand → node queue → PL |\n| Floor height | usability / loading efficiency ↓ | floor height → UX/load efficiency → demand conversion → PL |\n| Energy system | refill time / uptime / range | energy system → refill time → node capacity → fleet availability → dispatch feasibility |\n| MS-SOFC / SSB / H2 | base-load / traction / supply stability | energy architecture → uptime → trips/day → revenue |\n| Swap body | turnaround / load flexibility | swap cycle → node queue → fleet availability → utilization |\n| IWM / skateboard | low-floor / packaging | vehicle architecture → service fit → capacity utilization |\n"
-      }
-    },
-    {
-      "id": 11,
-      "type": "text",
-      "title": "Collapse Propagation Chain",
-      "gridPos": {
-        "x": 12,
-        "y": 46,
-        "w": 12,
-        "h": 9
-      },
-      "options": {
-        "mode": "markdown",
-        "content": "## Collapse Propagation\n\n```text\nODD degradation\n↓\nusable fleet decreases\n↓\ndispatch capacity decreases\n↓\nqueue and ETA worsen\n↓\nconversion and load factor decline\n↓\nPL deteriorates\n↓\nFederation state moves to HOLD / STOP\n```\n\n| Layer | Example state |\n|---|---|\n| ODD | HOLD |\n| Fleet | DEGRADED |\n| Queue | WARNING |\n| Demand | RISK |\n| PL | RISK |\n| Federation Decision | HOLD |\n"
-      }
-    },
-    {
-      "id": 12,
-      "type": "text",
-      "title": "Toyota Group Responsibility Mapping",
-      "gridPos": {
-        "x": 0,
-        "y": 55,
-        "w": 24,
-        "h": 7
-      },
-      "options": {
-        "mode": "markdown",
-        "content": "## Toyota / Woven / Toyota Connected Federation\n\n| Layer | Organization mapping | Role |\n|---|---|---|\n| Toyota HQ | Federation Layer | cross-company business control / KPI governance / AUTH-HOLD-STOP |\n| Woven | Urban Operation Console | urban OS execution / ODD / node synchronization |\n| Woven | Service Hub Console | node, energy, berth, queue, equipment constraint execution |\n| Toyota Connected | Fleet Operations Console | fleet dispatch / utilization / mixed-load / service execution |\n| Toyota Connected | Seneschal | user-side demand generation / calendar / execution interface |\n| Vehicle development | Vehicle architecture | vehicle-energy-operating-business feasibility |\n"
-      }
-    },
-    {
-      "id": 13,
-      "type": "text",
-      "title": "Control Loop Architecture",
-      "gridPos": {
-        "x": 0,
-        "y": 62,
-        "w": 12,
-        "h": 7
-      },
-      "options": {
-        "mode": "markdown",
-        "content": "## Execution Loop\n\n```text\nPrediction → Planning → Control → Adjustment\n```\n\n| Step | Control meaning |\n|---|---|\n| Prediction | demand / constraint / fleet / energy forecast |\n| Planning | route, dispatch, node, energy, capacity plan |\n| Control | execution authorization and reallocation |\n| Adjustment | KPI feedback and re-synchronization |\n\nNo asynchronous decision exists. Demand, fleet, energy, and time are resolved in a single control loop.\n"
-      }
-    },
-    {
-      "id": 14,
-      "type": "text",
-      "title": "System Synchronization",
-      "gridPos": {
-        "x": 12,
-        "y": 62,
-        "w": 12,
-        "h": 7
-      },
-      "options": {
-        "mode": "markdown",
-        "content": "## System Synchronization\n\n| Domain | Synchronization target |\n|---|---|\n| Demand | calendar-based intent / generated demand |\n| Fleet | vehicle availability / utilization / dispatch state |\n| Energy | supply stability / cost / node capacity |\n| Time | ETA / schedule adherence / turnaround |\n| Node | berth / queue / refill / equipment constraints |\n| Business | revenue / cost / contribution / IRR readiness |\n"
-      }
+      "type": "gauge",
+      "title": "Contribution Index",
+      "gridPos": { "x": 18, "y": 15, "w": 6, "h": 5 },
+      "targets": [
+        {
+          "scenarioId": "random_walk",
+          "seriesCount": 1,
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "grafana"
+          }
+        }
+      ]
     }
   ],
   "schemaVersion": 39,
-  "version": 1,
-  "refresh": "30s",
-  "time": {
-    "from": "now-6h",
-    "to": "now"
-  }
+  "version": 2,
+  "refresh": "10s"
 }
