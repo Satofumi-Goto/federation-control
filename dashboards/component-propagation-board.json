@@ -1,0 +1,86 @@
+{
+  "uid": "component-propagation-board",
+  "title": "Component Propagation Federation Board",
+  "tags": ["component", "propagation", "federation", "vehicle", "operations"],
+  "timezone": "browser",
+  "editable": true,
+  "templating": {
+    "list": [
+      {
+        "name": "msSofcCapacityKw",
+        "type": "textbox",
+        "label": "MS-SOFC Capacity (kW)",
+        "current": { "text": "120", "value": "120" }
+      },
+      {
+        "name": "ssbWeightKg",
+        "type": "textbox",
+        "label": "SSB Weight (kg)",
+        "current": { "text": "1800", "value": "1800" }
+      },
+      {
+        "name": "lh2VolumeL",
+        "type": "textbox",
+        "label": "LH2 Volume (L)",
+        "current": { "text": "800", "value": "800" }
+      },
+      {
+        "name": "iwmWeightKg",
+        "type": "textbox",
+        "label": "IWM Weight (kg)",
+        "current": { "text": "420", "value": "420" }
+      },
+      {
+        "name": "swapCycleMin",
+        "type": "textbox",
+        "label": "Swap Cycle (min)",
+        "current": { "text": "8", "value": "8" }
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "Component Layer",
+      "gridPos": {"x":0,"y":0,"w":24,"h":8},
+      "options": {
+        "mode": "markdown",
+        "content": "| Component | Current Design Value | Immediate Effect |\n|---|---:|---|\n| MS-SOFC | ${msSofcCapacityKw} kW | base-load continuity |\n| SSB | ${ssbWeightKg} kg | vehicle weight / payload |\n| LH2 Tank | ${lh2VolumeL} L | range / packaging |\n| IWM | ${iwmWeightKg} kg | drivetrain packaging |\n| Swap Body | ${swapCycleMin} min | turnaround continuity |"
+      }
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "title": "Vehicle Propagation",
+      "gridPos": {"x":0,"y":8,"w":12,"h":10},
+      "options": {
+        "mode": "markdown",
+        "content": "```text\nSSB Weight ${ssbWeightKg} kg\n→ Vehicle Weight ↑\n→ Payload ↓\n→ Capacity Utilization ↓\n→ Trips ↓\n```\n\n```text\nLH2 Volume ${lh2VolumeL} L\n→ Packaging Thickness ↑\n→ Floor Height ↑\n→ Accessibility ↓\n→ Conversion ↓\n```"
+      }
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "title": "Fleet / Node Propagation",
+      "gridPos": {"x":12,"y":8,"w":12,"h":10},
+      "options": {
+        "mode": "markdown",
+        "content": "```text\nMS-SOFC Capacity ${msSofcCapacityKw} kW\n→ Refill Frequency ↓\n→ Fleet Uptime ↑\n→ Dispatch Availability ↑\n```\n\n```text\nSwap Cycle ${swapCycleMin} min\n→ Node Queue ↓\n→ Fleet Idle ↓\n→ Utilization ↑\n```"
+      }
+    },
+    {
+      "id": 4,
+      "type": "text",
+      "title": "Business Propagation",
+      "gridPos": {"x":0,"y":18,"w":24,"h":10},
+      "options": {
+        "mode": "markdown",
+        "content": "```text\nComponent Change\n→ Vehicle KPI\n→ Fleet KPI\n→ Node KPI\n→ Dispatch Success\n→ Trips/day\n→ Contribution\n→ Federation State\n```\n\n| Federation KPI | Current Impact Direction |\n|---|---|\n| Fleet Availability | improving |\n| Queue Stability | improving |\n| Dispatch Success | improving |\n| Trips/day | improving |\n| Contribution | improving |\n| Federation State | AUTHORIZED |"
+      }
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "5s"
+}
