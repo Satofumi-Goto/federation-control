@@ -1,0 +1,62 @@
+{
+  "visibility": "internal-only",
+  "title": "Design Parameter to KPI Calculation Model",
+  "purpose": "Convert vehicle and service hub design parameters into fleet, node, urban operation, and business KPI impacts.",
+  "doNotExpose": true,
+  "modelScope": [
+    "vehicle design values",
+    "service hub design values",
+    "energy design values",
+    "fleet operation KPIs",
+    "urban operation KPIs",
+    "business KPIs",
+    "AUTHORIZED/HOLD/STOP state"
+  ],
+  "designParameters": {
+    "vehicle": {
+      "vehicleWeightKg": "vehicle curb weight or operating weight",
+      "payloadKg": "available payload after vehicle weight",
+      "floorHeightMm": "boarding/loading floor height",
+      "rangeKm": "operating range per energy cycle",
+      "refillTimeMin": "energy refill or swap time",
+      "uptimeHours": "available operating time per day"
+    },
+    "serviceHub": {
+      "berthCount": "available service hub berths",
+      "swapCycleMin": "swap body turnaround cycle",
+      "h2SupplyKgDay": "daily hydrogen supply capacity",
+      "queueLimitMin": "maximum acceptable node queue time",
+      "equipmentAvailabilityPct": "available equipment ratio"
+    },
+    "operation": {
+      "tripsPerVehicleDay": "daily trips per vehicle",
+      "loadFactorPct": "capacity utilization",
+      "dispatchSuccessPct": "completed dispatch divided by dispatch request",
+      "etaAccuracyPct": "on-time arrival ratio"
+    }
+  },
+  "calculationLogic": {
+    "payloadImpact": "vehicleWeightKg ↑ → payloadKg ↓ → loadFactor ceiling ↓ → revenue efficiency ↓",
+    "floorHeightImpact": "floorHeightMm ↑ → boarding/loading efficiency ↓ → conversion ↓ → trips ↓",
+    "rangeImpact": "rangeKm ↓ → refill frequency ↑ → node queue ↑ → uptime ↓",
+    "refillImpact": "refillTimeMin ↑ → vehicle downtime ↑ → fleet availability ↓ → dispatch success ↓",
+    "berthImpact": "berthCount ↓ → node throughput ↓ → queue time ↑ → fleet readiness ↓",
+    "energyImpact": "h2SupplyKgDay ↓ → energy constraint ↑ → dispatch authorization HOLD/STOP",
+    "businessImpact": "Trips × Load × Price × Days controls Revenue; Energy + Operation + Vehicle + Infrastructure controls Cost"
+  },
+  "kpiOutputs": {
+    "fleetAvailabilityPct": "available vehicles ÷ total vehicles",
+    "dispatchSuccessPct": "completed dispatch ÷ dispatch request",
+    "utilizationPct": "operating hours ÷ total hours",
+    "nodeQueueMin": "average queue time at service hub",
+    "energyMarginPct": "available energy ÷ required energy",
+    "tripsDay": "Trips = Demand × Conversion × Matching × Dispatch × Utilization",
+    "contributionIndex": "Revenue index − Cost index",
+    "federationState": "AUTHORIZED / HOLD / STOP"
+  },
+  "stateRules": {
+    "AUTHORIZED": "fleetAvailabilityPct >= 90 and nodeQueueMin <= 10 and energyMarginPct >= 110 and contributionIndex >= 100",
+    "HOLD": "any one layer degraded but recoverable",
+    "STOP": "energyMarginPct < 90 or nodeQueueMin > 30 or dispatchSuccessPct < 80 or contributionIndex < 80"
+  }
+}
