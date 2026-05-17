@@ -6,14 +6,22 @@ on:
       - main
     paths:
       - 'dashboards/**.json'
+      - 'scripts/deploy-grafana-dashboard.mjs'
+      - '.github/workflows/deploy-grafana.yml'
+  workflow_dispatch:
 
 jobs:
-  validate:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
       - name: Validate dashboard JSON
         run: |
@@ -21,3 +29,9 @@ jobs:
             echo "Checking $file"
             python -m json.tool "$file" > /dev/null
           done
+
+      - name: Deploy dashboards to Grafana
+        env:
+          GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
+          GRAFANA_TOKEN: ${{ secrets.GRAFANA_TOKEN }}
+        run: node scripts/deploy-grafana-dashboard.mjs
