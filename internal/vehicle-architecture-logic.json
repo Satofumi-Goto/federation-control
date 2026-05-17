@@ -1,0 +1,104 @@
+{
+  "visibility": "internal-only",
+  "title": "Internal Vehicle Architecture Logic",
+  "purpose": "Define non-public vehicle architecture logic, packaging constraints, energy propagation, and business-feasibility linkage.",
+  "doNotExpose": true,
+  "vehicleArchitecture": {
+    "coreComponents": [
+      "MS-SOFC",
+      "SSB",
+      "LH2",
+      "MgH2",
+      "IWM",
+      "Swap Body",
+      "Low-floor skateboard",
+      "Distributed node energy"
+    ],
+    "designObjectives": [
+      "maximize uptime",
+      "minimize turnaround",
+      "reduce queue",
+      "maintain low-floor packaging",
+      "maximize payload",
+      "stabilize energy supply",
+      "optimize trips/day",
+      "improve IRR"
+    ]
+  },
+  "hiddenEquations": {
+    "payload": "payload = legalGrossWeight − vehicleWeight",
+    "uptime": "uptime = operatingTime − refillTime − maintenanceTime",
+    "energyPropagation": "vehicle energy architecture → refill time → node queue → fleet availability → dispatch feasibility",
+    "floorPackaging": "floor thickness ↑ → accessibility ↓ → conversion ↓ → trips ↓",
+    "tripEconomics": "trips/day × load × price × uptime → contribution"
+  },
+  "internalPropagation": [
+    {
+      "id": "ms-sofc-base-load",
+      "if": "MS-SOFC capacity is insufficient",
+      "then": [
+        "base-load instability",
+        "charging delay",
+        "fleet downtime increase",
+        "dispatch feasibility degradation"
+      ]
+    },
+    {
+      "id": "battery-weight-propagation",
+      "if": "battery weight increases",
+      "then": [
+        "payload decreases",
+        "energy consumption increases",
+        "fleet count requirement increases",
+        "node energy demand increases",
+        "PL deteriorates"
+      ]
+    },
+    {
+      "id": "lh2-packaging-collapse",
+      "if": "LH2 packaging exceeds floor target",
+      "then": [
+        "floor height increases",
+        "boarding efficiency decreases",
+        "service fit decreases",
+        "demand conversion decreases"
+      ]
+    },
+    {
+      "id": "swap-body-turnaround",
+      "if": "swap turnaround increases",
+      "then": [
+        "queue increases",
+        "fleet idle time increases",
+        "utilization decreases",
+        "trips/day decreases"
+      ]
+    }
+  ],
+  "controlThresholds": {
+    "latency": "<=100ms target / <=50ms future",
+    "interventionRate": "<=0.05 target / <=0.005 future",
+    "controlDeviation": "<=5% target / <=2% future",
+    "uptime": ">=24h operating continuity",
+    "queueLimit": "queue must remain within node operating threshold"
+  },
+  "publicProjection": {
+    "allowedToShow": [
+      "vehicle uptime",
+      "energy stability",
+      "operating continuity",
+      "dispatch readiness",
+      "service continuity",
+      "low-floor accessibility",
+      "node synchronization"
+    ],
+    "hiddenFromExternalView": [
+      "vehicle packaging equations",
+      "payload propagation formulas",
+      "energy architecture tradeoff logic",
+      "vehicle-to-PL linkage",
+      "IRR optimization logic",
+      "detailed control thresholds"
+    ]
+  }
+}
