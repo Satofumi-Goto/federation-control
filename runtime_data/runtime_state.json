@@ -1,0 +1,31 @@
+{
+  "runtime_operation": {
+    "status": "active",
+    "synchronization": true,
+    "collapse_state": "normal"
+  },
+
+  "fleet_operation": {
+    "queue_time": 12,
+    "fleet_idle_ratio": 0.18,
+    "dispatch_success_rate": 0.97
+  },
+
+  "service_hub": {
+    "hydrogen_queue": 3,
+    "turnaround_time": 18,
+    "node_utilization": 0.82
+  },
+
+  "vehicle": {
+    "latency_ms": 42,
+    "control_stability": 0.96,
+    "odd_status": "inside"
+  },
+
+  "business": {
+    "revenue": 12800000,
+    "cost": 8300000,
+    "contribution": 4500000
+  }
+}
