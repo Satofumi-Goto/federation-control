@@ -1,0 +1,86 @@
+{
+  "title": "Collapse Propagation Control",
+  "purpose": "Visualize how mobility business collapse propagates across ODD, Fleet, Queue, Node, Energy, Vehicle and PL layers.",
+  "controlState": "HOLD",
+  "layers": [
+    {
+      "order": 1,
+      "layer": "ODD",
+      "state": "HOLD",
+      "trigger": "Weather / road condition reduces autonomous driving availability",
+      "impact": "Available autonomous operating area decreases",
+      "next": "Fleet"
+    },
+    {
+      "order": 2,
+      "layer": "Fleet",
+      "state": "DEGRADED",
+      "trigger": "ODD restriction reduces usable vehicle pool",
+      "impact": "Dispatch capacity and ETA reliability decline",
+      "next": "Queue"
+    },
+    {
+      "order": 3,
+      "layer": "Queue",
+      "state": "WARNING",
+      "trigger": "Fleet shortage increases waiting demand",
+      "impact": "Node queue and passenger waiting time increase",
+      "next": "Demand"
+    },
+    {
+      "order": 4,
+      "layer": "Demand",
+      "state": "RISK",
+      "trigger": "ETA delay and price increase reduce conversion",
+      "impact": "Demand conversion and load factor decline",
+      "next": "PL"
+    },
+    {
+      "order": 5,
+      "layer": "PL",
+      "state": "RISK",
+      "trigger": "Lower utilization and higher operating cost",
+      "impact": "Contribution margin deteriorates",
+      "next": "Federation Decision"
+    },
+    {
+      "order": 6,
+      "layer": "Federation Decision",
+      "state": "HOLD",
+      "trigger": "Business feasibility falls below control threshold",
+      "impact": "New dispatch authorization is held until constraints recover",
+      "next": null
+    }
+  ],
+  "vehicleIntegration": [
+    {
+      "parameter": "Vehicle weight",
+      "risk": "Higher weight reduces payload and increases energy consumption",
+      "propagation": "Vehicle weight → payload → fleet capacity → H2 demand → node queue → PL"
+    },
+    {
+      "parameter": "Floor height",
+      "risk": "Higher floor height reduces usability and service fit",
+      "propagation": "Floor height → UX/load efficiency → demand conversion → PL"
+    },
+    {
+      "parameter": "Energy system",
+      "risk": "Fuel cell / battery / hydrogen architecture affects refill time and uptime",
+      "propagation": "Energy system → refill time → node capacity → fleet availability → dispatch feasibility"
+    }
+  ],
+  "decisionRules": [
+    {
+      "state": "AUTHORIZED",
+      "condition": "All layers remain within operational and business thresholds"
+    },
+    {
+      "state": "HOLD",
+      "condition": "One or more layers are degraded but recoverable through reallocation"
+    },
+    {
+      "state": "STOP",
+      "condition": "ODD, energy, fleet, or business feasibility falls below minimum operating condition"
+    }
+  ]
+}
