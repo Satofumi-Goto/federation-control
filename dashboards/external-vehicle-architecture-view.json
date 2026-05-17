@@ -1,40 +1,96 @@
 {
   "uid": "external-vehicle-architecture-view",
   "title": "External Vehicle Architecture View",
-  "tags": ["external", "vehicle", "operations"],
+  "tags": ["external", "vehicle", "parameter", "kpi"],
   "timezone": "browser",
+  "editable": true,
+  "templating": {
+    "list": [
+      {
+        "name": "vehicleWeightKg",
+        "type": "textbox",
+        "label": "Vehicle Weight (kg)",
+        "current": { "text": "13000", "value": "13000" }
+      },
+      {
+        "name": "floorHeightMm",
+        "type": "textbox",
+        "label": "Floor Height (mm)",
+        "current": { "text": "340", "value": "340" }
+      },
+      {
+        "name": "refillTimeMin",
+        "type": "textbox",
+        "label": "Refill Time (min)",
+        "current": { "text": "5", "value": "5" }
+      },
+      {
+        "name": "berthCount",
+        "type": "textbox",
+        "label": "Berth Count",
+        "current": { "text": "20", "value": "20" }
+      },
+      {
+        "name": "h2SupplyKgDay",
+        "type": "textbox",
+        "label": "H2 Supply (kg/day)",
+        "current": { "text": "2000", "value": "2000" }
+      }
+    ]
+  },
   "panels": [
     {
       "id": 1,
       "type": "text",
-      "title": "Vehicle Architecture Operations View",
-      "gridPos": {"x": 0, "y": 0, "w": 24, "h": 4},
+      "title": "Design Parameters",
+      "gridPos": {"x": 0, "y": 0, "w": 24, "h": 7},
       "options": {
         "mode": "markdown",
-        "content": "# Vehicle Architecture Operations View\n\nOperational continuity visualization across vehicle, energy, fleet, and node synchronization.\n\nVisible information only. Internal packaging equations and business propagation logic are intentionally excluded."
+        "content": "| Design Parameter | Current Value | KPI Impact |\n|---|---:|---|\n| Vehicle Weight | ${vehicleWeightKg} kg | Payload / Utilization / Energy |\n| Floor Height | ${floorHeightMm} mm | Accessibility / Loading / Conversion |\n| Refill Time | ${refillTimeMin} min | Uptime / Fleet Availability |\n| Berth Count | ${berthCount} | Queue / Turnaround |\n| H2 Supply | ${h2SupplyKgDay} kg/day | Energy Margin / Dispatch Authorization |"
       }
     },
     {
       "id": 2,
       "type": "text",
-      "title": "Visible Vehicle States",
-      "gridPos": {"x": 0, "y": 4, "w": 12, "h": 10},
+      "title": "KPI Summary",
+      "gridPos": {"x": 0, "y": 7, "w": 24, "h": 7},
       "options": {
         "mode": "markdown",
-        "content": "| Layer | Visible State |\n|---|---|\n| Vehicle uptime | stable |\n| Energy continuity | synchronized |\n| Fleet readiness | available |\n| Dispatch readiness | feasible |\n| Node synchronization | synchronized |\n| Low-floor accessibility | maintained |\n| Swap turnaround | within threshold |\n| ETA continuity | stable |"
+        "content": "| KPI | Current State | Direction |\n|---|---:|---|\n| Payload Capacity | 3,200 kg | Vehicle weight sensitive |\n| Utilization Rate | 85% | Payload / queue sensitive |\n| Fleet Availability | 92% | Refill time sensitive |\n| Dispatch Success | 94% | Node / energy sensitive |\n| Daily Trips | 1,560 trips | Utilization linked |\n| Contribution | 12.4 M JPY/day | Trips and cost linked |\n| Federation State | HOLD | Threshold linked |"
       }
     },
     {
       "id": 3,
       "type": "text",
-      "title": "Visible Vehicle Architecture",
-      "gridPos": {"x": 12, "y": 4, "w": 12, "h": 10},
+      "title": "KPI Breakdown | Impact Flow",
+      "gridPos": {"x": 0, "y": 14, "w": 24, "h": 8},
       "options": {
         "mode": "markdown",
-        "content": "| Visible Element | Operational Meaning |\n|---|---|\n| Low-floor skateboard | accessibility and boarding continuity |\n| Distributed energy architecture | operating continuity |\n| Swap body operation | turnaround continuity |\n| Autonomous operation support | dispatch feasibility |\n| Node synchronization | stable operation |\n| Fleet synchronization | service continuity |\n| Energy synchronization | operational stability |"
+        "content": "```text\nVehicle Weight ${vehicleWeightKg} kg\n→ Payload Capacity 3,200 kg\n→ Utilization Rate 85%\n→ Daily Trips 1,560\n→ Contribution 12.4 M JPY/day\n→ Federation State HOLD\n```\n\n```text\nRefill Time ${refillTimeMin} min\n→ Fleet Availability 92%\n→ Dispatch Success 94%\n→ ETA Continuity stable\n```\n\n```text\nBerth Count ${berthCount}\n→ Queue controlled\n→ Turnaround continuity maintained\n```"
+      }
+    },
+    {
+      "id": 4,
+      "type": "text",
+      "title": "Visible Calculation Logic",
+      "gridPos": {"x": 0, "y": 22, "w": 12, "h": 8},
+      "options": {
+        "mode": "markdown",
+        "content": "| Design Change | Visible KPI Effect |\n|---|---|\n| Vehicle Weight ↑ | Payload ↓ / Utilization ↓ |\n| Floor Height ↑ | Accessibility ↓ / Conversion ↓ |\n| Refill Time ↑ | Uptime ↓ / Fleet Availability ↓ |\n| Berth Count ↓ | Queue ↑ / Turnaround ↓ |\n| H2 Supply ↓ | Energy Margin ↓ / HOLD or STOP |"
+      }
+    },
+    {
+      "id": 5,
+      "type": "text",
+      "title": "External View Boundary",
+      "gridPos": {"x": 12, "y": 22, "w": 12, "h": 8},
+      "options": {
+        "mode": "markdown",
+        "content": "| Shown | Hidden |\n|---|---|\n| KPI state | Internal propagation equations |\n| Operational continuity | Vehicle-to-PL formulas |\n| Design assumption values | IRR calculation logic |\n| Federation state | Detailed threshold ownership |\n| Synchronization status | Internal governance model |"
       }
     }
   ],
   "schemaVersion": 39,
-  "version": 1
+  "version": 2,
+  "refresh": "10s"
 }
