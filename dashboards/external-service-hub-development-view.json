@@ -1,0 +1,40 @@
+{
+  "uid": "external-service-hub-development-view",
+  "title": "External Service Hub Development View",
+  "tags": ["external", "service-hub", "operations"],
+  "timezone": "browser",
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "Service Hub Operations View",
+      "gridPos": {"x": 0, "y": 0, "w": 24, "h": 4},
+      "options": {
+        "mode": "markdown",
+        "content": "# Service Hub Operations View\n\nOperational continuity visualization across node synchronization, energy continuity, berth operation, queue stability, and fleet readiness.\n\nInternal propagation logic and business linkage are intentionally excluded."
+      }
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "title": "Visible Node States",
+      "gridPos": {"x": 0, "y": 4, "w": 12, "h": 10},
+      "options": {
+        "mode": "markdown",
+        "content": "| Layer | Visible State |\n|---|---|\n| Node synchronization | stable |\n| Energy continuity | synchronized |\n| Queue stability | within threshold |\n| Fleet readiness | available |\n| Dispatch continuity | maintained |\n| Berth availability | stable |\n| Swap turnaround | controlled |\n| ETA continuity | stable |"
+      }
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "title": "Visible Service Hub Architecture",
+      "gridPos": {"x": 12, "y": 4, "w": 12, "h": 10},
+      "options": {
+        "mode": "markdown",
+        "content": "| Visible Element | Operational Meaning |\n|---|---|\n| Distributed service hub | operational continuity |\n| Energy synchronization | stable fleet operation |\n| Berth operation | dispatch continuity |\n| Queue management | operational stability |\n| Swap-body operation | turnaround continuity |\n| Fleet synchronization | stable dispatch execution |\n| Urban synchronization | coordinated operation |"
+      }
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 1
+}
