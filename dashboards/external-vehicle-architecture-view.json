@@ -1,0 +1,40 @@
+{
+  "uid": "external-vehicle-architecture-view",
+  "title": "External Vehicle Architecture View",
+  "tags": ["external", "vehicle", "operations"],
+  "timezone": "browser",
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "Vehicle Architecture Operations View",
+      "gridPos": {"x": 0, "y": 0, "w": 24, "h": 4},
+      "options": {
+        "mode": "markdown",
+        "content": "# Vehicle Architecture Operations View\n\nOperational continuity visualization across vehicle, energy, fleet, and node synchronization.\n\nVisible information only. Internal packaging equations and business propagation logic are intentionally excluded."
+      }
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "title": "Visible Vehicle States",
+      "gridPos": {"x": 0, "y": 4, "w": 12, "h": 10},
+      "options": {
+        "mode": "markdown",
+        "content": "| Layer | Visible State |\n|---|---|\n| Vehicle uptime | stable |\n| Energy continuity | synchronized |\n| Fleet readiness | available |\n| Dispatch readiness | feasible |\n| Node synchronization | synchronized |\n| Low-floor accessibility | maintained |\n| Swap turnaround | within threshold |\n| ETA continuity | stable |"
+      }
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "title": "Visible Vehicle Architecture",
+      "gridPos": {"x": 12, "y": 4, "w": 12, "h": 10},
+      "options": {
+        "mode": "markdown",
+        "content": "| Visible Element | Operational Meaning |\n|---|---|\n| Low-floor skateboard | accessibility and boarding continuity |\n| Distributed energy architecture | operating continuity |\n| Swap body operation | turnaround continuity |\n| Autonomous operation support | dispatch feasibility |\n| Node synchronization | stable operation |\n| Fleet synchronization | service continuity |\n| Energy synchronization | operational stability |"
+      }
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 1
+}
