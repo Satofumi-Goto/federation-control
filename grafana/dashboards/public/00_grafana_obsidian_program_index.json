@@ -1,0 +1,76 @@
+{
+  "uid": "go-program-index",
+  "title": "Grafana / Obsidian | Program Index",
+  "tags": [
+    "career-project",
+    "obsidian",
+    "empty-box",
+    "autonomous-mobility"
+  ],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "",
+  "editable": true,
+  "description": "Grafana and Obsidian operating index for autonomous mobility business viability.",
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "最上位目的",
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "# Grafana / Obsidian\nこのプロジェクトでは、Grafanaを「自動運転運行事業の成立条件・崩壊制御・事業化・運用実装」の可視化基盤として扱う。\n\nObsidianは一次知識ベース、Grafanaは表示・監視・説明の表層。"
+      },
+      "transparent": false
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "title": "Public Dashboards",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 6
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "- 統合制御｜表層\n- 収支シミュレーション\n- コスト回収計画\n- 運用企画\n- 利用規約\n- WBS\n- バックログ"
+      },
+      "transparent": false
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "title": "Private Logic",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 6
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "統合制御のみ、見せる表層部と見せないロジックを分離する。\n\n- 表層：判断結果・状態・崩壊兆候\n- 裏側：判定式・重み・制約優先順位・スコアリング"
+      },
+      "transparent": false
+    }
+  ],
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  }
+}
