@@ -1,0 +1,155 @@
+{
+  "visibility": "internal-only",
+  "title": "Internal Collapse Control Logic",
+  "purpose": "Define the non-public logic that calculates collapse propagation, control gates, vehicle-to-business propagation, and AUTHORIZED/HOLD/STOP decisions.",
+  "doNotExpose": true,
+  "controlObjective": "Prevent autonomous mobility business collapse by synchronizing vehicle, fleet, node, energy, urban operation, demand, and PL thresholds before execution authorization.",
+  "coreState": ["AUTHORIZED", "HOLD", "STOP"],
+  "collapseInputs": {
+    "vehicle": [
+      "vehicleWeight",
+      "floorHeight",
+      "payloadCapacity",
+      "energyArchitecture",
+      "refillTime",
+      "range",
+      "uptime"
+    ],
+    "fleet": [
+      "availableVehicles",
+      "utilization",
+      "loadFactor",
+      "dispatchSuccessRate",
+      "idleRatio",
+      "rebalanceRate"
+    ],
+    "node": [
+      "berthAvailability",
+      "queueTime",
+      "h2Supply",
+      "socCapacity",
+      "swapBodyTurnaround",
+      "equipmentConstraint"
+    ],
+    "urban": [
+      "oddCoverage",
+      "constraintArea",
+      "etaAccuracy",
+      "demandGenerationRate",
+      "conversionRate",
+      "matchingRate"
+    ],
+    "business": [
+      "trips",
+      "revenue",
+      "energyCost",
+      "operationCost",
+      "vehicleCost",
+      "infrastructureCost",
+      "contribution",
+      "irrReadiness"
+    ]
+  },
+  "equations": {
+    "trips": "Trips = Demand generation rate × Conversion rate × Matching rate × Dispatch success rate × Utilization",
+    "revenue": "Revenue = Trips × Load × Price × Days",
+    "cost": "Cost = Energy + Operation + Vehicle + Infrastructure",
+    "contribution": "Contribution = Revenue − Cost",
+    "energy": "Energy/day = Energy per trip × Trips",
+    "hydrogen": "Hydrogen/day = Energy/day ÷ hydrogen energy density"
+  },
+  "propagationRules": [
+    {
+      "id": "vehicle-weight-to-pl",
+      "if": "vehicleWeight increases",
+      "then": [
+        "payloadCapacity decreases",
+        "energyConsumption increases",
+        "fleetCapacity decreases",
+        "h2Demand increases",
+        "nodeQueue increases",
+        "contribution decreases"
+      ]
+    },
+    {
+      "id": "floor-height-to-demand",
+      "if": "floorHeight increases",
+      "then": [
+        "loadingEfficiency decreases",
+        "uxFit decreases",
+        "conversionRate decreases",
+        "trips decrease",
+        "revenue decreases"
+      ]
+    },
+    {
+      "id": "odd-to-dispatch-collapse",
+      "if": "oddCoverage decreases",
+      "then": [
+        "usableFleet decreases",
+        "dispatchSuccessRate decreases",
+        "etaAccuracy decreases",
+        "waitingTime increases",
+        "conversionRate decreases",
+        "trips decrease"
+      ]
+    },
+    {
+      "id": "node-to-fleet-collapse",
+      "if": "nodeQueue increases or h2Supply decreases",
+      "then": [
+        "refillTime increases",
+        "availableVehicles decreases",
+        "utilization decreases",
+        "dispatchCapacity decreases",
+        "serviceContinuity decreases"
+      ]
+    },
+    {
+      "id": "energy-cost-to-business-collapse",
+      "if": "energyCost per trip exceeds threshold",
+      "then": [
+        "operatingCost increases",
+        "contribution decreases",
+        "irrReadiness deteriorates",
+        "federationState becomes HOLD or STOP"
+      ]
+    }
+  ],
+  "decisionRules": [
+    {
+      "state": "AUTHORIZED",
+      "condition": "all vehicle, fleet, node, urban, energy, safety, and business thresholds remain feasible",
+      "action": "allow execution authorization"
+    },
+    {
+      "state": "HOLD",
+      "condition": "one or more layers are degraded but recoverable through reallocation, dispatch throttling, or node synchronization",
+      "action": "hold new authorization and trigger recovery control"
+    },
+    {
+      "state": "STOP",
+      "condition": "ODD, energy, fleet, node, safety, or business feasibility falls below minimum operating condition",
+      "action": "stop execution and block dispatch authorization"
+    }
+  ],
+  "publicProjection": {
+    "allowedToShow": [
+      "currentState",
+      "layerStatus",
+      "visibleConstraintReason",
+      "synchronizationStatus",
+      "recoveryAction",
+      "operationalContinuity"
+    ],
+    "hiddenFromExternalView": [
+      "equations",
+      "propagationRules",
+      "vehicleToBusinessLogic",
+      "PL/IRR model",
+      "threshold formulas",
+      "organization governance logic",
+      "internal control ownership"
+    ]
+  }
+}
