@@ -1,96 +1,52 @@
 {
   "uid": "external-vehicle-architecture-view",
   "title": "External Vehicle Architecture View",
-  "tags": ["external", "vehicle", "parameter", "kpi"],
+  "tags": ["external", "vehicle", "component", "thickness", "kpi"],
   "timezone": "browser",
   "editable": true,
   "templating": {
     "list": [
-      {
-        "name": "vehicleWeightKg",
-        "type": "textbox",
-        "label": "Vehicle Weight (kg)",
-        "current": { "text": "13000", "value": "13000" }
-      },
-      {
-        "name": "floorHeightMm",
-        "type": "textbox",
-        "label": "Floor Height (mm)",
-        "current": { "text": "340", "value": "340" }
-      },
-      {
-        "name": "refillTimeMin",
-        "type": "textbox",
-        "label": "Refill Time (min)",
-        "current": { "text": "5", "value": "5" }
-      },
-      {
-        "name": "berthCount",
-        "type": "textbox",
-        "label": "Berth Count",
-        "current": { "text": "20", "value": "20" }
-      },
-      {
-        "name": "h2SupplyKgDay",
-        "type": "textbox",
-        "label": "H2 Supply (kg/day)",
-        "current": { "text": "2000", "value": "2000" }
-      }
+      {"name":"platformYear","type":"textbox","label":"Platform Year","current":{"text":"2030","value":"2030"}},
+      {"name":"msSofcUnits","type":"textbox","label":"MS-SOFC Units","current":{"text":"6","value":"6"}},
+      {"name":"msSofcKwUnit","type":"textbox","label":"MS-SOFC kW/unit","current":{"text":"40","value":"40"}},
+      {"name":"ssbKwh","type":"textbox","label":"Solid-State Battery (kWh)","current":{"text":"400","value":"400"}},
+      {"name":"lh2BufferKg","type":"textbox","label":"LH2 Buffer (kg-H2)","current":{"text":"15","value":"15"}},
+      {"name":"cityGasRatioPct","type":"textbox","label":"City Gas Ratio (%)","current":{"text":"70","value":"70"}},
+      {"name":"hydrogenRatioPct","type":"textbox","label":"Hydrogen Ratio (%)","current":{"text":"30","value":"30"}},
+      {"name":"electricSupportKwh","type":"textbox","label":"Electric Support (kWh)","current":{"text":"400","value":"400"}}
     ]
   },
   "panels": [
     {
-      "id": 1,
-      "type": "text",
-      "title": "Design Parameters",
-      "gridPos": {"x": 0, "y": 0, "w": 24, "h": 7},
-      "options": {
-        "mode": "markdown",
-        "content": "| Design Parameter | Current Value | KPI Impact |\n|---|---:|---|\n| Vehicle Weight | ${vehicleWeightKg} kg | Payload / Utilization / Energy |\n| Floor Height | ${floorHeightMm} mm | Accessibility / Loading / Conversion |\n| Refill Time | ${refillTimeMin} min | Uptime / Fleet Availability |\n| Berth Count | ${berthCount} | Queue / Turnaround |\n| H2 Supply | ${h2SupplyKgDay} kg/day | Energy Margin / Dispatch Authorization |"
-      }
+      "id":1,
+      "type":"text",
+      "title":"Input Values | Vehicle Thickness Simulation",
+      "gridPos":{"x":0,"y":0,"w":24,"h":8},
+      "options":{"mode":"markdown","content":"| Input | Current Value | Direct Design Impact |\n|---|---:|---|\n| Platform Year | ${platformYear} | 2030 blended-fuel architecture / 2035 onboard milling architecture |\n| MS-SOFC Units | ${msSofcUnits} | stack/module packaging thickness |\n| MS-SOFC Output | ${msSofcKwUnit} kW/unit | base-load continuity |\n| Solid-State Battery | ${ssbKwh} kWh | center floor thickness / vehicle weight |\n| LH2 Buffer | ${lh2BufferKg} kg-H2 | cryogenic tank volume / floor packaging |\n| City Gas Ratio | ${cityGasRatioPct}% | gas tank and reformer package |\n| Hydrogen Ratio | ${hydrogenRatioPct}% | LH2/MH storage package |\n| Electric Support | ${electricSupportKwh} kWh | battery package / transient power |"}
     },
     {
-      "id": 2,
-      "type": "text",
-      "title": "KPI Summary",
-      "gridPos": {"x": 0, "y": 7, "w": 24, "h": 7},
-      "options": {
-        "mode": "markdown",
-        "content": "| KPI | Current State | Direction |\n|---|---:|---|\n| Payload Capacity | 3,200 kg | Vehicle weight sensitive |\n| Utilization Rate | 85% | Payload / queue sensitive |\n| Fleet Availability | 92% | Refill time sensitive |\n| Dispatch Success | 94% | Node / energy sensitive |\n| Daily Trips | 1,560 trips | Utilization linked |\n| Contribution | 12.4 M JPY/day | Trips and cost linked |\n| Federation State | HOLD | Threshold linked |"
-      }
+      "id":2,
+      "type":"text",
+      "title":"Component Package Table | Thickness Drivers",
+      "gridPos":{"x":0,"y":8,"w":24,"h":12},
+      "options":{"mode":"markdown","content":"| Component | Assumption | Package H/W/D | Thickness Effect | KPI Link |\n|---|---:|---:|---|---|\n| MS-SOFC Modules | ${msSofcUnits} × ${msSofcKwUnit} kW | 320 / 1000 / 1400 mm | center/upper stack height | uptime / dispatch continuity |\n| Solid-State Battery | ${ssbKwh} kWh | 260 / 1200 / 2200 mm | center floor height | vehicle weight / payload |\n| LH2 Buffer | ${lh2BufferKg} kg-H2 | 280 / 350 / 1400 mm | left-side cryogenic package | range / refill buffer |\n| City Gas Tank | ${cityGasRatioPct}% blend support | 300 / 400 / 1600 mm | side package / reforming system | fuel cost / energy continuity |\n| Reformer | blended fuel support | 260 / 350 / 700 mm | front package height | city gas conversion |\n| Inverter + DC/DC | 240 kW / 200 kW | 180 / 420 / 650 + 160 / 350 / 500 mm | upper center package | electric continuity |\n| Cooling / Radiator | 96 kW class | 180 / 500 / 1400 mm | front thermal package | uptime / durability |"}
     },
     {
-      "id": 3,
-      "type": "text",
-      "title": "KPI Breakdown | Impact Flow",
-      "gridPos": {"x": 0, "y": 14, "w": 24, "h": 8},
-      "options": {
-        "mode": "markdown",
-        "content": "```text\nVehicle Weight ${vehicleWeightKg} kg\n→ Payload Capacity 3,200 kg\n→ Utilization Rate 85%\n→ Daily Trips 1,560\n→ Contribution 12.4 M JPY/day\n→ Federation State HOLD\n```\n\n```text\nRefill Time ${refillTimeMin} min\n→ Fleet Availability 92%\n→ Dispatch Success 94%\n→ ETA Continuity stable\n```\n\n```text\nBerth Count ${berthCount}\n→ Queue controlled\n→ Turnaround continuity maintained\n```"
-      }
+      "id":3,
+      "type":"text",
+      "title":"Thickness Simulation Process",
+      "gridPos":{"x":0,"y":20,"w":24,"h":11},
+      "options":{"mode":"markdown","content":"| Step | Calculation / Judgment | Resulting Design Constraint | KPI Impact |\n|---|---|---|---|\n| 1. Energy demand | 1.2 kWh/km × 1000 km = 1200 kWh | total energy target | range / trips/day |\n| 2. Fuel energy | 1200 ÷ 60% = 2000 kWh | MS-SOFC fuel requirement | energy continuity |\n| 3. Hydrogen share | 2000 × ${hydrogenRatioPct}% | LH2 / H2 package volume | floor thickness / range |\n| 4. City gas share | 2000 × ${cityGasRatioPct}% | city gas tank + reformer package | fuel cost / packaging |\n| 5. Electric support | ${electricSupportKwh} kWh battery | center floor battery height | payload / floor height |\n| 6. Component stacking | max component height + structure + thermal margin | platform thickness | accessibility / conversion |\n| 7. Operation impact | thickness and weight affect payload and boarding | utilization / load factor | revenue / contribution |"}
     },
     {
-      "id": 4,
-      "type": "text",
-      "title": "Visible Calculation Logic",
-      "gridPos": {"x": 0, "y": 22, "w": 12, "h": 8},
-      "options": {
-        "mode": "markdown",
-        "content": "| Design Change | Visible KPI Effect |\n|---|---|\n| Vehicle Weight ↑ | Payload ↓ / Utilization ↓ |\n| Floor Height ↑ | Accessibility ↓ / Conversion ↓ |\n| Refill Time ↑ | Uptime ↓ / Fleet Availability ↓ |\n| Berth Count ↓ | Queue ↑ / Turnaround ↓ |\n| H2 Supply ↓ | Energy Margin ↓ / HOLD or STOP |"
-      }
-    },
-    {
-      "id": 5,
-      "type": "text",
-      "title": "External View Boundary",
-      "gridPos": {"x": 12, "y": 22, "w": 12, "h": 8},
-      "options": {
-        "mode": "markdown",
-        "content": "| Shown | Hidden |\n|---|---|\n| KPI state | Internal propagation equations |\n| Operational continuity | Vehicle-to-PL formulas |\n| Design assumption values | IRR calculation logic |\n| Federation state | Detailed threshold ownership |\n| Synchronization status | Internal governance model |"
-      }
+      "id":4,
+      "type":"text",
+      "title":"KPI Impact Table",
+      "gridPos":{"x":0,"y":31,"w":24,"h":8},
+      "options":{"mode":"markdown","content":"| Design Driver | KPI Direction | Business Effect |\n|---|---|---|\n| Battery kWh ↑ | vehicle weight ↑ / payload ↓ | utilization and contribution decrease |\n| LH2 buffer ↑ | range buffer ↑ / package volume ↑ | refill risk decreases but floor height risk increases |\n| City gas ratio ↑ | LH2 volume pressure ↓ / reformer package ↑ | 2030 fuel cost stability improves |\n| Hydrogen ratio ↑ | tank/storage volume ↑ | floor thickness and packaging pressure increase |\n| MS-SOFC units ↑ | base-load stability ↑ / package weight ↑ | uptime improves, payload may decline |\n| Cooling package ↑ | thermal stability ↑ / front package ↑ | durability improves, packaging worsens |"}
     }
   ],
-  "schemaVersion": 39,
-  "version": 2,
-  "refresh": "10s"
+  "schemaVersion":39,
+  "version":3,
+  "refresh":"10s"
 }
