@@ -1,8 +1,6 @@
 {
   "uid": "sa8ljn4",
-  "annotations": {
-    "list": []
-  },
+  "annotations": { "list": [] },
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
@@ -23,60 +21,60 @@
       "id": 2,
       "type": "text",
       "title": "Federation State Layer",
-      "gridPos": { "h": 4, "w": 24, "x": 0, "y": 3 },
+      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 3 },
       "options": {
         "mode": "markdown",
-        "content": "## Federation State\n- Federation Coverage\n- Runtime Health\n- Collapse Timeline Summary\n- Runtime Completion State"
+        "content": "**Federation State**　｜　Coverage / Health / Collapse / Completion"
       }
     },
     {
       "id": 3,
       "type": "text",
-      "title": "Fleet Runtime",
-      "gridPos": { "h": 14, "w": 12, "x": 0, "y": 7 },
+      "title": "OPEN FLEET RUNTIME",
+      "gridPos": { "h": 10, "w": 12, "x": 0, "y": 6 },
       "options": {
         "mode": "markdown",
-        "content": "# Fleet Runtime\n\nQueue Pressure Rising\n\n- Queue Overflow\n- Dispatch Pressure\n- ETA Degradation\n- Provider Compare\n\nOpen Runtime:\nhttps://fleet-operations-console.base44.app"
+        "content": "# ▶ OPEN FLEET RUNTIME\n\n### Dispatch / Queue / ETA Runtime\n\n[### OPEN RUNTIME →](https://fleet-operations-console.base44.app)\n\nRuntime domain for dispatch execution, queue pressure, ETA generation, and provider comparison."
       }
     },
     {
       "id": 4,
       "type": "text",
-      "title": "Urban Runtime",
-      "gridPos": { "h": 14, "w": 12, "x": 12, "y": 7 },
+      "title": "OPEN URBAN RUNTIME",
+      "gridPos": { "h": 10, "w": 12, "x": 12, "y": 6 },
       "options": {
         "mode": "markdown",
-        "content": "# Urban Runtime\n\nODD Reduction Active\n\n- ODD Reduction\n- Weather Constraint\n- Urban Load\n- Constraint Propagation\n\nOpen Runtime:\nhttps://urban-operation-console.base44.app"
+        "content": "# ▶ OPEN URBAN RUNTIME\n\n### ODD / Constraint Runtime\n\n[### OPEN RUNTIME →](https://urban-operation-console.base44.app)\n\nRuntime domain for ODD, weather, traffic, urban load, and constraint propagation."
       }
     },
     {
       "id": 5,
       "type": "text",
-      "title": "Node Runtime",
-      "gridPos": { "h": 14, "w": 12, "x": 0, "y": 21 },
+      "title": "OPEN NODE RUNTIME",
+      "gridPos": { "h": 10, "w": 12, "x": 0, "y": 16 },
       "options": {
         "mode": "markdown",
-        "content": "# Node Runtime\n\nAcceptance Delay\n\n- H2 State\n- SOC State\n- Acceptance Queue\n- Charging Queue\n\nOpen Runtime:\nhttps://service-hub-console.base44.app"
+        "content": "# ▶ OPEN NODE RUNTIME\n\n### Energy / Capacity Runtime\n\n[### OPEN RUNTIME →](https://service-hub-console.base44.app)\n\nRuntime domain for H2, SOC, berth, charging, acceptance, and node capacity."
       }
     },
     {
       "id": 6,
       "type": "text",
-      "title": "Life Runtime",
-      "gridPos": { "h": 14, "w": 12, "x": 12, "y": 21 },
+      "title": "OPEN LIFE RUNTIME",
+      "gridPos": { "h": 10, "w": 12, "x": 12, "y": 16 },
       "options": {
         "mode": "markdown",
-        "content": "# Life Runtime\n\nStable\n\n- Wallet State\n- Subscription State\n- Shared Transaction\n- Settlement State\n\nOpen Runtime:\nhttps://life-runtime.base44.app"
+        "content": "# ▶ OPEN LIFE RUNTIME\n\n### Wallet / Settlement / Subscription Runtime\n\n[### OPEN RUNTIME →](https://life-runtime.base44.app)\n\nRuntime domain for wallet, settlement, subscription, shared transaction, and life synchronization."
       }
     },
     {
       "id": 7,
       "type": "text",
       "title": "Workspace Artifact Layer",
-      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 35 },
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 26 },
       "options": {
         "mode": "markdown",
-        "content": "| Artifact | State |\n|---|---|\n| Sequence Diagram | PENDING |\n| Architecture Diagram | PENDING |\n| Functional Block Diagram | PENDING |\n| PL | PENDING |\n| IRR | PENDING |\n| WBS | PENDING |\n| Ownership | FIXED |\n| Synchronization Boundary | FIXED |"
+        "content": "| Artifact | State | Artifact | State |\n|---|---|---|---|\n| Sequence Diagram | PENDING | Architecture Diagram | PENDING |\n| Functional Block Diagram | PENDING | PL | PENDING |\n| IRR | PENDING | WBS | PENDING |\n| Ownership | FIXED | Synchronization Boundary | FIXED |\n| Collapse Diagram | PENDING | Reflection Backlog | PENDING |"
       }
     }
   ],
@@ -88,6 +86,6 @@
   "time": { "from": "now-6h", "to": "now" },
   "timezone": "browser",
   "title": "Toyota Runtime Federation Workspace",
-  "version": 3,
+  "version": 4,
   "weekStart": ""
 }
