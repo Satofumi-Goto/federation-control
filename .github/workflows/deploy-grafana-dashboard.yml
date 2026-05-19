@@ -1,0 +1,26 @@
+name: Deploy Grafana Dashboards
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'grafana/**'
+
+jobs:
+  deploy-dashboard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy dashboard to Grafana
+        env:
+          GRAFANA_TOKEN: ${{ secrets.GRAFANA_TOKEN }}
+          GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
+        run: |
+          curl -X POST "$GRAFANA_URL/api/dashboards/db" \
+          -H "Authorization: Bearer $GRAFANA_TOKEN" \
+          -H "Content-Type: application/json" \
+          --data @grafana/dashboards/runtime-federation-os.json
