@@ -16,61 +16,61 @@
     {
       "id": 2,
       "type": "text",
-      "title": "Federation State",
+      "title": "状態",
       "gridPos": { "h": 2, "w": 24, "x": 0, "y": 2 },
       "options": {
         "mode": "markdown",
-        "content": "Coverage / Health / Collapse / Completion"
+        "content": "**Federation** / **Health** / **Collapse** / **Completion**"
       }
     },
     {
       "id": 3,
       "type": "text",
       "title": "フリート運行",
-      "gridPos": { "h": 8, "w": 6, "x": 0, "y": 4 },
+      "gridPos": { "h": 5, "w": 6, "x": 0, "y": 4 },
       "options": {
-        "mode": "html",
-        "content": "<iframe src='https://fleet-operations-console.base44.app' width='100%' height='100%' style='border:none;border-radius:12px;background:#111'></iframe>"
+        "mode": "markdown",
+        "content": "# 🚚 フリート運行"
       }
     },
     {
       "id": 4,
       "type": "text",
       "title": "都市運行",
-      "gridPos": { "h": 8, "w": 6, "x": 6, "y": 4 },
+      "gridPos": { "h": 5, "w": 6, "x": 6, "y": 4 },
       "options": {
-        "mode": "html",
-        "content": "<iframe src='https://urban-operation-console.base44.app' width='100%' height='100%' style='border:none;border-radius:12px;background:#111'></iframe>"
+        "mode": "markdown",
+        "content": "# 🏙 都市運行"
       }
     },
     {
       "id": 5,
       "type": "text",
       "title": "サービス拠点",
-      "gridPos": { "h": 8, "w": 6, "x": 12, "y": 4 },
+      "gridPos": { "h": 5, "w": 6, "x": 12, "y": 4 },
       "options": {
-        "mode": "html",
-        "content": "<iframe src='https://service-hub-console.base44.app' width='100%' height='100%' style='border:none;border-radius:12px;background:#111'></iframe>"
+        "mode": "markdown",
+        "content": "# ⚡ サービス拠点"
       }
     },
     {
       "id": 6,
       "type": "text",
       "title": "ライフ",
-      "gridPos": { "h": 8, "w": 6, "x": 18, "y": 4 },
+      "gridPos": { "h": 5, "w": 6, "x": 18, "y": 4 },
       "options": {
-        "mode": "html",
-        "content": "<iframe src='https://life-runtime.base44.app' width='100%' height='100%' style='border:none;border-radius:12px;background:#111'></iframe>"
+        "mode": "markdown",
+        "content": "# 👤 ライフ"
       }
     },
     {
       "id": 7,
       "type": "text",
       "title": "Artifact Grid",
-      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 12 },
+      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 9 },
       "options": {
         "mode": "markdown",
-        "content": "| Seq | PL | WBS | IRR | Arch | Own | Sync | Collapse |\n|---|---|---|---|---|---|---|---|\n| PENDING | PENDING | PENDING | PENDING | PENDING | FIXED | FIXED | PENDING |"
+        "content": "| シーケンス | PL | WBS | IRR | アーキテクチャ | 責務 | 同期 | 崩壊 |\n|---|---|---|---|---|---|---|---|\n| PENDING | PENDING | PENDING | PENDING | PENDING | FIXED | FIXED | PENDING |"
       }
     }
   ],
@@ -82,5 +82,5 @@
   "time": { "from": "now-6h", "to": "now" },
   "timezone": "browser",
   "title": "Toyota Runtime Federation Workspace",
-  "version": 6
+  "version": 8
 }
