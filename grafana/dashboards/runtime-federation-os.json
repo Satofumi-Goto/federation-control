@@ -2,90 +2,85 @@
   "uid": "sa8ljn4",
   "annotations": { "list": [] },
   "editable": true,
-  "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
-  "links": [],
-  "liveNow": false,
   "panels": [
     {
       "id": 1,
       "type": "text",
       "title": "Toyota Runtime Federation Workspace",
-      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 0 },
+      "gridPos": { "h": 2, "w": 24, "x": 0, "y": 0 },
       "options": {
         "mode": "markdown",
-        "content": "# Toyota Runtime Federation Workspace\nFederation Coordination / Collapse Observatory / Runtime Workspace"
+        "content": "# Toyota Runtime Federation Workspace"
       }
     },
     {
       "id": 2,
       "type": "text",
-      "title": "Federation State Layer",
-      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 3 },
+      "title": "Federation State",
+      "gridPos": { "h": 2, "w": 24, "x": 0, "y": 2 },
       "options": {
         "mode": "markdown",
-        "content": "**Federation State**　｜　Coverage / Health / Collapse / Completion"
+        "content": "Coverage / Health / Collapse / Completion"
       }
     },
     {
       "id": 3,
       "type": "text",
-      "title": "OPEN FLEET RUNTIME",
-      "gridPos": { "h": 10, "w": 12, "x": 0, "y": 6 },
+      "title": "フリート運行",
+      "gridPos": { "h": 8, "w": 6, "x": 0, "y": 4 },
       "options": {
-        "mode": "markdown",
-        "content": "# ▶ OPEN FLEET RUNTIME\n\n### Dispatch / Queue / ETA Runtime\n\n[### OPEN RUNTIME →](https://fleet-operations-console.base44.app)\n\nRuntime domain for dispatch execution, queue pressure, ETA generation, and provider comparison."
+        "mode": "html",
+        "content": "<iframe src='https://fleet-operations-console.base44.app' width='100%' height='100%' style='border:none;border-radius:12px;background:#111'></iframe>"
       }
     },
     {
       "id": 4,
       "type": "text",
-      "title": "OPEN URBAN RUNTIME",
-      "gridPos": { "h": 10, "w": 12, "x": 12, "y": 6 },
+      "title": "都市運行",
+      "gridPos": { "h": 8, "w": 6, "x": 6, "y": 4 },
       "options": {
-        "mode": "markdown",
-        "content": "# ▶ OPEN URBAN RUNTIME\n\n### ODD / Constraint Runtime\n\n[### OPEN RUNTIME →](https://urban-operation-console.base44.app)\n\nRuntime domain for ODD, weather, traffic, urban load, and constraint propagation."
+        "mode": "html",
+        "content": "<iframe src='https://urban-operation-console.base44.app' width='100%' height='100%' style='border:none;border-radius:12px;background:#111'></iframe>"
       }
     },
     {
       "id": 5,
       "type": "text",
-      "title": "OPEN NODE RUNTIME",
-      "gridPos": { "h": 10, "w": 12, "x": 0, "y": 16 },
+      "title": "サービス拠点",
+      "gridPos": { "h": 8, "w": 6, "x": 12, "y": 4 },
       "options": {
-        "mode": "markdown",
-        "content": "# ▶ OPEN NODE RUNTIME\n\n### Energy / Capacity Runtime\n\n[### OPEN RUNTIME →](https://service-hub-console.base44.app)\n\nRuntime domain for H2, SOC, berth, charging, acceptance, and node capacity."
+        "mode": "html",
+        "content": "<iframe src='https://service-hub-console.base44.app' width='100%' height='100%' style='border:none;border-radius:12px;background:#111'></iframe>"
       }
     },
     {
       "id": 6,
       "type": "text",
-      "title": "OPEN LIFE RUNTIME",
-      "gridPos": { "h": 10, "w": 12, "x": 12, "y": 16 },
+      "title": "ライフ",
+      "gridPos": { "h": 8, "w": 6, "x": 18, "y": 4 },
       "options": {
-        "mode": "markdown",
-        "content": "# ▶ OPEN LIFE RUNTIME\n\n### Wallet / Settlement / Subscription Runtime\n\n[### OPEN RUNTIME →](https://life-runtime.base44.app)\n\nRuntime domain for wallet, settlement, subscription, shared transaction, and life synchronization."
+        "mode": "html",
+        "content": "<iframe src='https://life-runtime.base44.app' width='100%' height='100%' style='border:none;border-radius:12px;background:#111'></iframe>"
       }
     },
     {
       "id": 7,
       "type": "text",
-      "title": "Workspace Artifact Layer",
-      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 26 },
+      "title": "Artifact Grid",
+      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 12 },
       "options": {
         "mode": "markdown",
-        "content": "| Artifact | State | Artifact | State |\n|---|---|---|---|\n| Sequence Diagram | PENDING | Architecture Diagram | PENDING |\n| Functional Block Diagram | PENDING | PL | PENDING |\n| IRR | PENDING | WBS | PENDING |\n| Ownership | FIXED | Synchronization Boundary | FIXED |\n| Collapse Diagram | PENDING | Reflection Backlog | PENDING |"
+        "content": "| Seq | PL | WBS | IRR | Arch | Own | Sync | Collapse |\n|---|---|---|---|---|---|---|---|\n| PENDING | PENDING | PENDING | PENDING | PENDING | FIXED | FIXED | PENDING |"
       }
     }
   ],
   "refresh": "10s",
   "schemaVersion": 39,
   "style": "dark",
-  "tags": ["toyota", "runtime", "workspace"],
+  "tags": ["toyota","runtime","workspace"],
   "templating": { "list": [] },
   "time": { "from": "now-6h", "to": "now" },
   "timezone": "browser",
   "title": "Toyota Runtime Federation Workspace",
-  "version": 4,
-  "weekStart": ""
+  "version": 6
 }
