@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'grafana/**'
+      - '.github/workflows/**'
 
 jobs:
   deploy-dashboard:
@@ -15,6 +16,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Prepare Grafana payload
+        run: |
+          cat > payload.json <<'EOF'
+          {
+            "dashboard":
+          EOF
+
+          cat grafana/dashboards/runtime-federation-os.json >> payload.json
+
+          cat >> payload.json <<'EOF'
+          ,
+            "overwrite": true,
+            "folderId": 0
+          }
+          EOF
+
       - name: Deploy dashboard to Grafana
         env:
           GRAFANA_TOKEN: ${{ secrets.GRAFANA_TOKEN }}
@@ -23,4 +40,4 @@ jobs:
           curl -X POST "$GRAFANA_URL/api/dashboards/db" \
           -H "Authorization: Bearer $GRAFANA_TOKEN" \
           -H "Content-Type: application/json" \
-          --data @grafana/dashboards/runtime-federation-os.json
+          --data @payload.json
