@@ -1,84 +1,92 @@
 {
-  "title": "Runtime Federation OS｜Collapse Control",
-  "uid": "runtime-federation-os",
-  "schemaVersion": 38,
-  "version": 1,
-  "style": "dark",
-  "tags": ["runtime", "collapse-control", "federation"],
-  "templating": {
-    "list": [
-      {
-        "name": "company_mode",
-        "type": "custom",
-        "label": "Company Mode",
-        "query": "Toyota,Denso,Honda",
-        "current": {
-          "text": "Toyota",
-          "value": "Toyota"
-        }
-      }
-    ]
+  "annotations": {
+    "list": []
   },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
   "panels": [
     {
       "id": 1,
       "type": "text",
-      "title": "Federation Runtime",
-      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "title": "Toyota Runtime Federation Workspace",
+      "gridPos": { "h": 4, "w": 24, "x": 0, "y": 0 },
       "options": {
         "mode": "markdown",
-        "content": "Demand ↔ Fleet ↔ Urban ↔ Node ↔ Energy\\n\\nThe main target is synchronization collapse between runtimes."
+        "content": "# Toyota Runtime Federation Workspace\n\nFederation Coordination / Collapse Observatory / Runtime Workspace"
       }
     },
     {
       "id": 2,
       "type": "text",
-      "title": "Responsibility Runtime",
-      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "title": "Federation State Layer",
+      "gridPos": { "h": 4, "w": 24, "x": 0, "y": 4 },
       "options": {
         "mode": "markdown",
-        "content": "Seneschal = Intent / ETA / Calendar\\nFleet = Dispatch / Queue\\nUrban = ODD / Weather / Restriction\\nNode = H2 / SOC / Acceptance"
+        "content": "## Federation State\n\n- Federation Coverage\n- Runtime Health\n- Collapse Timeline Summary\n- Runtime Completion State"
       }
     },
     {
       "id": 3,
       "type": "text",
-      "title": "Collapse Runtime",
-      "gridPos": { "x": 0, "y": 8, "w": 24, "h": 8 },
+      "title": "Fleet Runtime",
+      "gridPos": { "h": 14, "w": 12, "x": 0, "y": 8 },
       "options": {
         "mode": "markdown",
-        "content": "Demand ↑ → Queue ↑ → ETA ↓ → Revenue ↓\\nWeather ↓ → ODD ↓ → Dispatch Failure ↑\\nH2/SOC ↓ → Node Wait ↑"
+        "content": "# Fleet Runtime\n\nQueue Pressure Rising\n\n- Queue Overflow\n- Dispatch Pressure\n- ETA Degradation\n- Provider Compare\n\nOpen Runtime:\nhttps://fleet-operations-console.base44.app"
       }
     },
     {
       "id": 4,
       "type": "text",
-      "title": "Toyota Runtime View",
-      "gridPos": { "x": 0, "y": 16, "w": 8, "h": 8 },
+      "title": "Urban Runtime",
+      "gridPos": { "h": 14, "w": 12, "x": 12, "y": 8 },
       "options": {
         "mode": "markdown",
-        "content": "Integrated collapse control for autonomous mobility operation."
+        "content": "# Urban Runtime\n\nODD Reduction Active\n\n- ODD Reduction\n- Weather Constraint\n- Urban Load\n- Constraint Propagation\n\nOpen Runtime:\nhttps://urban-operation-console.base44.app"
       }
     },
     {
       "id": 5,
       "type": "text",
-      "title": "Denso Runtime View",
-      "gridPos": { "x": 8, "y": 16, "w": 8, "h": 8 },
+      "title": "Node Runtime",
+      "gridPos": { "h": 14, "w": 12, "x": 0, "y": 22 },
       "options": {
         "mode": "markdown",
-        "content": "Translate OEM runtime collapse into control code, SDKs, and runtime modules."
+        "content": "# Node Runtime\n\nAcceptance Delay\n\n- H2 State\n- SOC State\n- Acceptance Queue\n- Charging Queue\n\nOpen Runtime:\nhttps://service-hub-console.base44.app"
       }
     },
     {
       "id": 6,
       "type": "text",
-      "title": "Honda Runtime View",
-      "gridPos": { "x": 16, "y": 16, "w": 8, "h": 8 },
+      "title": "Life Runtime",
+      "gridPos": { "h": 14, "w": 12, "x": 12, "y": 22 },
       "options": {
         "mode": "markdown",
-        "content": "Energy × autonomous mobility runtime for PPA/VPP/Scope3 operation."
+        "content": "# Life Runtime\n\nStable\n\n- Wallet State\n- Subscription State\n- Shared Transaction\n- Settlement State\n\nOpen Runtime:\nhttps://life-runtime.base44.app"
+      }
+    },
+    {
+      "id": 7,
+      "type": "text",
+      "title": "Workspace Artifact Layer",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 36 },
+      "options": {
+        "mode": "markdown",
+        "content": "| Artifact | State |\n|---|---|\n| Sequence Diagram | PENDING |\n| Architecture Diagram | PENDING |\n| Functional Block Diagram | PENDING |\n| PL | PENDING |\n| IRR | PENDING |\n| WBS | PENDING |\n| Ownership | FIXED |\n| Synchronization Boundary | FIXED |"
       }
     }
-  ]
+  ],
+  "refresh": "10s",
+  "schemaVersion": 39,
+  "style": "dark",
+  "tags": ["toyota", "runtime", "workspace"],
+  "templating": { "list": [] },
+  "time": { "from": "now-6h", "to": "now" },
+  "timezone": "browser",
+  "title": "Toyota Runtime Federation Workspace",
+  "version": 2,
+  "weekStart": ""
 }
