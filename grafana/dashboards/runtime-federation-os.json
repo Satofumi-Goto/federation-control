@@ -6,71 +6,61 @@
     {
       "id": 1,
       "type": "text",
-      "title": "Toyota Runtime Federation Workspace",
-      "gridPos": { "h": 2, "w": 24, "x": 0, "y": 0 },
-      "options": {
-        "mode": "markdown",
-        "content": "# Toyota Runtime Federation Workspace"
-      }
-    },
-    {
-      "id": 2,
-      "type": "text",
       "title": "状態",
-      "gridPos": { "h": 2, "w": 24, "x": 0, "y": 2 },
+      "gridPos": { "h": 2, "w": 24, "x": 0, "y": 0 },
       "options": {
         "mode": "markdown",
         "content": "**Federation** / **Health** / **Collapse** / **Completion**"
       }
     },
     {
-      "id": 3,
+      "id": 2,
       "type": "text",
-      "title": "フリート運行",
-      "gridPos": { "h": 5, "w": 6, "x": 0, "y": 4 },
+      "title": "フリート運用コンソール",
+      "gridPos": { "h": 5, "w": 6, "x": 0, "y": 2 },
       "options": {
         "mode": "markdown",
-        "content": "# 🚚 フリート運行"
+        "content": "# ◈ フリート運用コンソール　＞"
+      }
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "title": "サービス拠点コンソール",
+      "gridPos": { "h": 5, "w": 6, "x": 6, "y": 2 },
+      "options": {
+        "mode": "markdown",
+        "content": "# ◈ サービス拠点コンソール　＞"
       }
     },
     {
       "id": 4,
       "type": "text",
-      "title": "都市運行",
-      "gridPos": { "h": 5, "w": 6, "x": 6, "y": 4 },
+      "title": "生活取引コンソール",
+      "gridPos": { "h": 5, "w": 6, "x": 12, "y": 2 },
       "options": {
         "mode": "markdown",
-        "content": "# 🏙 都市運行"
+        "content": "# ◈ 生活取引コンソール　＞"
       }
     },
     {
       "id": 5,
       "type": "text",
-      "title": "サービス拠点",
-      "gridPos": { "h": 5, "w": 6, "x": 12, "y": 4 },
+      "title": "都市運行コンソール",
+      "gridPos": { "h": 5, "w": 6, "x": 18, "y": 2 },
       "options": {
         "mode": "markdown",
-        "content": "# ⚡ サービス拠点"
+        "content": "# ◈ 都市運行コンソール　＞"
       }
     },
     {
       "id": 6,
       "type": "text",
-      "title": "ライフ",
-      "gridPos": { "h": 5, "w": 6, "x": 18, "y": 4 },
+      "title": "アーティファクトグリッド",
+      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 7 },
       "options": {
         "mode": "markdown",
-        "content": "# 👤 ライフ"
-      }
-    },
-    {
-      "id": 7,
-      "type": "text",
-      "title": "Artifact Grid",
-      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 9 },
-      "options": {
-        "mode": "markdown",
-        "content": "| シーケンス | PL | WBS | IRR | アーキテクチャ | 責務 | 同期 | 崩壊 |\n|---|---|---|---|---|---|---|---|\n| PENDING | PENDING | PENDING | PENDING | PENDING | FIXED | FIXED | PENDING |"
+        "content": "| シーケンス | PL | WBS | IRR | アーキテクチャ | 責務 | 同期 | 崩壊 |\n|---|---|---|---|---|---|---|---|\n| TBD ＞ | TBD ＞ | TBD ＞ | TBD ＞ | TBD ＞ | Done ＞ | Done ＞ | TBD ＞ |"
       }
     }
   ],
@@ -82,5 +72,5 @@
   "time": { "from": "now-6h", "to": "now" },
   "timezone": "browser",
   "title": "Toyota Runtime Federation Workspace",
-  "version": 8
+  "version": 9
 }
