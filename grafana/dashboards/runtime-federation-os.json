@@ -1,0 +1,84 @@
+{
+  "title": "Runtime Federation OS｜Collapse Control",
+  "uid": "runtime-federation-os",
+  "schemaVersion": 38,
+  "version": 1,
+  "style": "dark",
+  "tags": ["runtime", "collapse-control", "federation"],
+  "templating": {
+    "list": [
+      {
+        "name": "company_mode",
+        "type": "custom",
+        "label": "Company Mode",
+        "query": "Toyota,Denso,Honda",
+        "current": {
+          "text": "Toyota",
+          "value": "Toyota"
+        }
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "Federation Runtime",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "options": {
+        "mode": "markdown",
+        "content": "Demand ↔ Fleet ↔ Urban ↔ Node ↔ Energy\\n\\nThe main target is synchronization collapse between runtimes."
+      }
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "title": "Responsibility Runtime",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "options": {
+        "mode": "markdown",
+        "content": "Seneschal = Intent / ETA / Calendar\\nFleet = Dispatch / Queue\\nUrban = ODD / Weather / Restriction\\nNode = H2 / SOC / Acceptance"
+      }
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "title": "Collapse Runtime",
+      "gridPos": { "x": 0, "y": 8, "w": 24, "h": 8 },
+      "options": {
+        "mode": "markdown",
+        "content": "Demand ↑ → Queue ↑ → ETA ↓ → Revenue ↓\\nWeather ↓ → ODD ↓ → Dispatch Failure ↑\\nH2/SOC ↓ → Node Wait ↑"
+      }
+    },
+    {
+      "id": 4,
+      "type": "text",
+      "title": "Toyota Runtime View",
+      "gridPos": { "x": 0, "y": 16, "w": 8, "h": 8 },
+      "options": {
+        "mode": "markdown",
+        "content": "Integrated collapse control for autonomous mobility operation."
+      }
+    },
+    {
+      "id": 5,
+      "type": "text",
+      "title": "Denso Runtime View",
+      "gridPos": { "x": 8, "y": 16, "w": 8, "h": 8 },
+      "options": {
+        "mode": "markdown",
+        "content": "Translate OEM runtime collapse into control code, SDKs, and runtime modules."
+      }
+    },
+    {
+      "id": 6,
+      "type": "text",
+      "title": "Honda Runtime View",
+      "gridPos": { "x": 16, "y": 16, "w": 8, "h": 8 },
+      "options": {
+        "mode": "markdown",
+        "content": "Energy × autonomous mobility runtime for PPA/VPP/Scope3 operation."
+      }
+    }
+  ]
+}
