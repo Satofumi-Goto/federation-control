@@ -1,4 +1,5 @@
 {
+  "uid": "sa8ljn4",
   "annotations": {
     "list": []
   },
@@ -12,27 +13,27 @@
       "id": 1,
       "type": "text",
       "title": "Toyota Runtime Federation Workspace",
-      "gridPos": { "h": 4, "w": 24, "x": 0, "y": 0 },
+      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 0 },
       "options": {
         "mode": "markdown",
-        "content": "# Toyota Runtime Federation Workspace\n\nFederation Coordination / Collapse Observatory / Runtime Workspace"
+        "content": "# Toyota Runtime Federation Workspace\nFederation Coordination / Collapse Observatory / Runtime Workspace"
       }
     },
     {
       "id": 2,
       "type": "text",
       "title": "Federation State Layer",
-      "gridPos": { "h": 4, "w": 24, "x": 0, "y": 4 },
+      "gridPos": { "h": 4, "w": 24, "x": 0, "y": 3 },
       "options": {
         "mode": "markdown",
-        "content": "## Federation State\n\n- Federation Coverage\n- Runtime Health\n- Collapse Timeline Summary\n- Runtime Completion State"
+        "content": "## Federation State\n- Federation Coverage\n- Runtime Health\n- Collapse Timeline Summary\n- Runtime Completion State"
       }
     },
     {
       "id": 3,
       "type": "text",
       "title": "Fleet Runtime",
-      "gridPos": { "h": 14, "w": 12, "x": 0, "y": 8 },
+      "gridPos": { "h": 14, "w": 12, "x": 0, "y": 7 },
       "options": {
         "mode": "markdown",
         "content": "# Fleet Runtime\n\nQueue Pressure Rising\n\n- Queue Overflow\n- Dispatch Pressure\n- ETA Degradation\n- Provider Compare\n\nOpen Runtime:\nhttps://fleet-operations-console.base44.app"
@@ -42,7 +43,7 @@
       "id": 4,
       "type": "text",
       "title": "Urban Runtime",
-      "gridPos": { "h": 14, "w": 12, "x": 12, "y": 8 },
+      "gridPos": { "h": 14, "w": 12, "x": 12, "y": 7 },
       "options": {
         "mode": "markdown",
         "content": "# Urban Runtime\n\nODD Reduction Active\n\n- ODD Reduction\n- Weather Constraint\n- Urban Load\n- Constraint Propagation\n\nOpen Runtime:\nhttps://urban-operation-console.base44.app"
@@ -52,7 +53,7 @@
       "id": 5,
       "type": "text",
       "title": "Node Runtime",
-      "gridPos": { "h": 14, "w": 12, "x": 0, "y": 22 },
+      "gridPos": { "h": 14, "w": 12, "x": 0, "y": 21 },
       "options": {
         "mode": "markdown",
         "content": "# Node Runtime\n\nAcceptance Delay\n\n- H2 State\n- SOC State\n- Acceptance Queue\n- Charging Queue\n\nOpen Runtime:\nhttps://service-hub-console.base44.app"
@@ -62,7 +63,7 @@
       "id": 6,
       "type": "text",
       "title": "Life Runtime",
-      "gridPos": { "h": 14, "w": 12, "x": 12, "y": 22 },
+      "gridPos": { "h": 14, "w": 12, "x": 12, "y": 21 },
       "options": {
         "mode": "markdown",
         "content": "# Life Runtime\n\nStable\n\n- Wallet State\n- Subscription State\n- Shared Transaction\n- Settlement State\n\nOpen Runtime:\nhttps://life-runtime.base44.app"
@@ -72,7 +73,7 @@
       "id": 7,
       "type": "text",
       "title": "Workspace Artifact Layer",
-      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 36 },
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 35 },
       "options": {
         "mode": "markdown",
         "content": "| Artifact | State |\n|---|---|\n| Sequence Diagram | PENDING |\n| Architecture Diagram | PENDING |\n| Functional Block Diagram | PENDING |\n| PL | PENDING |\n| IRR | PENDING |\n| WBS | PENDING |\n| Ownership | FIXED |\n| Synchronization Boundary | FIXED |"
@@ -87,6 +88,6 @@
   "time": { "from": "now-6h", "to": "now" },
   "timezone": "browser",
   "title": "Toyota Runtime Federation Workspace",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
