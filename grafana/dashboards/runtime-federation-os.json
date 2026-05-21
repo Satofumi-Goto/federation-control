@@ -6,6 +6,36 @@
   "editable": true,
   "panels": [
     {
+      "id": 101,
+      "type": "text",
+      "title": "Operational Knowledge Graph",
+      "gridPos": {
+        "h": 10,
+        "w": 11,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:18px 20px;background:radial-gradient(circle at 24% 35%,rgba(34,211,238,.18),transparent 30%),linear-gradient(180deg,rgba(8,13,24,.98),rgba(2,6,12,.98));border:1px solid rgba(56,189,248,.42);border-radius:18px;box-shadow:0 0 22px rgba(0,0,0,.45);overflow:hidden;\">\n  <div style=\"display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;\">\n    <div>\n      <div style=\"font-size:13px;letter-spacing:.18em;color:#67e8f9;font-weight:800;\">KNOWLEDGE STRUCTURE</div>\n      <div style=\"font-size:24px;line-height:1.15;color:#f8fafc;font-weight:900;\">Obsidian Knowledge Graph</div>\n    </div>\n    <div style=\"font-size:12px;color:#94a3b8;border:1px solid rgba(148,163,184,.28);border-radius:999px;padding:6px 10px;\">Knowledge → Runtime</div>\n  </div>\n  <svg viewBox=\"0 0 640 315\" width=\"100%\" height=\"calc(100% - 58px)\" preserveAspectRatio=\"xMidYMid meet\">\n    <defs>\n      <filter id=\"glow\"><feGaussianBlur stdDeviation=\"3\" result=\"coloredBlur\"/><feMerge><feMergeNode in=\"coloredBlur\"/><feMergeNode in=\"SourceGraphic\"/></feMerge></filter>\n      <style>\n        .edge{stroke:#38bdf8;stroke-width:1.4;opacity:.38}\n        .edge2{stroke:#a78bfa;stroke-width:1.2;opacity:.30}\n        .node{filter:url(#glow)}\n        .label{font:700 13px sans-serif;fill:#e2e8f0}\n        .small{font:700 11px sans-serif;fill:#94a3b8}\n      </style>\n    </defs>\n    <line class=\"edge\" x1=\"320\" y1=\"150\" x2=\"150\" y2=\"70\"/><line class=\"edge\" x1=\"320\" y1=\"150\" x2=\"118\" y2=\"178\"/><line class=\"edge\" x1=\"320\" y1=\"150\" x2=\"210\" y2=\"252\"/>\n    <line class=\"edge\" x1=\"320\" y1=\"150\" x2=\"500\" y2=\"74\"/><line class=\"edge\" x1=\"320\" y1=\"150\" x2=\"526\" y2=\"178\"/><line class=\"edge\" x1=\"320\" y1=\"150\" x2=\"438\" y2=\"254\"/>\n    <line class=\"edge2\" x1=\"150\" y1=\"70\" x2=\"118\" y2=\"178\"/><line class=\"edge2\" x1=\"118\" y1=\"178\" x2=\"210\" y2=\"252\"/><line class=\"edge2\" x1=\"500\" y1=\"74\" x2=\"526\" y2=\"178\"/><line class=\"edge2\" x1=\"526\" y1=\"178\" x2=\"438\" y2=\"254\"/>\n    <line class=\"edge2\" x1=\"150\" y1=\"70\" x2=\"500\" y2=\"74\"/><line class=\"edge2\" x1=\"210\" y1=\"252\" x2=\"438\" y2=\"254\"/>\n    <circle class=\"node\" cx=\"320\" cy=\"150\" r=\"42\" fill=\"#0ea5e9\" opacity=\".95\"/><text class=\"label\" x=\"320\" y=\"146\" text-anchor=\"middle\">Urban OS</text><text class=\"small\" x=\"320\" y=\"164\" text-anchor=\"middle\">Runtime</text>\n    <circle class=\"node\" cx=\"150\" cy=\"70\" r=\"30\" fill=\"#22c55e\" opacity=\".88\"/><text class=\"label\" x=\"150\" y=\"75\" text-anchor=\"middle\">Demand</text>\n    <circle class=\"node\" cx=\"118\" cy=\"178\" r=\"30\" fill=\"#38bdf8\" opacity=\".88\"/><text class=\"label\" x=\"118\" y=\"183\" text-anchor=\"middle\">Dispatch</text>\n    <circle class=\"node\" cx=\"210\" cy=\"252\" r=\"28\" fill=\"#f59e0b\" opacity=\".88\"/><text class=\"label\" x=\"210\" y=\"257\" text-anchor=\"middle\">Queue</text>\n    <circle class=\"node\" cx=\"500\" cy=\"74\" r=\"30\" fill=\"#a855f7\" opacity=\".88\"/><text class=\"label\" x=\"500\" y=\"79\" text-anchor=\"middle\">Node</text>\n    <circle class=\"node\" cx=\"526\" cy=\"178\" r=\"30\" fill=\"#ef4444\" opacity=\".88\"/><text class=\"label\" x=\"526\" y=\"183\" text-anchor=\"middle\">ODD</text>\n    <circle class=\"node\" cx=\"438\" cy=\"254\" r=\"30\" fill=\"#14b8a6\" opacity=\".88\"/><text class=\"label\" x=\"438\" y=\"259\" text-anchor=\"middle\">Energy</text>\n    <circle cx=\"282\" cy=\"56\" r=\"18\" fill=\"#334155\"/><text class=\"small\" x=\"282\" y=\"61\" text-anchor=\"middle\">HILS</text>\n    <circle cx=\"376\" cy=\"56\" r=\"22\" fill=\"#334155\"/><text class=\"small\" x=\"376\" y=\"61\" text-anchor=\"middle\">Twin</text>\n    <circle cx=\"320\" cy=\"286\" r=\"21\" fill=\"#334155\"/><text class=\"small\" x=\"320\" y=\"291\" text-anchor=\"middle\">DevOps</text>\n  </svg>\n</div>"
+      }
+    },
+    {
+      "id": 102,
+      "type": "text",
+      "title": "Runtime Federation",
+      "gridPos": {
+        "h": 10,
+        "w": 13,
+        "x": 11,
+        "y": 0
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:18px 20px;background:linear-gradient(180deg,rgba(11,18,32,.98),rgba(2,6,12,.98));border:1px solid rgba(96,165,250,.42);border-radius:18px;box-shadow:0 0 22px rgba(0,0,0,.45);\">\n  <div style=\"display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;\">\n    <div>\n      <div style=\"font-size:13px;letter-spacing:.18em;color:#93c5fd;font-weight:800;\">OPERATIONAL RUNTIME</div>\n      <div style=\"font-size:24px;line-height:1.15;color:#f8fafc;font-weight:900;\">Grafana Runtime Federation</div>\n    </div>\n    <div style=\"display:flex;gap:8px;\">\n      <span style=\"border:1px solid #60a5fa;color:#bfdbfe;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;\">AUTHORIZED</span>\n      <span style=\"border:1px solid #f59e0b;color:#fde68a;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;\">HOLD</span>\n      <span style=\"border:1px solid #ef4444;color:#fecaca;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;\">STOP</span>\n    </div>\n  </div>\n  <div style=\"display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px;\">\n    <div style=\"background:rgba(15,23,42,.84);border:1px solid rgba(96,165,250,.28);border-radius:14px;padding:12px;\"><div style=\"font-size:12px;color:#94a3b8;\">Demand</div><div style=\"font-size:27px;color:#f8fafc;font-weight:900;\">87%</div><div style=\"font-size:12px;color:#60a5fa;font-weight:800;\">AUTHORIZED</div></div>\n    <div style=\"background:rgba(15,23,42,.84);border:1px solid rgba(245,158,11,.38);border-radius:14px;padding:12px;\"><div style=\"font-size:12px;color:#94a3b8;\">Queue</div><div style=\"font-size:27px;color:#f8fafc;font-weight:900;\">12.4m</div><div style=\"font-size:12px;color:#f59e0b;font-weight:800;\">HOLD</div></div>\n    <div style=\"background:rgba(15,23,42,.84);border:1px solid rgba(96,165,250,.28);border-radius:14px;padding:12px;\"><div style=\"font-size:12px;color:#94a3b8;\">ETA</div><div style=\"font-size:27px;color:#f8fafc;font-weight:900;\">+03m</div><div style=\"font-size:12px;color:#60a5fa;font-weight:800;\">SYNC</div></div>\n    <div style=\"background:rgba(15,23,42,.84);border:1px solid rgba(239,68,68,.38);border-radius:14px;padding:12px;\"><div style=\"font-size:12px;color:#94a3b8;\">ODD</div><div style=\"font-size:27px;color:#f8fafc;font-weight:900;\">1区画</div><div style=\"font-size:12px;color:#ef4444;font-weight:800;\">STOP</div></div>\n  </div>\n  <div style=\"display:grid;grid-template-columns:1.1fr .9fr;gap:12px;\">\n    <div style=\"background:rgba(15,23,42,.72);border:1px solid rgba(148,163,184,.22);border-radius:14px;padding:14px;\">\n      <div style=\"font-size:15px;color:#f8fafc;font-weight:900;margin-bottom:10px;\">Collapse Prevention Runtime</div>\n      <div style=\"display:grid;gap:8px;\">\n        <div style=\"display:flex;justify-content:space-between;color:#cbd5e1;font-size:13px;\"><span>Demand × Dispatch</span><b style=\"color:#60a5fa;\">SYNC</b></div>\n        <div style=\"display:flex;justify-content:space-between;color:#cbd5e1;font-size:13px;\"><span>Fleet × Queue</span><b style=\"color:#f59e0b;\">HOLD</b></div>\n        <div style=\"display:flex;justify-content:space-between;color:#cbd5e1;font-size:13px;\"><span>Node × Energy</span><b style=\"color:#60a5fa;\">SYNC</b></div>\n        <div style=\"display:flex;justify-content:space-between;color:#cbd5e1;font-size:13px;\"><span>ODD × Constraint</span><b style=\"color:#ef4444;\">STOP</b></div>\n      </div>\n    </div>\n    <div style=\"background:rgba(15,23,42,.72);border:1px solid rgba(148,163,184,.22);border-radius:14px;padding:14px;\">\n      <div style=\"font-size:15px;color:#f8fafc;font-weight:900;margin-bottom:10px;\">Throughput</div>\n      <div style=\"font-size:42px;line-height:1;color:#f8fafc;font-weight:900;\">35</div>\n      <div style=\"font-size:13px;color:#94a3b8;margin-top:4px;\">Trips/day baseline</div>\n      <div style=\"margin-top:12px;height:8px;border-radius:999px;background:linear-gradient(90deg,#60a5fa 0%,#60a5fa 64%,#f59e0b 64%,#f59e0b 82%,#ef4444 82%);\"></div>\n    </div>\n  </div>\n</div>"
+      }
+    },
+    {
       "id": 1,
       "type": "text",
       "title": "",
@@ -13,7 +43,7 @@
         "h": 5,
         "w": 6,
         "x": 0,
-        "y": 0
+        "y": 10
       },
       "options": {
         "mode": "html",
@@ -28,7 +58,7 @@
         "h": 5,
         "w": 6,
         "x": 6,
-        "y": 0
+        "y": 10
       },
       "options": {
         "mode": "html",
@@ -43,7 +73,7 @@
         "h": 5,
         "w": 6,
         "x": 12,
-        "y": 0
+        "y": 10
       },
       "options": {
         "mode": "html",
@@ -58,7 +88,7 @@
         "h": 5,
         "w": 6,
         "x": 18,
-        "y": 0
+        "y": 10
       },
       "options": {
         "mode": "html",
@@ -73,21 +103,33 @@
         "h": 4,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 15
       },
       "options": {
         "mode": "html",
-        "content": "<div style=\"height:100%;box-sizing:border-box;padding:12px 16px;background:rgba(2,6,12,.65);border:1px solid rgba(148,163,184,.22);border-radius:16px;\"><div style=\"font-size:20px;font-weight:800;color:#f8fafc;margin-bottom:12px;\">アーティファクトグリッド</div><div style=\"display:grid;grid-template-columns:repeat(8,1fr);gap:10px;\"><div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>シーケンス</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #58a6ff;border-radius:10px;color:#58a6ff;font-weight:800;font-size:18px;\">TBD</div></div><div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>PL</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #58a6ff;border-radius:10px;color:#58a6ff;font-weight:800;font-size:18px;\">TBD</div></div><div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>WBS</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #58a6ff;border-radius:10px;color:#58a6ff;font-weight:800;font-size:18px;\">TBD</div></div><div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>IRR</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #58a6ff;border-radius:10px;color:#58a6ff;font-weight:800;font-size:18px;\">TBD</div></div><div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>アーキテクチャ</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #58a6ff;border-radius:10px;color:#58a6ff;font-weight:800;font-size:18px;\">TBD</div></div><div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>責務</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #4ade80;border-radius:10px;color:#4ade80;font-weight:800;font-size:18px;\">Done</div></div><div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>同期</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #4ade80;border-radius:10px;color:#4ade80;font-weight:800;font-size:18px;\">Done</div></div><div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>崩壊</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #58a6ff;border-radius:10px;color:#58a6ff;font-weight:800;font-size:18px;\">TBD</div></div></div></div>"
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:12px 16px;background:rgba(2,6,12,.65);border:1px solid rgba(148,163,184,.22);border-radius:16px;\"><div style=\"font-size:20px;font-weight:800;color:#f8fafc;margin-bottom:12px;\">アーティファクトグリッド</div><div style=\"display:grid;grid-template-columns:repeat(8,1fr);gap:10px;\">\n<div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>シーケンス</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #58a6ff;border-radius:10px;color:#58a6ff;font-weight:800;font-size:18px;\">TBD</div></div>\n<div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>PL</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #58a6ff;border-radius:10px;color:#58a6ff;font-weight:800;font-size:18px;\">TBD</div></div>\n<div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>WBS</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #58a6ff;border-radius:10px;color:#58a6ff;font-weight:800;font-size:18px;\">TBD</div></div>\n<div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>IRR</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #58a6ff;border-radius:10px;color:#58a6ff;font-weight:800;font-size:18px;\">TBD</div></div>\n<div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>アーキテクチャ</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #58a6ff;border-radius:10px;color:#58a6ff;font-weight:800;font-size:18px;\">TBD</div></div>\n<div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>責務</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #4ade80;border-radius:10px;color:#4ade80;font-weight:800;font-size:18px;\">Done</div></div>\n<div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>同期</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #4ade80;border-radius:10px;color:#4ade80;font-weight:800;font-size:18px;\">Done</div></div>\n<div style=\"height:96px;border:1px solid rgba(148,163,184,.25);border-radius:12px;background:rgba(15,23,42,.72);padding:12px 14px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;\"><div style=\"display:flex;align-items:center;justify-content:space-between;color:#f8fafc;font-weight:800;font-size:18px;\"><span>崩壊</span><span style=\"font-size:24px;\">＞</span></div><div style=\"display:inline-flex;align-items:center;justify-content:center;width:92px;height:32px;border:1px solid #58a6ff;border-radius:10px;color:#58a6ff;font-weight:800;font-size:18px;\">TBD</div></div>\n</div></div>"
       }
     }
   ],
   "refresh": "10s",
   "schemaVersion": 39,
   "style": "dark",
-  "tags": ["toyota", "runtime", "workspace"],
-  "templating": { "list": [] },
-  "time": { "from": "now-6h", "to": "now" },
+  "tags": [
+    "toyota",
+    "runtime",
+    "workspace",
+    "urban-os-runtime",
+    "obsidian",
+    "collapse-prevention"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
   "timezone": "browser",
-  "title": "Toyota Runtime Federation Workspace",
-  "version": 10
+  "title": "Urban OS Runtime Federation Workpage",
+  "version": 11
 }
