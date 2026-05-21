@@ -1,0 +1,77 @@
+{
+  "uid": "runtime-discovery-command-center",
+  "editable": true,
+  "schemaVersion": 39,
+  "style": "dark",
+  "title": "Runtime Discovery Command Center",
+  "version": 1,
+  "refresh": "10s",
+  "timezone": "browser",
+  "tags": ["mieruka", "discovery", "connector-federation", "conflict", "migration"],
+  "links": [
+    {"title": "見える化実行盤", "url": "/mieruka_board"},
+    {"title": "Runtime Discovery", "url": "/runtime_discovery"}
+  ],
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "Runtime Discovery Command Center",
+      "gridPos": {"h": 4, "w": 24, "x": 0, "y": 0},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:18px 22px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:18px;color:#fff;\"><div style=\"font-size:34px;font-weight:900;\">Runtime Discovery Command Center</div><div style=\"margin-top:10px;font-size:16px;line-height:1.65;color:#cbd5e1;\">既存システム・ローカル運用・DB・API・Event・Repo・組織情報を接続/読込し、runtime実態・接続関係・責務競合・移行Backlogを見える化する。</div><div style=\"margin-top:8px;font-size:13px;color:#67e8f9;\">/runtime_discovery</div></div>"
+      }
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "title": "Connector Federation",
+      "gridPos": {"h": 10, "w": 6, "x": 0, "y": 4},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(148,163,184,.25);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">Connector Federation</div><div style=\"margin-top:12px;display:grid;gap:9px;font-size:13px;\"><div style=\"display:flex;justify-content:space-between;padding:10px;background:#111827;border-radius:10px;\"><span>📄 File / Document</span><b style=\"color:#22c55e;\">Ready</b></div><div style=\"display:flex;justify-content:space-between;padding:10px;background:#111827;border-radius:10px;\"><span>🐙 GitHub Repo</span><b style=\"color:#22c55e;\">Ready</b></div><div style=\"display:flex;justify-content:space-between;padding:10px;background:#111827;border-radius:10px;\"><span>🗄️ Database</span><b style=\"color:#f59e0b;\">Auth Needed</b></div><div style=\"display:flex;justify-content:space-between;padding:10px;background:#111827;border-radius:10px;\"><span>🔌 REST / GraphQL</span><b style=\"color:#f59e0b;\">Auth Needed</b></div><div style=\"display:flex;justify-content:space-between;padding:10px;background:#111827;border-radius:10px;\"><span>📡 Kafka / Event</span><b style=\"color:#f59e0b;\">Auth Needed</b></div><div style=\"display:flex;justify-content:space-between;padding:10px;background:#111827;border-radius:10px;\"><span>🧭 Jira / Confluence</span><b style=\"color:#94a3b8;\">Planned</b></div><div style=\"display:flex;justify-content:space-between;padding:10px;background:#111827;border-radius:10px;\"><span>💬 Slack / PagerDuty</span><b style=\"color:#94a3b8;\">Planned</b></div></div><div style=\"margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px;\"><button style=\"background:#0ea5e9;color:#fff;border:0;border-radius:10px;padding:10px;font-weight:800;\">Connect</button><button style=\"background:#1f2937;color:#cbd5e1;border:1px solid #334155;border-radius:10px;padding:10px;font-weight:800;\">Scan</button></div></div>"
+      }
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "title": "Runtime Pool",
+      "gridPos": {"h": 10, "w": 6, "x": 0, "y": 14},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(148,163,184,.25);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">検出runtime候補</div><div style=\"margin-top:12px;display:grid;gap:9px;font-size:13px;\"><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>ETA System</b><br/><span style=\"color:#94a3b8;\">confidence 82% / owner unknown</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>Dispatch API</b><br/><span style=\"color:#94a3b8;\">confidence 91% / Fleet candidate</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>Queue Manager</b><br/><span style=\"color:#f59e0b;\">confidence 74% / owner conflict</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>Node Acceptance Tool</b><br/><span style=\"color:#94a3b8;\">confidence 77% / Node candidate</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>Energy Sheet</b><br/><span style=\"color:#94a3b8;\">confidence 68% / local operation</span></div></div></div>"
+      }
+    },
+    {
+      "id": 4,
+      "type": "text",
+      "title": "Federation Runtime Graph",
+      "gridPos": {"h": 20, "w": 10, "x": 6, "y": 4},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#02060c;border:1px solid rgba(56,189,248,.3);border-radius:18px;color:#fff;\"><div style=\"font-size:22px;font-weight:900;\">Federation Runtime Graph</div><div style=\"margin-top:6px;color:#94a3b8;font-size:13px;\">接続・資料・schema・event・repo解析により、node / edge / confidence が拡張される。</div><svg viewBox=\"0 0 700 560\" width=\"100%\" height=\"500\"><defs><filter id=\"glow\"><feGaussianBlur stdDeviation=\"3\" result=\"blur\"/><feMerge><feMergeNode in=\"blur\"/><feMergeNode in=\"SourceGraphic\"/></feMerge></filter></defs><line x1=\"100\" y1=\"90\" x2=\"260\" y2=\"90\" stroke=\"#38bdf8\" opacity=\".45\"/><line x1=\"260\" y1=\"90\" x2=\"430\" y2=\"90\" stroke=\"#38bdf8\" opacity=\".45\"/><line x1=\"430\" y1=\"90\" x2=\"570\" y2=\"200\" stroke=\"#22c55e\" opacity=\".45\"/><line x1=\"430\" y1=\"90\" x2=\"260\" y2=\"250\" stroke=\"#f59e0b\" opacity=\".45\"/><line x1=\"260\" y1=\"250\" x2=\"430\" y2=\"390\" stroke=\"#8b5cf6\" opacity=\".45\"/><line x1=\"570\" y1=\"200\" x2=\"430\" y2=\"390\" stroke=\"#14b8a6\" opacity=\".45\"/><circle filter=\"url(#glow)\" cx=\"100\" cy=\"90\" r=\"48\" fill=\"#0ea5e9\"/><text x=\"100\" y=\"95\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">予約</text><circle filter=\"url(#glow)\" cx=\"260\" cy=\"90\" r=\"48\" fill=\"#f59e0b\"/><text x=\"260\" y=\"95\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">ETA</text><circle filter=\"url(#glow)\" cx=\"430\" cy=\"90\" r=\"48\" fill=\"#22c55e\"/><text x=\"430\" y=\"95\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">配車</text><circle filter=\"url(#glow)\" cx=\"570\" cy=\"200\" r=\"48\" fill=\"#3b82f6\"/><text x=\"570\" y=\"205\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">車両群</text><circle filter=\"url(#glow)\" cx=\"260\" cy=\"250\" r=\"48\" fill=\"#ef4444\"/><text x=\"260\" y=\"255\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">待機列</text><circle filter=\"url(#glow)\" cx=\"430\" cy=\"390\" r=\"48\" fill=\"#8b5cf6\"/><text x=\"430\" y=\"395\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">拠点</text><circle filter=\"url(#glow)\" cx=\"570\" cy=\"390\" r=\"48\" fill=\"#14b8a6\"/><text x=\"570\" y=\"395\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">エネルギー</text><text x=\"24\" y=\"535\" fill=\"#94a3b8\" font-size=\"13\">実線：検出接続 / 点線候補：未確認接続 / 赤系：Conflict候補</text></svg></div>"
+      }
+    },
+    {
+      "id": 5,
+      "type": "text",
+      "title": "Ownership / Conflict",
+      "gridPos": {"h": 10, "w": 8, "x": 16, "y": 4},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(239,68,68,.30);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">Ownership / Conflict</div><div style=\"margin-top:12px;display:grid;gap:9px;font-size:13px;\"><div style=\"padding:10px;background:#111827;border-radius:10px;border-left:4px solid #ef4444;\"><b>Queue Ownership</b><br/><span style=\"color:#cbd5e1;\">Fleet vs Node / conflict probability 86%</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;border-left:4px solid #f59e0b;\"><b>ETA Authority</b><br/><span style=\"color:#cbd5e1;\">Fleet vs Life / conflict probability 74%</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;border-left:4px solid #f59e0b;\"><b>ODD Propagation</b><br/><span style=\"color:#cbd5e1;\">Urban → Fleet 未確認</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;border-left:4px solid #ef4444;\"><b>Energy Capacity</b><br/><span style=\"color:#cbd5e1;\">Node local / Federation missing</span></div></div></div>"
+      }
+    },
+    {
+      "id": 6,
+      "type": "text",
+      "title": "Migration Backlog",
+      "gridPos": {"h": 10, "w": 8, "x": 16, "y": 14},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(56,189,248,.25);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">Migration Backlog</div><div style=\"margin-top:12px;display:grid;gap:9px;font-size:13px;\"><div style=\"padding:10px;background:#111827;border-radius:10px;\">□ Queue authority definition <span style=\"color:#f59e0b;\">Fleet ↔ Node</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;\">□ Unified ETA source definition <span style=\"color:#f59e0b;\">Fleet ↔ Life</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;\">□ ODD propagation route <span style=\"color:#38bdf8;\">Urban → Fleet</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;\">□ Energy federation rule <span style=\"color:#14b8a6;\">Node ↔ Urban</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;\">□ PL impact model <span style=\"color:#22c55e;\">Queue / ETA / Utilization</span></div></div><div style=\"margin-top:14px;padding:10px;background:#020617;border-radius:12px;color:#cbd5e1;font-size:12px;line-height:1.7;\">次アクション：Conflictごとに調整先、Tradeoff、費用対効果、実施順序を自動生成する。</div></div>"
+      }
+    }
+  ]
+}
