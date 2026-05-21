@@ -3,39 +3,29 @@
   "editable": true,
   "schemaVersion": 39,
   "style": "dark",
-  "title": "Urban OS Runtime Federation Workpage",
-  "version": 13,
+  "title": "Federation実行盤",
+  "version": 15,
   "refresh": "10s",
   "timezone": "browser",
-  "tags": ["urban-os-runtime","obsidian","collapse-control","federation-control"],
+  "tags": ["federation-board","urban-os-runtime","conflict-visualization"],
+  "links": [{"title":"Federation_Board","url":"/Federation_Board"}],
   "panels": [
+    {
+      "id": 100,
+      "type": "text",
+      "title": "",
+      "gridPos": {"h": 4,"w": 24,"x": 0,"y": 0},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;padding:20px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:18px;color:#fff;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;\"><div style=\"font-size:42px;font-weight:900;color:#f8fafc;\">Federation実行盤</div><div style=\"margin-top:14px;font-size:18px;line-height:1.7;color:#cbd5e1;\">既存巨大runtime群を、<br/>Conflictを可視化しながら、<br/>協調・移行・統合実行する盤</div><div style=\"margin-top:14px;font-size:13px;color:#67e8f9;letter-spacing:.12em;\">/Federation_Board</div></div>"
+      }
+    },
     {
       "id": 101,
       "type": "text",
       "title": "制御思想構造",
-      "gridPos": {"h": 14,"w": 11,"x": 0,"y": 0},
-      "options": {"mode": "html","content": "<div style=\"height:100%;padding:18px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:18px;color:#fff;box-sizing:border-box;overflow:hidden;\"><div style=\"font-size:13px;color:#67e8f9;font-weight:800;letter-spacing:.18em;\">CONTROL STRUCTURE</div><div style=\"font-size:28px;font-weight:900;margin-top:4px;\">崩壊制御</div><svg viewBox=\"0 0 640 360\" width=\"100%\" height=\"calc(100% - 60px)\"><line x1=\"320\" y1=\"160\" x2=\"180\" y2=\"90\" stroke=\"#38bdf8\" opacity=\".35\"/><line x1=\"320\" y1=\"160\" x2=\"470\" y2=\"90\" stroke=\"#38bdf8\" opacity=\".35\"/><line x1=\"320\" y1=\"160\" x2=\"180\" y2=\"250\" stroke=\"#38bdf8\" opacity=\".35\"/><line x1=\"320\" y1=\"160\" x2=\"470\" y2=\"250\" stroke=\"#38bdf8\" opacity=\".35\"/><circle cx=\"320\" cy=\"160\" r=\"48\" fill=\"#0ea5e9\"/><text x=\"320\" y=\"165\" fill=\"white\" text-anchor=\"middle\" font-size=\"22\" font-weight=\"800\">崩壊制御</text><circle cx=\"180\" cy=\"90\" r=\"34\" fill=\"#22c55e\"/><text x=\"180\" y=\"95\" fill=\"white\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"800\">同期制御</text><circle cx=\"470\" cy=\"90\" r=\"34\" fill=\"#f59e0b\"/><text x=\"470\" y=\"95\" fill=\"white\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"800\">制約制御</text><circle cx=\"180\" cy=\"250\" r=\"34\" fill=\"#38bdf8\"/><text x=\"180\" y=\"255\" fill=\"white\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"800\">運行成立</text><circle cx=\"470\" cy=\"250\" r=\"34\" fill=\"#14b8a6\"/><text x=\"470\" y=\"255\" fill=\"white\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"800\">ODD制御</text></svg></div>"}
-    },
-    {
-      "id": 102,
-      "type": "text",
-      "title": "実装成熟度",
-      "gridPos": {"h": 14,"w": 13,"x": 11,"y": 0},
-      "options": {"mode": "html","content": "<div style=\"height:100%;padding:18px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(148,163,184,.28);border-radius:18px;color:#fff;box-sizing:border-box;\"><div style=\"font-size:13px;color:#cbd5e1;font-weight:800;letter-spacing:.18em;\">IMPLEMENTATION MATURITY</div><div style=\"display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;\"><div style=\"text-align:center;\"><div style=\"width:120px;height:120px;border-radius:999px;border:12px solid #f59e0b;border-top-color:#334155;margin:auto;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;\">6%</div><div style=\"margin-top:8px;font-size:15px;font-weight:800;\">崩壊制御</div></div><div style=\"text-align:center;\"><div style=\"width:120px;height:120px;border-radius:999px;border:12px solid #22c55e;border-top-color:#334155;margin:auto;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;\">4%</div><div style=\"margin-top:8px;font-size:15px;font-weight:800;\">同期制御</div></div><div style=\"text-align:center;\"><div style=\"width:120px;height:120px;border-radius:999px;border:12px solid #38bdf8;border-top-color:#334155;margin:auto;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;\">3%</div><div style=\"margin-top:8px;font-size:15px;font-weight:800;\">制約制御</div></div></div><div style=\"margin-top:18px;display:grid;gap:12px;\"><div><div style=\"display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;\"><span>ODD制御</span><b>8%</b></div><div style=\"height:12px;background:#111827;border-radius:999px;overflow:hidden;\"><div style=\"width:8%;height:100%;background:#38bdf8;\"></div></div></div><div><div style=\"display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;\"><span>エネルギー制御</span><b>5%</b></div><div style=\"height:12px;background:#111827;border-radius:999px;overflow:hidden;\"><div style=\"width:5%;height:100%;background:#14b8a6;\"></div></div></div><div><div style=\"display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;\"><span>配車制御</span><b>12%</b></div><div style=\"height:12px;background:#111827;border-radius:999px;overflow:hidden;\"><div style=\"width:12%;height:100%;background:#f59e0b;\"></div></div></div></div><div style=\"display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px;font-size:13px;color:#cbd5e1;\"><div style=\"background:#0f172a;padding:10px;border-radius:12px;\"><div>実装済みRuntime</div><div style=\"font-size:28px;font-weight:900;color:#fff;\">1 / 24</div></div><div style=\"background:#0f172a;padding:10px;border-radius:12px;\"><div>検証済み制御項目</div><div style=\"font-size:28px;font-weight:900;color:#fff;\">2 / 38</div></div><div style=\"background:#0f172a;padding:10px;border-radius:12px;\"><div>Grafana接続済み指標</div><div style=\"font-size:28px;font-weight:900;color:#fff;\">0 / 30</div></div></div></div>"}
-    },
-    {
-      "id": 201,
-      "type": "text",
-      "title": "4コンソール",
-      "gridPos": {"h": 6,"w": 24,"x": 0,"y": 14},
-      "options": {"mode": "html","content": "<div style=\"height:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:6px;box-sizing:border-box;\"><div style=\"background:#0f172a;border:1px solid #3b82f6;border-bottom:5px solid #3b82f6;border-radius:16px;padding:20px;color:#fff;\"><div style=\"font-size:22px;font-weight:900;\">フリート運用</div><div style=\"margin-top:10px;color:#94a3b8;\">配車 / 滞留 / Fleet</div></div><div style=\"background:#0f172a;border:1px solid #8b5cf6;border-bottom:5px solid #8b5cf6;border-radius:16px;padding:20px;color:#fff;\"><div style=\"font-size:22px;font-weight:900;\">サービス拠点</div><div style=\"margin-top:10px;color:#94a3b8;\">受入 / 充填 / H2</div></div><div style=\"background:#0f172a;border:1px solid #f97316;border-bottom:5px solid #f97316;border-radius:16px;padding:20px;color:#fff;\"><div style=\"font-size:22px;font-weight:900;\">生活取引</div><div style=\"margin-top:10px;color:#94a3b8;\">Wallet / Subscription</div></div><div style=\"background:#0f172a;border:1px solid #22c55e;border-bottom:5px solid #22c55e;border-radius:16px;padding:20px;color:#fff;\"><div style=\"font-size:22px;font-weight:900;\">都市運行</div><div style=\"margin-top:10px;color:#94a3b8;\">ODD / Restriction</div></div></div>"}
-    },
-    {
-      "id": 301,
-      "type": "text",
-      "title": "成果物カード",
-      "gridPos": {"h": 10,"w": 24,"x": 0,"y": 20},
-      "options": {"mode": "html","content": "<div style=\"height:100%;padding:14px;background:#02060c;border:1px solid rgba(148,163,184,.18);border-radius:18px;color:#fff;box-sizing:border-box;\"><div style=\"display:grid;grid-template-columns:repeat(4,1fr);gap:14px;\"><div style=\"background:#0f172a;border:1px solid #38bdf8;border-radius:14px;padding:16px;\"><div style=\"font-size:18px;font-weight:900;\">制御責務境界</div><div style=\"margin-top:8px;color:#94a3b8;font-size:13px;\">Runtime Federation Boundary</div><div style=\"margin-top:14px;font-size:12px;color:#cbd5e1;line-height:1.7;\">Seneschal → Intent / ETA\nFleet → Queue / Dispatch\nNode → H2 / Acceptance\nUrban → ODD / Collapse</div><div style=\"margin-top:12px;padding-top:12px;border-top:1px solid rgba(148,163,184,.18);font-size:12px;color:#67e8f9;\">/boundary/runtime-federation.md</div></div><div style=\"background:#0f172a;border:1px solid rgba(148,163,184,.18);border-radius:14px;padding:16px;\"><div style=\"font-size:18px;font-weight:900;\">同期境界</div><div style=\"margin-top:8px;color:#94a3b8;font-size:13px;\">Dispatch / ODD / Energy</div><div style=\"margin-top:14px;font-size:12px;color:#cbd5e1;line-height:1.7;\">/sync/dispatch-sync.md\n/sync/odd-sync.md\n/sync/energy-sync.md</div></div><div style=\"background:#0f172a;border:1px solid rgba(148,163,184,.18);border-radius:14px;padding:16px;\"><div style=\"font-size:18px;font-weight:900;\">崩壊伝播</div><div style=\"margin-top:8px;color:#94a3b8;font-size:13px;\">Collapse Propagation</div><div style=\"margin-top:14px;font-size:12px;color:#cbd5e1;line-height:1.7;\">Queue Collapse\nODD Collapse\nEnergy Collapse\nNode Saturation</div></div><div style=\"background:#0f172a;border:1px solid rgba(148,163,184,.18);border-radius:14px;padding:16px;\"><div style=\"font-size:18px;font-weight:900;\">アーキテクチャ</div><div style=\"margin-top:8px;color:#94a3b8;font-size:13px;\">Urban OS Runtime</div><div style=\"margin-top:14px;font-size:12px;color:#cbd5e1;line-height:1.7;\">/architecture/runtime-bus.md\n/architecture/control-loop.md\n/runtime-center/federation.md</div></div></div></div>"}
+      "gridPos": {"h": 14,"w": 11,"x": 0,"y": 4},
+      "options": {"mode": "html","content": "<div style=\"height:100%;padding:18px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:18px;color:#fff;box-sizing:border-box;overflow:hidden;\"><div style=\"font-size:13px;color:#67e8f9;font-weight:800;letter-spacing:.18em;\">CONTROL STRUCTURE</div><div style=\"font-size:28px;font-weight:900;margin-top:4px;\">崩壊制御</div></div>"}
     }
   ]
 }
