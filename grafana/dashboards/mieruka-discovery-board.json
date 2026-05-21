@@ -1,0 +1,77 @@
+{
+  "uid": "mieruka-discovery",
+  "editable": true,
+  "schemaVersion": 39,
+  "style": "dark",
+  "title": "既存runtime Discovery",
+  "version": 1,
+  "refresh": "10s",
+  "timezone": "browser",
+  "tags": ["mieruka", "runtime-discovery", "architecture", "sequence"],
+  "links": [
+    {"title": "見える化実行盤", "url": "/mieruka_board"},
+    {"title": "Discovery", "url": "/mieruka_discovery"}
+  ],
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "既存runtime Discovery",
+      "gridPos": {"h": 4, "w": 24, "x": 0, "y": 0},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:18px 22px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.34);border-radius:18px;color:#fff;\"><div style=\"font-size:34px;font-weight:900;\">既存runtime Discovery</div><div style=\"margin-top:10px;font-size:16px;line-height:1.65;color:#cbd5e1;\">仕様書が存在しない前提で、Excel・PowerPoint・PDF・CSV・画面キャプチャ・メモ等の断片から、既存小システム、責務、接続、排反事項を推定する。</div><div style=\"margin-top:8px;font-size:13px;color:#67e8f9;\">/mieruka_discovery</div></div>"
+      }
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "title": "Artifact Pool",
+      "gridPos": {"h": 10, "w": 7, "x": 0, "y": 4},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(148,163,184,.25);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">資料アップロード</div><div style=\"margin-top:12px;height:115px;border:2px dashed rgba(56,189,248,.55);border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;color:#cbd5e1;line-height:1.7;\">ここにドラッグ＆ドロップ<br/>または ファイル参照<br/><span style=\"font-size:12px;color:#94a3b8;\">最大20ファイル</span></div><div style=\"margin-top:14px;display:grid;gap:10px;font-size:12px;\"><div style=\"padding:10px;background:#111827;border-radius:12px;\"><b>📊 queue_local_ops.xlsx</b><br/><span style=\"color:#94a3b8;\">2026-05-21 / 1.8MB / Queue候補</span></div><div style=\"padding:10px;background:#111827;border-radius:12px;\"><b>📄 node_acceptance.pdf</b><br/><span style=\"color:#94a3b8;\">2026-05-20 / 3.2MB / Node候補</span></div><div style=\"padding:10px;background:#111827;border-radius:12px;\"><b>🖼️ eta_screen.png</b><br/><span style=\"color:#94a3b8;\">2026-05-19 / 820KB / ETA候補</span></div><div style=\"padding:10px;background:#111827;border-radius:12px;\"><b>📑 dispatch_flow.pptx</b><br/><span style=\"color:#94a3b8;\">2026-05-18 / 5.4MB / Dispatch候補</span></div></div></div>"
+      }
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "title": "Runtime推定",
+      "gridPos": {"h": 10, "w": 8, "x": 7, "y": 4},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(148,163,184,.25);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">Runtime Discovery Graph</div><svg viewBox=\"0 0 520 300\" width=\"100%\" height=\"255\"><line x1=\"90\" y1=\"70\" x2=\"240\" y2=\"70\" stroke=\"#38bdf8\" opacity=\".45\"/><line x1=\"240\" y1=\"70\" x2=\"390\" y2=\"70\" stroke=\"#38bdf8\" opacity=\".45\"/><line x1=\"240\" y1=\"70\" x2=\"240\" y2=\"190\" stroke=\"#f59e0b\" opacity=\".45\"/><line x1=\"240\" y1=\"190\" x2=\"390\" y2=\"190\" stroke=\"#22c55e\" opacity=\".45\"/><circle cx=\"90\" cy=\"70\" r=\"42\" fill=\"#0ea5e9\"/><text x=\"90\" y=\"75\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">予約</text><circle cx=\"240\" cy=\"70\" r=\"42\" fill=\"#f59e0b\"/><text x=\"240\" y=\"75\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">ETA</text><circle cx=\"390\" cy=\"70\" r=\"42\" fill=\"#22c55e\"/><text x=\"390\" y=\"75\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">配車</text><circle cx=\"240\" cy=\"190\" r=\"42\" fill=\"#8b5cf6\"/><text x=\"240\" y=\"195\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">拠点</text><circle cx=\"390\" cy=\"190\" r=\"42\" fill=\"#14b8a6\"/><text x=\"390\" y=\"195\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">エネルギー</text><text x=\"20\" y=\"285\" fill=\"#94a3b8\" font-size=\"13\">推定：資料が増えるほど node / edge / confidence が拡張される</text></svg></div>"
+      }
+    },
+    {
+      "id": 4,
+      "type": "text",
+      "title": "Evidence",
+      "gridPos": {"h": 10, "w": 9, "x": 15, "y": 4},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(148,163,184,.25);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">推定根拠 / 不足情報</div><div style=\"margin-top:12px;display:grid;gap:9px;font-size:13px;\"><div style=\"display:flex;justify-content:space-between;padding:9px;background:#111827;border-radius:10px;\"><span>dispatch_id 列を検出</span><b style=\"color:#22c55e;\">配車 92%</b></div><div style=\"display:flex;justify-content:space-between;padding:9px;background:#111827;border-radius:10px;\"><span>arrival_eta 表記を検出</span><b style=\"color:#f59e0b;\">ETA 81%</b></div><div style=\"display:flex;justify-content:space-between;padding:9px;background:#111827;border-radius:10px;\"><span>node_capacity 表記を検出</span><b style=\"color:#8b5cf6;\">拠点 77%</b></div><div style=\"display:flex;justify-content:space-between;padding:9px;background:#111827;border-radius:10px;\"><span>soc / h2_remaining を検出</span><b style=\"color:#14b8a6;\">エネルギー 74%</b></div></div><div style=\"margin-top:16px;font-size:15px;font-weight:900;\">不足情報</div><div style=\"margin-top:8px;color:#fca5a5;font-size:13px;line-height:1.8;\">・Queue owner 不明<br/>・ETA正本 不明<br/>・配車authority 不明<br/>・Node受入判断の上位連携 不明</div></div>"
+      }
+    },
+    {
+      "id": 5,
+      "type": "text",
+      "title": "アーキテクチャ",
+      "gridPos": {"h": 9, "w": 12, "x": 0, "y": 14},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#02060c;border:1px solid rgba(56,189,248,.3);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">推定アーキテクチャ 全体版</div><div style=\"margin-top:12px;font-size:13px;color:#94a3b8;\">資料投入ごとに node / edge が増え、全体図が拡張される。</div><div style=\"margin-top:14px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;text-align:center;font-size:13px;\"><div style=\"padding:14px;background:#0f172a;border-radius:12px;border:1px solid #0ea5e9;\">予約<br/><b>Reservation</b></div><div style=\"padding:14px;background:#0f172a;border-radius:12px;border:1px solid #f59e0b;\">ETA<br/><b>ETA DB</b></div><div style=\"padding:14px;background:#0f172a;border-radius:12px;border:1px solid #22c55e;\">配車<br/><b>Dispatch API</b></div><div style=\"padding:14px;background:#0f172a;border-radius:12px;border:1px solid #8b5cf6;\">拠点<br/><b>Node Tool</b></div><div style=\"padding:14px;background:#0f172a;border-radius:12px;border:1px solid #14b8a6;\">エネルギー<br/><b>Energy Sheet</b></div></div><div style=\"margin-top:18px;color:#cbd5e1;font-size:13px;line-height:1.9;\">推定接続：予約 → ETA → 配車 / 配車 ↔ 拠点 / 拠点 ↔ エネルギー<br/>未確認接続：ETA正本、Queue所有者、ODD制約伝播</div></div>"
+      }
+    },
+    {
+      "id": 6,
+      "type": "text",
+      "title": "シーケンス",
+      "gridPos": {"h": 9, "w": 12, "x": 12, "y": 14},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#02060c;border:1px solid rgba(245,158,11,.3);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">推定シーケンス 全体版</div><div style=\"margin-top:12px;color:#94a3b8;font-size:13px;\">資料投入ごとに処理順序・同期点・未接続点が追加される。</div><div style=\"margin-top:14px;display:grid;gap:9px;font-size:13px;\"><div style=\"padding:10px;background:#0f172a;border-radius:10px;\">1. 予約作成 → arrival_eta 生成</div><div style=\"padding:10px;background:#0f172a;border-radius:10px;\">2. ETA更新 → dispatch_request 発行</div><div style=\"padding:10px;background:#0f172a;border-radius:10px;\">3. 配車判断 → vehicle_assignment</div><div style=\"padding:10px;background:#0f172a;border-radius:10px;\">4. 拠点受入確認 → node_capacity 照会</div><div style=\"padding:10px;background:#0f172a;border-radius:10px;\">5. エネルギー余力確認 → soc / h2_remaining 確認</div><div style=\"padding:10px;background:#111827;border:1px solid #f59e0b;border-radius:10px;color:#fde68a;\">未接続候補：Queue overflow 時の ETA 再計算ルート</div></div></div>"
+      }
+    }
+  ]
+}
