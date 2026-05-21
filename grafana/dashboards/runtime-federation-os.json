@@ -4,17 +4,20 @@
   "schemaVersion": 39,
   "style": "dark",
   "title": "Federation実行盤",
-  "version": 15,
+  "version": 16,
   "refresh": "10s",
   "timezone": "browser",
-  "tags": ["federation-board","urban-os-runtime","conflict-visualization"],
-  "links": [{"title":"Federation_Board","url":"/Federation_Board"}],
+  "tags": ["federation-board", "urban-os-runtime", "conflict-visualization", "runtime-discovery"],
+  "links": [
+    {"title": "Federation_Board", "url": "/Federation_Board"},
+    {"title": "Runtime Discovery", "url": "/runtime_discovery"}
+  ],
   "panels": [
     {
       "id": 100,
       "type": "text",
       "title": "",
-      "gridPos": {"h": 4,"w": 24,"x": 0,"y": 0},
+      "gridPos": {"h": 4, "w": 24, "x": 0, "y": 0},
       "options": {
         "mode": "html",
         "content": "<div style=\"height:100%;padding:20px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:18px;color:#fff;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;\"><div style=\"font-size:42px;font-weight:900;color:#f8fafc;\">Federation実行盤</div><div style=\"margin-top:14px;font-size:18px;line-height:1.7;color:#cbd5e1;\">既存巨大runtime群を、<br/>Conflictを可視化しながら、<br/>協調・移行・統合実行する盤</div><div style=\"margin-top:14px;font-size:13px;color:#67e8f9;letter-spacing:.12em;\">/Federation_Board</div></div>"
@@ -24,8 +27,31 @@
       "id": 101,
       "type": "text",
       "title": "制御思想構造",
-      "gridPos": {"h": 14,"w": 11,"x": 0,"y": 4},
-      "options": {"mode": "html","content": "<div style=\"height:100%;padding:18px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:18px;color:#fff;box-sizing:border-box;overflow:hidden;\"><div style=\"font-size:13px;color:#67e8f9;font-weight:800;letter-spacing:.18em;\">CONTROL STRUCTURE</div><div style=\"font-size:28px;font-weight:900;margin-top:4px;\">崩壊制御</div></div>"}
+      "gridPos": {"h": 10, "w": 11, "x": 0, "y": 4},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;padding:18px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:18px;color:#fff;box-sizing:border-box;overflow:hidden;\"><div style=\"font-size:13px;color:#67e8f9;font-weight:800;letter-spacing:.18em;\">CONTROL STRUCTURE</div><div style=\"font-size:28px;font-weight:900;margin-top:4px;\">崩壊制御</div><div style=\"margin-top:14px;color:#cbd5e1;font-size:15px;line-height:1.8;\">Obsidian側の理想知識構造。<br/>Collapse / Propagation / Responsibility / PL Impact を制御思想として整理する。</div></div>"
+      }
+    },
+    {
+      "id": 102,
+      "type": "text",
+      "title": "Gap / Conflict / Migration",
+      "gridPos": {"h": 10, "w": 13, "x": 11, "y": 4},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;padding:18px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(148,163,184,.28);border-radius:18px;color:#fff;box-sizing:border-box;\"><div style=\"font-size:13px;color:#cbd5e1;font-weight:800;letter-spacing:.18em;\">FEDERATION GAP</div><div style=\"font-size:28px;font-weight:900;margin-top:4px;\">理想と現実の差分可視化</div><div style=\"margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;\"><div style=\"background:#111827;border-left:4px solid #ef4444;border-radius:12px;padding:12px;\"><div style=\"font-size:13px;color:#94a3b8;\">Conflict</div><div style=\"font-size:26px;font-weight:900;\">4件</div></div><div style=\"background:#111827;border-left:4px solid #f59e0b;border-radius:12px;padding:12px;\"><div style=\"font-size:13px;color:#94a3b8;\">調整Backlog</div><div style=\"font-size:26px;font-weight:900;\">12件</div></div><div style=\"background:#111827;border-left:4px solid #22c55e;border-radius:12px;padding:12px;\"><div style=\"font-size:13px;color:#94a3b8;\">PL接続</div><div style=\"font-size:26px;font-weight:900;\">未接続</div></div></div><div style=\"margin-top:14px;color:#cbd5e1;font-size:14px;line-height:1.8;\">Discoveryで検出した既存runtime群を、Conflict / Tradeoff / Migration Backlog / PL影響へ変換する。</div></div>"
+      }
+    },
+    {
+      "id": 201,
+      "type": "text",
+      "title": "実行カード",
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 14},
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:14px;background:#02060c;border:1px solid rgba(148,163,184,.18);border-radius:18px;color:#fff;\"><div style=\"display:grid;grid-template-columns:repeat(4,1fr);gap:14px;height:100%;\"><a href=\"/runtime_discovery\" style=\"display:block;text-decoration:none;color:#fff;background:#0f172a;border:1px solid #38bdf8;border-bottom:5px solid #38bdf8;border-radius:16px;padding:18px;\"><div style=\"font-size:22px;font-weight:900;\">Discovery</div><div style=\"margin-top:10px;color:#cbd5e1;font-size:14px;line-height:1.6;\">既存runtimeを発掘し、アーキテクチャ・シーケンス・Conflict候補を自動生成する。</div><div style=\"margin-top:16px;color:#67e8f9;font-size:13px;\">/runtime_discovery</div></a><div style=\"background:#0f172a;border:1px solid #ef4444;border-bottom:5px solid #ef4444;border-radius:16px;padding:18px;\"><div style=\"font-size:22px;font-weight:900;\">排反事項</div><div style=\"margin-top:10px;color:#cbd5e1;font-size:14px;line-height:1.6;\">Ownership / Authority / PL Conflict を一覧化する。</div></div><div style=\"background:#0f172a;border:1px solid #f59e0b;border-bottom:5px solid #f59e0b;border-radius:16px;padding:18px;\"><div style=\"font-size:22px;font-weight:900;\">調整Backlog</div><div style=\"margin-top:10px;color:#cbd5e1;font-size:14px;line-height:1.6;\">誰と何を調整するか、順番とTradeoffを表示する。</div></div><div style=\"background:#0f172a;border:1px solid #22c55e;border-bottom:5px solid #22c55e;border-radius:16px;padding:18px;\"><div style=\"font-size:22px;font-weight:900;\">PL / IRR</div><div style=\"margin-top:10px;color:#cbd5e1;font-size:14px;line-height:1.6;\">実施時効果・費用対効果・自部門PL影響へ接続する。</div></div></div></div>"
+      }
     }
   ]
 }
