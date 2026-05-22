@@ -1,0 +1,30 @@
+{
+  "description": "Canonical link map for /runtime Runtime Workspace Router. Grafana display paths only — no embedded logic.",
+  "runtimeUid": "sa8ljn4",
+  "row1": {
+    "discovery": "/runtime_discovery",
+    "needsTranslation": "/need_impact",
+    "alliance": "/d/external-federation-view/external-federation-view"
+  },
+  "row2": {
+    "obsidianGraph": "/d/go-program-index/grafana-obsidian-program-index",
+    "runtimePanel": "/d/go-integrated-surface/integrated-control-surface"
+  },
+  "row3": {
+    "fleetOperation": "/fleet_operation",
+    "serviceHub": "/service_hub",
+    "lifeTransaction": "/life_transaction",
+    "urbanOperation": "/urban_operation"
+  },
+  "row4": {
+    "collapseArchitecture": "/d/go-integrated-analysis/integrated-control-analysis",
+    "functionalArchitecture": "/d/mieruka-discovery/mieruka-discovery",
+    "sequenceDiagram": "/d/mieruka-discovery/mieruka-discovery",
+    "plSimulation": "/d/go-business-simulation/business-simulation",
+    "costRecoveryPlan": "/d/go-investment-recovery/investment-recovery-plan",
+    "wbs": "/d/go-execution-tasks/execution-tasks",
+    "serviceOperation": "/d/go-operational-planning/operational-planning",
+    "pl": "/d/application-toyota-logic/application-for-toyota-parameter-driven-federation-model",
+    "irr": "/d/go-investment-recovery/investment-recovery-plan"
+  }
+}
