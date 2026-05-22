@@ -43,15 +43,30 @@ Operational Console handles:
 
 /runtime must not expose Base44 preview URLs.
 
+`/runtime` row3 must not link directly to Base44 production URLs.
+
 ---
 
 ## Base44 Integration Rule
 
-Base44 consoles must appear embedded inside Runtime Workspace.
+Base44 Operational Consoles are embedded inside Grafana Runtime Workspace via iframe embed dashboards.
+
+Router flow:
+
+`/runtime` → `/d/runtime-*-embed/*` → iframe(Base44 production app)
+
+Embed dashboards (canonical):
+
+* `runtime-fleet-embed`
+* `runtime-service-hub-embed`
+* `runtime-life-embed`
+* `runtime-urban-embed`
 
 Do not expose:
 
+* direct Base44 URL navigation from Router panels
 * external preview feeling
+* Base44 login redirect as the primary entry
 * app launcher dialog
 * external app routing feeling
 
@@ -63,9 +78,10 @@ Needs翻訳:
 
 * rename toward Runtime Federation / Needs Federation
 
-アライアンス:
+アライメント:
 
-* rename toward Federation
+* rename toward Federation alignment
+* Router icon: puzzle (🧩)
 
 Reason:
 The workspace handles runtime synchronization rather than alliance management.

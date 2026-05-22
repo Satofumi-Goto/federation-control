@@ -1,6 +1,6 @@
 {
-  "description": "Canonical link map for /runtime Runtime Workspace Router. Row1–2 and row4 use Grafana. Row3 uses Base44 production Operational Consoles.",
-  "layoutVersion": 24,
+  "description": "Canonical link map for /runtime Runtime Workspace Router. Row3 opens Grafana embed dashboards (iframe Base44); no direct Base44 URL from Router.",
+  "layoutVersion": 25,
   "runtimeUid": "sa8ljn4",
   "row1": {
     "discovery": "/runtime_discovery",
@@ -12,15 +12,27 @@
     "runtimePanel": "/d/go-integrated-surface/integrated-control-surface"
   },
   "row3": {
-    "fleetOperation": "https://fleet-operations-console.base44.app",
-    "serviceHub": "https://service-hub-console.base44.app",
-    "lifeTransaction": "https://life-ledger-link.base44.app",
-    "urbanOperation": "https://urban-operation-console.base44.app"
+    "fleetOperation": "/d/runtime-fleet-embed/runtime-fleet-embed",
+    "serviceHub": "/d/runtime-service-hub-embed/runtime-service-hub-embed",
+    "lifeTransaction": "/d/runtime-life-embed/runtime-life-embed",
+    "urbanOperation": "/d/runtime-urban-embed/runtime-urban-embed"
   },
   "row3OperationalConsoles": {
     "provider": "Base44",
     "environment": "production",
-    "role": "Operational Console — not Grafana native dashboards"
+    "integration": "grafana-iframe-embed",
+    "embedDashboards": {
+      "fleet": "runtime-fleet-embed",
+      "serviceHub": "runtime-service-hub-embed",
+      "life": "runtime-life-embed",
+      "urban": "runtime-urban-embed"
+    },
+    "base44EmbedTargets": {
+      "fleet": "https://fleet-operations-console.base44.app",
+      "serviceHub": "https://service-hub-console.base44.app",
+      "life": "https://life-ledger-link.base44.app",
+      "urban": "https://urban-operation-console.base44.app"
+    }
   },
   "row4": {
     "collapseArchitecture": "/d/go-integrated-analysis/integrated-control-analysis",

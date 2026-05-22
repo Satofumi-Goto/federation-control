@@ -1,0 +1,57 @@
+{
+  "uid": "runtime-fleet-embed",
+  "editable": true,
+  "schemaVersion": 39,
+  "style": "dark",
+  "title": "Runtime Fleet Embed",
+  "version": 1,
+  "refresh": "30s",
+  "timezone": "browser",
+  "description": "フリート運用 — Base44 Operational Console embedded in Grafana Runtime Workspace.",
+  "tags": [
+    "runtime",
+    "operational-console-embed",
+    "base44",
+    "workspace-embed"
+  ],
+  "links": [
+    {
+      "title": "Runtime",
+      "url": "/d/sa8ljn4/runtime"
+    }
+  ],
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid #3b82f6;border-radius:10px;color:#fff;\"><div><div style=\"font-size:11px;color:#94a3b8;\">Runtime Federation Workspace</div><div style=\"font-size:20px;font-weight:900;\">フリート運用</div><div style=\"font-size:11px;color:#cbd5e1;margin-top:2px;\">Operational Console · 埋め込み</div></div><a href=\"/d/sa8ljn4/runtime\" style=\"text-decoration:none;font-size:11px;font-weight:700;color:#67e8f9;padding:6px 10px;border:1px solid rgba(56,189,248,.35);border-radius:8px;\">← Runtime</a></div>"
+      }
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;background:#02060c;border:1px solid rgba(148,163,184,.2);border-radius:10px;\"><iframe src=\"https://fleet-operations-console.base44.app\" title=\"フリート運用\" style=\"display:block;width:100%;height:100%;min-height:520px;border:0;border-radius:10px;background:#02060c;\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe></div>"
+      }
+    }
+  ]
+}

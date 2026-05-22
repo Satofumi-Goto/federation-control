@@ -8,6 +8,7 @@ on:
       - 'grafana/**'
       - '.github/workflows/**'
       - 'scripts/deploy-runtime-workspace.mjs'
+      - 'scripts/build-runtime-embed-dashboards.mjs'
   workflow_dispatch:
 
 jobs:
@@ -33,9 +34,12 @@ jobs:
           DASHBOARD_PATH: grafana/runtime-workspace-v2.json
         run: node scripts/deploy-runtime-workspace.mjs
 
-      - name: Deploy Service Hub Console to Grafana
+      - name: Build and deploy Operational Console embed dashboards
+        run: |
+          node scripts/build-runtime-embed-dashboards.mjs
+          for f in grafana/dashboards/runtime-*-embed.json; do
+            DASHBOARD_PATH="$f" node scripts/deploy-runtime-workspace.mjs
+          done
         env:
           GRAFANA_TOKEN: ${{ secrets.GRAFANA_TOKEN }}
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
-          DASHBOARD_PATH: grafana/dashboards/service-hub-console.json
-        run: node scripts/deploy-runtime-workspace.mjs

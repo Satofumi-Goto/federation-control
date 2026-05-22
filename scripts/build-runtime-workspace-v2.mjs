@@ -70,7 +70,7 @@ const dashboard = {
       gridPos: { h: 3, w: 24, x: 0, y: 0 },
       options: {
         mode: 'html',
-        content: `<div style="width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:12px;color:#fff;"><div><div style="font-size:28px;font-weight:900;line-height:1.1;">Runtime</div><div style="margin-top:4px;font-size:11px;color:#67e8f9;">都市OS Runtime Workspace Router</div></div><div style="display:flex;gap:20px;flex-shrink:0;"><a href="${r.row1.discovery}" style="text-decoration:none;color:#67e8f9;text-align:center;"><div style="font-size:24px;line-height:1;">🕸️</div><div style="font-size:11px;margin-top:2px;font-weight:700;">Discovery</div></a><a href="${r.row1.needsTranslation}" style="text-decoration:none;color:#fbbf24;text-align:center;"><div style="font-size:24px;line-height:1;">🗣️</div><div style="font-size:11px;margin-top:2px;font-weight:700;">Needs翻訳</div></a><a href="${r.row1.alignment ?? r.row1.alliance}" style="text-decoration:none;color:#a78bfa;text-align:center;"><div style="font-size:24px;line-height:1;">🤝</div><div style="font-size:11px;margin-top:2px;font-weight:700;">アライメント</div></a></div></div>`,
+        content: `<div style="width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:12px;color:#fff;"><div><div style="font-size:28px;font-weight:900;line-height:1.1;">Runtime</div><div style="margin-top:4px;font-size:11px;color:#67e8f9;">都市OS Runtime Workspace Router</div></div><div style="display:flex;gap:20px;flex-shrink:0;"><a href="${r.row1.discovery}" style="text-decoration:none;color:#67e8f9;text-align:center;"><div style="font-size:24px;line-height:1;">🕸️</div><div style="font-size:11px;margin-top:2px;font-weight:700;">Discovery</div></a><a href="${r.row1.needsTranslation}" style="text-decoration:none;color:#fbbf24;text-align:center;"><div style="font-size:24px;line-height:1;">🗣️</div><div style="font-size:11px;margin-top:2px;font-weight:700;">Needs翻訳</div></a><a href="${r.row1.alignment ?? r.row1.alliance}" style="text-decoration:none;color:#a78bfa;text-align:center;"><div style="font-size:24px;line-height:1;">🧩</div><div style="font-size:11px;margin-top:2px;font-weight:700;">アライメント</div></a></div></div>`,
       },
     },
     {
@@ -103,7 +103,7 @@ const dashboard = {
       gridPos: { h: 4, w: 6, x: 0, y: 8 },
       options: {
         mode: 'html',
-        content: consoleCard(row3.fleetOperation, 'フリート運用', '配車·波及', '#3b82f6'),
+        content: consoleCard(row3.fleetOperation, 'フリート運用', 'Runtime内表示', '#3b82f6'),
       },
     },
     {
@@ -114,7 +114,7 @@ const dashboard = {
       gridPos: { h: 4, w: 6, x: 6, y: 8 },
       options: {
         mode: 'html',
-        content: consoleCard(row3.serviceHub, 'サービス拠点', '受入·充電', '#8b5cf6'),
+        content: consoleCard(row3.serviceHub, 'サービス拠点', 'Runtime内表示', '#8b5cf6'),
       },
     },
     {
@@ -125,7 +125,7 @@ const dashboard = {
       gridPos: { h: 4, w: 6, x: 12, y: 8 },
       options: {
         mode: 'html',
-        content: consoleCard(row3.lifeTransaction, '生活取引', '予約·翻訳', '#f97316'),
+        content: consoleCard(row3.lifeTransaction, '生活取引', 'Runtime内表示', '#f97316'),
       },
     },
     {
@@ -136,7 +136,7 @@ const dashboard = {
       gridPos: { h: 4, w: 6, x: 18, y: 8 },
       options: {
         mode: 'html',
-        content: consoleCard(row3.urbanOperation, '都市運行', 'ODD·運用', '#22c55e'),
+        content: consoleCard(row3.urbanOperation, '都市運行', 'Runtime内表示', '#22c55e'),
       },
     },
     ...navPanels,
