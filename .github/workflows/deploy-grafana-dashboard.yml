@@ -6,9 +6,13 @@ on:
       - main
     paths:
       - 'grafana/**'
+      - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/**'
       - 'scripts/deploy-runtime-workspace.mjs'
-      - 'scripts/build-runtime-embed-dashboards.mjs'
+      - 'scripts/build-operational-surfaces.mjs'
+      - 'scripts/build-runtime-workspace-v2.mjs'
+      - 'scripts/runtime-visual-check.mjs'
   workflow_dispatch:
 
 jobs:
@@ -24,6 +28,12 @@ jobs:
         with:
           node-version: 20
 
+      - name: Build Operational App Surface dashboards
+        run: node scripts/build-operational-surfaces.mjs
+
+      - name: Build Runtime Workspace router
+        run: node scripts/build-runtime-workspace-v2.mjs
+
       - name: Validate runtime workspace JSON
         run: node -e "const d=require('./grafana/runtime-workspace-v2.json'); if(!d.uid||!Array.isArray(d.panels)) { console.error('invalid dashboard'); process.exit(1); } console.log('ok', d.uid, d.panels.length, 'panels');"
 
@@ -34,9 +44,52 @@ jobs:
           DASHBOARD_PATH: grafana/runtime-workspace-v2.json
         run: node scripts/deploy-runtime-workspace.mjs
 
-      - name: Deploy Service Hub Console dashboard
+      - name: Deploy Operational App Surface dashboards
         env:
           GRAFANA_TOKEN: ${{ secrets.GRAFANA_TOKEN }}
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
-          DASHBOARD_PATH: grafana/dashboards/service-hub-console.json
-        run: node scripts/deploy-runtime-workspace.mjs
+        run: |
+          for f in \
+            grafana/dashboards/fleet-operational-surface.json \
+            grafana/dashboards/service-hub-operational-surface.json \
+            grafana/dashboards/life-transaction-operational-surface.json \
+            grafana/dashboards/urban-operation-operational-surface.json; do
+            DASHBOARD_PATH="$f" node scripts/deploy-runtime-workspace.mjs
+          done
+
+  visual-check:
+    needs: deploy-dashboard
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium --with-deps
+
+      - name: Runtime visual verification loop
+        env:
+          GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
+          GRAFANA_USER: ${{ secrets.GRAFANA_USER }}
+          GRAFANA_PASSWORD: ${{ secrets.GRAFANA_PASSWORD }}
+          VISUAL_CHECK_OUT: artifacts/runtime-visual-check
+        run: node scripts/runtime-visual-check.mjs
+        continue-on-error: true
+
+      - name: Upload visual check artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: runtime-visual-check
+          path: artifacts/runtime-visual-check/
+          if-no-files-found: warn

@@ -54,7 +54,7 @@ const dashboard = {
   schemaVersion: 39,
   style: 'dark',
   title: 'Runtime',
-  version: 23,
+  version: 24,
   refresh: '30s',
   timezone: 'browser',
   description: '都市OS Runtime Workspace Router',

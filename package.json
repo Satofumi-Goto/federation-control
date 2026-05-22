@@ -1,0 +1,13 @@
+{
+  "name": "federation-control",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:operational-surfaces": "node scripts/build-operational-surfaces.mjs",
+    "build:runtime-workspace": "node scripts/build-runtime-workspace-v2.mjs",
+    "visual-check": "node scripts/runtime-visual-check.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.52.0"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "description": "Canonical Operational App Surface definitions for Runtime Federation. Grafana native only; Base44 remains Operational UX outside this surface layer.",
+  "layoutVersion": 1,
+  "runtimeRouterUid": "sa8ljn4",
+  "policy": {
+    "surfaceType": "operational-app-surface",
+    "forbidden": ["base44-iframe", "base44-direct-url", "base44-login-redirect", "pending-card"]
+  },
+  "surfaces": [
+    {
+      "key": "fleet",
+      "uid": "runtime-fleet-surface",
+      "title": "Fleet Operational Surface",
+      "slug": "fleet-operational-surface",
+      "labelJa": "フリート運用",
+      "role": "fleet_operator",
+      "accent": "#3b82f6",
+      "outputFile": "fleet-operational-surface.json",
+      "displayItems": [
+        { "id": "dispatch", "labelJa": "配車", "labelEn": "Dispatch", "value": "12", "detail": "稼働配車", "gate": "AUTHORIZED" },
+        { "id": "queue", "labelJa": "キュー", "labelEn": "Queue", "value": "4", "detail": "待ち台数", "gate": "AUTHORIZED" },
+        { "id": "eta", "labelJa": "ETA", "labelEn": "ETA", "value": "18分", "detail": "平均到着", "gate": "AUTHORIZED" },
+        { "id": "constraint", "labelJa": "制約", "labelEn": "Constraint", "value": "監視中", "detail": "ODD·容量", "gate": "HOLD" },
+        { "id": "runtimeState", "labelJa": "Runtime状態", "labelEn": "Runtime State", "value": "同期", "detail": "Federation OS", "gate": "AUTHORIZED" }
+      ]
+    },
+    {
+      "key": "serviceHub",
+      "uid": "runtime-service-hub-surface",
+      "title": "Service Hub Operational Surface",
+      "slug": "service-hub-operational-surface",
+      "labelJa": "サービス拠点",
+      "role": "service_hub_operator",
+      "accent": "#8b5cf6",
+      "outputFile": "service-hub-operational-surface.json",
+      "displayItems": [
+        { "id": "acceptance", "labelJa": "受入", "labelEn": "Acceptance", "value": "安定", "detail": "バース·スワップ", "gate": "HOLD" },
+        { "id": "node", "labelJa": "Node", "labelEn": "Node", "value": "82%", "detail": "稼働率", "gate": "AUTHORIZED" },
+        { "id": "energy", "labelJa": "Energy", "labelEn": "Energy", "value": "同期", "detail": "水素·充電余力", "gate": "AUTHORIZED" },
+        { "id": "sync", "labelJa": "同期", "labelEn": "Synchronization", "value": "OK", "detail": "Node↔Fleet↔Urban", "gate": "AUTHORIZED" },
+        { "id": "constraint", "labelJa": "制約", "labelEn": "Constraint", "value": "境界内", "detail": "受入·エネルギー", "gate": "AUTHORIZED" }
+      ]
+    },
+    {
+      "key": "life",
+      "uid": "runtime-life-surface",
+      "title": "Life Transaction Operational Surface",
+      "slug": "life-transaction-operational-surface",
+      "labelJa": "生活取引",
+      "role": "life_transaction_operator",
+      "accent": "#f97316",
+      "outputFile": "life-transaction-operational-surface.json",
+      "displayItems": [
+        { "id": "reservation", "labelJa": "予約", "labelEn": "Reservation", "value": "28", "detail": "本日予約", "gate": "AUTHORIZED" },
+        { "id": "eta", "labelJa": "ETA", "labelEn": "ETA", "value": "14分", "detail": "到着予測", "gate": "AUTHORIZED" },
+        { "id": "demand", "labelJa": "需要", "labelEn": "Demand", "value": "中", "detail": "時間帯需要", "gate": "HOLD" },
+        { "id": "fare", "labelJa": "料金", "labelEn": "Fare", "value": "確定", "detail": "取引見積", "gate": "AUTHORIZED" },
+        { "id": "transactionState", "labelJa": "取引状態", "labelEn": "Transaction State", "value": "進行", "detail": "決済·同期", "gate": "AUTHORIZED" }
+      ]
+    },
+    {
+      "key": "urban",
+      "uid": "runtime-urban-surface",
+      "title": "Urban Operation Operational Surface",
+      "slug": "urban-operation-operational-surface",
+      "labelJa": "都市運行",
+      "role": "urban_operation_operator",
+      "accent": "#22c55e",
+      "outputFile": "urban-operation-operational-surface.json",
+      "displayItems": [
+        { "id": "odd", "labelJa": "ODD", "labelEn": "ODD", "value": "許容", "detail": "運行設計域", "gate": "AUTHORIZED" },
+        { "id": "constraint", "labelJa": "制約", "labelEn": "Constraint", "value": "監視", "detail": "交通·気象", "gate": "HOLD" },
+        { "id": "propagation", "labelJa": "波及", "labelEn": "Propagation", "value": "局所", "detail": "連鎖影響", "gate": "HOLD" },
+        { "id": "collapseControl", "labelJa": "崩壊制御", "labelEn": "Collapse Control", "value": "安定", "detail": "制御ゲート", "gate": "AUTHORIZED" },
+        { "id": "runtimeState", "labelJa": "Runtime状態", "labelEn": "Runtime State", "value": "同期", "detail": "Federation OS", "gate": "AUTHORIZED" }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "description": "Canonical link map for /runtime Runtime Workspace Router. Row3 uses existing Grafana dashboards only.",
+  "description": "Canonical link map for /runtime Runtime Workspace Router. Row3 opens Grafana Operational App Surface dashboards only.",
   "layoutVersion": 28,
   "runtimeUid": "sa8ljn4",
   "row1": {
@@ -12,15 +12,34 @@
     "runtimePanel": "/d/go-integrated-surface/integrated-control-surface"
   },
   "row3": {
-    "fleetOperation": "/d/component-propagation-board/component-propagation-federation-board",
-    "serviceHub": "/d/runtime-service-hub-console/service-hub-console",
-    "lifeTransaction": "/d/user-need-impact-board/need-translation",
-    "urbanOperation": "/d/go-operational-planning/operational-planning"
+    "fleetOperation": "/d/runtime-fleet-surface/fleet-operational-surface",
+    "serviceHub": "/d/runtime-service-hub-surface/service-hub-operational-surface",
+    "lifeTransaction": "/d/runtime-life-surface/life-transaction-operational-surface",
+    "urbanOperation": "/d/runtime-urban-surface/urban-operation-operational-surface"
   },
-  "row3OperationalConsoles": {
+  "row3ConsoleMeta": {
+    "fleetOperation": {
+      "sub": "Operational Surface · フリート",
+      "pending": false
+    },
+    "serviceHub": {
+      "sub": "Operational Surface · 拠点",
+      "pending": false
+    },
+    "lifeTransaction": {
+      "sub": "Operational Surface · 生活取引",
+      "pending": false
+    },
+    "urbanOperation": {
+      "sub": "Operational Surface · 都市運行",
+      "pending": false
+    }
+  },
+  "row3OperationalSurfaces": {
     "provider": "Grafana",
-    "integration": "grafana-native-router",
-    "forbidden": ["base44-iframe", "base44-direct-url", "base44-login-redirect"]
+    "integration": "operational-app-surface",
+    "canonical": "grafana/runtime-operational-surfaces.json",
+    "forbidden": ["base44-iframe", "base44-direct-url", "base44-login-redirect", "pending-card"]
   },
   "row4": {
     "collapseArchitecture": "/d/go-integrated-analysis/integrated-control-analysis",
@@ -32,5 +51,10 @@
     "serviceOperation": "/d/go-operational-planning/operational-planning",
     "pl": "/d/application-toyota-logic/application-for-toyota-parameter-driven-federation-model",
     "irr": "/d/go-investment-recovery/investment-recovery-plan"
+  },
+  "row4Layout": {
+    "mode": "grafana-grid-3x3",
+    "panelIds": [401, 402, 403, 404, 405, 406, 407, 408, 409],
+    "gridPos": { "w": 8, "h": 2, "cols": 3, "rows": 3, "y": 12 }
   }
 }

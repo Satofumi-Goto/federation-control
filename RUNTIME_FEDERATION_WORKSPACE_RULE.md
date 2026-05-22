@@ -45,20 +45,23 @@ Operational Console handles:
 
 `/runtime` row3 must not link to Base44 (iframe, direct URL, or login redirect).
 
-Row3 uses Grafana dashboards only. If no Grafana console exists yet, the card stays on `/runtime` as **準備中 / 接続未確定**.
+Row3 uses **Grafana Operational App Surface** dashboards (see `grafana/runtime-operational-surfaces.json`).
 
 Current row3 targets (canonical):
 
-* フリート運用 → `/d/component-propagation-board/component-propagation-federation-board`
-* サービス拠点 → `/d/runtime-service-hub-console/service-hub-console`
-* 生活取引 → `/d/sa8ljn4/runtime` (pending)
-* 都市運行 → `/d/go-operational-planning/operational-planning`
+* フリート運用 → `/d/runtime-fleet-surface/fleet-operational-surface`
+* サービス拠点 → `/d/runtime-service-hub-surface/service-hub-operational-surface`
+* 生活取引 → `/d/runtime-life-surface/life-transaction-operational-surface`
+* 都市運行 → `/d/runtime-urban-surface/urban-operation-operational-surface`
+
+Grafana = Federation OS / Operational Surface. Base44 = Operational UX (not replaced by Surface).
 
 Do not expose:
 
 * Base44 iframe embed from Router
 * direct Base44 URL navigation from Router panels
 * Base44 login redirect as the primary entry
+* 準備中カード as row3 destination
 * app launcher dialog
 * external app routing feeling
 
