@@ -70,6 +70,16 @@ Do not expose:
 * app launcher dialog
 * external app routing feeling
 
+### Base44 iframe embed (Operational Console repos)
+
+Each Base44 production app must allow embedding from `https://satofumigoto.grafana.net`:
+
+* `Content-Security-Policy: frame-ancestors https://satofumigoto.grafana.net 'self'`
+* Do not enable Base44 Dashboard **Prevent Embedding** (X-Frame-Options)
+* iframe URL uses `?runtime_embed=grafana` for in-shell login return
+
+See `BASE44_OPERATIONAL_CONSOLE_IFRAME_EMBED.md`.
+
 ---
 
 ## Federation Naming

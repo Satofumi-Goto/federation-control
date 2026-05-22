@@ -1,6 +1,6 @@
 {
   "description": "Canonical link map for /runtime Runtime Workspace Router. Row3 opens Grafana embed dashboards (iframe Base44); no direct Base44 URL from Router.",
-  "layoutVersion": 25,
+  "layoutVersion": 26,
   "runtimeUid": "sa8ljn4",
   "row1": {
     "discovery": "/runtime_discovery",
@@ -28,11 +28,13 @@
       "urban": "runtime-urban-embed"
     },
     "base44EmbedTargets": {
-      "fleet": "https://fleet-operations-console.base44.app",
-      "serviceHub": "https://service-hub-console.base44.app",
-      "life": "https://life-ledger-link.base44.app",
-      "urban": "https://urban-operation-console.base44.app"
-    }
+      "fleet": "https://fleet-operations-console.base44.app?runtime_embed=grafana",
+      "serviceHub": "https://service-hub-console.base44.app?runtime_embed=grafana",
+      "life": "https://life-ledger-link.base44.app?runtime_embed=grafana",
+      "urban": "https://urban-operation-console.base44.app?runtime_embed=grafana"
+    },
+    "grafanaEmbedOrigin": "https://satofumigoto.grafana.net",
+    "iframePolicy": "Content-Security-Policy frame-ancestors https://satofumigoto.grafana.net 'self'"
   },
   "row4": {
     "collapseArchitecture": "/d/go-integrated-analysis/integrated-control-analysis",

@@ -3,6 +3,8 @@ import path from 'node:path';
 
 const outDir = path.resolve('grafana/dashboards');
 
+const GRAFANA_EMBED_QUERY = '?runtime_embed=grafana';
+
 const embeds = [
   {
     uid: 'runtime-fleet-embed',
@@ -39,7 +41,8 @@ const embeds = [
 ];
 
 function iframePanel(url, label) {
-  return `<div style="width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;background:#02060c;border:1px solid rgba(148,163,184,.2);border-radius:10px;"><iframe src="${url}" title="${label}" style="display:block;width:100%;height:100%;min-height:520px;border:0;border-radius:10px;background:#02060c;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>`;
+  const src = url.includes('?') ? `${url}&runtime_embed=grafana` : `${url}${GRAFANA_EMBED_QUERY}`;
+  return `<div style="width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;background:#02060c;border:1px solid rgba(148,163,184,.2);border-radius:10px;"><iframe src="${src}" title="${label}" style="display:block;width:100%;height:100%;min-height:520px;border:0;border-radius:10px;background:#02060c;" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`;
 }
 
 function headerPanel(label, sub, accent) {
