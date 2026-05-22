@@ -1,0 +1,59 @@
+{
+  "title": "Runtime Workspace v2",
+  "tags": [
+    "runtime",
+    "urban-os-runtime",
+    "federation",
+    "collapse-preflight"
+  ],
+  "editable": true,
+  "liveNow": false,
+  "preload": false,
+  "links": [
+    {
+      "title": "Runtime",
+      "type": "link",
+      "url": "/d/sa8Ijn4/runtime"
+    },
+    {
+      "title": "Runtime Discovery",
+      "type": "link",
+      "url": "/runtime_discovery"
+    },
+    {
+      "title": "Need Impact",
+      "type": "link",
+      "url": "/need_impact"
+    }
+  ],
+  "timeSettings": {
+    "autoRefresh": "10s",
+    "from": "now-6h",
+    "to": "now",
+    "timezone": "browser"
+  },
+  "runtimeWorkspace": {
+    "syncMatrix": {
+      "fleet": "HOLD",
+      "serviceHub": "HOLD",
+      "urbanOperation": "HOLD",
+      "lifestyle": "STOP"
+    },
+    "repairBacklog": [
+      {
+        "name": "ETA共有とDispatch状態同期",
+        "status": "STOP"
+      },
+      {
+        "name": "Queue波及表示",
+        "status": "HOLD"
+      }
+    ],
+    "preflight": {
+      "responsibilityBoundary": true,
+      "providerSafe": true,
+      "mapSafe": true,
+      "queueVisibility": false
+    }
+  }
+}
