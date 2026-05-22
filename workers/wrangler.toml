@@ -1,0 +1,6 @@
+name = "runtime-federation-proxy"
+main = "runtime-reverse-proxy.js"
+compatibility_date = "2026-05-22"
+
+[vars]
+RUNTIME_PROXY_MODE = "reverse-proxy-federation"
