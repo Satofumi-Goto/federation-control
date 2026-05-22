@@ -1,0 +1,302 @@
+{
+  "annotations": [
+    {
+      "kind": "AnnotationQuery",
+      "spec": {
+        "builtIn": true,
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "query": {
+          "datasource": {
+            "name": "-- Grafana --"
+          },
+          "group": "grafana",
+          "kind": "DataQuery",
+          "spec": {},
+          "version": "v0"
+        }
+      }
+    }
+  ],
+  "cursorSync": "Off",
+  "editable": true,
+  "elements": {
+    "panel-100": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 100,
+        "links": [],
+        "title": "",
+        "vizConfig": {
+          "group": "text",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "<div style=\"position:relative;height:100%;padding:20px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:18px;color:#fff;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;\"><div style=\"position:absolute;top:18px;right:120px;text-align:center;\"><a href=\"/runtime_discovery\" style=\"text-decoration:none;color:#67e8f9;\"><div style=\"font-size:38px;filter:drop-shadow(0 0 10px rgba(34,211,238,.6));\">🕸️</div><div style=\"font-size:12px;margin-top:2px;\">Discovery</div></a></div><div style=\"position:absolute;top:18px;right:28px;text-align:center;\"><a href=\"/need_impact\" style=\"text-decoration:none;color:#fbbf24;\"><div style=\"font-size:38px;filter:drop-shadow(0 0 10px rgba(251,191,36,.6));\">🗣️</div><div style=\"font-size:12px;margin-top:2px;\">Need</div></a></div><div style=\"font-size:46px;font-weight:900;color:#f8fafc;\">Runtime</div><div style=\"margin-top:14px;font-size:18px;line-height:1.7;color:#cbd5e1;\">既存巨大runtime群を、<br/>Conflictを可視化しながら、<br/>協調・移行・統合実行する盤</div><div style=\"margin-top:14px;font-size:13px;color:#67e8f9;letter-spacing:.12em;\">/Runtime</div></div>",
+              "mode": "html"
+            }
+          },
+          "version": "13.1.0-25723336850"
+        }
+      }
+    },
+    "panel-101": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 101,
+        "links": [],
+        "title": "制御思想構造",
+        "vizConfig": {
+          "group": "text",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "<div style=\"height:100%;padding:18px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:18px;color:#fff;box-sizing:border-box;overflow:hidden;\"><div style=\"font-size:13px;color:#67e8f9;font-weight:800;letter-spacing:.18em;\">CONTROL STRUCTURE</div><div style=\"font-size:28px;font-weight:900;margin-top:4px;\">崩壊制御</div><div style=\"margin-top:14px;color:#cbd5e1;font-size:15px;line-height:1.8;\">Obsidian側の理想知識構造。<br/>Collapse / Propagation / Responsibility / PL Impact を制御思想として整理する。</div></div>",
+              "mode": "html"
+            }
+          },
+          "version": "13.1.0-25723336850"
+        }
+      }
+    },
+    "panel-102": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 102,
+        "links": [],
+        "title": "Gap / Conflict / Migration",
+        "vizConfig": {
+          "group": "text",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "<div style=\"height:100%;padding:18px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(148,163,184,.28);border-radius:18px;color:#fff;box-sizing:border-box;\"><div style=\"font-size:13px;color:#cbd5e1;font-weight:800;letter-spacing:.18em;\">FEDERATION GAP</div><div style=\"font-size:28px;font-weight:900;margin-top:4px;\">理想と現実の差分可視化</div><div style=\"margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;\"><div style=\"background:#111827;border-left:4px solid #ef4444;border-radius:12px;padding:12px;\"><div style=\"font-size:13px;color:#94a3b8;\">Conflict</div><div style=\"font-size:26px;font-weight:900;\">4件</div></div><div style=\"background:#111827;border-left:4px solid #f59e0b;border-radius:12px;padding:12px;\"><div style=\"font-size:13px;color:#94a3b8;\">調整Backlog</div><div style=\"font-size:26px;font-weight:900;\">12件</div></div><div style=\"background:#111827;border-left:4px solid #22c55e;border-radius:12px;padding:12px;\"><div style=\"font-size:13px;color:#94a3b8;\">PL接続</div><div style=\"font-size:26px;font-weight:900;\">未接続</div></div></div><div style=\"margin-top:14px;color:#cbd5e1;font-size:14px;line-height:1.8;\">Discoveryで検出した既存runtime群を、Conflict / Tradeoff / Migration Backlog / PL影響へ変換する。</div></div>",
+              "mode": "html"
+            }
+          },
+          "version": "13.1.0-25723336850"
+        }
+      }
+    },
+    "panel-201": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "",
+        "id": 201,
+        "links": [],
+        "title": "4コンソール",
+        "vizConfig": {
+          "group": "text",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {},
+              "overrides": []
+            },
+            "options": {
+              "code": {
+                "language": "plaintext",
+                "showLineNumbers": false,
+                "showMiniMap": false
+              },
+              "content": "<div style=\"height:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:6px;box-sizing:border-box;\"><div style=\"background:#0f172a;border:1px solid #3b82f6;border-bottom:5px solid #3b82f6;border-radius:16px;padding:20px;color:#fff;\"><div style=\"font-size:24px;font-weight:900;\">フリート運用</div><div style=\"margin-top:10px;color:#94a3b8;line-height:1.7;\">配車 / 滞留 / Fleet Capacity<br/>トヨタ中心runtime</div></div><div style=\"background:#0f172a;border:1px solid #8b5cf6;border-bottom:5px solid #8b5cf6;border-radius:16px;padding:20px;color:#fff;\"><div style=\"font-size:24px;font-weight:900;\">サービス拠点</div><div style=\"margin-top:10px;color:#94a3b8;line-height:1.7;\">Acceptance / Charging / H2<br/>トヨタ中心runtime</div></div><div style=\"background:#0f172a;border:1px solid #22c55e;border-bottom:5px solid #22c55e;border-radius:16px;padding:20px;color:#fff;\"><div style=\"font-size:24px;font-weight:900;\">都市運行</div><div style=\"margin-top:10px;color:#94a3b8;line-height:1.7;\">ODD / Restriction / Collapse<br/>トヨタ中心runtime</div></div><div style=\"background:#0f172a;border:1px solid #f97316;border-bottom:5px solid #f97316;border-radius:16px;padding:20px;color:#fff;\"><div style=\"font-size:24px;font-weight:900;\">生活取引</div><div style=\"margin-top:10px;color:#94a3b8;line-height:1.7;\">ETA / Reservation / Pricing<br/>トヨタ中心runtime</div></div></div>",
+              "mode": "html"
+            }
+          },
+          "version": "13.1.0-25723336850"
+        }
+      }
+    }
+  },
+  "layout": {
+    "kind": "GridLayout",
+    "spec": {
+      "items": [
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-100"
+            },
+            "height": 4,
+            "width": 24,
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-101"
+            },
+            "height": 10,
+            "width": 11,
+            "x": 0,
+            "y": 4
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-102"
+            },
+            "height": 10,
+            "width": 13,
+            "x": 11,
+            "y": 4
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-201"
+            },
+            "height": 8,
+            "width": 24,
+            "x": 0,
+            "y": 14
+          }
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Runtime",
+      "tooltip": "",
+      "type": "link",
+      "url": "/Runtime"
+    },
+    {
+      "asDropdown": false,
+      "icon": "",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Runtime Discovery",
+      "tooltip": "",
+      "type": "link",
+      "url": "/runtime_discovery"
+    },
+    {
+      "asDropdown": false,
+      "icon": "",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Need Impact",
+      "tooltip": "",
+      "type": "link",
+      "url": "/need_impact"
+    }
+  ],
+  "liveNow": false,
+  "preload": false,
+  "tags": [
+    "runtime",
+    "urban-os-runtime",
+    "conflict-visualization",
+    "runtime-discovery"
+  ],
+  "timeSettings": {
+    "autoRefresh": "10s",
+    "autoRefreshIntervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "fiscalYearStartMonth": 0,
+    "from": "now-6h",
+    "hideTimepicker": false,
+    "timezone": "browser",
+    "to": "now"
+  },
+  "title": "Runtime",
+  "variables": []
+}
