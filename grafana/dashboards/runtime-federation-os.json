@@ -4,10 +4,10 @@
   "schemaVersion": 39,
   "style": "dark",
   "title": "Runtime",
-  "version": 20,
+  "version": 21,
   "refresh": "30s",
   "timezone": "browser",
-  "description": "都市OS Runtime Workspace Router — navigation only, no embedded runtime logic.",
+  "description": "都市OS Runtime Workspace Router",
   "tags": ["runtime", "urban-os-runtime", "workspace-router", "toyota-denso"],
   "links": [
     {"title": "Runtime", "url": "/d/sa8ljn4/runtime"},
@@ -20,50 +20,88 @@
       "id": 100,
       "type": "text",
       "title": "",
-      "gridPos": {"h": 4, "w": 24, "x": 0, "y": 0},
+      "transparent": true,
+      "gridPos": {"h": 3, "w": 24, "x": 0, "y": 0},
       "options": {
         "mode": "html",
-        "content": "<div style=\"display:flex;align-items:center;justify-content:space-between;height:100%;padding:14px 20px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:16px;color:#fff;box-sizing:border-box;\"><div><div style=\"font-size:40px;font-weight:900;line-height:1;\">Runtime</div><div style=\"margin-top:6px;font-size:13px;color:#67e8f9;letter-spacing:.08em;\">都市OS Runtime Workspace Router · /runtime</div></div><div style=\"display:flex;gap:24px;align-items:center;\"><a href=\"/runtime_discovery\" style=\"text-decoration:none;color:#67e8f9;text-align:center;min-width:72px;\"><div style=\"font-size:32px;line-height:1;\">🕸️</div><div style=\"font-size:12px;margin-top:4px;font-weight:700;\">Discovery</div></a><a href=\"/need_impact\" style=\"text-decoration:none;color:#fbbf24;text-align:center;min-width:72px;\"><div style=\"font-size:32px;line-height:1;\">🗣️</div><div style=\"font-size:12px;margin-top:4px;font-weight:700;\">Needs翻訳</div></a><a href=\"/d/external-federation-view/external-federation-view\" style=\"text-decoration:none;color:#a78bfa;text-align:center;min-width:72px;\"><div style=\"font-size:32px;line-height:1;\">🤝</div><div style=\"font-size:12px;margin-top:4px;font-weight:700;\">アライアンス</div></a></div></div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:12px;color:#fff;\"><div><div style=\"font-size:28px;font-weight:900;line-height:1.1;\">Runtime</div><div style=\"margin-top:4px;font-size:11px;color:#67e8f9;\">都市OS Runtime Workspace Router</div></div><div style=\"display:flex;gap:20px;flex-shrink:0;\"><a href=\"/runtime_discovery\" style=\"text-decoration:none;color:#67e8f9;text-align:center;\"><div style=\"font-size:24px;line-height:1;\">🕸️</div><div style=\"font-size:11px;margin-top:2px;font-weight:700;\">Discovery</div></a><a href=\"/need_impact\" style=\"text-decoration:none;color:#fbbf24;text-align:center;\"><div style=\"font-size:24px;line-height:1;\">🗣️</div><div style=\"font-size:11px;margin-top:2px;font-weight:700;\">Needs翻訳</div></a><a href=\"/d/external-federation-view/external-federation-view\" style=\"text-decoration:none;color:#a78bfa;text-align:center;\"><div style=\"font-size:24px;line-height:1;\">🤝</div><div style=\"font-size:11px;margin-top:2px;font-weight:700;\">アライアンス</div></a></div></div>"
       }
     },
     {
       "id": 201,
       "type": "text",
-      "title": "Obsidian Graph",
-      "gridPos": {"h": 9, "w": 11, "x": 0, "y": 4},
+      "title": "",
+      "transparent": true,
+      "gridPos": {"h": 5, "w": 11, "x": 0, "y": 3},
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/go-program-index/grafana-obsidian-program-index\" style=\"display:flex;flex-direction:column;justify-content:space-between;height:100%;padding:18px;text-decoration:none;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(148,163,184,.3);border-radius:16px;color:#fff;box-sizing:border-box;\"><div style=\"font-size:13px;color:#94a3b8;letter-spacing:.12em;\">一次知識</div><div style=\"font-size:26px;font-weight:900;margin-top:6px;\">Obsidian Graph</div><div style=\"margin-top:14px;height:120px;border-radius:12px;background:radial-gradient(circle at 30% 40%,rgba(56,189,248,.25),transparent 55%),radial-gradient(circle at 70% 60%,rgba(167,139,250,.2),transparent 50%),#0f172a;border:1px solid rgba(56,189,248,.2);position:relative;overflow:hidden;\"><svg viewBox=\"0 0 200 120\" width=\"100%\" height=\"100%\"><line x1=\"40\" y1=\"30\" x2=\"100\" y2=\"55\" stroke=\"#38bdf8\" opacity=\".5\"/><line x1=\"100\" y1=\"55\" x2=\"160\" y2=\"40\" stroke=\"#a78bfa\" opacity=\".5\"/><line x1=\"100\" y1=\"55\" x2=\"90\" y2=\"95\" stroke=\"#22c55e\" opacity=\".5\"/><circle cx=\"40\" cy=\"30\" r=\"8\" fill=\"#38bdf8\"/><circle cx=\"100\" cy=\"55\" r=\"10\" fill=\"#67e8f9\"/><circle cx=\"160\" cy=\"40\" r=\"8\" fill=\"#a78bfa\"/><circle cx=\"90\" cy=\"95\" r=\"8\" fill=\"#22c55e\"/></svg></div><div style=\"margin-top:12px;font-size:13px;color:#67e8f9;\">グラフを開く →</div></a>"
+        "content": "<a href=\"/d/go-program-index/grafana-obsidian-program-index\" style=\"display:block;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;text-decoration:none;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(148,163,184,.3);border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Obsidian Graph</div><div style=\"font-size:18px;font-weight:900;margin-top:4px;\">知識グラフ</div><div style=\"margin-top:8px;height:48px;border-radius:8px;background:#0f172a;border:1px solid rgba(56,189,248,.2);overflow:hidden;\"><svg viewBox=\"0 0 160 48\" width=\"100%\" height=\"48\" preserveAspectRatio=\"xMidYMid meet\"><line x1=\"24\" y1=\"14\" x2=\"80\" y2=\"24\" stroke=\"#38bdf8\" opacity=\".5\"/><line x1=\"80\" y1=\"24\" x2=\"136\" y2=\"16\" stroke=\"#a78bfa\" opacity=\".5\"/><circle cx=\"24\" cy=\"14\" r=\"5\" fill=\"#38bdf8\"/><circle cx=\"80\" cy=\"24\" r=\"6\" fill=\"#67e8f9\"/><circle cx=\"136\" cy=\"16\" r=\"5\" fill=\"#a78bfa\"/></svg></div><div style=\"margin-top:6px;font-size:11px;color:#67e8f9;\">開く →</div></a>"
       }
     },
     {
       "id": 202,
       "type": "text",
-      "title": "Runtime Panel",
-      "gridPos": {"h": 9, "w": 13, "x": 11, "y": 4},
+      "title": "",
+      "transparent": true,
+      "gridPos": {"h": 5, "w": 13, "x": 11, "y": 3},
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/go-integrated-surface/integrated-control-surface\" style=\"display:flex;flex-direction:column;justify-content:space-between;height:100%;padding:18px;text-decoration:none;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:16px;color:#fff;box-sizing:border-box;\"><div style=\"font-size:13px;color:#67e8f9;letter-spacing:.12em;\">Grafana Runtime</div><div style=\"font-size:26px;font-weight:900;margin-top:6px;\">Runtime Panel</div><div style=\"margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:12px;\"><div style=\"padding:10px;background:#111827;border-left:3px solid #22c55e;border-radius:10px;\"><div style=\"color:#94a3b8;\">実行許可</div><div style=\"font-weight:800;margin-top:4px;\">AUTHORIZED</div></div><div style=\"padding:10px;background:#111827;border-left:3px solid #f59e0b;border-radius:10px;\"><div style=\"color:#94a3b8;\">保留</div><div style=\"font-weight:800;margin-top:4px;\">HOLD</div></div><div style=\"padding:10px;background:#111827;border-left:3px solid #ef4444;border-radius:10px;\"><div style=\"color:#94a3b8;\">停止</div><div style=\"font-weight:800;margin-top:4px;\">STOP</div></div></div><div style=\"margin-top:12px;font-size:13px;color:#94a3b8;\">統合制御・成立状態へ →</div></a>"
+        "content": "<a href=\"/d/go-integrated-surface/integrated-control-surface\" style=\"display:block;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;text-decoration:none;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#67e8f9;\">Runtime Panel</div><div style=\"font-size:18px;font-weight:900;margin-top:4px;\">統合制御</div><div style=\"margin-top:8px;display:flex;gap:6px;font-size:10px;\"><span style=\"flex:1;padding:6px 4px;background:#111827;border-left:2px solid #22c55e;border-radius:6px;text-align:center;\">許可</span><span style=\"flex:1;padding:6px 4px;background:#111827;border-left:2px solid #f59e0b;border-radius:6px;text-align:center;\">保留</span><span style=\"flex:1;padding:6px 4px;background:#111827;border-left:2px solid #ef4444;border-radius:6px;text-align:center;\">停止</span></div><div style=\"margin-top:6px;font-size:11px;color:#94a3b8;\">開く →</div></a>"
       }
     },
     {
-      "id": 301,
+      "id": 311,
       "type": "text",
-      "title": "4コンソール",
-      "gridPos": {"h": 7, "w": 24, "x": 0, "y": 13},
+      "title": "",
+      "transparent": true,
+      "gridPos": {"h": 4, "w": 6, "x": 0, "y": 8},
       "options": {
         "mode": "html",
-        "content": "<div style=\"height:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:4px;box-sizing:border-box;\"><a href=\"/fleet_operation\" style=\"text-decoration:none;background:#0f172a;border:1px solid #3b82f6;border-bottom:4px solid #3b82f6;border-radius:14px;padding:16px;color:#fff;transition:transform .15s;\"><div style=\"font-size:20px;font-weight:900;\">フリート運用</div><div style=\"margin-top:8px;font-size:12px;color:#94a3b8;\">配車 · 滞留 · 容量</div></a><a href=\"/service_hub\" style=\"text-decoration:none;background:#0f172a;border:1px solid #8b5cf6;border-bottom:4px solid #8b5cf6;border-radius:14px;padding:16px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">サービス拠点</div><div style=\"margin-top:8px;font-size:12px;color:#94a3b8;\">受入 · 充電 · 水素</div></a><a href=\"/life_transaction\" style=\"text-decoration:none;background:#0f172a;border:1px solid #f97316;border-bottom:4px solid #f97316;border-radius:14px;padding:16px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">生活取引</div><div style=\"margin-top:8px;font-size:12px;color:#94a3b8;\">到着予測 · 予約 · 料金</div></a><a href=\"/urban_operation\" style=\"text-decoration:none;background:#0f172a;border:1px solid #22c55e;border-bottom:4px solid #22c55e;border-radius:14px;padding:16px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">都市運行</div><div style=\"margin-top:8px;font-size:12px;color:#94a3b8;\">ODD · 制限 · 同期</div></a></div>"
+        "content": "<a href=\"/fleet_operation\" style=\"display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid #3b82f6;border-bottom:3px solid #3b82f6;border-radius:10px;color:#fff;\"><div style=\"font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">フリート運用</div><div style=\"margin-top:4px;font-size:10px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">配車·滞留</div></a>"
+      }
+    },
+    {
+      "id": 312,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "gridPos": {"h": 4, "w": 6, "x": 6, "y": 8},
+      "options": {
+        "mode": "html",
+        "content": "<a href=\"/service_hub\" style=\"display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid #8b5cf6;border-bottom:3px solid #8b5cf6;border-radius:10px;color:#fff;\"><div style=\"font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">サービス拠点</div><div style=\"margin-top:4px;font-size:10px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">受入·充電</div></a>"
+      }
+    },
+    {
+      "id": 313,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "gridPos": {"h": 4, "w": 6, "x": 12, "y": 8},
+      "options": {
+        "mode": "html",
+        "content": "<a href=\"/life_transaction\" style=\"display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid #f97316;border-bottom:3px solid #f97316;border-radius:10px;color:#fff;\"><div style=\"font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">生活取引</div><div style=\"margin-top:4px;font-size:10px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">予約·料金</div></a>"
+      }
+    },
+    {
+      "id": 314,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "gridPos": {"h": 4, "w": 6, "x": 18, "y": 8},
+      "options": {
+        "mode": "html",
+        "content": "<a href=\"/urban_operation\" style=\"display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid #22c55e;border-bottom:3px solid #22c55e;border-radius:10px;color:#fff;\"><div style=\"font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">都市運行</div><div style=\"margin-top:4px;font-size:10px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">ODD·同期</div></a>"
       }
     },
     {
       "id": 401,
       "type": "text",
-      "title": "ナビゲーション",
-      "gridPos": {"h": 6, "w": 24, "x": 0, "y": 20},
+      "title": "",
+      "transparent": true,
+      "gridPos": {"h": 5, "w": 24, "x": 0, "y": 12},
       "options": {
         "mode": "html",
-        "content": "<div style=\"height:100%;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:4px;box-sizing:border-box;font-size:13px;\"><a href=\"/d/go-integrated-analysis/integrated-control-analysis\" style=\"text-decoration:none;background:#111827;border:1px solid rgba(239,68,68,.35);border-radius:10px;padding:10px 12px;color:#fff;\"><div style=\"font-weight:800;\">崩壊制御アーキテクチャ</div></a><a href=\"/d/mieruka-discovery/mieruka-discovery\" style=\"text-decoration:none;background:#111827;border:1px solid rgba(56,189,248,.3);border-radius:10px;padding:10px 12px;color:#fff;\"><div style=\"font-weight:800;\">機能アーキテクチャ図</div></a><a href=\"/d/mieruka-discovery/mieruka-discovery\" style=\"text-decoration:none;background:#111827;border:1px solid rgba(245,158,11,.35);border-radius:10px;padding:10px 12px;color:#fff;\"><div style=\"font-weight:800;\">シーケンス図</div></a><a href=\"/d/go-business-simulation/business-simulation\" style=\"text-decoration:none;background:#111827;border:1px solid rgba(34,197,94,.3);border-radius:10px;padding:10px 12px;color:#fff;\"><div style=\"font-weight:800;\">収支シミュレーション</div></a><a href=\"/d/go-investment-recovery/investment-recovery-plan\" style=\"text-decoration:none;background:#111827;border:1px solid rgba(20,184,166,.3);border-radius:10px;padding:10px 12px;color:#fff;\"><div style=\"font-weight:800;\">コスト回収計画</div></a><a href=\"/d/go-execution-tasks/execution-tasks\" style=\"text-decoration:none;background:#111827;border:1px solid rgba(148,163,184,.3);border-radius:10px;padding:10px 12px;color:#fff;\"><div style=\"font-weight:800;\">WBS</div></a><a href=\"/d/go-operational-planning/operational-planning\" style=\"text-decoration:none;background:#111827;border:1px solid rgba(59,130,246,.3);border-radius:10px;padding:10px 12px;color:#fff;\"><div style=\"font-weight:800;\">サービス運用</div></a><a href=\"/d/application-toyota-logic/application-for-toyota-parameter-driven-federation-model\" style=\"text-decoration:none;background:#111827;border:1px solid rgba(168,85,247,.3);border-radius:10px;padding:10px 12px;color:#fff;\"><div style=\"font-weight:800;\">PL</div></a><a href=\"/d/go-investment-recovery/investment-recovery-plan\" style=\"text-decoration:none;background:#111827;border:1px solid rgba(251,191,36,.35);border-radius:10px;padding:10px 12px;color:#fff;\"><div style=\"font-weight:800;\">IRR</div></a></div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:6px;padding:2px;\"><a href=\"/d/go-integrated-analysis/integrated-control-analysis\" style=\"display:flex;align-items:center;min-height:0;overflow:hidden;text-decoration:none;background:#111827;border:1px solid rgba(239,68,68,.35);border-radius:8px;padding:6px 8px;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;text-overflow:ellipsis;\">崩壊制御アーキテクチャ</a><a href=\"/d/mieruka-discovery/mieruka-discovery\" style=\"display:flex;align-items:center;min-height:0;overflow:hidden;text-decoration:none;background:#111827;border:1px solid rgba(56,189,248,.3);border-radius:8px;padding:6px 8px;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;text-overflow:ellipsis;\">機能アーキテクチャ図</a><a href=\"/d/mieruka-discovery/mieruka-discovery\" style=\"display:flex;align-items:center;min-height:0;overflow:hidden;text-decoration:none;background:#111827;border:1px solid rgba(245,158,11,.35);border-radius:8px;padding:6px 8px;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;text-overflow:ellipsis;\">シーケンス図</a><a href=\"/d/go-business-simulation/business-simulation\" style=\"display:flex;align-items:center;min-height:0;overflow:hidden;text-decoration:none;background:#111827;border:1px solid rgba(34,197,94,.3);border-radius:8px;padding:6px 8px;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;text-overflow:ellipsis;\">収支シミュレーション</a><a href=\"/d/go-investment-recovery/investment-recovery-plan\" style=\"display:flex;align-items:center;min-height:0;overflow:hidden;text-decoration:none;background:#111827;border:1px solid rgba(20,184,166,.3);border-radius:8px;padding:6px 8px;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;text-overflow:ellipsis;\">コスト回収計画</a><a href=\"/d/go-execution-tasks/execution-tasks\" style=\"display:flex;align-items:center;min-height:0;overflow:hidden;text-decoration:none;background:#111827;border:1px solid rgba(148,163,184,.3);border-radius:8px;padding:6px 8px;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;text-overflow:ellipsis;\">WBS</a><a href=\"/d/go-operational-planning/operational-planning\" style=\"display:flex;align-items:center;min-height:0;overflow:hidden;text-decoration:none;background:#111827;border:1px solid rgba(59,130,246,.3);border-radius:8px;padding:6px 8px;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;text-overflow:ellipsis;\">サービス運用</a><a href=\"/d/application-toyota-logic/application-for-toyota-parameter-driven-federation-model\" style=\"display:flex;align-items:center;min-height:0;overflow:hidden;text-decoration:none;background:#111827;border:1px solid rgba(168,85,247,.3);border-radius:8px;padding:6px 8px;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;text-overflow:ellipsis;\">PL</a><a href=\"/d/go-investment-recovery/investment-recovery-plan\" style=\"display:flex;align-items:center;min-height:0;overflow:hidden;text-decoration:none;background:#111827;border:1px solid rgba(251,191,36,.35);border-radius:8px;padding:6px 8px;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;text-overflow:ellipsis;\">IRR</a></div>"
       }
     }
   ]

@@ -1,5 +1,6 @@
 {
-  "description": "Canonical link map for /runtime Runtime Workspace Router. Grafana display paths only — no embedded logic.",
+  "description": "Canonical link map for /runtime Runtime Workspace Router. Grafana display paths only — no embedded logic. Layout: row3 uses four w=6 panels (311-314); row4 uses 3x3 nav grid in panel 401.",
+  "layoutVersion": 21,
   "runtimeUid": "sa8ljn4",
   "row1": {
     "discovery": "/runtime_discovery",
