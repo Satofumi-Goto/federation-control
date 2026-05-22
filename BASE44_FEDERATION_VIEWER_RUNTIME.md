@@ -84,4 +84,8 @@ Federation Viewer uses **`nmcclain-iframe-panel`** (not Text panel HTML iframe).
 GRAFANA_URL=... GRAFANA_USER=... GRAFANA_PASSWORD=... npm run visual-check
 ```
 
-Checks: Base44 iframe rendered (`iframe[src*=base44.app]`), `runtime_embed=grafana`, no blank iframe, no login redirect, no popup, artifacts under `artifacts/runtime-visual-check/`.
+Checks: Base44 iframe rendered (`iframe[src*=base44.app]`), `#root` height > 0, viewer banner, `runtime_embed=grafana`, no blank iframe, no login redirect, artifacts under `artifacts/runtime-visual-check/`.
+
+## Iframe sizing
+
+Embed mode applies full viewport sizing to `html`, `body`, `#root`, and `FederationViewerShell` (`flex` column, `min-height: 100vh`). Patch: `node scripts/patch-base44-iframe-sizing.mjs <console-repo>`.

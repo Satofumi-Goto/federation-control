@@ -116,18 +116,50 @@ export function getFederationViewerState() {
 const federationViewerCss = `/* Base44 Federation Viewer Runtime — iframe embedded in Grafana */
 html.federation-viewer-runtime,
 html.runtime-embed-grafana {
-  background: #02060c !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #0b1020 !important;
+  overflow: auto !important;
 }
-html.federation-viewer-runtime body {
-  margin: 0;
-  background: #02060c !important;
-  overflow-x: hidden;
+html.federation-viewer-runtime body,
+html.runtime-embed-grafana body {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #0b1020 !important;
+  overflow: auto !important;
+}
+html.federation-viewer-runtime #root,
+html.runtime-embed-grafana #root {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  overflow: visible !important;
+}
+.federation-viewer-root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: auto;
+  background: #0b1020;
+  box-sizing: border-box;
 }
 .federation-viewer-banner {
-  position: fixed;
+  flex: 0 0 auto;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 99999;
   padding: 4px 12px;
   font-size: 10px;
@@ -137,6 +169,24 @@ html.federation-viewer-runtime body {
   border-bottom: 1px solid rgba(56, 189, 248, 0.35);
   pointer-events: none;
   text-align: center;
+}
+.federation-viewer-operational {
+  flex: 1 1 auto;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  box-sizing: border-box;
+}
+html.federation-viewer-runtime [data-federation-viewer-shell],
+html.runtime-embed-grafana [data-federation-viewer-shell] {
+  flex: 1 1 auto;
+  min-height: calc(100vh - 28px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
 html.federation-viewer-runtime [data-federation-blocked="true"],
 html.federation-viewer-runtime .federation-viewer-blocked {
@@ -180,11 +230,11 @@ export default function FederationViewerShell({ children }) {
   }, [state.operationDisabled, state.dispatchExecuteDisabled]);
 
   return (
-    <div className="federation-viewer-root min-h-screen bg-[#02060c]">
+    <div className="federation-viewer-root">
       <div className="federation-viewer-banner">
         Runtime Federation Viewer · read-only · Operational Runtime
       </div>
-      <div className="pt-6" data-federation-viewer-shell>
+      <div className="federation-viewer-operational" data-federation-viewer-shell>
         {children}
       </div>
     </div>

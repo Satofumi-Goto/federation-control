@@ -102,7 +102,7 @@ for (const v of spec.viewers) {
 
 const routesPath = path.join(repoRoot, 'grafana/runtime-workspace-routes.json');
 const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
-routes.layoutVersion = 31;
+routes.layoutVersion = 32;
 routes.description =
   'Canonical link map for /runtime. Row3 opens Federation Viewer dashboards (Grafana overlay + Base44 iframe plugin panel).';
 routes.row3 = Object.fromEntries(

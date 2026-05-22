@@ -71,15 +71,24 @@ async function checkFederationViewerIframe(page, target) {
   const src = await frameEl.getAttribute('src');
   const hasEmbed = src?.includes('runtime_embed=grafana');
   const box = await frameEl.boundingBox();
-  const blank = !box || box.height < 80;
   let loginRedirect = false;
   let iframeLoaded = false;
   let popupDetected = false;
   let viewerBannerVisible = false;
+  let rootHeight = 0;
+  let operationalVisible = false;
   try {
     const frame = page.frameLocator(`iframe[src*="${target.base44Host}"]`);
     await frame.locator('body').waitFor({ state: 'attached', timeout: 45000 });
     iframeLoaded = true;
+    const rootBox = await frame.locator('#root').boundingBox().catch(() => null);
+    rootHeight = rootBox?.height ?? 0;
+    const shellBox = await frame.locator('.federation-viewer-root').boundingBox().catch(() => null);
+    if (!rootHeight && shellBox?.height) rootHeight = shellBox.height;
+    operationalVisible = await frame
+      .locator('[data-federation-viewer-shell]')
+      .isVisible()
+      .catch(() => false);
     const text = (await frame.locator('body').innerText({ timeout: 15000 }).catch(() => '')) || '';
     viewerBannerVisible = await frame
       .locator('.federation-viewer-banner')
@@ -91,6 +100,11 @@ async function checkFederationViewerIframe(page, target) {
   } catch {
     iframeLoaded = false;
   }
+  const blank =
+    !box ||
+    box.height < 120 ||
+    (iframeLoaded && rootHeight < 120) ||
+    (iframeLoaded && !viewerBannerVisible);
   const pages = page.context().pages();
   popupDetected = pages.length > 1;
   return {
@@ -101,6 +115,9 @@ async function checkFederationViewerIframe(page, target) {
     blank,
     popupDetected,
     viewerBannerVisible,
+    rootHeight,
+    operationalVisible,
+    iframeBoxHeight: box?.height ?? 0,
     pluginPanelMissing: false,
     src: src?.slice(0, 120),
   };

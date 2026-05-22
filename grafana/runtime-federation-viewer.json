@@ -8,7 +8,7 @@
     "type": "nmcclain-iframe-panel",
     "pluginVersion": "1.0.1",
     "title": "Base44 Operational Runtime",
-    "gridPos": { "h": 15, "w": 24, "x": 0, "y": 8 },
+    "gridPos": { "h": 18, "w": 24, "x": 0, "y": 8 },
     "forbidden": ["text-panel-html-iframe", "unsafe-html-iframe-embed"]
   },
   "policy": {
