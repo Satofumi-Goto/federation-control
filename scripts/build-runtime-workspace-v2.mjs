@@ -9,7 +9,10 @@ function navCard(href, label, border) {
 }
 
 function consoleCard(href, title, sub, border) {
-  return `<a href="${href}" style="display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid ${border};border-bottom:3px solid ${border};border-radius:10px;color:#fff;"><div style="font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${title}</div><div style="margin-top:4px;font-size:10px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${sub}</div></a>`;
+  const external = href.startsWith('http');
+  const rel = external ? ' rel="noopener noreferrer"' : '';
+  const target = external ? ' target="_blank"' : '';
+  return `<a href="${href}"${target}${rel} style="display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid ${border};border-bottom:3px solid ${border};border-radius:10px;color:#fff;"><div style="font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${title}</div><div style="margin-top:4px;font-size:10px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${sub}</div></a>`;
 }
 
 const r = routes;
@@ -56,7 +59,7 @@ const dashboard = {
     { title: 'Runtime', url: '/d/sa8ljn4/runtime' },
     { title: 'Discovery', url: r.row1.discovery },
     { title: 'Needs翻訳', url: r.row1.needsTranslation },
-    { title: 'アライアンス', url: r.row1.alliance },
+    { title: 'アライメント', url: r.row1.alignment ?? r.row1.alliance },
   ],
   panels: [
     {
@@ -67,7 +70,7 @@ const dashboard = {
       gridPos: { h: 3, w: 24, x: 0, y: 0 },
       options: {
         mode: 'html',
-        content: `<div style="width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:12px;color:#fff;"><div><div style="font-size:28px;font-weight:900;line-height:1.1;">Runtime</div><div style="margin-top:4px;font-size:11px;color:#67e8f9;">都市OS Runtime Workspace Router</div></div><div style="display:flex;gap:20px;flex-shrink:0;"><a href="${r.row1.discovery}" style="text-decoration:none;color:#67e8f9;text-align:center;"><div style="font-size:24px;line-height:1;">🕸️</div><div style="font-size:11px;margin-top:2px;font-weight:700;">Discovery</div></a><a href="${r.row1.needsTranslation}" style="text-decoration:none;color:#fbbf24;text-align:center;"><div style="font-size:24px;line-height:1;">🗣️</div><div style="font-size:11px;margin-top:2px;font-weight:700;">Needs翻訳</div></a><a href="${r.row1.alliance}" style="text-decoration:none;color:#a78bfa;text-align:center;"><div style="font-size:24px;line-height:1;">🤝</div><div style="font-size:11px;margin-top:2px;font-weight:700;">アライアンス</div></a></div></div>`,
+        content: `<div style="width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:12px;color:#fff;"><div><div style="font-size:28px;font-weight:900;line-height:1.1;">Runtime</div><div style="margin-top:4px;font-size:11px;color:#67e8f9;">都市OS Runtime Workspace Router</div></div><div style="display:flex;gap:20px;flex-shrink:0;"><a href="${r.row1.discovery}" style="text-decoration:none;color:#67e8f9;text-align:center;"><div style="font-size:24px;line-height:1;">🕸️</div><div style="font-size:11px;margin-top:2px;font-weight:700;">Discovery</div></a><a href="${r.row1.needsTranslation}" style="text-decoration:none;color:#fbbf24;text-align:center;"><div style="font-size:24px;line-height:1;">🗣️</div><div style="font-size:11px;margin-top:2px;font-weight:700;">Needs翻訳</div></a><a href="${r.row1.alignment ?? r.row1.alliance}" style="text-decoration:none;color:#a78bfa;text-align:center;"><div style="font-size:24px;line-height:1;">🤝</div><div style="font-size:11px;margin-top:2px;font-weight:700;">アライメント</div></a></div></div>`,
       },
     },
     {

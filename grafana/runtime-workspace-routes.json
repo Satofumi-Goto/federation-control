@@ -1,5 +1,5 @@
 {
-  "description": "Canonical link map for /runtime Runtime Workspace Router.",
+  "description": "Canonical link map for /runtime Runtime Workspace Router. Row1–2 and row4 use Grafana. Row3 uses Base44 production Operational Consoles.",
   "layoutVersion": 24,
   "runtimeUid": "sa8ljn4",
   "row1": {
@@ -16,5 +16,26 @@
     "serviceHub": "https://service-hub-console.base44.app",
     "lifeTransaction": "https://life-ledger-link.base44.app",
     "urbanOperation": "https://urban-operation-console.base44.app"
+  },
+  "row3OperationalConsoles": {
+    "provider": "Base44",
+    "environment": "production",
+    "role": "Operational Console — not Grafana native dashboards"
+  },
+  "row4": {
+    "collapseArchitecture": "/d/go-integrated-analysis/integrated-control-analysis",
+    "functionalArchitecture": "/mieruka_discovery",
+    "sequenceDiagram": "/mieruka_discovery",
+    "plSimulation": "/d/go-business-simulation/business-simulation",
+    "costRecoveryPlan": "/d/go-investment-recovery/investment-recovery-plan",
+    "wbs": "/d/go-execution-tasks/execution-tasks",
+    "serviceOperation": "/d/go-operational-planning/operational-planning",
+    "pl": "/d/application-toyota-logic/application-for-toyota-parameter-driven-federation-model",
+    "irr": "/d/go-investment-recovery/investment-recovery-plan"
+  },
+  "row4Layout": {
+    "mode": "grafana-grid-3x3",
+    "panelIds": [401, 402, 403, 404, 405, 406, 407, 408, 409],
+    "gridPos": { "w": 8, "h": 2, "cols": 3, "rows": 3, "y": 12 }
   }
 }
