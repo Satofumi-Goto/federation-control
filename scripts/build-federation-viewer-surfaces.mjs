@@ -5,6 +5,7 @@ const repoRoot = path.resolve('.');
 const specPath = path.join(repoRoot, 'grafana/runtime-federation-viewer.json');
 const spec = JSON.parse(fs.readFileSync(specPath, 'utf8'));
 const outDir = path.join(repoRoot, 'grafana/dashboards');
+const iframeSpec = spec.iframePanel;
 
 function gateColor(gate) {
   if (gate === 'AUTHORIZED') return '#22c55e';
@@ -33,6 +34,25 @@ function iframeSrc(url) {
   return url.includes('?') ? `${url}&${q}` : `${url}?${q}`;
 }
 
+function base44RuntimePanel(src, labelJa) {
+  const { type, pluginVersion, title, gridPos } = iframeSpec;
+  return {
+    id: 20,
+    type,
+    pluginVersion,
+    title: title || 'Base44 Operational Runtime',
+    transparent: false,
+    gridPos: { ...gridPos },
+    options: {
+      src,
+      scaleFactor: 1,
+      disableInteractivity: false,
+    },
+    fieldConfig: { defaults: {}, overrides: [] },
+    description: `${labelJa} — iframe plugin panel (not text/HTML embed)`,
+  };
+}
+
 for (const v of spec.viewers) {
   const src = iframeSrc(v.base44Url);
   const dashboard = {
@@ -44,8 +64,8 @@ for (const v of spec.viewers) {
     version: 1,
     refresh: '30s',
     timezone: 'browser',
-    description: `${v.labelJa} — Grafana Federation overlay + Base44 Operational Runtime (viewer read-only)`,
-    tags: ['runtime', 'federation-viewer', 'grafana-overlay', 'base44-runtime', v.key],
+    description: `${v.labelJa} — Grafana Federation overlay + Base44 Operational Runtime (iframe plugin · viewer read-only)`,
+    tags: ['runtime', 'federation-viewer', 'grafana-overlay', 'base44-runtime', 'iframe-plugin', v.key],
     links: [{ title: 'Runtime', url: `/d/${spec.runtimeRouterUid}/runtime` }],
     panels: [
       {
@@ -59,6 +79,7 @@ for (const v of spec.viewers) {
           content: `<div style="width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid ${v.accent};border-radius:10px;color:#fff;"><div><div style="font-size:10px;color:#67e8f9;">Runtime Federation OS · Overlay</div><div style="font-size:20px;font-weight:900;">${v.labelJa}</div><div style="font-size:10px;color:#cbd5e1;margin-top:2px;">Base44 Operational Runtime · Federation Viewer（read-only）</div></div><a href="/d/${spec.runtimeRouterUid}/runtime" style="text-decoration:none;font-size:10px;font-weight:700;color:#67e8f9;padding:5px 10px;border:1px solid rgba(56,189,248,.35);border-radius:6px;">← Runtime</a></div>`,
         },
       },
+      ...v.grafanaOverlay.map((item, i) => overlayPanel(item, v.accent, 10 + i, i)),
       {
         id: 2,
         type: 'text',
@@ -67,21 +88,10 @@ for (const v of spec.viewers) {
         gridPos: { h: 2, w: 24, x: 0, y: 6 },
         options: {
           mode: 'html',
-          content: `<div style="width:100%;height:100%;padding:6px 10px;background:#111827;border:1px solid rgba(148,163,184,.25);border-radius:8px;color:#94a3b8;font-size:10px;">Grafana: KPI · Collapse · Constraint · Runtime state &nbsp;|&nbsp; Base44: Queue · ETA · Dispatch · Node · Operational UX（iframe · runtime_embed=grafana）</div>`,
+          content: `<div style="width:100%;height:100%;padding:6px 10px;background:#111827;border:1px solid rgba(148,163,184,.25);border-radius:8px;color:#94a3b8;font-size:10px;">Grafana: Queue · KPI · Constraint · Collapse · Runtime state &nbsp;|&nbsp; Base44: Operational Runtime（${iframeSpec.type} · ${spec.embedQuery}）</div>`,
         },
       },
-      ...v.grafanaOverlay.map((item, i) => overlayPanel(item, v.accent, 10 + i, i)),
-      {
-        id: 20,
-        type: 'text',
-        title: '',
-        transparent: true,
-        gridPos: { h: 13, w: 24, x: 0, y: 8 },
-        options: {
-          mode: 'html',
-          content: `<div id="base44-federation-runtime" style="width:100%;height:100%;min-height:560px;overflow:hidden;box-sizing:border-box;background:#02060c;border:1px solid rgba(148,163,184,.2);border-radius:10px;"><iframe data-testid="base44-operational-runtime" src="${src}" title="${v.labelJa} Operational Runtime" style="display:block;width:100%;height:100%;min-height:560px;border:0;border-radius:10px;background:#02060c;" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen"></iframe></div>`,
-        },
-      },
+      base44RuntimePanel(src, v.labelJa),
     ],
   };
 
@@ -92,9 +102,9 @@ for (const v of spec.viewers) {
 
 const routesPath = path.join(repoRoot, 'grafana/runtime-workspace-routes.json');
 const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
-routes.layoutVersion = 30;
+routes.layoutVersion = 31;
 routes.description =
-  'Canonical link map for /runtime. Row3 opens Federation Viewer dashboards (Grafana overlay + Base44 iframe).';
+  'Canonical link map for /runtime. Row3 opens Federation Viewer dashboards (Grafana overlay + Base44 iframe plugin panel).';
 routes.row3 = Object.fromEntries(
   spec.viewers.map((v) => {
     const key =
@@ -119,7 +129,14 @@ routes.row3OperationalSurfaces = {
   integration: 'federation-viewer-runtime',
   canonical: 'grafana/runtime-federation-viewer.json',
   embedQuery: spec.embedQuery,
-  forbidden: ['login-redirect', 'popup-auth', 'native-replacement-only'],
+  iframePanel: iframeSpec.type,
+  forbidden: [
+    'text-panel-html-iframe',
+    'unsafe-html-iframe-embed',
+    'login-redirect',
+    'popup-auth',
+    'native-replacement-only',
+  ],
 };
 fs.writeFileSync(routesPath, `${JSON.stringify(routes, null, 2)}\n`);
 console.log(`Updated ${routesPath}`);

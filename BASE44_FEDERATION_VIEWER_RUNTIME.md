@@ -75,10 +75,12 @@ node scripts/build-federation-viewer-surfaces.mjs
 node scripts/build-runtime-workspace-v2.mjs
 ```
 
+Federation Viewer uses **`nmcclain-iframe-panel`** (not Text panel HTML iframe). Install: `GRAFANA_IFRAME_PANEL.md`.
+
 ## Visual verification
 
 ```bash
 GRAFANA_URL=... GRAFANA_USER=... GRAFANA_PASSWORD=... npm run visual-check
 ```
 
-Checks: iframe present, `runtime_embed=grafana`, no blank iframe, no login redirect in iframe.
+Checks: Base44 iframe rendered (`iframe[src*=base44.app]`), `runtime_embed=grafana`, no blank iframe, no login redirect, no popup, artifacts under `artifacts/runtime-visual-check/`.

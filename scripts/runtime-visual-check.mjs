@@ -48,20 +48,35 @@ async function loginIfNeeded(page) {
   return true;
 }
 
+function runtimeIframeLocator(page, base44Host) {
+  return page.locator(`iframe[src*="${base44Host}"]`);
+}
+
 async function checkFederationViewerIframe(page, target) {
-  const iframe = page.locator('iframe[data-testid="base44-operational-runtime"]');
+  const iframe = runtimeIframeLocator(page, target.base44Host);
   const count = await iframe.count();
   if (count === 0) {
-    return { iframePresent: false, iframeLoaded: false, loginRedirect: false, blank: true };
+    const pluginMissing = await page
+      .locator('text=/plugin not found|Panel plugin not found|nmcclain-iframe-panel/i')
+      .count();
+    return {
+      iframePresent: false,
+      iframeLoaded: false,
+      loginRedirect: false,
+      blank: true,
+      pluginPanelMissing: pluginMissing > 0,
+    };
   }
-  const src = await iframe.first().getAttribute('src');
+  const frameEl = iframe.first();
+  const src = await frameEl.getAttribute('src');
   const hasEmbed = src?.includes('runtime_embed=grafana');
-  const box = await iframe.first().boundingBox();
+  const box = await frameEl.boundingBox();
   const blank = !box || box.height < 80;
   let loginRedirect = false;
   let iframeLoaded = false;
+  let popupDetected = false;
   try {
-    const frame = page.frameLocator('iframe[data-testid="base44-operational-runtime"]');
+    const frame = page.frameLocator(`iframe[src*="${target.base44Host}"]`);
     await frame.locator('body').waitFor({ state: 'attached', timeout: 45000 });
     iframeLoaded = true;
     const text = (await frame.locator('body').innerText({ timeout: 15000 }).catch(() => '')) || '';
@@ -71,12 +86,16 @@ async function checkFederationViewerIframe(page, target) {
   } catch {
     iframeLoaded = false;
   }
+  const pages = page.context().pages();
+  popupDetected = pages.length > 1;
   return {
     iframePresent: true,
     iframeLoaded,
     hasEmbed,
     loginRedirect,
     blank,
+    popupDetected,
+    pluginPanelMissing: false,
     src: src?.slice(0, 120),
   };
 }
@@ -108,14 +127,14 @@ async function main() {
       const iframeFile = path.join(outDir, `${target.name}-iframe.png`);
       try {
         await page.goto(url, { waitUntil: 'networkidle', timeout: 120000 });
-        await page.waitForTimeout(3000);
+        await page.waitForTimeout(4000);
         const bodyText = await page.locator('body').innerText();
         let iframeCheck = {};
         if (target.checkIframe) {
           iframeCheck = await checkFederationViewerIframe(page, target);
           if (iframeCheck.iframePresent) {
             try {
-              await page.locator('iframe[data-testid="base44-operational-runtime"]').first().screenshot({
+              await runtimeIframeLocator(page, target.base44Host).first().screenshot({
                 path: iframeFile,
               });
               iframeCheck.screenshot = path.basename(iframeFile);
@@ -135,7 +154,9 @@ async function main() {
               iframeCheck.hasEmbed &&
               iframeCheck.iframeLoaded &&
               !iframeCheck.loginRedirect &&
-              !iframeCheck.blank));
+              !iframeCheck.blank &&
+              !iframeCheck.popupDetected &&
+              !iframeCheck.pluginPanelMissing));
         await page.screenshot({ path: file, fullPage: true });
         manifest.results.push({
           name: target.name,

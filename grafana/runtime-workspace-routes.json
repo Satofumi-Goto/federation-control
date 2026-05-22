@@ -1,6 +1,6 @@
 {
-  "description": "Canonical link map for /runtime. Row3 opens Federation Viewer dashboards (Grafana overlay + Base44 iframe).",
-  "layoutVersion": 30,
+  "description": "Canonical link map for /runtime. Row3 opens Federation Viewer dashboards (Grafana overlay + Base44 iframe plugin panel).",
+  "layoutVersion": 31,
   "runtimeUid": "sa8ljn4",
   "row1": {
     "discovery": "/runtime_discovery",
@@ -40,7 +40,10 @@
     "integration": "federation-viewer-runtime",
     "canonical": "grafana/runtime-federation-viewer.json",
     "embedQuery": "runtime_embed=grafana",
+    "iframePanel": "nmcclain-iframe-panel",
     "forbidden": [
+      "text-panel-html-iframe",
+      "unsafe-html-iframe-embed",
       "login-redirect",
       "popup-auth",
       "native-replacement-only"

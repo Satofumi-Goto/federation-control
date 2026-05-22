@@ -12,6 +12,7 @@ on:
       - 'scripts/deploy-runtime-workspace.mjs'
       - 'scripts/build-operational-surfaces.mjs'
       - 'scripts/build-federation-viewer-surfaces.mjs'
+      - 'scripts/ensure-grafana-iframe-plugin.mjs'
       - 'scripts/build-runtime-workspace-v2.mjs'
       - 'scripts/runtime-visual-check.mjs'
   workflow_dispatch:
@@ -29,8 +30,15 @@ jobs:
         with:
           node-version: 20
 
-      - name: Build Federation Viewer surfaces (Grafana overlay + Base44 iframe)
+      - name: Build Federation Viewer surfaces (Grafana overlay + iframe plugin panel)
         run: node scripts/build-federation-viewer-surfaces.mjs
+
+      - name: Ensure Grafana IFrame panel plugin
+        env:
+          GRAFANA_TOKEN: ${{ secrets.GRAFANA_TOKEN }}
+          GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
+        run: node scripts/ensure-grafana-iframe-plugin.mjs
+        continue-on-error: true
 
       - name: Build Runtime Workspace router
         run: node scripts/build-runtime-workspace-v2.mjs

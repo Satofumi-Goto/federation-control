@@ -1,9 +1,16 @@
 {
   "description": "Runtime Federation Viewer — Grafana overlay + Base44 Operational Runtime iframe (runtime_embed=grafana).",
-  "layoutVersion": 1,
+  "layoutVersion": 2,
   "runtimeRouterUid": "sa8ljn4",
   "grafanaOrigin": "https://satofumigoto.grafana.net",
   "embedQuery": "runtime_embed=grafana",
+  "iframePanel": {
+    "type": "nmcclain-iframe-panel",
+    "pluginVersion": "1.0.1",
+    "title": "Base44 Operational Runtime",
+    "gridPos": { "h": 15, "w": 24, "x": 0, "y": 8 },
+    "forbidden": ["text-panel-html-iframe", "unsafe-html-iframe-embed"]
+  },
   "policy": {
     "grafanaRole": "federation-os-overlay",
     "base44Role": "operational-runtime-console",

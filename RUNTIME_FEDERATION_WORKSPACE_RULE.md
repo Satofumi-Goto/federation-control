@@ -45,7 +45,7 @@ Operational Console handles:
 
 `/runtime` row3 opens **Federation Viewer** dashboards only (not raw Base44 URLs).
 
-Row3 = Grafana Federation overlay + Base44 Operational Runtime iframe (`runtime_embed=grafana`). See `grafana/runtime-federation-viewer.json` and `BASE44_FEDERATION_VIEWER_RUNTIME.md`.
+Row3 = Grafana Federation overlay + Base44 Operational Runtime in **`nmcclain-iframe-panel`** (`runtime_embed=grafana`). No Text panel HTML iframe. See `grafana/runtime-federation-viewer.json`, `GRAFANA_IFRAME_PANEL.md`, and `BASE44_FEDERATION_VIEWER_RUNTIME.md`.
 
 Current row3 targets (canonical):
 
