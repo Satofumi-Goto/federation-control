@@ -1,6 +1,7 @@
 {
   "description": "Runtime Federation Viewer — Grafana overlay + Base44 Operational Runtime iframe (runtime_embed=grafana).",
-  "layoutVersion": 2,
+  "layoutVersion": 3,
+  "iframeSandboxAudit": "nmcclain-iframe-panel v1.0.1 has no HTML sandbox attribute — see GRAFANA_IFRAME_SANDBOX_INVESTIGATION.md",
   "runtimeRouterUid": "sa8ljn4",
   "grafanaOrigin": "https://satofumigoto.grafana.net",
   "embedQuery": "runtime_embed=grafana",
