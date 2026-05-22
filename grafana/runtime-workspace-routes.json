@@ -1,6 +1,6 @@
 {
-  "description": "Canonical link map for /runtime Runtime Workspace Router. Row3 opens Grafana embed dashboards (iframe Base44); no direct Base44 URL from Router.",
-  "layoutVersion": 26,
+  "description": "Canonical link map for /runtime Runtime Workspace Router. Row3 uses Grafana dashboards only; no Base44 iframe or direct Base44 URL from Router.",
+  "layoutVersion": 27,
   "runtimeUid": "sa8ljn4",
   "row1": {
     "discovery": "/runtime_discovery",
@@ -12,29 +12,33 @@
     "runtimePanel": "/d/go-integrated-surface/integrated-control-surface"
   },
   "row3": {
-    "fleetOperation": "/d/runtime-fleet-embed/runtime-fleet-embed",
-    "serviceHub": "/d/runtime-service-hub-embed/runtime-service-hub-embed",
-    "lifeTransaction": "/d/runtime-life-embed/runtime-life-embed",
-    "urbanOperation": "/d/runtime-urban-embed/runtime-urban-embed"
+    "fleetOperation": "/d/component-propagation-board/component-propagation-federation-board",
+    "serviceHub": "/d/runtime-service-hub-console/service-hub-console",
+    "lifeTransaction": "/d/sa8ljn4/runtime",
+    "urbanOperation": "/d/go-operational-planning/operational-planning"
+  },
+  "row3ConsoleMeta": {
+    "fleetOperation": {
+      "sub": "Grafana · 伝播連携ボード",
+      "pending": false
+    },
+    "serviceHub": {
+      "sub": "Grafana · Service Hub Console",
+      "pending": false
+    },
+    "lifeTransaction": {
+      "sub": "準備中 / 接続未確定",
+      "pending": true
+    },
+    "urbanOperation": {
+      "sub": "Grafana · 運行計画",
+      "pending": false
+    }
   },
   "row3OperationalConsoles": {
-    "provider": "Base44",
-    "environment": "production",
-    "integration": "grafana-iframe-embed",
-    "embedDashboards": {
-      "fleet": "runtime-fleet-embed",
-      "serviceHub": "runtime-service-hub-embed",
-      "life": "runtime-life-embed",
-      "urban": "runtime-urban-embed"
-    },
-    "base44EmbedTargets": {
-      "fleet": "https://fleet-operations-console.base44.app?runtime_embed=grafana",
-      "serviceHub": "https://service-hub-console.base44.app?runtime_embed=grafana",
-      "life": "https://life-ledger-link.base44.app?runtime_embed=grafana",
-      "urban": "https://urban-operation-console.base44.app?runtime_embed=grafana"
-    },
-    "grafanaEmbedOrigin": "https://satofumigoto.grafana.net",
-    "iframePolicy": "Content-Security-Policy frame-ancestors https://satofumigoto.grafana.net 'self'"
+    "provider": "Grafana",
+    "integration": "grafana-native-router",
+    "forbidden": ["base44-iframe", "base44-direct-url", "base44-login-redirect"]
   },
   "row4": {
     "collapseArchitecture": "/d/go-integrated-analysis/integrated-control-analysis",

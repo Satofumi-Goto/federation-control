@@ -43,42 +43,24 @@ Operational Console handles:
 
 /runtime must not expose Base44 preview URLs.
 
-`/runtime` row3 must not link directly to Base44 production URLs.
+`/runtime` row3 must not link to Base44 (iframe, direct URL, or login redirect).
 
----
+Row3 uses Grafana dashboards only. If no Grafana console exists yet, the card stays on `/runtime` as **準備中 / 接続未確定**.
 
-## Base44 Integration Rule
+Current row3 targets (canonical):
 
-Base44 Operational Consoles are embedded inside Grafana Runtime Workspace via iframe embed dashboards.
-
-Router flow:
-
-`/runtime` → `/d/runtime-*-embed/*` → iframe(Base44 production app)
-
-Embed dashboards (canonical):
-
-* `runtime-fleet-embed`
-* `runtime-service-hub-embed`
-* `runtime-life-embed`
-* `runtime-urban-embed`
+* フリート運用 → `/d/component-propagation-board/component-propagation-federation-board`
+* サービス拠点 → `/d/runtime-service-hub-console/service-hub-console`
+* 生活取引 → `/d/sa8ljn4/runtime` (pending)
+* 都市運行 → `/d/go-operational-planning/operational-planning`
 
 Do not expose:
 
+* Base44 iframe embed from Router
 * direct Base44 URL navigation from Router panels
-* external preview feeling
 * Base44 login redirect as the primary entry
 * app launcher dialog
 * external app routing feeling
-
-### Base44 iframe embed (Operational Console repos)
-
-Each Base44 production app must allow embedding from `https://satofumigoto.grafana.net`:
-
-* `Content-Security-Policy: frame-ancestors https://satofumigoto.grafana.net 'self'`
-* Do not enable Base44 Dashboard **Prevent Embedding** (X-Frame-Options)
-* iframe URL uses `?runtime_embed=grafana` for in-shell login return
-
-See `BASE44_OPERATIONAL_CONSOLE_IFRAME_EMBED.md`.
 
 ---
 

@@ -8,11 +8,15 @@ function navCard(href, label, border) {
   return `<a href="${href}" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:4px 6px;text-decoration:none;background:#111827;border:1px solid ${border};border-radius:8px;color:#fff;font-size:10px;font-weight:700;text-align:center;line-height:1.25;">${label}</a>`;
 }
 
-function consoleCard(href, title, sub, border) {
-  const external = href.startsWith('http');
-  const rel = external ? ' rel="noopener noreferrer"' : '';
-  const target = external ? ' target="_blank"' : '';
-  return `<a href="${href}"${target}${rel} style="display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid ${border};border-bottom:3px solid ${border};border-radius:10px;color:#fff;"><div style="font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${title}</div><div style="margin-top:4px;font-size:10px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${sub}</div></a>`;
+function consoleCard(href, title, sub, border, { pending = false } = {}) {
+  const subColor = pending ? '#fbbf24' : '#94a3b8';
+  const bg = pending ? '#1e293b' : '#0f172a';
+  const borderStyle = pending ? 'dashed' : 'solid';
+  return `<a href="${href}" style="display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:${bg};border:1px ${borderStyle} ${border};border-bottom:3px ${borderStyle} ${border};border-radius:10px;color:#fff;"><div style="font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${title}</div><div style="margin-top:4px;font-size:10px;color:${subColor};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${sub}</div></a>`;
+}
+
+function row3Meta(routes, key) {
+  return routes.row3ConsoleMeta?.[key] ?? { sub: 'Grafana', pending: false };
 }
 
 const r = routes;
@@ -50,7 +54,7 @@ const dashboard = {
   schemaVersion: 39,
   style: 'dark',
   title: 'Runtime',
-  version: 22,
+  version: 23,
   refresh: '30s',
   timezone: 'browser',
   description: '都市OS Runtime Workspace Router',
@@ -103,7 +107,13 @@ const dashboard = {
       gridPos: { h: 4, w: 6, x: 0, y: 8 },
       options: {
         mode: 'html',
-        content: consoleCard(row3.fleetOperation, 'フリート運用', 'Runtime内表示', '#3b82f6'),
+        content: consoleCard(
+          row3.fleetOperation,
+          'フリート運用',
+          row3Meta(r, 'fleetOperation').sub,
+          '#3b82f6',
+          { pending: row3Meta(r, 'fleetOperation').pending }
+        ),
       },
     },
     {
@@ -114,7 +124,13 @@ const dashboard = {
       gridPos: { h: 4, w: 6, x: 6, y: 8 },
       options: {
         mode: 'html',
-        content: consoleCard(row3.serviceHub, 'サービス拠点', 'Runtime内表示', '#8b5cf6'),
+        content: consoleCard(
+          row3.serviceHub,
+          'サービス拠点',
+          row3Meta(r, 'serviceHub').sub,
+          '#8b5cf6',
+          { pending: row3Meta(r, 'serviceHub').pending }
+        ),
       },
     },
     {
@@ -125,7 +141,13 @@ const dashboard = {
       gridPos: { h: 4, w: 6, x: 12, y: 8 },
       options: {
         mode: 'html',
-        content: consoleCard(row3.lifeTransaction, '生活取引', 'Runtime内表示', '#f97316'),
+        content: consoleCard(
+          row3.lifeTransaction,
+          '生活取引',
+          row3Meta(r, 'lifeTransaction').sub,
+          '#f97316',
+          { pending: row3Meta(r, 'lifeTransaction').pending }
+        ),
       },
     },
     {
@@ -136,7 +158,13 @@ const dashboard = {
       gridPos: { h: 4, w: 6, x: 18, y: 8 },
       options: {
         mode: 'html',
-        content: consoleCard(row3.urbanOperation, '都市運行', 'Runtime内表示', '#22c55e'),
+        content: consoleCard(
+          row3.urbanOperation,
+          '都市運行',
+          row3Meta(r, 'urbanOperation').sub,
+          '#22c55e',
+          { pending: row3Meta(r, 'urbanOperation').pending }
+        ),
       },
     },
     ...navPanels,
