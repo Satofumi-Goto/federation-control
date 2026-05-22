@@ -1,0 +1,25 @@
+{
+  "rule": "Runtime is the only English application name allowed in Runtime Federation OS UI.",
+  "header": {
+    "left": "Runtime",
+    "right": [
+      {
+        "title": "Discovery",
+        "icon": "🕸️"
+      },
+      {
+        "title": "Needs翻訳",
+        "icon": "🗣️"
+      },
+      {
+        "title": "アライメント",
+        "icon": "🧩"
+      }
+    ]
+  },
+  "forbidden": [
+    "Federation rename drift",
+    "Alliance naming",
+    "Handshake icon"
+  ]
+}
