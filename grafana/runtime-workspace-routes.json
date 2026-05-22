@@ -1,7 +1,33 @@
 {
-  "description": "Canonical link map for /runtime Runtime Workspace Router. Grafana display paths only — no embedded logic. Layout: row3 uses four w=6 panels (311-314); row4 uses 3x3 nav grid in panel 401.",
-  "layoutVersion": 21,
+  "description": "Canonical link map for /runtime Runtime Workspace Router. All paths reference dashboards defined in this repository (uid + Grafana slug).",
+  "layoutVersion": 22,
   "runtimeUid": "sa8ljn4",
+  "dashboards": {
+    "component-propagation-board": {
+      "title": "Component Propagation Federation Board",
+      "path": "/d/component-propagation-board/component-propagation-federation-board"
+    },
+    "external-service-hub-development-view": {
+      "title": "External Service Hub Development View",
+      "path": "/d/external-service-hub-development-view/external-service-hub-development-view"
+    },
+    "user-need-impact-board": {
+      "title": "Need Translation",
+      "path": "/d/user-need-impact-board/need-translation"
+    },
+    "go-operational-planning": {
+      "title": "Operational Planning",
+      "path": "/d/go-operational-planning/operational-planning"
+    },
+    "runtime-discovery-command-center": {
+      "title": "Runtime Discovery Command Center",
+      "path": "/runtime_discovery"
+    },
+    "mieruka-discovery": {
+      "title": "既存runtime Discovery",
+      "path": "/mieruka_discovery"
+    }
+  },
   "row1": {
     "discovery": "/runtime_discovery",
     "needsTranslation": "/need_impact",
@@ -12,20 +38,25 @@
     "runtimePanel": "/d/go-integrated-surface/integrated-control-surface"
   },
   "row3": {
-    "fleetOperation": "/fleet_operation",
-    "serviceHub": "/service_hub",
-    "lifeTransaction": "/life_transaction",
-    "urbanOperation": "/urban_operation"
+    "fleetOperation": "/d/component-propagation-board/component-propagation-federation-board",
+    "serviceHub": "/d/external-service-hub-development-view/external-service-hub-development-view",
+    "lifeTransaction": "/d/user-need-impact-board/need-translation",
+    "urbanOperation": "/d/go-operational-planning/operational-planning"
   },
   "row4": {
     "collapseArchitecture": "/d/go-integrated-analysis/integrated-control-analysis",
-    "functionalArchitecture": "/d/mieruka-discovery/mieruka-discovery",
-    "sequenceDiagram": "/d/mieruka-discovery/mieruka-discovery",
+    "functionalArchitecture": "/mieruka_discovery",
+    "sequenceDiagram": "/mieruka_discovery",
     "plSimulation": "/d/go-business-simulation/business-simulation",
     "costRecoveryPlan": "/d/go-investment-recovery/investment-recovery-plan",
     "wbs": "/d/go-execution-tasks/execution-tasks",
     "serviceOperation": "/d/go-operational-planning/operational-planning",
     "pl": "/d/application-toyota-logic/application-for-toyota-parameter-driven-federation-model",
     "irr": "/d/go-investment-recovery/investment-recovery-plan"
+  },
+  "row4Layout": {
+    "mode": "grafana-grid-3x3",
+    "panelIds": [401, 402, 403, 404, 405, 406, 407, 408, 409],
+    "gridPos": { "w": 8, "h": 2, "cols": 3, "rows": 3, "y": 12 }
   }
 }
