@@ -23,7 +23,7 @@ jobs:
             "dashboard":
           EOF
 
-          cat grafana/dashboards/runtime-federation-os.json >> payload.json
+          cat grafana/runtime-workspace-v2.json >> payload.json
 
           cat >> payload.json <<'EOF'
           ,
