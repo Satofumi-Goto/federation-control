@@ -88,9 +88,10 @@ const federationViewerRuntimeJs = `import {
   isFederationViewerMode,
   isOperationDisabled,
   FEDERATION_VIEWER_USER,
+  establishFederationViewerSession,
 } from './runtimeFederationEmbed';
 
-export { FEDERATION_VIEWER_USER };
+export { FEDERATION_VIEWER_USER, establishFederationViewerSession };
 
 export function getFederationViewerState() {
   const active = isFederationViewerMode();
