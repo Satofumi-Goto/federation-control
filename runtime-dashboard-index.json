@@ -1,0 +1,46 @@
+{
+  "description": "Canonical dashboard inventory for Runtime Federation OS. Do not guess dashboard URLs.",
+  "runtimeRoot": "/d/sa8ljn4/runtime",
+  "rule": "Use only verified Grafana dashboard uid/slug entries. Unknown destinations must not be guessed.",
+  "dashboards": {
+    "runtimeRoot": {
+      "title": "Runtime",
+      "path": "/d/sa8ljn4/runtime",
+      "role": "Runtime Federation OS root"
+    },
+    "fleetOperationSurface": {
+      "title": "フリート運用",
+      "path": "/d/component-propagation-board/component-propagation-federation-board",
+      "role": "Fleet operational federation surface",
+      "verified": true
+    },
+    "serviceHubSurface": {
+      "title": "サービス拠点",
+      "path": null,
+      "role": "Service Hub operational federation surface",
+      "verified": false
+    },
+    "lifeTransactionSurface": {
+      "title": "生活取引",
+      "path": null,
+      "role": "Life transaction operational federation surface",
+      "verified": false
+    },
+    "urbanOperationSurface": {
+      "title": "都市運行",
+      "path": null,
+      "role": "Urban operation operational federation surface",
+      "verified": false
+    },
+    "obsidianGraph": {
+      "title": "知識グラフ",
+      "path": "/d/go-program-index/grafana-obsidian-program-index",
+      "role": "Obsidian knowledge graph"
+    },
+    "runtimePanel": {
+      "title": "統合制御",
+      "path": "/d/go-integrated-surface/integrated-control-surface",
+      "role": "Runtime panel"
+    }
+  }
+}
