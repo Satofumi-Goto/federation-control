@@ -2,8 +2,12 @@ name: Grafana Sync
 
 on:
   push:
+    branches:
+      - main
     paths:
-      - 'grafana/**'
+      - 'grafana/runtime-workspace-v2.json'
+      - 'scripts/deploy-runtime-workspace.mjs'
+      - '.github/workflows/grafana-sync.yml'
 
 jobs:
   sync:
@@ -12,13 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Push Runtime Workspace to Grafana
-        run: |
-          curl -X POST \
-            "$GRAFANA_URL/api/dashboards/db" \
-            -H "Authorization: Bearer $GRAFANA_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d @grafana/runtime-workspace-v2.json
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Deploy Runtime Workspace to Grafana
         env:
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
           GRAFANA_TOKEN: ${{ secrets.GRAFANA_TOKEN }}
+          DASHBOARD_PATH: grafana/runtime-workspace-v2.json
+        run: node scripts/deploy-runtime-workspace.mjs

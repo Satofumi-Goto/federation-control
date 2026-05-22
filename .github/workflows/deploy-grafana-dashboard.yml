@@ -7,6 +7,8 @@ on:
     paths:
       - 'grafana/**'
       - '.github/workflows/**'
+      - 'scripts/deploy-runtime-workspace.mjs'
+  workflow_dispatch:
 
 jobs:
   deploy-dashboard:
@@ -16,28 +18,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Prepare Grafana payload
-        run: |
-          cat > payload.json <<'EOF'
-          {
-            "dashboard":
-          EOF
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-          cat grafana/runtime-workspace-v2.json >> payload.json
+      - name: Validate runtime workspace JSON
+        run: node -e "const d=require('./grafana/runtime-workspace-v2.json'); if(!d.uid||!Array.isArray(d.panels)) { console.error('invalid dashboard'); process.exit(1); } console.log('ok', d.uid, d.panels.length, 'panels');"
 
-          cat >> payload.json <<'EOF'
-          ,
-            "overwrite": true,
-            "folderId": 0
-          }
-          EOF
-
-      - name: Deploy dashboard to Grafana
+      - name: Deploy Runtime Workspace to Grafana
         env:
           GRAFANA_TOKEN: ${{ secrets.GRAFANA_TOKEN }}
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
-        run: |
-          curl -X POST "$GRAFANA_URL/api/dashboards/db" \
-          -H "Authorization: Bearer $GRAFANA_TOKEN" \
-          -H "Content-Type: application/json" \
-          --data @payload.json
+          DASHBOARD_PATH: grafana/runtime-workspace-v2.json
+        run: node scripts/deploy-runtime-workspace.mjs
