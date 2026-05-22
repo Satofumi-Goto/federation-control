@@ -1,6 +1,6 @@
 {
-  "description": "Canonical link map for /runtime Runtime Workspace Router. Row3 opens v1-base Operational App Surface dashboards.",
-  "layoutVersion": 29,
+  "description": "Canonical link map for /runtime. Row3 opens Federation Viewer dashboards (Grafana overlay + Base44 iframe).",
+  "layoutVersion": 30,
   "runtimeUid": "sa8ljn4",
   "row1": {
     "discovery": "/runtime_discovery",
@@ -12,34 +12,39 @@
     "runtimePanel": "/d/go-integrated-surface/integrated-control-surface"
   },
   "row3": {
-    "fleetOperation": "/d/component-propagation-board/component-propagation-federation-board",
-    "serviceHub": "/d/runtime-service-hub-console/service-hub-console",
-    "lifeTransaction": "/d/runtime-life-ledger-surface/life-transaction-operational-surface",
-    "urbanOperation": "/d/go-operational-planning/operational-planning"
+    "fleetOperation": "/d/runtime-fleet-federation-viewer/fleet-federation-viewer",
+    "serviceHub": "/d/runtime-service-hub-federation-viewer/service-hub-federation-viewer",
+    "lifeTransaction": "/d/runtime-life-federation-viewer/life-federation-viewer",
+    "urbanOperation": "/d/runtime-urban-federation-viewer/urban-federation-viewer"
   },
   "row3ConsoleMeta": {
     "fleetOperation": {
-      "sub": "Operational Surface · 伝播連携",
+      "sub": "Federation Viewer · フリート",
       "pending": false
     },
     "serviceHub": {
-      "sub": "Operational Surface · 拠点",
+      "sub": "Federation Viewer · 拠点",
       "pending": false
     },
     "lifeTransaction": {
-      "sub": "Operational Surface · 生活取引",
+      "sub": "Federation Viewer · 生活取引",
       "pending": false
     },
     "urbanOperation": {
-      "sub": "Operational Surface · 都市運行",
+      "sub": "Federation Viewer · 都市運行",
       "pending": false
     }
   },
   "row3OperationalSurfaces": {
-    "provider": "Grafana",
-    "integration": "v1-base-operational-app-surface",
-    "canonical": "grafana/runtime-operational-surfaces.json",
-    "forbidden": ["base44-iframe", "base44-direct-url", "base44-login-redirect", "pending-card", "sparse-zero-generation"]
+    "provider": "Grafana+Base44",
+    "integration": "federation-viewer-runtime",
+    "canonical": "grafana/runtime-federation-viewer.json",
+    "embedQuery": "runtime_embed=grafana",
+    "forbidden": [
+      "login-redirect",
+      "popup-auth",
+      "native-replacement-only"
+    ]
   },
   "row4": {
     "collapseArchitecture": "/d/go-integrated-analysis/integrated-control-analysis",
@@ -54,7 +59,23 @@
   },
   "row4Layout": {
     "mode": "grafana-grid-3x3",
-    "panelIds": [401, 402, 403, 404, 405, 406, 407, 408, 409],
-    "gridPos": { "w": 8, "h": 2, "cols": 3, "rows": 3, "y": 12 }
+    "panelIds": [
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409
+    ],
+    "gridPos": {
+      "w": 8,
+      "h": 2,
+      "cols": 3,
+      "rows": 3,
+      "y": 12
+    }
   }
 }

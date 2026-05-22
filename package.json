@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build:operational-surfaces": "node scripts/build-operational-surfaces.mjs",
+    "build:federation-viewer": "node scripts/build-federation-viewer-surfaces.mjs",
     "build:runtime-workspace": "node scripts/build-runtime-workspace-v2.mjs",
     "visual-check": "node scripts/runtime-visual-check.mjs"
   },

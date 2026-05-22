@@ -43,26 +43,25 @@ Operational Console handles:
 
 /runtime must not expose Base44 preview URLs.
 
-`/runtime` row3 must not link to Base44 (iframe, direct URL, or login redirect).
+`/runtime` row3 opens **Federation Viewer** dashboards only (not raw Base44 URLs).
 
-Row3 uses **Grafana Operational App Surface** dashboards (see `grafana/runtime-operational-surfaces.json`).
+Row3 = Grafana Federation overlay + Base44 Operational Runtime iframe (`runtime_embed=grafana`). See `grafana/runtime-federation-viewer.json` and `BASE44_FEDERATION_VIEWER_RUNTIME.md`.
 
-Current row3 targets (canonical, v1-base Operational Surface):
+Current row3 targets (canonical):
 
-* フリート運用 → `/d/component-propagation-board/component-propagation-federation-board`
-* サービス拠点 → `/d/runtime-service-hub-console/service-hub-console`
-* 生活取引 → `/d/runtime-life-ledger-surface/life-transaction-operational-surface`
-* 都市運行 → `/d/go-operational-planning/operational-planning`
+* フリート運用 → `/d/runtime-fleet-federation-viewer/fleet-federation-viewer`
+* サービス拠点 → `/d/runtime-service-hub-federation-viewer/service-hub-federation-viewer`
+* 生活取引 → `/d/runtime-life-federation-viewer/life-federation-viewer`
+* 都市運行 → `/d/runtime-urban-federation-viewer/urban-federation-viewer`
 
-Build: `node scripts/build-operational-surfaces.mjs` from `grafana/runtime-operational-surfaces.json`.
+Build: `node scripts/build-federation-viewer-surfaces.mjs` then `node scripts/build-runtime-workspace-v2.mjs`.
 
-Grafana = Federation OS / Operational Surface. Base44 = Operational UX (not replaced by Surface).
+Grafana = Federation OS overlay. Base44 = Operational Runtime (viewer read-only in iframe). Not native console replacement.
 
 Do not expose:
 
-* Base44 iframe embed from Router
-* direct Base44 URL navigation from Router panels
-* Base44 login redirect as the primary entry
+* Base44 login redirect / popup auth inside federation viewer iframe
+* direct Base44 production URL from Router panels
 * 準備中カード as row3 destination
 * app launcher dialog
 * external app routing feeling

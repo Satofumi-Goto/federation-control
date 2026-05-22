@@ -11,6 +11,7 @@ on:
       - '.github/workflows/**'
       - 'scripts/deploy-runtime-workspace.mjs'
       - 'scripts/build-operational-surfaces.mjs'
+      - 'scripts/build-federation-viewer-surfaces.mjs'
       - 'scripts/build-runtime-workspace-v2.mjs'
       - 'scripts/runtime-visual-check.mjs'
   workflow_dispatch:
@@ -28,8 +29,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Build Operational App Surface dashboards
-        run: node scripts/build-operational-surfaces.mjs
+      - name: Build Federation Viewer surfaces (Grafana overlay + Base44 iframe)
+        run: node scripts/build-federation-viewer-surfaces.mjs
 
       - name: Build Runtime Workspace router
         run: node scripts/build-runtime-workspace-v2.mjs
@@ -44,16 +45,12 @@ jobs:
           DASHBOARD_PATH: grafana/runtime-workspace-v2.json
         run: node scripts/deploy-runtime-workspace.mjs
 
-      - name: Deploy Operational App Surface dashboards
+      - name: Deploy Federation Viewer dashboards
         env:
           GRAFANA_TOKEN: ${{ secrets.GRAFANA_TOKEN }}
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
         run: |
-          for f in \
-            grafana/dashboards/component-propagation-operational-surface.json \
-            grafana/dashboards/service-hub-operational-surface.json \
-            grafana/dashboards/life-transaction-operational-surface.json \
-            grafana/dashboards/urban-operation-operational-surface.json; do
+          for f in grafana/dashboards/runtime-*-federation-viewer.json; do
             DASHBOARD_PATH="$f" node scripts/deploy-runtime-workspace.mjs
           done
 

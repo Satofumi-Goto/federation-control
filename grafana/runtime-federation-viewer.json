@@ -1,0 +1,78 @@
+{
+  "description": "Runtime Federation Viewer — Grafana overlay + Base44 Operational Runtime iframe (runtime_embed=grafana).",
+  "layoutVersion": 1,
+  "runtimeRouterUid": "sa8ljn4",
+  "grafanaOrigin": "https://satofumigoto.grafana.net",
+  "embedQuery": "runtime_embed=grafana",
+  "policy": {
+    "grafanaRole": "federation-os-overlay",
+    "base44Role": "operational-runtime-console",
+    "forbidden": ["operational-console-native-replacement", "base44-login-redirect", "popup-auth", "top-level-redirect"]
+  },
+  "viewers": [
+    {
+      "key": "fleet",
+      "uid": "runtime-fleet-federation-viewer",
+      "slug": "fleet-federation-viewer",
+      "labelJa": "フリート運用",
+      "accent": "#3b82f6",
+      "base44Url": "https://fleet-operations-console.base44.app",
+      "outputFile": "runtime-fleet-federation-viewer.json",
+      "grafanaOverlay": [
+        { "labelJa": "配車", "labelEn": "Dispatch", "value": "12", "detail": "Dispatch state", "gate": "AUTHORIZED" },
+        { "labelJa": "キュー", "labelEn": "Queue", "value": "4", "detail": "Queue depth", "gate": "AUTHORIZED" },
+        { "labelJa": "ETA", "labelEn": "ETA", "value": "18分", "detail": "Fleet ETA", "gate": "AUTHORIZED" },
+        { "labelJa": "制約", "labelEn": "Constraint", "value": "監視", "detail": "ODD·容量", "gate": "HOLD" },
+        { "labelJa": "Runtime", "labelEn": "Runtime State", "value": "同期", "detail": "Federation OS", "gate": "AUTHORIZED" }
+      ]
+    },
+    {
+      "key": "serviceHub",
+      "uid": "runtime-service-hub-federation-viewer",
+      "slug": "service-hub-federation-viewer",
+      "labelJa": "サービス拠点",
+      "accent": "#8b5cf6",
+      "base44Url": "https://service-hub-console.base44.app",
+      "outputFile": "runtime-service-hub-federation-viewer.json",
+      "grafanaOverlay": [
+        { "labelJa": "受入", "labelEn": "Acceptance", "value": "安定", "detail": "Acceptance", "gate": "HOLD" },
+        { "labelJa": "Node", "labelEn": "Node", "value": "82%", "detail": "Node state", "gate": "AUTHORIZED" },
+        { "labelJa": "Energy", "labelEn": "Energy", "value": "同期", "detail": "Energy margin", "gate": "AUTHORIZED" },
+        { "labelJa": "同期", "labelEn": "Sync", "value": "OK", "detail": "Synchronization", "gate": "AUTHORIZED" },
+        { "labelJa": "制約", "labelEn": "Constraint", "value": "境界内", "detail": "Constraint", "gate": "AUTHORIZED" }
+      ]
+    },
+    {
+      "key": "life",
+      "uid": "runtime-life-federation-viewer",
+      "slug": "life-federation-viewer",
+      "labelJa": "生活取引",
+      "accent": "#f97316",
+      "base44Url": "https://life-ledger-link.base44.app",
+      "outputFile": "runtime-life-federation-viewer.json",
+      "grafanaOverlay": [
+        { "labelJa": "予約", "labelEn": "Reservation", "value": "28", "detail": "Reservation", "gate": "AUTHORIZED" },
+        { "labelJa": "ETA", "labelEn": "ETA", "value": "14分", "detail": "ETA", "gate": "AUTHORIZED" },
+        { "labelJa": "需要", "labelEn": "Demand", "value": "中", "detail": "Demand", "gate": "HOLD" },
+        { "labelJa": "料金", "labelEn": "Pricing", "value": "確定", "detail": "Pricing", "gate": "AUTHORIZED" },
+        { "labelJa": "取引", "labelEn": "Transaction", "value": "進行", "detail": "Transaction state", "gate": "AUTHORIZED" }
+      ]
+    },
+    {
+      "key": "urban",
+      "uid": "runtime-urban-federation-viewer",
+      "slug": "urban-federation-viewer",
+      "labelJa": "都市運行",
+      "accent": "#22c55e",
+      "base44Url": "https://urban-operation-console.base44.app",
+      "outputFile": "runtime-urban-federation-viewer.json",
+      "grafanaOverlay": [
+        { "labelJa": "ODD", "labelEn": "ODD", "value": "許容", "detail": "ODD", "gate": "AUTHORIZED" },
+        { "labelJa": "制約", "labelEn": "Restriction", "value": "監視", "detail": "Restriction", "gate": "HOLD" },
+        { "labelJa": "波及", "labelEn": "Propagation", "value": "局所", "detail": "Propagation", "gate": "HOLD" },
+        { "labelJa": "崩壊", "labelEn": "Collapse", "value": "安定", "detail": "Collapse control", "gate": "AUTHORIZED" },
+        { "labelJa": "Runtime", "labelEn": "Runtime State", "value": "同期", "detail": "Runtime state", "gate": "AUTHORIZED" }
+      ]
+    }
+  ]
+}

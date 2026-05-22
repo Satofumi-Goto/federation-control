@@ -8,11 +8,31 @@ const grafanaPassword = process.env.GRAFANA_PASSWORD || '';
 const outDir = path.resolve(process.env.VISUAL_CHECK_OUT || 'artifacts/runtime-visual-check');
 
 const targets = [
-  { name: 'runtime-router', path: '/d/sa8ljn4/runtime' },
-  { name: 'fleet-operational-surface', path: '/d/component-propagation-board/component-propagation-federation-board' },
-  { name: 'service-hub-operational-surface', path: '/d/runtime-service-hub-console/service-hub-console' },
-  { name: 'life-transaction-operational-surface', path: '/d/runtime-life-ledger-surface/life-transaction-operational-surface' },
-  { name: 'urban-operation-operational-surface', path: '/d/go-operational-planning/operational-planning' },
+  { name: 'runtime-router', path: '/d/sa8ljn4/runtime', checkIframe: false },
+  {
+    name: 'fleet-federation-viewer',
+    path: '/d/runtime-fleet-federation-viewer/fleet-federation-viewer',
+    checkIframe: true,
+    base44Host: 'fleet-operations-console.base44.app',
+  },
+  {
+    name: 'service-hub-federation-viewer',
+    path: '/d/runtime-service-hub-federation-viewer/service-hub-federation-viewer',
+    checkIframe: true,
+    base44Host: 'service-hub-console.base44.app',
+  },
+  {
+    name: 'life-federation-viewer',
+    path: '/d/runtime-life-federation-viewer/life-federation-viewer',
+    checkIframe: true,
+    base44Host: 'life-ledger-link.base44.app',
+  },
+  {
+    name: 'urban-federation-viewer',
+    path: '/d/runtime-urban-federation-viewer/urban-federation-viewer',
+    checkIframe: true,
+    base44Host: 'urban-operation-console.base44.app',
+  },
 ];
 
 async function loginIfNeeded(page) {
@@ -28,6 +48,39 @@ async function loginIfNeeded(page) {
   return true;
 }
 
+async function checkFederationViewerIframe(page, target) {
+  const iframe = page.locator('iframe[data-testid="base44-operational-runtime"]');
+  const count = await iframe.count();
+  if (count === 0) {
+    return { iframePresent: false, iframeLoaded: false, loginRedirect: false, blank: true };
+  }
+  const src = await iframe.first().getAttribute('src');
+  const hasEmbed = src?.includes('runtime_embed=grafana');
+  const box = await iframe.first().boundingBox();
+  const blank = !box || box.height < 80;
+  let loginRedirect = false;
+  let iframeLoaded = false;
+  try {
+    const frame = page.frameLocator('iframe[data-testid="base44-operational-runtime"]');
+    await frame.locator('body').waitFor({ state: 'attached', timeout: 45000 });
+    iframeLoaded = true;
+    const text = (await frame.locator('body').innerText({ timeout: 15000 }).catch(() => '')) || '';
+    loginRedirect =
+      /log in to continue|sign in to continue|redirecting to login|サインインして続行/i.test(text) &&
+      !/Federation Viewer|federation-viewer|read-only/i.test(text);
+  } catch {
+    iframeLoaded = false;
+  }
+  return {
+    iframePresent: true,
+    iframeLoaded,
+    hasEmbed,
+    loginRedirect,
+    blank,
+    src: src?.slice(0, 120),
+  };
+}
+
 async function main() {
   fs.mkdirSync(outDir, { recursive: true });
   const manifest = {
@@ -40,7 +93,6 @@ async function main() {
   if (!grafanaUrl) {
     manifest.error = 'GRAFANA_URL is required';
     fs.writeFileSync(path.join(outDir, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
-    console.error(manifest.error);
     process.exit(1);
   }
 
@@ -53,29 +105,49 @@ async function main() {
     for (const target of targets) {
       const url = `${grafanaUrl}${target.path}?kiosk`;
       const file = path.join(outDir, `${target.name}.png`);
+      const iframeFile = path.join(outDir, `${target.name}-iframe.png`);
       try {
         await page.goto(url, { waitUntil: 'networkidle', timeout: 120000 });
-        await page.waitForTimeout(2500);
+        await page.waitForTimeout(3000);
         const bodyText = await page.locator('body').innerText();
-        const blocked =
-          /base44\.app/i.test(bodyText) ||
-          /log in|login|サインイン|Sign in/i.test(bodyText) && !/Operational App Surface/i.test(bodyText);
+        let iframeCheck = {};
+        if (target.checkIframe) {
+          iframeCheck = await checkFederationViewerIframe(page, target);
+          if (iframeCheck.iframePresent) {
+            try {
+              await page.locator('iframe[data-testid="base44-operational-runtime"]').first().screenshot({
+                path: iframeFile,
+              });
+              iframeCheck.screenshot = path.basename(iframeFile);
+            } catch {
+              iframeCheck.screenshot = null;
+            }
+          }
+        }
+        const topLevelLogin =
+          !target.checkIframe &&
+          /log in|login|サインイン/i.test(bodyText) &&
+          !/Runtime Federation/i.test(bodyText);
+        const ok =
+          !topLevelLogin &&
+          (!target.checkIframe ||
+            (iframeCheck.iframePresent &&
+              iframeCheck.hasEmbed &&
+              iframeCheck.iframeLoaded &&
+              !iframeCheck.loginRedirect &&
+              !iframeCheck.blank));
         await page.screenshot({ path: file, fullPage: true });
         manifest.results.push({
           name: target.name,
           url,
           screenshot: path.basename(file),
-          ok: !blocked,
-          blocked,
+          ok,
+          iframeCheck,
+          topLevelLogin,
         });
-        console.log(`${blocked ? 'WARN' : 'OK'} ${target.name} -> ${file}`);
+        console.log(`${ok ? 'OK' : 'WARN'} ${target.name}`);
       } catch (err) {
-        manifest.results.push({
-          name: target.name,
-          url,
-          ok: false,
-          error: err.message,
-        });
+        manifest.results.push({ name: target.name, url, ok: false, error: err.message });
         console.error(`FAIL ${target.name}:`, err.message);
       }
     }
@@ -91,7 +163,7 @@ async function main() {
   };
   fs.writeFileSync(path.join(outDir, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
   if (failed.length > 0) {
-    console.error(`Visual check: ${failed.length} target(s) failed or blocked`);
+    console.error(`Visual check: ${failed.length} failed`);
     process.exit(1);
   }
   console.log('Visual check passed');
