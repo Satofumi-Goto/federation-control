@@ -89,3 +89,7 @@ Checks: Base44 iframe rendered (`iframe[src*=base44.app]`), `#root` height > 0, 
 ## Iframe sizing
 
 Embed mode applies full viewport sizing to `html`, `body`, `#root`, and `FederationViewerShell` (`flex` column, `min-height: 100vh`). Patch: `node scripts/patch-base44-iframe-sizing.mjs <console-repo>`.
+
+## Iframe sandbox (nmcclain-iframe-panel)
+
+Plugin v1.0.1 does **not** set HTML `sandbox` on `<iframe>`. Blank UI is not from missing `allow-same-origin` on the plugin. Diagnostics: `GRAFANA_IFRAME_SANDBOX_INVESTIGATION.md`. Base44 logs: `[federation-viewer]` in DevTools. Storage fallback: `window.__FEDERATION_VIEWER_RUNTIME__`. Patch: `node scripts/patch-base44-federation-diagnostics.mjs <console-repo>`.

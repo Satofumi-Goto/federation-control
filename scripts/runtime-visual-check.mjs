@@ -69,6 +69,8 @@ async function checkFederationViewerIframe(page, target) {
   }
   const frameEl = iframe.first();
   const src = await frameEl.getAttribute('src');
+  const sandboxAttr = await frameEl.getAttribute('sandbox');
+  const allowAttr = await frameEl.getAttribute('allow');
   const hasEmbed = src?.includes('runtime_embed=grafana');
   const box = await frameEl.boundingBox();
   let loginRedirect = false;
@@ -77,10 +79,29 @@ async function checkFederationViewerIframe(page, target) {
   let viewerBannerVisible = false;
   let rootHeight = 0;
   let operationalVisible = false;
+  let embedState = null;
   try {
     const frame = page.frameLocator(`iframe[src*="${target.base44Host}"]`);
     await frame.locator('body').waitFor({ state: 'attached', timeout: 45000 });
     iframeLoaded = true;
+    embedState = await frame.locator('body').evaluate(() => {
+      let federationViewerSession = null;
+      let sessionStorageError = null;
+      try {
+        federationViewerSession = sessionStorage.getItem('federationViewerSession');
+      } catch (e) {
+        sessionStorageError = e?.message || String(e);
+      }
+      return {
+        federationViewerSession,
+        sessionStorageError,
+        windowRuntimeFlag: Boolean(window.__FEDERATION_VIEWER_RUNTIME__),
+        dataRuntimeEmbed: document.documentElement.getAttribute('data-runtime-embed'),
+        bannerPresent: Boolean(document.querySelector('.federation-viewer-banner')),
+        bodyTextLength: (document.body?.innerText || '').length,
+        rootChildren: document.getElementById('root')?.childElementCount ?? 0,
+      };
+    });
     const rootBox = await frame.locator('#root').boundingBox().catch(() => null);
     rootHeight = rootBox?.height ?? 0;
     const shellBox = await frame.locator('.federation-viewer-root').boundingBox().catch(() => null);
@@ -90,10 +111,13 @@ async function checkFederationViewerIframe(page, target) {
       .isVisible()
       .catch(() => false);
     const text = (await frame.locator('body').innerText({ timeout: 15000 }).catch(() => '')) || '';
-    viewerBannerVisible = await frame
-      .locator('.federation-viewer-banner')
-      .isVisible()
-      .catch(() => /Federation Viewer|read-only/i.test(text));
+    viewerBannerVisible =
+      embedState?.bannerPresent ||
+      (await frame
+        .locator('.federation-viewer-banner')
+        .isVisible()
+        .catch(() => false)) ||
+      /Federation Viewer|read-only/i.test(text);
     loginRedirect =
       /log in to continue|sign in to continue|redirecting to login|サインインして続行/i.test(text) &&
       !/Federation Viewer|federation-viewer|read-only/i.test(text);
@@ -119,6 +143,13 @@ async function checkFederationViewerIframe(page, target) {
     operationalVisible,
     iframeBoxHeight: box?.height ?? 0,
     pluginPanelMissing: false,
+    sandbox: sandboxAttr,
+    allow: allowAttr,
+    sandboxRestrictsStorage:
+      Boolean(sandboxAttr) &&
+      !sandboxAttr.includes('allow-same-origin') &&
+      !sandboxAttr.includes('allow-scripts'),
+    embedState,
     src: src?.slice(0, 120),
   };
 }

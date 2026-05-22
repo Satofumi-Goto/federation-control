@@ -15,6 +15,7 @@ on:
       - 'scripts/ensure-grafana-iframe-plugin.mjs'
       - 'scripts/build-runtime-workspace-v2.mjs'
       - 'scripts/runtime-visual-check.mjs'
+      - 'scripts/diagnose-federation-iframe-sandbox.mjs'
   workflow_dispatch:
 
 jobs:
@@ -82,6 +83,15 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install chromium --with-deps
 
+      - name: Iframe sandbox diagnostics
+        env:
+          GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
+          GRAFANA_USER: ${{ secrets.GRAFANA_USER }}
+          GRAFANA_PASSWORD: ${{ secrets.GRAFANA_PASSWORD }}
+          DIAGNOSTIC_OUT: artifacts/federation-iframe-sandbox
+        run: node scripts/diagnose-federation-iframe-sandbox.mjs
+        continue-on-error: true
+
       - name: Runtime visual verification loop
         env:
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
@@ -96,5 +106,7 @@ jobs:
         if: always()
         with:
           name: runtime-visual-check
-          path: artifacts/runtime-visual-check/
+          path: |
+            artifacts/runtime-visual-check/
+            artifacts/federation-iframe-sandbox/
           if-no-files-found: warn

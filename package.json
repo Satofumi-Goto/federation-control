@@ -8,6 +8,8 @@
     "ensure:grafana-iframe-plugin": "node scripts/ensure-grafana-iframe-plugin.mjs",
     "patch:base44-auth-guard": "node scripts/patch-base44-auth-guard-order.mjs",
     "patch:base44-iframe-sizing": "node scripts/patch-base44-iframe-sizing.mjs",
+    "patch:base44-federation-diagnostics": "node scripts/patch-base44-federation-diagnostics.mjs",
+    "diagnose:iframe-sandbox": "node scripts/diagnose-federation-iframe-sandbox.mjs",
     "build:runtime-workspace": "node scripts/build-runtime-workspace-v2.mjs",
     "visual-check": "node scripts/runtime-visual-check.mjs"
   },
