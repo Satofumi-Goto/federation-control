@@ -32,3 +32,10 @@ jobs:
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
           DASHBOARD_PATH: grafana/runtime-workspace-v2.json
         run: node scripts/deploy-runtime-workspace.mjs
+
+      - name: Deploy Service Hub Console to Grafana
+        env:
+          GRAFANA_TOKEN: ${{ secrets.GRAFANA_TOKEN }}
+          GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
+          DASHBOARD_PATH: grafana/dashboards/service-hub-console.json
+        run: node scripts/deploy-runtime-workspace.mjs

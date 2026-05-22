@@ -1,15 +1,22 @@
 {
   "description": "Canonical link map for /runtime Runtime Workspace Router. All paths reference dashboards defined in this repository (uid + Grafana slug).",
-  "layoutVersion": 22,
+  "layoutVersion": 23,
   "runtimeUid": "sa8ljn4",
   "dashboards": {
     "component-propagation-board": {
       "title": "Component Propagation Federation Board",
       "path": "/d/component-propagation-board/component-propagation-federation-board"
     },
+    "runtime-service-hub-console": {
+      "title": "サービス拠点",
+      "path": "/d/runtime-service-hub-console/service-hub-console",
+      "role": "Service Hub Runtime Workspace (Grafana native)"
+    },
     "external-service-hub-development-view": {
       "title": "External Service Hub Development View",
-      "path": "/d/external-service-hub-development-view/external-service-hub-development-view"
+      "path": "/d/external-service-hub-development-view/external-service-hub-development-view",
+      "deprecated": true,
+      "replacedBy": "runtime-service-hub-console"
     },
     "user-need-impact-board": {
       "title": "Need Translation",
@@ -39,7 +46,7 @@
   },
   "row3": {
     "fleetOperation": "/d/component-propagation-board/component-propagation-federation-board",
-    "serviceHub": "/d/external-service-hub-development-view/external-service-hub-development-view",
+    "serviceHub": "/d/runtime-service-hub-console/service-hub-console",
     "lifeTransaction": "/d/user-need-impact-board/need-translation",
     "urbanOperation": "/d/go-operational-planning/operational-planning"
   },
