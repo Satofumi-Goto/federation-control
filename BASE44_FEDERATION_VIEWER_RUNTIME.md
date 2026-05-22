@@ -21,20 +21,21 @@ Activates on Base44:
 - federation viewer mode (read-only)
 - federation session (no login redirect)
 
-## Auth bypass (iframe)
+## Auth guard order (critical)
+
+Correct order:
+
+1. URL `runtime_embed=grafana` (sync: `index.html` + `federationViewerBootstrap.js`)
+2. `sessionStorage.federationViewerSession=true` + `base44_federation_viewer_session`
+3. `AuthContext` / `ProtectedRoute` auth bypass — **before** `redirectToLogin`
+4. Operational Runtime render (Queue, ETA, Constraint, Dispatch, Node)
 
 Forbidden when `runtime_embed=grafana`:
 
-- login redirect
-- popup auth
-- external auth window
-- top-level redirect
+- `redirectToLogin` / popup auth / top-level auth redirect
+- auth guard running before embed detection
 
-Allowed:
-
-- embedded federation session (`sessionStorage`)
-- existing token reuse
-- viewer rendering without `redirectToLogin`
+Patch: `node scripts/patch-base44-auth-guard-order.mjs <console-repo>`
 
 ## Viewer behavior
 

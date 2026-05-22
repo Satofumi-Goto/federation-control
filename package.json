@@ -6,6 +6,7 @@
     "build:operational-surfaces": "node scripts/build-operational-surfaces.mjs",
     "build:federation-viewer": "node scripts/build-federation-viewer-surfaces.mjs",
     "ensure:grafana-iframe-plugin": "node scripts/ensure-grafana-iframe-plugin.mjs",
+    "patch:base44-auth-guard": "node scripts/patch-base44-auth-guard-order.mjs",
     "build:runtime-workspace": "node scripts/build-runtime-workspace-v2.mjs",
     "visual-check": "node scripts/runtime-visual-check.mjs"
   },

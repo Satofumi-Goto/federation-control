@@ -416,3 +416,4 @@ When \`runtime_embed=grafana\`:
 );
 
 console.log('Done:', root);
+console.log('Run: node scripts/patch-base44-auth-guard-order.mjs', root);

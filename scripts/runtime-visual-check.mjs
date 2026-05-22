@@ -75,11 +75,16 @@ async function checkFederationViewerIframe(page, target) {
   let loginRedirect = false;
   let iframeLoaded = false;
   let popupDetected = false;
+  let viewerBannerVisible = false;
   try {
     const frame = page.frameLocator(`iframe[src*="${target.base44Host}"]`);
     await frame.locator('body').waitFor({ state: 'attached', timeout: 45000 });
     iframeLoaded = true;
     const text = (await frame.locator('body').innerText({ timeout: 15000 }).catch(() => '')) || '';
+    viewerBannerVisible = await frame
+      .locator('.federation-viewer-banner')
+      .isVisible()
+      .catch(() => /Federation Viewer|read-only/i.test(text));
     loginRedirect =
       /log in to continue|sign in to continue|redirecting to login|サインインして続行/i.test(text) &&
       !/Federation Viewer|federation-viewer|read-only/i.test(text);
@@ -95,6 +100,7 @@ async function checkFederationViewerIframe(page, target) {
     loginRedirect,
     blank,
     popupDetected,
+    viewerBannerVisible,
     pluginPanelMissing: false,
     src: src?.slice(0, 120),
   };
@@ -156,7 +162,8 @@ async function main() {
               !iframeCheck.loginRedirect &&
               !iframeCheck.blank &&
               !iframeCheck.popupDetected &&
-              !iframeCheck.pluginPanelMissing));
+              !iframeCheck.pluginPanelMissing &&
+              iframeCheck.viewerBannerVisible));
         await page.screenshot({ path: file, fullPage: true });
         manifest.results.push({
           name: target.name,
