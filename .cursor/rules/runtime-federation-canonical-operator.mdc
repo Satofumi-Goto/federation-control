@@ -1,0 +1,50 @@
+---
+description: Runtime Federation Canonical Operator — read canonical docs first, execute GitHub→Grafana pipeline autonomously
+alwaysApply: true
+---
+
+# Runtime Federation Canonical Operator
+
+## Canonical sources (read first, highest priority)
+
+Before any Runtime Federation change, read repository canonical markdown in this order:
+
+1. `CANONICAL_DEVELOPMENT_OPERATION.md`
+2. `RUNTIME_WORKSPACE_INTEGRATION_TASK.md`
+3. `RUNTIME_FEDERATION_WORKSPACE_RULE.md`
+4. `boundary/COLLAPSE_RESPONSIBILITY_FEDERATION.md`
+5. `RUNTIME_WORKSPACE_LAYOUT.md`
+
+Conversation-only decisions are invalid. Fix decisions in GitHub Canonical, not in chat memory.
+
+## Roles
+
+| Layer | System | Role |
+|-------|--------|------|
+| Canonical | GitHub | Long-term Runtime Memory |
+| Runtime Federation OS | Grafana | 都市OS Runtime Federation Workspace |
+| Operational Console | Base44 | dispatch, queue, workflow, modal UX |
+
+## Workspace semantics
+
+- **Runtime Workspace** = 都市OS Runtime Federation Workspace
+- **`/runtime`** = Runtime Workspace Router (navigation only; no embedded operational logic)
+- **Top subject** = Collapse (not Runtime introduction)
+- Do not PowerPoint-ize Runtime Top; do not expose Base44 preview URLs, iframe-first UX, or app-launcher feeling
+
+## Change pipeline (execute autonomously when asked)
+
+1. **Canonical confirm** — reconcile with the five docs above and `grafana/runtime-workspace-routes.json`
+2. **Repository update** — use `user-filesystem` MCP (server name `filesystem`) within allowed paths
+3. **git commit** — only when the user requests a commit, or the task explicitly requires shipping canonical state
+4. **git push** — after commit when deployment is required
+5. **Grafana deploy** — `grafana/runtime-workspace-v2.json` and related dashboards via `scripts/deploy-runtime-workspace.mjs` / `.github/workflows/deploy-grafana-dashboard.yml`
+
+Validate dashboard JSON (`uid`, `panels[]`) before deploy. Use `/d/{uid}/{slug}` from repo dashboards only; no placeholder slugs (e.g. `/service_hub`).
+
+## Grafana implementation constraints
+
+- Native Grafana text/grid panels; Japanese UI labels
+- Router: 4-row layout per `RUNTIME_WORKSPACE_INTEGRATION_TASK.md`
+- Service Hub and consoles: Grafana-native panels, not external preview markdown tables
+- Split panels on Grafana grid when HTML stacking breaks layout (consoles 4×w=6, nav 3×3)
