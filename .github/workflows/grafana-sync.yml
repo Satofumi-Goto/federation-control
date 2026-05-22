@@ -1,0 +1,24 @@
+name: Grafana Sync
+
+on:
+  push:
+    paths:
+      - 'grafana/**'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Push Runtime Workspace to Grafana
+        run: |
+          curl -X POST \
+            "$GRAFANA_URL/api/dashboards/db" \
+            -H "Authorization: Bearer $GRAFANA_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d @grafana/runtime-workspace-v2.json
+        env:
+          GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
+          GRAFANA_TOKEN: ${{ secrets.GRAFANA_TOKEN }}
