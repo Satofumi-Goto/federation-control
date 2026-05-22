@@ -3,13 +3,13 @@
   "editable": true,
   "schemaVersion": 39,
   "style": "dark",
-  "title": "「見える化」実行盤",
-  "version": 17,
+  "title": "Runtime",
+  "version": 18,
   "refresh": "10s",
   "timezone": "browser",
-  "tags": ["mieruka-board", "urban-os-runtime", "conflict-visualization", "runtime-discovery"],
+  "tags": ["runtime", "urban-os-runtime", "conflict-visualization", "runtime-discovery"],
   "links": [
-    {"title": "mieruka_board", "url": "/mieruka_board"},
+    {"title": "Runtime", "url": "/Runtime"},
     {"title": "Runtime Discovery", "url": "/runtime_discovery"},
     {"title": "Need Impact", "url": "/need_impact"}
   ],
@@ -21,7 +21,7 @@
       "gridPos": {"h": 4, "w": 24, "x": 0, "y": 0},
       "options": {
         "mode": "html",
-        "content": "<div style=\"height:100%;padding:20px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:18px;color:#fff;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;\"><div style=\"font-size:42px;font-weight:900;color:#f8fafc;\">「見える化」実行盤</div><div style=\"margin-top:14px;font-size:18px;line-height:1.7;color:#cbd5e1;\">既存巨大runtime群を、<br/>Conflictを可視化しながら、<br/>協調・移行・統合実行する盤</div><div style=\"margin-top:14px;font-size:13px;color:#67e8f9;letter-spacing:.12em;\">/mieruka_board</div></div>"
+        "content": "<div style=\"position:relative;height:100%;padding:20px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:18px;color:#fff;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;\"><div style=\"position:absolute;top:18px;right:120px;text-align:center;\"><a href=\"/runtime_discovery\" style=\"text-decoration:none;color:#67e8f9;\"><div style=\"font-size:38px;filter:drop-shadow(0 0 10px rgba(34,211,238,.6));\">🕸️</div><div style=\"font-size:12px;margin-top:2px;\">Discovery</div></a></div><div style=\"position:absolute;top:18px;right:28px;text-align:center;\"><a href=\"/need_impact\" style=\"text-decoration:none;color:#fbbf24;\"><div style=\"font-size:38px;filter:drop-shadow(0 0 10px rgba(251,191,36,.6));\">🗣️</div><div style=\"font-size:12px;margin-top:2px;\">Need</div></a></div><div style=\"font-size:46px;font-weight:900;color:#f8fafc;\">Runtime</div><div style=\"margin-top:14px;font-size:18px;line-height:1.7;color:#cbd5e1;\">既存巨大runtime群を、<br/>Conflictを可視化しながら、<br/>協調・移行・統合実行する盤</div><div style=\"margin-top:14px;font-size:13px;color:#67e8f9;letter-spacing:.12em;\">/Runtime</div></div>"
       }
     },
     {
@@ -52,16 +52,6 @@
       "options": {
         "mode": "html",
         "content": "<div style=\"height:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:6px;box-sizing:border-box;\"><div style=\"background:#0f172a;border:1px solid #3b82f6;border-bottom:5px solid #3b82f6;border-radius:16px;padding:20px;color:#fff;\"><div style=\"font-size:24px;font-weight:900;\">フリート運用</div><div style=\"margin-top:10px;color:#94a3b8;line-height:1.7;\">配車 / 滞留 / Fleet Capacity<br/>トヨタ中心runtime</div></div><div style=\"background:#0f172a;border:1px solid #8b5cf6;border-bottom:5px solid #8b5cf6;border-radius:16px;padding:20px;color:#fff;\"><div style=\"font-size:24px;font-weight:900;\">サービス拠点</div><div style=\"margin-top:10px;color:#94a3b8;line-height:1.7;\">Acceptance / Charging / H2<br/>トヨタ中心runtime</div></div><div style=\"background:#0f172a;border:1px solid #22c55e;border-bottom:5px solid #22c55e;border-radius:16px;padding:20px;color:#fff;\"><div style=\"font-size:24px;font-weight:900;\">都市運行</div><div style=\"margin-top:10px;color:#94a3b8;line-height:1.7;\">ODD / Restriction / Collapse<br/>トヨタ中心runtime</div></div><div style=\"background:#0f172a;border:1px solid #f97316;border-bottom:5px solid #f97316;border-radius:16px;padding:20px;color:#fff;\"><div style=\"font-size:24px;font-weight:900;\">生活取引</div><div style=\"margin-top:10px;color:#94a3b8;line-height:1.7;\">ETA / Reservation / Pricing<br/>トヨタ中心runtime</div></div></div>"
-      }
-    },
-    {
-      "id": 301,
-      "type": "text",
-      "title": "成果物カード",
-      "gridPos": {"h": 10, "w": 24, "x": 0, "y": 22},
-      "options": {
-        "mode": "html",
-        "content": "<div style=\"height:100%;box-sizing:border-box;padding:14px;background:#02060c;border:1px solid rgba(148,163,184,.18);border-radius:18px;color:#fff;\"><div style=\"display:grid;grid-template-columns:repeat(5,1fr);gap:14px;height:100%;\"><a href=\"/runtime_discovery\" style=\"display:block;text-decoration:none;color:#fff;background:#0f172a;border:1px solid #38bdf8;border-bottom:5px solid #38bdf8;border-radius:16px;padding:18px;\"><div style=\"font-size:22px;font-weight:900;\">Discovery</div><div style=\"margin-top:10px;color:#cbd5e1;font-size:14px;line-height:1.6;\">周辺runtime群・ローカルsystem・Excel運用を発掘する。</div><div style=\"margin-top:16px;color:#67e8f9;font-size:13px;\">/runtime_discovery</div></a><a href=\"/need_impact\" style=\"display:block;text-decoration:none;color:#fff;background:#0f172a;border:1px solid #f59e0b;border-bottom:5px solid #f59e0b;border-radius:16px;padding:18px;\"><div style=\"font-size:22px;font-weight:900;\">課題一覧</div><div style=\"margin-top:10px;color:#cbd5e1;font-size:14px;line-height:1.6;\">4コンソール中心runtimeに対する改善Needを管理する。</div><div style=\"margin-top:16px;color:#fde68a;font-size:13px;\">/need_impact</div></a><div style=\"background:#0f172a;border:1px solid #ef4444;border-bottom:5px solid #ef4444;border-radius:16px;padding:18px;\"><div style=\"font-size:22px;font-weight:900;\">アーキテクチャ</div><div style=\"margin-top:10px;color:#cbd5e1;font-size:14px;line-height:1.6;\">Federation Runtime Architecture 全体版。</div></div><div style=\"background:#0f172a;border:1px solid #8b5cf6;border-bottom:5px solid #8b5cf6;border-radius:16px;padding:18px;\"><div style=\"font-size:22px;font-weight:900;\">シーケンス</div><div style=\"margin-top:10px;color:#cbd5e1;font-size:14px;line-height:1.6;\">Runtime flow / propagation / synchronization sequence。</div></div><div style=\"background:#0f172a;border:1px solid #22c55e;border-bottom:5px solid #22c55e;border-radius:16px;padding:18px;\"><div style=\"font-size:22px;font-weight:900;\">PL / IRR</div><div style=\"margin-top:10px;color:#cbd5e1;font-size:14px;line-height:1.6;\">Need改善に対する費用対効果・IRR・PL影響。</div></div></div></div>"
       }
     }
   ]
