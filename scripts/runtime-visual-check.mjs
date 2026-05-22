@@ -1,10 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright';
+import {
+  ensureGrafanaLogin,
+  resolveGrafanaAuthEnv,
+} from './lib/grafana-github-oauth-login.mjs';
 
-const grafanaUrl = (process.env.GRAFANA_URL || '').replace(/\/$/, '');
-const grafanaUser = process.env.GRAFANA_USER || '';
-const grafanaPassword = process.env.GRAFANA_PASSWORD || '';
+const { grafanaUrl } = resolveGrafanaAuthEnv();
 const outDir = path.resolve(process.env.VISUAL_CHECK_OUT || 'artifacts/runtime-visual-check');
 
 const targets = [
@@ -35,19 +37,6 @@ const targets = [
   },
 ];
 
-async function loginIfNeeded(page) {
-  if (!grafanaUser || !grafanaPassword) return false;
-  await page.goto(`${grafanaUrl}/login`, { waitUntil: 'networkidle', timeout: 120000 });
-  const userField = page.locator('input[name="user"], input[name="username"], input#username');
-  const passField = page.locator('input[name="password"], input#password');
-  if ((await userField.count()) === 0) return false;
-  await userField.first().fill(grafanaUser);
-  await passField.first().fill(grafanaPassword);
-  await page.locator('button[type="submit"], button:has-text("Log in"), button:has-text("ログイン")').first().click();
-  await page.waitForLoadState('networkidle', { timeout: 120000 });
-  return true;
-}
-
 function runtimeIframeLocator(page, base44Host) {
   return page.locator(`iframe[src*="${base44Host}"]`);
 }
@@ -59,12 +48,16 @@ async function checkFederationViewerIframe(page, target) {
     const pluginMissing = await page
       .locator('text=/plugin not found|Panel plugin not found|nmcclain-iframe-panel/i')
       .count();
+    const status401 = await page.locator('text=/401|unauthorized/i').count();
     return {
       iframePresent: false,
       iframeLoaded: false,
       loginRedirect: false,
       blank: true,
       pluginPanelMissing: pluginMissing > 0,
+      http401Hint: status401 > 0,
+      federationViewerBanner: false,
+      runtimeEmbedDetected: false,
     };
   }
   const frameEl = iframe.first();
@@ -135,10 +128,12 @@ async function checkFederationViewerIframe(page, target) {
     iframePresent: true,
     iframeLoaded,
     hasEmbed,
+    runtimeEmbedDetected: Boolean(hasEmbed),
     loginRedirect,
     blank,
     popupDetected,
     viewerBannerVisible,
+    federationViewerBanner: viewerBannerVisible,
     rootHeight,
     operationalVisible,
     iframeBoxHeight: box?.height ?? 0,
@@ -156,10 +151,17 @@ async function checkFederationViewerIframe(page, target) {
 
 async function main() {
   fs.mkdirSync(outDir, { recursive: true });
+  const authEnv = resolveGrafanaAuthEnv();
   const manifest = {
     capturedAt: new Date().toISOString(),
     grafanaUrl,
-    auth: Boolean(grafanaUser && grafanaPassword),
+    authMode: authEnv.hasGitHubOAuth ? 'github-oauth' : authEnv.hasLegacyLogin ? 'legacy-password' : 'none',
+    oauthLoginSuccess: false,
+    loginMethod: 'none',
+    loginError: null,
+    iframePresent: false,
+    federationViewerBanner: false,
+    runtimeEmbedDetected: false,
     results: [],
   };
 
@@ -171,10 +173,22 @@ async function main() {
 
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({ viewport: { width: 1920, height: 1080 } });
-  const page = await context.newPage();
 
   try {
-    await loginIfNeeded(page);
+    const loginResult = await ensureGrafanaLogin(context);
+    manifest.oauthLoginSuccess = loginResult.oauthLoginSuccess;
+    manifest.loginMethod = loginResult.loginMethod;
+    manifest.loginError = loginResult.error || null;
+
+    if (!loginResult.oauthLoginSuccess) {
+      console.error('Grafana login failed:', loginResult.error || loginResult.loginMethod);
+      fs.writeFileSync(path.join(outDir, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
+      process.exit(1);
+    }
+
+    const page = loginResult.page;
+    console.log(`Grafana login OK (${loginResult.loginMethod})`);
+
     for (const target of targets) {
       const url = `${grafanaUrl}${target.path}?kiosk`;
       const file = path.join(outDir, `${target.name}.png`);
@@ -186,6 +200,11 @@ async function main() {
         let iframeCheck = {};
         if (target.checkIframe) {
           iframeCheck = await checkFederationViewerIframe(page, target);
+          manifest.iframePresent = manifest.iframePresent || iframeCheck.iframePresent;
+          manifest.federationViewerBanner =
+            manifest.federationViewerBanner || iframeCheck.federationViewerBanner;
+          manifest.runtimeEmbedDetected =
+            manifest.runtimeEmbedDetected || iframeCheck.runtimeEmbedDetected;
           if (iframeCheck.iframePresent) {
             try {
               await runtimeIframeLocator(page, target.base44Host).first().screenshot({
@@ -202,28 +221,39 @@ async function main() {
           /log in|login|サインイン/i.test(bodyText) &&
           !/Runtime Federation/i.test(bodyText);
         const ok =
+          manifest.oauthLoginSuccess &&
           !topLevelLogin &&
           (!target.checkIframe ||
             (iframeCheck.iframePresent &&
-              iframeCheck.hasEmbed &&
+              iframeCheck.runtimeEmbedDetected &&
               iframeCheck.iframeLoaded &&
               !iframeCheck.loginRedirect &&
               !iframeCheck.blank &&
               !iframeCheck.popupDetected &&
               !iframeCheck.pluginPanelMissing &&
-              iframeCheck.viewerBannerVisible));
+              iframeCheck.federationViewerBanner));
         await page.screenshot({ path: file, fullPage: true });
         manifest.results.push({
           name: target.name,
           url,
           screenshot: path.basename(file),
           ok,
+          oauthLoginSuccess: manifest.oauthLoginSuccess,
+          iframePresent: iframeCheck.iframePresent ?? false,
+          federationViewerBanner: iframeCheck.federationViewerBanner ?? false,
+          runtimeEmbedDetected: iframeCheck.runtimeEmbedDetected ?? false,
           iframeCheck,
           topLevelLogin,
         });
         console.log(`${ok ? 'OK' : 'WARN'} ${target.name}`);
       } catch (err) {
-        manifest.results.push({ name: target.name, url, ok: false, error: err.message });
+        manifest.results.push({
+          name: target.name,
+          url,
+          ok: false,
+          oauthLoginSuccess: manifest.oauthLoginSuccess,
+          error: err.message,
+        });
         console.error(`FAIL ${target.name}:`, err.message);
       }
     }

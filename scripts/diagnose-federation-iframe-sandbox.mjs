@@ -1,14 +1,16 @@
 /**
  * Inspect Grafana nmcclain-iframe-panel DOM: sandbox, allow, in-frame session/bootstrap.
- * Env: GRAFANA_URL, GRAFANA_USER, GRAFANA_PASSWORD, DIAGNOSTIC_OUT
+ * Env: GRAFANA_URL, GRAFANA_GITHUB_USER, GRAFANA_GITHUB_PASSWORD (GitHub OAuth)
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright';
+import {
+  ensureGrafanaLogin,
+  resolveGrafanaAuthEnv,
+} from './lib/grafana-github-oauth-login.mjs';
 
-const grafanaUrl = (process.env.GRAFANA_URL || '').replace(/\/$/, '');
-const grafanaUser = process.env.GRAFANA_USER || '';
-const grafanaPassword = process.env.GRAFANA_PASSWORD || '';
+const { grafanaUrl } = resolveGrafanaAuthEnv();
 const outDir = path.resolve(process.env.DIAGNOSTIC_OUT || 'artifacts/federation-iframe-sandbox');
 
 const target = {
@@ -17,23 +19,19 @@ const target = {
   base44Host: 'fleet-operations-console.base44.app',
 };
 
-async function loginIfNeeded(page) {
-  if (!grafanaUser || !grafanaPassword) return false;
-  await page.goto(`${grafanaUrl}/login`, { waitUntil: 'networkidle', timeout: 120000 });
-  const userField = page.locator('input[name="user"], input[name="username"], input#username');
-  if ((await userField.count()) === 0) return false;
-  await userField.first().fill(grafanaUser);
-  await page.locator('input[name="password"], input#password').first().fill(grafanaPassword);
-  await page.locator('button[type="submit"], button:has-text("Log in"), button:has-text("ログイン")').first().click();
-  await page.waitForLoadState('networkidle', { timeout: 120000 });
-  return true;
-}
-
 async function main() {
   fs.mkdirSync(outDir, { recursive: true });
+  const authEnv = resolveGrafanaAuthEnv();
   const report = {
     capturedAt: new Date().toISOString(),
     grafanaUrl,
+    authMode: authEnv.hasGitHubOAuth ? 'github-oauth' : authEnv.hasLegacyLogin ? 'legacy-password' : 'none',
+    oauthLoginSuccess: false,
+    loginMethod: 'none',
+    loginError: null,
+    iframePresent: false,
+    federationViewerBanner: false,
+    runtimeEmbedDetected: false,
     pluginSourceAudit: {
       pluginId: 'nmcclain-iframe-panel',
       version: '1.0.1',
@@ -52,13 +50,25 @@ async function main() {
   }
 
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
-  page.on('console', (msg) => {
-    if (msg.type() === 'error') report.consoleErrors.push(msg.text().slice(0, 200));
-  });
+  const context = await browser.newContext({ viewport: { width: 1920, height: 1080 } });
 
   try {
-    await loginIfNeeded(page);
+    const loginResult = await ensureGrafanaLogin(context);
+    report.oauthLoginSuccess = loginResult.oauthLoginSuccess;
+    report.loginMethod = loginResult.loginMethod;
+    report.loginError = loginResult.error || null;
+
+    if (!loginResult.oauthLoginSuccess) {
+      report.error = loginResult.error || 'Grafana login failed';
+      fs.writeFileSync(path.join(outDir, 'report.json'), `${JSON.stringify(report, null, 2)}\n`);
+      process.exit(1);
+    }
+
+    const page = loginResult.page;
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') report.consoleErrors.push(msg.text().slice(0, 200));
+    });
+
     const url = `${grafanaUrl}${target.path}?kiosk`;
     await page.goto(url, { waitUntil: 'networkidle', timeout: 120000 });
     await page.waitForTimeout(5000);
@@ -66,10 +76,14 @@ async function main() {
     const iframe = page.locator(`iframe[src*="${target.base44Host}"]`).first();
     if ((await iframe.count()) === 0) {
       report.iframeDom = { present: false };
+      report.iframePresent = false;
     } else {
+      const src = (await iframe.getAttribute('src')) || '';
+      report.iframePresent = true;
+      report.runtimeEmbedDetected = src.includes('runtime_embed=grafana');
       report.iframeDom = {
         present: true,
-        src: (await iframe.getAttribute('src'))?.slice(0, 160),
+        src: src.slice(0, 160),
         sandbox: await iframe.getAttribute('sandbox'),
         allow: await iframe.getAttribute('allow'),
         referrerPolicy: await iframe.getAttribute('referrerpolicy'),
@@ -104,6 +118,10 @@ async function main() {
           };
         })
         .catch((err) => ({ evaluateError: err.message }));
+
+      report.federationViewerBanner = Boolean(report.inFrame?.bannerPresent);
+      report.runtimeEmbedDetected =
+        report.runtimeEmbedDetected || report.inFrame?.runtimeEmbedAttr === 'grafana';
 
       await page.screenshot({ path: path.join(outDir, 'dashboard.png'), fullPage: true });
       try {

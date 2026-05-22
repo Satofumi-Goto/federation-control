@@ -81,8 +81,10 @@ Federation Viewer uses **`nmcclain-iframe-panel`** (not Text panel HTML iframe).
 ## Visual verification
 
 ```bash
-GRAFANA_URL=... GRAFANA_USER=... GRAFANA_PASSWORD=... npm run visual-check
+GRAFANA_URL=... GRAFANA_GITHUB_USER=... GRAFANA_GITHUB_PASSWORD=... npm run visual-check
 ```
+
+Grafana Cloud uses **GitHub OAuth** (not email/password). CI secrets: `GRAFANA_GITHUB_USER`, `GRAFANA_GITHUB_PASSWORD` (aliases: `GITHUB_OAUTH_*`). Legacy `GRAFANA_USER`/`GRAFANA_PASSWORD` only if password login is enabled.
 
 Checks: Base44 iframe rendered (`iframe[src*=base44.app]`), `#root` height > 0, viewer banner, `runtime_embed=grafana`, no blank iframe, no login redirect, artifacts under `artifacts/runtime-visual-check/`.
 

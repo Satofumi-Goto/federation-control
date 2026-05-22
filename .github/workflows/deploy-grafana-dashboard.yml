@@ -16,6 +16,7 @@ on:
       - 'scripts/build-runtime-workspace-v2.mjs'
       - 'scripts/runtime-visual-check.mjs'
       - 'scripts/diagnose-federation-iframe-sandbox.mjs'
+      - 'scripts/lib/**'
   workflow_dispatch:
 
 jobs:
@@ -86,8 +87,8 @@ jobs:
       - name: Iframe sandbox diagnostics
         env:
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
-          GRAFANA_USER: ${{ secrets.GRAFANA_USER }}
-          GRAFANA_PASSWORD: ${{ secrets.GRAFANA_PASSWORD }}
+          GRAFANA_GITHUB_USER: ${{ secrets.GRAFANA_GITHUB_USER }}
+          GRAFANA_GITHUB_PASSWORD: ${{ secrets.GRAFANA_GITHUB_PASSWORD }}
           DIAGNOSTIC_OUT: artifacts/federation-iframe-sandbox
         run: node scripts/diagnose-federation-iframe-sandbox.mjs
         continue-on-error: true
@@ -95,8 +96,8 @@ jobs:
       - name: Runtime visual verification loop
         env:
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
-          GRAFANA_USER: ${{ secrets.GRAFANA_USER }}
-          GRAFANA_PASSWORD: ${{ secrets.GRAFANA_PASSWORD }}
+          GRAFANA_GITHUB_USER: ${{ secrets.GRAFANA_GITHUB_USER }}
+          GRAFANA_GITHUB_PASSWORD: ${{ secrets.GRAFANA_GITHUB_PASSWORD }}
           VISUAL_CHECK_OUT: artifacts/runtime-visual-check
         run: node scripts/runtime-visual-check.mjs
         continue-on-error: true
