@@ -3,75 +3,54 @@
   "editable": true,
   "schemaVersion": 39,
   "style": "dark",
-  "title": "課題一覧 / Need Impact Federation",
-  "version": 1,
+  "title": "Need Translation",
+  "version": 2,
   "refresh": "10s",
   "timezone": "browser",
-  "tags": ["need-impact", "runtime-impact", "pl-simulation", "migration"],
+  "tags": ["need-translation", "runtime-impact", "need-correlation"],
   "links": [
-    {"title": "見える化実行盤", "url": "/mieruka_board"},
-    {"title": "Runtime Discovery", "url": "/runtime_discovery"},
-    {"title": "Need Impact", "url": "/need_impact"}
+    {"title": "Runtime", "url": "/Runtime"},
+    {"title": "Need Translation", "url": "/need_translation"}
   ],
   "panels": [
     {
       "id": 1,
       "type": "text",
-      "title": "Need Impact Federation",
+      "title": "Need Translation",
       "gridPos": {"h": 4, "w": 24, "x": 0, "y": 0},
       "options": {
         "mode": "html",
-        "content": "<div style=\"height:100%;box-sizing:border-box;padding:18px 22px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:18px;color:#fff;\"><div style=\"font-size:34px;font-weight:900;\">課題一覧 / Need Impact Federation</div><div style=\"margin-top:10px;font-size:16px;line-height:1.65;color:#cbd5e1;\">ユーザーニーズ・運用課題・CS課題を投入し、runtime影響、Conflict、Tradeoff、PL/IRR影響を自動生成する。</div><div style=\"margin-top:8px;font-size:13px;color:#67e8f9;\">/need_impact</div></div>"
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:18px 22px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(251,191,36,.35);border-radius:18px;color:#fff;\"><div style=\"font-size:34px;font-weight:900;\">Need Translation</div><div style=\"margin-top:10px;font-size:16px;line-height:1.65;color:#cbd5e1;\">ユーザーの曖昧な不満を runtime language へ翻訳し、Impact Runtime と不足情報を推定する。</div><div style=\"margin-top:8px;font-size:13px;color:#fbbf24;\">/need_translation</div></div>"
       }
     },
     {
       "id": 2,
       "type": "text",
-      "title": "Need Pool",
-      "gridPos": {"h": 10, "w": 6, "x": 0, "y": 4},
+      "title": "Need Intake",
+      "gridPos": {"h": 12, "w": 7, "x": 0, "y": 4},
       "options": {
         "mode": "html",
-        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(148,163,184,.25);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">ユーザーニーズ投入</div><div style=\"margin-top:12px;height:115px;border:2px dashed rgba(56,189,248,.55);border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;color:#cbd5e1;line-height:1.7;\">ここにドラッグ＆ドロップ<br/>または ファイル参照<br/><span style=\"font-size:12px;color:#94a3b8;\">最大20ファイル</span></div><div style=\"margin-top:14px;display:grid;gap:10px;font-size:12px;\"><div style=\"padding:10px;background:#111827;border-radius:12px;\"><b>📄 cs_eta_delay.pdf</b><br/><span style=\"color:#94a3b8;\">ETA改善要求</span></div><div style=\"padding:10px;background:#111827;border-radius:12px;\"><b>📊 queue_issue.xlsx</b><br/><span style=\"color:#94a3b8;\">Queue overflow問題</span></div><div style=\"padding:10px;background:#111827;border-radius:12px;\"><b>📑 dispatch_feedback.pptx</b><br/><span style=\"color:#94a3b8;\">Dispatch coordination課題</span></div></div></div>"
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(148,163,184,.25);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">Need Upload</div><div style=\"margin-top:12px;height:120px;border:2px dashed rgba(251,191,36,.55);border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;color:#cbd5e1;line-height:1.7;\">ここにドラッグ＆ドロップ<br/>または ファイル参照<br/><span style=\"font-size:12px;color:#94a3b8;\">最大20ファイル</span></div><div style=\"margin-top:14px;display:grid;gap:10px;font-size:12px;\"><div style=\"padding:10px;background:#111827;border-radius:12px;\"><b>📄 cs_feedback.pdf</b><br/><span style=\"color:#94a3b8;\">反応が遅い / 不安</span></div><div style=\"padding:10px;background:#111827;border-radius:12px;\"><b>📊 queue_issue.xlsx</b><br/><span style=\"color:#94a3b8;\">待たされる</span></div><div style=\"padding:10px;background:#111827;border-radius:12px;\"><b>📑 dispatch_feedback.pptx</b><br/><span style=\"color:#94a3b8;\">配車が信用できない</span></div></div></div>"
       }
     },
     {
       "id": 3,
       "type": "text",
-      "title": "Impact Architecture",
-      "gridPos": {"h": 20, "w": 10, "x": 6, "y": 4},
+      "title": "Need Translation / Correlation",
+      "gridPos": {"h": 12, "w": 10, "x": 7, "y": 4},
       "options": {
         "mode": "html",
-        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#02060c;border:1px solid rgba(56,189,248,.3);border-radius:18px;color:#fff;\"><div style=\"font-size:22px;font-weight:900;\">Need Impact Architecture</div><div style=\"margin-top:6px;color:#94a3b8;font-size:13px;\">改修影響箇所を既存runtime graphへ色付きoverlay表示する。</div><svg viewBox=\"0 0 700 560\" width=\"100%\" height=\"500\"><line x1=\"100\" y1=\"90\" x2=\"260\" y2=\"90\" stroke=\"#38bdf8\" opacity=\".45\"/><line x1=\"260\" y1=\"90\" x2=\"430\" y2=\"90\" stroke=\"#38bdf8\" opacity=\".45\"/><line x1=\"430\" y1=\"90\" x2=\"570\" y2=\"200\" stroke=\"#22c55e\" opacity=\".45\"/><line x1=\"430\" y1=\"90\" x2=\"260\" y2=\"250\" stroke=\"#ef4444\" stroke-width=\"5\" opacity=\".9\"/><line x1=\"260\" y1=\"250\" x2=\"430\" y2=\"390\" stroke=\"#f59e0b\" stroke-width=\"5\" opacity=\".9\"/><circle cx=\"100\" cy=\"90\" r=\"48\" fill=\"#0ea5e9\"/><text x=\"100\" y=\"95\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">予約</text><circle cx=\"260\" cy=\"90\" r=\"48\" fill=\"#f59e0b\"/><text x=\"260\" y=\"95\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">ETA</text><circle cx=\"430\" cy=\"90\" r=\"48\" fill=\"#22c55e\"/><text x=\"430\" y=\"95\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">配車</text><circle cx=\"570\" cy=\"200\" r=\"48\" fill=\"#3b82f6\"/><text x=\"570\" y=\"205\" text-anchor=\"middle\" fill=\"white\" font-size=\"15\" font-weight=\"800\">車両群</text><circle cx=\"260\" cy=\"250\" r=\"58\" fill=\"#ef4444\" opacity=\".95\"/><text x=\"260\" y=\"255\" text-anchor=\"middle\" fill=\"white\" font-size=\"16\" font-weight=\"900\">待機列</text><circle cx=\"430\" cy=\"390\" r=\"58\" fill=\"#f59e0b\" opacity=\".95\"/><text x=\"430\" y=\"395\" text-anchor=\"middle\" fill=\"white\" font-size=\"16\" font-weight=\"900\">拠点</text><text x=\"22\" y=\"535\" fill=\"#94a3b8\" font-size=\"13\">赤：直接改修影響 / 橙：Propagation影響 / 青：未影響</text></svg></div>"
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#02060c;border:1px solid rgba(251,191,36,.3);border-radius:18px;color:#fff;\"><div style=\"font-size:22px;font-weight:900;\">Need Translation / Correlation</div><div style=\"margin-top:12px;display:grid;gap:10px;font-size:13px;\"><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>反応が遅い</b><br/><span style=\"color:#fbbf24;\">ETA drift candidate</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>配車が信用できない</b><br/><span style=\"color:#fbbf24;\">Dispatch synchronization candidate</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>待たされる</b><br/><span style=\"color:#fbbf24;\">Queue propagation candidate</span></div></div><div style=\"margin-top:16px;padding:12px;background:#0f172a;border-left:5px solid #22c55e;border-radius:12px;\"><div style=\"font-size:15px;font-weight:900;\">Correlation Result</div><div style=\"margin-top:8px;color:#cbd5e1;font-size:13px;line-height:1.8;\">複数症状が Queue propagation instability へ収束する可能性を検出。</div></div><div style=\"margin-top:12px;padding:12px;background:#0f172a;border-left:5px solid #38bdf8;border-radius:12px;\"><div style=\"font-size:15px;font-weight:900;\">Obsidian Knowledge Match</div><div style=\"margin-top:8px;color:#cbd5e1;font-size:13px;line-height:1.8;\">Queue propagation → ETA drift → Reservation uncertainty の既存knowledgeと一致。</div></div></div>"
       }
     },
     {
       "id": 4,
       "type": "text",
-      "title": "Impact Sequence",
-      "gridPos": {"h": 20, "w": 8, "x": 16, "y": 4},
+      "title": "Impact Runtime / Missing Information",
+      "gridPos": {"h": 12, "w": 7, "x": 17, "y": 4},
       "options": {
         "mode": "html",
-        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(245,158,11,.3);border-radius:18px;color:#fff;\"><div style=\"font-size:22px;font-weight:900;\">Need Impact Sequence</div><div style=\"margin-top:8px;color:#94a3b8;font-size:13px;\">変更要求からPropagation chainを生成する。</div><div style=\"margin-top:14px;display:grid;gap:9px;font-size:13px;\"><div style=\"padding:10px;background:#111827;border-left:5px solid #ef4444;border-radius:10px;\">1. Queue overflow detection logic追加</div><div style=\"padding:10px;background:#111827;border-left:5px solid #ef4444;border-radius:10px;\">2. ETA recalculation runtime追加</div><div style=\"padding:10px;background:#111827;border-left:5px solid #f59e0b;border-radius:10px;\">3. Dispatch throttling propagation追加</div><div style=\"padding:10px;background:#111827;border-left:5px solid #f59e0b;border-radius:10px;\">4. Reservation adjustment synchronization追加</div><div style=\"padding:10px;background:#111827;border-left:5px solid #22c55e;border-radius:10px;\">5. Queue saturation reduction expected</div></div><div style=\"margin-top:16px;font-size:15px;font-weight:900;\">Tradeoff</div><div style=\"margin-top:8px;color:#fde68a;font-size:13px;line-height:1.8;\">・Dispatch flexibility低下<br/>・Node autonomy低下<br/>・ETA authority conflict発生</div></div>"
-      }
-    },
-    {
-      "id": 5,
-      "type": "text",
-      "title": "Conflict / Coordination",
-      "gridPos": {"h": 9, "w": 12, "x": 0, "y": 24},
-      "options": {
-        "mode": "html",
-        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(239,68,68,.3);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">Conflict / Coordination</div><div style=\"margin-top:12px;display:grid;gap:10px;font-size:13px;\"><div style=\"padding:10px;background:#111827;border-radius:10px;border-left:4px solid #ef4444;\"><b>Queue Ownership Conflict</b><br/>Fleet vs Node / 調整必要</div><div style=\"padding:10px;background:#111827;border-radius:10px;border-left:4px solid #f59e0b;\"><b>ETA Authority Conflict</b><br/>Fleet vs Life / 正本定義必要</div><div style=\"padding:10px;background:#111827;border-radius:10px;border-left:4px solid #f59e0b;\"><b>ODD Propagation Missing</b><br/>Urban → Fleet synchronization不足</div></div></div>"
-      }
-    },
-    {
-      "id": 6,
-      "type": "text",
-      "title": "PL / IRR Simulation",
-      "gridPos": {"h": 9, "w": 12, "x": 12, "y": 24},
-      "options": {
-        "mode": "html",
-        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(34,197,94,.3);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">PL / IRR Simulation</div><div style=\"margin-top:12px;display:grid;gap:10px;font-size:13px;\"><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>ETA改善</b><br/>開発費 +18M / Queue減少 12% / IRR 11%</div><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>Queue Federation</b><br/>開発費 +32M / Fleet utilization +7% / IRR 16%</div><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>ODD Propagation</b><br/>開発費 +25M / Restriction consistency改善 / IRR 13%</div></div><div style=\"margin-top:14px;color:#cbd5e1;font-size:12px;line-height:1.7;\">各Needは、runtime impact → conflict → migration coordination → PL/IRRへ自動接続される。</div></div>"
+        "content": "<div style=\"height:100%;box-sizing:border-box;padding:16px;background:#0f172a;border:1px solid rgba(56,189,248,.28);border-radius:18px;color:#fff;\"><div style=\"font-size:20px;font-weight:900;\">Impact Runtime</div><div style=\"margin-top:12px;display:grid;gap:9px;font-size:13px;\"><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>Queue</b><br/><span style=\"color:#ef4444;\">High Impact</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>Dispatch</b><br/><span style=\"color:#f59e0b;\">Medium Impact</span></div><div style=\"padding:10px;background:#111827;border-radius:10px;\"><b>ETA</b><br/><span style=\"color:#22c55e;\">Related</span></div></div><div style=\"margin-top:18px;font-size:18px;font-weight:900;\">Missing Information</div><div style=\"margin-top:10px;color:#fca5a5;font-size:13px;line-height:1.8;\">・ETA authority unknown<br/>・Queue owner duplicated<br/>・Dispatch propagation threshold unknown</div></div>"
       }
     }
   ]
