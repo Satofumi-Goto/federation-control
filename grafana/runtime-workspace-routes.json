@@ -1,6 +1,6 @@
 {
-  "description": "Canonical link map for /runtime Runtime Workspace Router. Row3 uses Grafana dashboards only; no Base44 iframe or direct Base44 URL from Router.",
-  "layoutVersion": 27,
+  "description": "Canonical link map for /runtime Runtime Workspace Router. Row3 uses existing Grafana dashboards only.",
+  "layoutVersion": 28,
   "runtimeUid": "sa8ljn4",
   "row1": {
     "discovery": "/runtime_discovery",
@@ -14,26 +14,8 @@
   "row3": {
     "fleetOperation": "/d/component-propagation-board/component-propagation-federation-board",
     "serviceHub": "/d/runtime-service-hub-console/service-hub-console",
-    "lifeTransaction": "/d/sa8ljn4/runtime",
+    "lifeTransaction": "/d/user-need-impact-board/need-translation",
     "urbanOperation": "/d/go-operational-planning/operational-planning"
-  },
-  "row3ConsoleMeta": {
-    "fleetOperation": {
-      "sub": "Grafana · 伝播連携ボード",
-      "pending": false
-    },
-    "serviceHub": {
-      "sub": "Grafana · Service Hub Console",
-      "pending": false
-    },
-    "lifeTransaction": {
-      "sub": "準備中 / 接続未確定",
-      "pending": true
-    },
-    "urbanOperation": {
-      "sub": "Grafana · 運行計画",
-      "pending": false
-    }
   },
   "row3OperationalConsoles": {
     "provider": "Grafana",
@@ -50,10 +32,5 @@
     "serviceOperation": "/d/go-operational-planning/operational-planning",
     "pl": "/d/application-toyota-logic/application-for-toyota-parameter-driven-federation-model",
     "irr": "/d/go-investment-recovery/investment-recovery-plan"
-  },
-  "row4Layout": {
-    "mode": "grafana-grid-3x3",
-    "panelIds": [401, 402, 403, 404, 405, 406, 407, 408, 409],
-    "gridPos": { "w": 8, "h": 2, "cols": 3, "rows": 3, "y": 12 }
   }
 }
