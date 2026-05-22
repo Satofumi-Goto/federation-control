@@ -1,5 +1,5 @@
 {
-  "uid": "runtime-service-hub-surface",
+  "uid": "runtime-service-hub-console",
   "editable": true,
   "schemaVersion": 39,
   "style": "dark",
@@ -7,12 +7,13 @@
   "version": 1,
   "refresh": "30s",
   "timezone": "browser",
-  "description": "サービス拠点 — Grafana Operational App Surface（Base44 iframe/直リンク禁止）",
+  "description": "サービス拠点 — Service Hub Operational Surface（高密度・Base44禁止）",
   "tags": [
     "runtime",
-    "operational-surface",
+    "service-hub",
     "urban-os-runtime",
-    "serviceHub"
+    "workspace-console",
+    "operational-surface"
   ],
   "links": [
     {
@@ -21,12 +22,12 @@
     },
     {
       "title": "サービス拠点",
-      "url": "/d/runtime-service-hub-surface/service-hub-operational-surface"
+      "url": "/d/runtime-service-hub-console/service-hub-console"
     }
   ],
   "panels": [
     {
-      "id": 1,
+      "id": 100,
       "type": "text",
       "title": "",
       "transparent": true,
@@ -38,11 +39,11 @@
       },
       "options": {
         "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid #8b5cf6;border-radius:12px;color:#fff;\"><div><div style=\"font-size:11px;color:#94a3b8;\">Operational App Surface · service_hub_operator</div><div style=\"font-size:24px;font-weight:900;\">サービス拠点</div><div style=\"margin-top:4px;font-size:11px;color:#cbd5e1;\">Grafana Federation OS · Base44はOperational UX（Surface非置換）</div></div><a href=\"/d/sa8ljn4/runtime\" style=\"text-decoration:none;font-size:11px;font-weight:700;color:#67e8f9;padding:6px 12px;border:1px solid rgba(56,189,248,.4);border-radius:8px;\">← Runtime</a></div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid #8b5cf6;border-radius:12px;color:#fff;\"><div><div style=\"font-size:11px;color:#94a3b8;\">Operational App Surface · service_hub_operator</div><div style=\"font-size:24px;font-weight:900;\">サービス拠点</div><div style=\"margin-top:4px;font-size:11px;color:#c4b5fd;\">v1 Service Hub Console · 高密度 panel</div></div><a href=\"/d/sa8ljn4/runtime\" style=\"text-decoration:none;font-size:11px;font-weight:700;color:#67e8f9;padding:6px 12px;border:1px solid rgba(56,189,248,.4);border-radius:8px;\">← Runtime</a></div>"
       }
     },
     {
-      "id": 10,
+      "id": 110,
       "type": "text",
       "title": "受入",
       "transparent": true,
@@ -54,13 +55,13 @@
       },
       "options": {
         "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #8b5cf6;border-left:4px solid #8b5cf6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Acceptance</div><div style=\"font-size:11px;font-weight:800;color:#8b5cf6;margin-top:2px;\">受入</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">安定</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">バース·スワップ</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#f59e0b;\">HOLD</div></div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #f59e0b;border-left:4px solid #f59e0b;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Acceptance</div><div style=\"font-size:11px;font-weight:800;color:#fcd34d;margin-top:2px;\">受入</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">安定</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">バース·スワップ</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#f59e0b;\">余力監視 · HOLD</div></div>"
       }
     },
     {
-      "id": 11,
+      "id": 111,
       "type": "text",
-      "title": "Node",
+      "title": "ノード",
       "transparent": true,
       "gridPos": {
         "h": 5,
@@ -70,13 +71,13 @@
       },
       "options": {
         "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #8b5cf6;border-left:4px solid #8b5cf6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Node</div><div style=\"font-size:11px;font-weight:800;color:#8b5cf6;margin-top:2px;\">Node</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">82%</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">稼働率</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">AUTHORIZED</div></div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #14b8a6;border-left:4px solid #14b8a6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Node</div><div style=\"font-size:11px;font-weight:800;color:#5eead4;margin-top:2px;\">ノード</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">82%</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">稼働率</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">受入可能 · AUTHORIZED</div></div>"
       }
     },
     {
-      "id": 12,
+      "id": 112,
       "type": "text",
-      "title": "Energy",
+      "title": "エネルギー",
       "transparent": true,
       "gridPos": {
         "h": 5,
@@ -86,11 +87,11 @@
       },
       "options": {
         "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #8b5cf6;border-left:4px solid #8b5cf6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Energy</div><div style=\"font-size:11px;font-weight:800;color:#8b5cf6;margin-top:2px;\">Energy</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">同期</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">水素·充電余力</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">AUTHORIZED</div></div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #22c55e;border-left:4px solid #22c55e;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Energy</div><div style=\"font-size:11px;font-weight:800;color:#86efac;margin-top:2px;\">エネルギー</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">同期</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">水素·充電余力</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">供給安定 · AUTHORIZED</div></div>"
       }
     },
     {
-      "id": 13,
+      "id": 113,
       "type": "text",
       "title": "同期",
       "transparent": true,
@@ -102,11 +103,11 @@
       },
       "options": {
         "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #8b5cf6;border-left:4px solid #8b5cf6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Synchronization</div><div style=\"font-size:11px;font-weight:800;color:#8b5cf6;margin-top:2px;\">同期</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">OK</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">Node↔Fleet↔Urban</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">AUTHORIZED</div></div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #38bdf8;border-left:4px solid #38bdf8;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Synchronization</div><div style=\"font-size:11px;font-weight:800;color:#7dd3fc;margin-top:2px;\">同期</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">OK</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">Node↔Fleet↔Urban</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">ループ成立 · AUTHORIZED</div></div>"
       }
     },
     {
-      "id": 14,
+      "id": 114,
       "type": "text",
       "title": "制約",
       "transparent": true,
@@ -118,7 +119,55 @@
       },
       "options": {
         "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #8b5cf6;border-left:4px solid #8b5cf6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Constraint</div><div style=\"font-size:11px;font-weight:800;color:#8b5cf6;margin-top:2px;\">制約</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">境界内</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">受入·エネルギー</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">AUTHORIZED</div></div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #ef4444;border-left:4px solid #ef4444;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Constraint</div><div style=\"font-size:11px;font-weight:800;color:#fca5a5;margin-top:2px;\">制約</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">成立</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">受入·エネルギー境界</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">ゲート通過 · AUTHORIZED</div></div>"
+      }
+    },
+    {
+      "id": 220,
+      "type": "text",
+      "title": "キュー",
+      "transparent": true,
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #8b5cf6;border-left:4px solid #8b5cf6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Queue</div><div style=\"font-size:11px;font-weight:800;color:#c4b5fd;margin-top:2px;\">キュー</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">3</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">待ち台数</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">閾値内 · AUTHORIZED</div></div>"
+      }
+    },
+    {
+      "id": 200,
+      "type": "text",
+      "title": "KPI",
+      "transparent": true,
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 8
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #a78bfa;border-left:4px solid #a78bfa;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">KPI</div><div style=\"font-size:11px;font-weight:800;color:#ddd6fe;margin-top:2px;\">運用KPI</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">18分</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">ターンアラウンド</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">配車継続 · AUTHORIZED</div></div>"
+      }
+    },
+    {
+      "id": 201,
+      "type": "text",
+      "title": "フリート同期",
+      "transparent": true,
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 8
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #3b82f6;border-left:4px solid #3b82f6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Fleet Sync</div><div style=\"font-size:11px;font-weight:800;color:#93c5fd;margin-top:2px;\">フリート同期</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">連携</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">配車·ノード参照</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">Fleet参照のみ · AUTHORIZED</div></div>"
       }
     }
   ]

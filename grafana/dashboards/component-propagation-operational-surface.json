@@ -1,0 +1,238 @@
+{
+  "uid": "component-propagation-board",
+  "title": "Component Propagation Federation Board",
+  "tags": [
+    "component",
+    "propagation",
+    "federation",
+    "vehicle",
+    "operations",
+    "runtime",
+    "operational-surface",
+    "urban-os-runtime",
+    "fleet"
+  ],
+  "timezone": "browser",
+  "editable": true,
+  "templating": {
+    "list": [
+      {
+        "name": "msSofcCapacityKw",
+        "type": "textbox",
+        "label": "MS-SOFC Capacity (kW)",
+        "current": {
+          "text": "120",
+          "value": "120"
+        }
+      },
+      {
+        "name": "ssbWeightKg",
+        "type": "textbox",
+        "label": "SSB Weight (kg)",
+        "current": {
+          "text": "1800",
+          "value": "1800"
+        }
+      },
+      {
+        "name": "lh2VolumeL",
+        "type": "textbox",
+        "label": "LH2 Volume (L)",
+        "current": {
+          "text": "800",
+          "value": "800"
+        }
+      },
+      {
+        "name": "iwmWeightKg",
+        "type": "textbox",
+        "label": "IWM Weight (kg)",
+        "current": {
+          "text": "420",
+          "value": "420"
+        }
+      },
+      {
+        "name": "swapCycleMin",
+        "type": "textbox",
+        "label": "Swap Cycle (min)",
+        "current": {
+          "text": "8",
+          "value": "8"
+        }
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 100,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid #3b82f6;border-radius:12px;color:#fff;\"><div><div style=\"font-size:11px;color:#94a3b8;\">Operational App Surface · fleet_operator</div><div style=\"font-size:24px;font-weight:900;\">フリート運用</div><div style=\"margin-top:4px;font-size:11px;color:#cbd5e1;\">v1 伝播連携ボード + Federation OS 運用レイヤ</div></div><a href=\"/d/sa8ljn4/runtime\" style=\"text-decoration:none;font-size:11px;font-weight:700;color:#67e8f9;padding:6px 12px;border:1px solid rgba(56,189,248,.4);border-radius:8px;\">← Runtime</a></div>"
+      }
+    },
+    {
+      "id": 110,
+      "type": "text",
+      "title": "配車",
+      "transparent": true,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 3
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #3b82f6;border-left:4px solid #3b82f6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Dispatch</div><div style=\"font-size:11px;font-weight:800;color:#3b82f6;margin-top:2px;\">配車</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">12</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">稼働配車 / Dispatch Availability</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">AUTHORIZED</div></div>"
+      }
+    },
+    {
+      "id": 111,
+      "type": "text",
+      "title": "ETA",
+      "transparent": true,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 3
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #3b82f6;border-left:4px solid #3b82f6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">ETA</div><div style=\"font-size:11px;font-weight:800;color:#3b82f6;margin-top:2px;\">ETA</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">18分</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">平均到着 / Fleet ETA</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">AUTHORIZED</div></div>"
+      }
+    },
+    {
+      "id": 112,
+      "type": "text",
+      "title": "制約",
+      "transparent": true,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 3
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #3b82f6;border-left:4px solid #3b82f6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Constraint</div><div style=\"font-size:11px;font-weight:800;color:#3b82f6;margin-top:2px;\">制約</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">監視中</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">ODD·容量·Queue</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#f59e0b;\">HOLD</div></div>"
+      }
+    },
+    {
+      "id": 113,
+      "type": "text",
+      "title": "Runtime状態",
+      "transparent": true,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 3
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #3b82f6;border-left:4px solid #3b82f6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Runtime State</div><div style=\"font-size:11px;font-weight:800;color:#3b82f6;margin-top:2px;\">Runtime状態</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">同期</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">Federation OS</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">AUTHORIZED</div></div>"
+      }
+    },
+    {
+      "id": 114,
+      "type": "text",
+      "title": "運用KPI",
+      "transparent": true,
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 16,
+        "y": 3
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #3b82f6;border-left:4px solid #3b82f6;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Operational KPI</div><div style=\"font-size:11px;font-weight:800;color:#3b82f6;margin-top:2px;\">運用KPI</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">↑</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">Trips·Utilization·Dispatch</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">AUTHORIZED</div></div>"
+      }
+    },
+    {
+      "id": 1,
+      "type": "text",
+      "title": "Component Layer",
+      "gridPos": {
+        "x": 0,
+        "y": 7,
+        "w": 24,
+        "h": 8
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "| Component | Current Design Value | Immediate Effect |\n|---|---:|---|\n| MS-SOFC | ${msSofcCapacityKw} kW | base-load continuity |\n| SSB | ${ssbWeightKg} kg | vehicle weight / payload |\n| LH2 Tank | ${lh2VolumeL} L | range / packaging |\n| IWM | ${iwmWeightKg} kg | drivetrain packaging |\n| Swap Body | ${swapCycleMin} min | turnaround continuity |"
+      }
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "title": "Vehicle Propagation",
+      "gridPos": {
+        "x": 0,
+        "y": 15,
+        "w": 12,
+        "h": 10
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "```text\nSSB Weight ${ssbWeightKg} kg\n→ Vehicle Weight ↑\n→ Payload ↓\n→ Capacity Utilization ↓\n→ Trips ↓\n```\n\n```text\nLH2 Volume ${lh2VolumeL} L\n→ Packaging Thickness ↑\n→ Floor Height ↑\n→ Accessibility ↓\n→ Conversion ↓\n```"
+      }
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "title": "Fleet / Node Propagation",
+      "gridPos": {
+        "x": 12,
+        "y": 15,
+        "w": 12,
+        "h": 10
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "```text\nMS-SOFC Capacity ${msSofcCapacityKw} kW\n→ Refill Frequency ↓\n→ Fleet Uptime ↑\n→ Dispatch Availability ↑\n```\n\n```text\nSwap Cycle ${swapCycleMin} min\n→ Node Queue ↓\n→ Fleet Idle ↓\n→ Utilization ↑\n```"
+      }
+    },
+    {
+      "id": 4,
+      "type": "text",
+      "title": "Business Propagation",
+      "gridPos": {
+        "x": 0,
+        "y": 25,
+        "w": 24,
+        "h": 10
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "```text\nComponent Change\n→ Vehicle KPI\n→ Fleet KPI\n→ Node KPI\n→ Dispatch Success\n→ Trips/day\n→ Contribution\n→ Federation State\n```\n\n| Federation KPI | Current Impact Direction |\n|---|---|\n| Fleet Availability | improving |\n| Queue Stability | improving |\n| Dispatch Success | improving |\n| Trips/day | improving |\n| Contribution | improving |\n| Federation State | AUTHORIZED |"
+      }
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "5s",
+  "description": "フリート運用 — Operational App Surface（Base44禁止・v1ベース統合）",
+  "links": [
+    {
+      "title": "Runtime",
+      "url": "/d/sa8ljn4/runtime"
+    },
+    {
+      "title": "フリート運用",
+      "url": "/d/component-propagation-board/component-propagation-federation-board"
+    }
+  ]
+}

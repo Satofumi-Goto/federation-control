@@ -1,6 +1,6 @@
 {
-  "description": "Runtime Federation dashboard index — Operational App Surfaces and Router verification state.",
-  "layoutVersion": 1,
+  "description": "Runtime Federation dashboard index — v1-base Operational App Surfaces.",
+  "layoutVersion": 2,
   "generatedFrom": "grafana/runtime-operational-surfaces.json",
   "runtimeRouter": {
     "uid": "sa8ljn4",
@@ -9,40 +9,46 @@
   },
   "policy": {
     "surfaceType": "operational-app-surface",
+    "quality": "v1-base-plus-v2-infrastructure",
     "forbidden": [
       "base44-iframe",
       "base44-direct-url",
       "base44-login-redirect",
-      "pending-card"
+      "pending-card",
+      "sparse-placeholder-only"
     ]
   },
   "operationalSurfaces": [
     {
       "key": "fleet",
-      "uid": "runtime-fleet-surface",
-      "title": "Fleet Operational Surface",
-      "slug": "fleet-operational-surface",
+      "uid": "component-propagation-board",
+      "slug": "component-propagation-federation-board",
+      "title": "Component Propagation Federation Board",
       "labelJa": "フリート運用",
-      "path": "/d/runtime-fleet-surface/fleet-operational-surface",
+      "path": "/d/component-propagation-board/component-propagation-federation-board",
       "role": "fleet_operator",
-      "dashboardFile": "grafana/dashboards/fleet-operational-surface.json",
+      "baseDashboard": "dashboards/component-propagation-board.json",
+      "secondaryDashboard": null,
+      "dashboardFile": "grafana/dashboards/component-propagation-operational-surface.json",
       "displayItems": [
         "dispatch",
-        "queue",
         "eta",
         "constraint",
-        "runtimeState"
+        "runtimeState",
+        "operationalKpi"
       ],
       "verified": true
     },
     {
       "key": "serviceHub",
-      "uid": "runtime-service-hub-surface",
+      "uid": "runtime-service-hub-console",
+      "slug": "service-hub-console",
       "title": "Service Hub Operational Surface",
-      "slug": "service-hub-operational-surface",
       "labelJa": "サービス拠点",
-      "path": "/d/runtime-service-hub-surface/service-hub-operational-surface",
+      "path": "/d/runtime-service-hub-console/service-hub-console",
       "role": "service_hub_operator",
+      "baseDashboard": "grafana/dashboards/service-hub-console.json",
+      "secondaryDashboard": null,
       "dashboardFile": "grafana/dashboards/service-hub-operational-surface.json",
       "displayItems": [
         "acceptance",
@@ -55,36 +61,40 @@
     },
     {
       "key": "life",
-      "uid": "runtime-life-surface",
-      "title": "Life Transaction Operational Surface",
+      "uid": "runtime-life-ledger-surface",
       "slug": "life-transaction-operational-surface",
+      "title": "Life Transaction Operational Surface",
       "labelJa": "生活取引",
-      "path": "/d/runtime-life-surface/life-transaction-operational-surface",
+      "path": "/d/runtime-life-ledger-surface/life-transaction-operational-surface",
       "role": "life_transaction_operator",
+      "baseDashboard": "dashboards/application-for-toyota-business-logic.json",
+      "secondaryDashboard": "grafana/dashboards/public/02_business_simulation.json",
       "dashboardFile": "grafana/dashboards/life-transaction-operational-surface.json",
       "displayItems": [
         "reservation",
         "eta",
         "demand",
-        "fare",
+        "pricing",
         "transactionState"
       ],
       "verified": true
     },
     {
       "key": "urban",
-      "uid": "runtime-urban-surface",
+      "uid": "go-operational-planning",
+      "slug": "operational-planning",
       "title": "Urban Operation Operational Surface",
-      "slug": "urban-operation-operational-surface",
       "labelJa": "都市運行",
-      "path": "/d/runtime-urban-surface/urban-operation-operational-surface",
+      "path": "/d/go-operational-planning/operational-planning",
       "role": "urban_operation_operator",
+      "baseDashboard": "grafana/dashboards/public/04_operational_planning.json",
+      "secondaryDashboard": "grafana/dashboards/analysis/01_integrated_control_analysis.json",
       "dashboardFile": "grafana/dashboards/urban-operation-operational-surface.json",
       "displayItems": [
         "odd",
-        "constraint",
+        "restriction",
         "propagation",
-        "collapseControl",
+        "collapse",
         "runtimeState"
       ],
       "verified": true

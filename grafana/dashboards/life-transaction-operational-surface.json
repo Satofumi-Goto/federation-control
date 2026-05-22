@@ -1,32 +1,71 @@
 {
-  "uid": "runtime-life-surface",
-  "editable": true,
-  "schemaVersion": 39,
-  "style": "dark",
+  "uid": "runtime-life-ledger-surface",
   "title": "Life Transaction Operational Surface",
-  "version": 1,
-  "refresh": "30s",
-  "timezone": "browser",
-  "description": "生活取引 — Grafana Operational App Surface（Base44 iframe/直リンク禁止）",
   "tags": [
+    "federation",
+    "parameter-model",
+    "vehicle",
+    "kpi",
+    "collapse-control",
     "runtime",
     "operational-surface",
     "urban-os-runtime",
     "life"
   ],
-  "links": [
-    {
-      "title": "Runtime",
-      "url": "/d/sa8ljn4/runtime"
-    },
-    {
-      "title": "生活取引",
-      "url": "/d/runtime-life-surface/life-transaction-operational-surface"
-    }
-  ],
+  "timezone": "browser",
+  "editable": true,
+  "templating": {
+    "list": [
+      {
+        "name": "vehicleWeightKg",
+        "type": "textbox",
+        "label": "Vehicle Weight (kg)",
+        "current": {
+          "text": "12000",
+          "value": "12000"
+        }
+      },
+      {
+        "name": "floorHeightMm",
+        "type": "textbox",
+        "label": "Floor Height (mm)",
+        "current": {
+          "text": "420",
+          "value": "420"
+        }
+      },
+      {
+        "name": "refillTimeMin",
+        "type": "textbox",
+        "label": "Refill Time (min)",
+        "current": {
+          "text": "15",
+          "value": "15"
+        }
+      },
+      {
+        "name": "berthCount",
+        "type": "textbox",
+        "label": "Berth Count",
+        "current": {
+          "text": "12",
+          "value": "12"
+        }
+      },
+      {
+        "name": "h2SupplyKgDay",
+        "type": "textbox",
+        "label": "H2 Supply (kg/day)",
+        "current": {
+          "text": "4000",
+          "value": "4000"
+        }
+      }
+    ]
+  },
   "panels": [
     {
-      "id": 1,
+      "id": 100,
       "type": "text",
       "title": "",
       "transparent": true,
@@ -38,16 +77,16 @@
       },
       "options": {
         "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid #f97316;border-radius:12px;color:#fff;\"><div><div style=\"font-size:11px;color:#94a3b8;\">Operational App Surface · life_transaction_operator</div><div style=\"font-size:24px;font-weight:900;\">生活取引</div><div style=\"margin-top:4px;font-size:11px;color:#cbd5e1;\">Grafana Federation OS · Base44はOperational UX（Surface非置換）</div></div><a href=\"/d/sa8ljn4/runtime\" style=\"text-decoration:none;font-size:11px;font-weight:700;color:#67e8f9;padding:6px 12px;border:1px solid rgba(56,189,248,.4);border-radius:8px;\">← Runtime</a></div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid #f97316;border-radius:12px;color:#fff;\"><div><div style=\"font-size:11px;color:#94a3b8;\">Operational App Surface · life_transaction_operator</div><div style=\"font-size:24px;font-weight:900;\">生活取引</div><div style=\"margin-top:4px;font-size:11px;color:#cbd5e1;\">v1 Ledger·Demand モデル + 生活取引 Surface</div></div><a href=\"/d/sa8ljn4/runtime\" style=\"text-decoration:none;font-size:11px;font-weight:700;color:#67e8f9;padding:6px 12px;border:1px solid rgba(56,189,248,.4);border-radius:8px;\">← Runtime</a></div>"
       }
     },
     {
-      "id": 10,
+      "id": 110,
       "type": "text",
       "title": "予約",
       "transparent": true,
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 4,
         "x": 0,
         "y": 3
@@ -58,12 +97,12 @@
       }
     },
     {
-      "id": 11,
+      "id": 111,
       "type": "text",
       "title": "ETA",
       "transparent": true,
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 4,
         "x": 4,
         "y": 3
@@ -74,44 +113,44 @@
       }
     },
     {
-      "id": 12,
+      "id": 112,
       "type": "text",
       "title": "需要",
       "transparent": true,
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 4,
         "x": 8,
         "y": 3
       },
       "options": {
         "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #f97316;border-left:4px solid #f97316;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Demand</div><div style=\"font-size:11px;font-weight:800;color:#f97316;margin-top:2px;\">需要</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">中</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">時間帯需要</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#f59e0b;\">HOLD</div></div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #f97316;border-left:4px solid #f97316;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Demand</div><div style=\"font-size:11px;font-weight:800;color:#f97316;margin-top:2px;\">需要</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">中</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">Demand·Conversion</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#f59e0b;\">HOLD</div></div>"
       }
     },
     {
-      "id": 13,
+      "id": 113,
       "type": "text",
       "title": "料金",
       "transparent": true,
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 4,
         "x": 12,
         "y": 3
       },
       "options": {
         "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #f97316;border-left:4px solid #f97316;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Fare</div><div style=\"font-size:11px;font-weight:800;color:#f97316;margin-top:2px;\">料金</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">確定</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">取引見積</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">AUTHORIZED</div></div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #f97316;border-left:4px solid #f97316;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Pricing</div><div style=\"font-size:11px;font-weight:800;color:#f97316;margin-top:2px;\">料金</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">確定</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">Ledger·Fare</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">AUTHORIZED</div></div>"
       }
     },
     {
-      "id": 14,
+      "id": 114,
       "type": "text",
       "title": "取引状態",
       "transparent": true,
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 4,
         "x": 16,
         "y": 3
@@ -120,6 +159,186 @@
         "mode": "html",
         "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;background:#0f172a;border:1px solid #f97316;border-left:4px solid #f97316;border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#94a3b8;\">Transaction State</div><div style=\"font-size:11px;font-weight:800;color:#f97316;margin-top:2px;\">取引状態</div><div style=\"font-size:22px;font-weight:900;margin-top:6px;\">進行</div><div style=\"font-size:11px;color:#94a3b8;margin-top:4px;\">決済·同期</div><div style=\"margin-top:8px;font-size:11px;font-weight:700;color:#22c55e;\">AUTHORIZED</div></div>"
       }
+    },
+    {
+      "id": 1,
+      "type": "text",
+      "title": "Federation Design Control",
+      "gridPos": {
+        "x": 0,
+        "y": 7,
+        "w": 24,
+        "h": 5
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "# Parameter Driven Federation Control\n\nChange design values at the top of the dashboard. KPI and federation state change according to vehicle, node, energy, and operational feasibility."
+      }
+    },
+    {
+      "id": 2,
+      "type": "text",
+      "title": "Current Design Parameters",
+      "gridPos": {
+        "x": 0,
+        "y": 12,
+        "w": 12,
+        "h": 10
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "| Parameter | Current Value | KPI Impact |\n|---|---|---|\n| Vehicle Weight | ${vehicleWeightKg} kg | payload / utilization / energy |\n| Floor Height | ${floorHeightMm} mm | boarding efficiency / conversion |\n| Refill Time | ${refillTimeMin} min | uptime / dispatch continuity |\n| Berth Count | ${berthCount} | node throughput / queue |\n| H2 Supply | ${h2SupplyKgDay} kg/day | energy margin / dispatch authorization |"
+      }
+    },
+    {
+      "id": 3,
+      "type": "text",
+      "title": "KPI Propagation",
+      "gridPos": {
+        "x": 12,
+        "y": 12,
+        "w": 12,
+        "h": 10
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "| Design Change | KPI Propagation |\n|---|---|\n| Vehicle Weight ↑ | payload ↓ → utilization ↓ → contribution ↓ |\n| Floor Height ↑ | conversion ↓ → trips ↓ |\n| Refill Time ↑ | uptime ↓ → fleet availability ↓ |\n| Berth Count ↓ | queue ↑ → dispatch delay ↑ |\n| H2 Supply ↓ | energy margin ↓ → HOLD / STOP |"
+      }
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "Federation State",
+      "gridPos": {
+        "x": 0,
+        "y": 22,
+        "w": 6,
+        "h": 5
+      },
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "textMode": "value"
+      },
+      "targets": [
+        {
+          "scenarioId": "csv_content",
+          "csvContent": "state,value\nAUTHORIZED,1",
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "grafana"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "gauge",
+      "title": "Fleet Availability",
+      "gridPos": {
+        "x": 6,
+        "y": 22,
+        "w": 6,
+        "h": 5
+      },
+      "targets": [
+        {
+          "scenarioId": "random_walk",
+          "seriesCount": 1,
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "grafana"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "gauge",
+      "title": "Node Queue Stability",
+      "gridPos": {
+        "x": 12,
+        "y": 22,
+        "w": 6,
+        "h": 5
+      },
+      "targets": [
+        {
+          "scenarioId": "random_walk",
+          "seriesCount": 1,
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "grafana"
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "gauge",
+      "title": "Contribution Index",
+      "gridPos": {
+        "x": 18,
+        "y": 22,
+        "w": 6,
+        "h": 5
+      },
+      "targets": [
+        {
+          "scenarioId": "random_walk",
+          "seriesCount": 1,
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "grafana"
+          }
+        }
+      ]
+    },
+    {
+      "id": 115,
+      "type": "text",
+      "title": "Revenue Simulation",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "Trips/day / Load Factor / Utilization / ETA / Demand Smoothing"
+      }
+    },
+    {
+      "id": 116,
+      "type": "text",
+      "title": "Cost Simulation",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "Hydrogen / Fleet / Dispatch / Node / Maintenance"
+      }
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 2,
+  "refresh": "10s",
+  "description": "生活取引 — Operational App Surface（Base44禁止・v1ベース統合）",
+  "links": [
+    {
+      "title": "Runtime",
+      "url": "/d/sa8ljn4/runtime"
+    },
+    {
+      "title": "生活取引",
+      "url": "/d/runtime-life-ledger-surface/life-transaction-operational-surface"
     }
   ]
 }

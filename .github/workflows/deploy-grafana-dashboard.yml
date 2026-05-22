@@ -50,7 +50,7 @@ jobs:
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
         run: |
           for f in \
-            grafana/dashboards/fleet-operational-surface.json \
+            grafana/dashboards/component-propagation-operational-surface.json \
             grafana/dashboards/service-hub-operational-surface.json \
             grafana/dashboards/life-transaction-operational-surface.json \
             grafana/dashboards/urban-operation-operational-surface.json; do

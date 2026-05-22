@@ -47,12 +47,14 @@ Operational Console handles:
 
 Row3 uses **Grafana Operational App Surface** dashboards (see `grafana/runtime-operational-surfaces.json`).
 
-Current row3 targets (canonical):
+Current row3 targets (canonical, v1-base Operational Surface):
 
-* フリート運用 → `/d/runtime-fleet-surface/fleet-operational-surface`
-* サービス拠点 → `/d/runtime-service-hub-surface/service-hub-operational-surface`
-* 生活取引 → `/d/runtime-life-surface/life-transaction-operational-surface`
-* 都市運行 → `/d/runtime-urban-surface/urban-operation-operational-surface`
+* フリート運用 → `/d/component-propagation-board/component-propagation-federation-board`
+* サービス拠点 → `/d/runtime-service-hub-console/service-hub-console`
+* 生活取引 → `/d/runtime-life-ledger-surface/life-transaction-operational-surface`
+* 都市運行 → `/d/go-operational-planning/operational-planning`
+
+Build: `node scripts/build-operational-surfaces.mjs` from `grafana/runtime-operational-surfaces.json`.
 
 Grafana = Federation OS / Operational Surface. Base44 = Operational UX (not replaced by Surface).
 

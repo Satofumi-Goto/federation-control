@@ -9,10 +9,10 @@ const outDir = path.resolve(process.env.VISUAL_CHECK_OUT || 'artifacts/runtime-v
 
 const targets = [
   { name: 'runtime-router', path: '/d/sa8ljn4/runtime' },
-  { name: 'fleet-operational-surface', path: '/d/runtime-fleet-surface/fleet-operational-surface' },
-  { name: 'service-hub-operational-surface', path: '/d/runtime-service-hub-surface/service-hub-operational-surface' },
-  { name: 'life-transaction-operational-surface', path: '/d/runtime-life-surface/life-transaction-operational-surface' },
-  { name: 'urban-operation-operational-surface', path: '/d/runtime-urban-surface/urban-operation-operational-surface' },
+  { name: 'fleet-operational-surface', path: '/d/component-propagation-board/component-propagation-federation-board' },
+  { name: 'service-hub-operational-surface', path: '/d/runtime-service-hub-console/service-hub-console' },
+  { name: 'life-transaction-operational-surface', path: '/d/runtime-life-ledger-surface/life-transaction-operational-surface' },
+  { name: 'urban-operation-operational-surface', path: '/d/go-operational-planning/operational-planning' },
 ];
 
 async function loginIfNeeded(page) {
