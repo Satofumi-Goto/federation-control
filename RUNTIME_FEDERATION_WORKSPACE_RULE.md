@@ -43,16 +43,18 @@ Operational Console handles:
 
 ### Row3 — 自システム
 
-Row3 opens **Base44 Operational Runtime** in the **same browser tab** (`runtime_embed=grafana`). No Federation Viewer dashboard, no iframe from the router, no `target="_blank"`, no `window.open()`.
+Row3 opens **Base44 Runtime Public Viewer** (`/viewer/*`) in the **same browser tab** (`runtime_embed=grafana`). Login-free, read-only. No root app URL (avoids Base44 auth/login).
 
 Browser **Back** returns to Runtime Top: `/d/sa8ljn4/runtime`.
 
 Canonical URLs (`grafana/runtime-workspace-routes.json`):
 
-* フリート運用 → `https://fleet-operations-console.base44.app/?runtime_embed=grafana`
-* サービス拠点 → `https://service-hub-console.base44.app/?runtime_embed=grafana`
-* 生活取引 → `https://life-ledger-link.base44.app/?runtime_embed=grafana`
-* 都市運行 → `https://urban-operation-console.base44.app/?runtime_embed=grafana`
+* フリート運用 → `https://fleet-operations-console.base44.app/viewer/fleet?runtime_embed=grafana`
+* サービス拠点 → `https://service-hub-console.base44.app/viewer/service-hub?runtime_embed=grafana`
+* 生活取引 → `https://life-ledger-link.base44.app/viewer/life?runtime_embed=grafana`
+* 都市運行 → `https://urban-operation-console.base44.app/viewer/urban?runtime_embed=grafana`
+
+See `BASE44_RUNTIME_PUBLIC_VIEWER.md`.
 
 Build: `node scripts/build-runtime-workspace-v2.mjs`
 
