@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'dashboards/**.json'
+      - 'grafana/**.json'
       - 'scripts/deploy-grafana-dashboard.mjs'
       - '.github/workflows/deploy-grafana.yml'
   workflow_dispatch:
@@ -29,6 +30,10 @@ jobs:
             echo "Checking $file"
             python -m json.tool "$file" > /dev/null
           done
+
+      - name: Sync Runtime workspace dashboard
+        run: |
+          cp grafana/runtime-workspace-v2.json dashboards/runtime-workspace-v2.json
 
       - name: Deploy dashboards to Grafana
         env:
