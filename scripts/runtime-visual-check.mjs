@@ -5,17 +5,25 @@ import {
   ensureGrafanaLogin,
   resolveGrafanaAuthEnv,
 } from './lib/grafana-github-oauth-login.mjs';
+import {
+  loadRuntimeTopology,
+  resolveOperationalArchitectureHref,
+  resolveRuntimeCenterHref,
+} from './lib/runtime-topology.mjs';
 
 const { grafanaUrl } = resolveGrafanaAuthEnv();
 const outDir = path.resolve(process.env.VISUAL_CHECK_OUT || 'artifacts/runtime-visual-check');
 
 const routesPath = path.resolve('grafana/runtime-workspace-routes.json');
 const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
+const topology = loadRuntimeTopology();
+const runtimeCenterHref = resolveRuntimeCenterHref(routes, topology);
+const operationalArchitectureHref = resolveOperationalArchitectureHref(routes, topology);
 
 const row3Expectations = [
   { key: 'fleetOperation', host: 'fleet-operations-console.base44.app' },
   { key: 'serviceHub', host: 'service-hub-console.base44.app' },
-  { key: 'lifeTransaction', host: 'life-ledger-link.base44.app' },
+  { key: 'lifeTransaction', host: 'life-transaction-console.base44.app' },
   { key: 'urbanOperation', host: 'urban-operation-console.base44.app' },
 ];
 
@@ -47,7 +55,22 @@ async function checkRuntimeRouter(page) {
 
   const discoveryVisible = await page.getByText(discoveryLabel, { exact: true }).count();
   const row3TitleVisible = await page.getByText(row3Title, { exact: true }).count();
-  const federationConnectPlus = await page.locator('#rt-fc-open').count();
+  const discoveryHref = await page
+    .locator(`a[href="${routes.row1.discovery}"]`)
+    .first()
+    .getAttribute('href')
+    .catch(() => null);
+  const needsHref = await page
+    .locator(`a[href="${routes.row1.needsTranslation}"]`)
+    .first()
+    .getAttribute('href')
+    .catch(() => null);
+  const opArchLink = page.locator(`a[href="${operationalArchitectureHref}"]`).filter({
+    hasText: '運行制御アーキテクチャ',
+  });
+  const opArchCount = await opArchLink.count();
+  const opArchHref = opArchCount ? await opArchLink.first().getAttribute('href') : null;
+  const federationConnectPlus = await page.locator('details summary').count();
 
   const themeAdaptive =
     html.includes('--background-primary') &&
@@ -81,6 +104,21 @@ async function checkRuntimeRouter(page) {
         c.href?.includes('runtime_embed=grafana')
     ),
     noFederationViewerInHtml: !html.includes('runtime-fleet-federation-viewer'),
+    topologyLinks: {
+      discoveryHref,
+      needsHref,
+      operationalArchitectureHref: opArchHref,
+      runtimeCenterHref,
+      discoveryConnected: discoveryHref === routes.row1.discovery,
+      needsConnected: needsHref === routes.row1.needsTranslation,
+      opArchToRuntimeCenter: opArchHref === runtimeCenterHref,
+      noIntegratedSurfaceDeadLink: !html.includes('go-integrated-surface/integrated-control-surface'),
+    },
+    topologyOk:
+      discoveryHref === routes.row1.discovery &&
+      needsHref === routes.row1.needsTranslation &&
+      opArchHref === runtimeCenterHref &&
+      !html.includes('go-integrated-surface/integrated-control-surface'),
   };
 }
 
@@ -161,7 +199,8 @@ async function main() {
               routerCheck.noFederationViewerInHtml &&
               routerCheck.themeAdaptive &&
               routerCheck.noNavyDemo &&
-              routerCheck.htmlRenderedNotEscaped));
+              routerCheck.htmlRenderedNotEscaped &&
+              routerCheck.topologyOk));
         await page.screenshot({ path: file, fullPage: true });
         manifest.results.push({
           name: target.name,

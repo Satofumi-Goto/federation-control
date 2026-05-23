@@ -6,6 +6,10 @@ import {
   knowledgeGraphPanelHtml,
   loadRuntimeFederationMemory,
 } from './lib/runtime-federation-brain-panels.mjs';
+import {
+  resolveOperationalArchitectureHref,
+  resolveRuntimeCenterHref,
+} from './lib/runtime-topology.mjs';
 import { cardBase, cardLink, navLink, textPanelOptions } from './lib/runtime-workspace-theme.mjs';
 
 const routesPath = path.resolve('grafana/runtime-workspace-routes.json');
@@ -39,6 +43,8 @@ function row3Meta(routes, key) {
 }
 
 const r = routes;
+const runtimeCenterHref = resolveRuntimeCenterHref(r);
+const operationalArchitectureHref = resolveOperationalArchitectureHref(r);
 const row3 = r.row3;
 const row4 = r.row4;
 const discoveryLabel = r.row1.discoveryLabel ?? '連携探索';
@@ -50,10 +56,10 @@ const headerLinkStyle =
   'display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;text-decoration:none;color:var(--text-primary,#111827);';
 
 const headerHtml = `<div style="width:100%;height:100%;min-height:0;overflow:hidden;display:flex;align-items:center;justify-content:space-between;padding:10px 18px;${cardBase};box-shadow:0 1px 2px rgba(15,23,42,.04);">
-  <div>
+  <a href="${runtimeCenterHref}" style="text-decoration:none;color:inherit;">
     <div style="font-size:26px;font-weight:700;line-height:1.1;color:var(--text-primary,#111827);">Runtime</div>
     <div style="margin-top:4px;font-size:11px;color:var(--text-secondary,#64748b);">都市OS Runtime Federation Brain</div>
-  </div>
+  </a>
   <div style="display:flex;gap:12px;flex-shrink:0;">
     <a href="${r.row1.discovery}" style="${headerLinkStyle}">
       <div style="font-size:22px;line-height:1;">${discoveryIcon}</div>
@@ -104,7 +110,7 @@ const dashboard = {
   editable: true,
   schemaVersion: 39,
   title: 'Runtime',
-  version: 30,
+  version: 31,
   refresh: '30s',
   timezone: 'browser',
   description:
@@ -134,7 +140,7 @@ const dashboard = {
     makeTextPanel({
       id: 202,
       gridPos: { h: 5, w: 11, x: 11, y: 3 },
-      content: collapseControlPanelHtml(r.row2.runtimePanel, federationMemory),
+      content: collapseControlPanelHtml(operationalArchitectureHref, federationMemory),
     }),
     makeTextPanel({
       id: 203,

@@ -1,9 +1,10 @@
 {
   "description": "Canonical link map for /runtime. Row3 → Base44 /viewer/* public read-only URLs (runtime_embed=grafana).",
-  "layoutVersion": 36,
+  "layoutVersion": 37,
   "theme": "adaptive",
   "runtimeUid": "sa8ljn4",
   "runtimeTopPath": "/d/sa8ljn4/runtime",
+  "routeTopology": "grafana/runtime-topology-routes.json",
   "row1": {
     "discovery": "/runtime_discovery",
     "discoveryLabel": "連携探索",
@@ -13,7 +14,10 @@
   },
   "row2": {
     "obsidianGraph": "/d/go-program-index/grafana-obsidian-program-index",
-    "runtimePanel": "/d/go-integrated-surface/integrated-control-surface"
+    "runtimePanel": "/d/sa8ljn4/runtime",
+    "operationalArchitecture": "/d/sa8ljn4/runtime",
+    "calendar": "/calendar",
+    "map": "/map"
   },
   "row3": {
     "title": "自システム",

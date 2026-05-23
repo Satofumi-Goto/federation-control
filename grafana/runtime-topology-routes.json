@@ -1,0 +1,58 @@
+{
+  "description": "Runtime world navigation topology after route migration. Runtime center is the federation router dashboard.",
+  "version": 1,
+  "runtimeCenter": {
+    "logical": "/",
+    "grafana": "/d/sa8ljn4/runtime",
+    "uid": "sa8ljn4",
+    "slug": "runtime"
+  },
+  "worldRoutes": {
+    "calendar": {
+      "path": "/calendar",
+      "purpose": "Calendar"
+    },
+    "map": {
+      "path": "/map",
+      "purpose": "Map"
+    }
+  },
+  "headerNavigation": {
+    "discovery": {
+      "label": "連携探索",
+      "path": "/runtime_discovery",
+      "dashboardFallback": "/d/runtime-discovery-command-center/runtime-discovery-command-center",
+      "dashboardUid": "runtime-discovery-command-center"
+    },
+    "needsTranslation": {
+      "label": "Needs翻訳",
+      "path": "/need_impact",
+      "dashboardFallback": "/d/mieruka-discovery/mieruka-discovery-board",
+      "dashboardUid": "mieruka-discovery"
+    },
+    "alignment": {
+      "path": "/d/external-federation-view/external-federation-view"
+    }
+  },
+  "row2Panels": {
+    "operationalArchitecture": {
+      "label": "運行制御アーキテクチャ",
+      "target": "runtimeCenter",
+      "forbiddenTargets": [
+        "/d/go-integrated-surface/integrated-control-surface"
+      ]
+    },
+    "obsidianGraph": {
+      "path": "/d/go-program-index/grafana-obsidian-program-index"
+    }
+  },
+  "forbiddenPatterns": [
+    "federation-viewer",
+    "demo",
+    "/login",
+    "target=_blank"
+  ],
+  "deprecatedPaths": [
+    "/d/go-integrated-surface/integrated-control-surface"
+  ]
+}

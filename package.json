@@ -11,6 +11,7 @@
     "patch:base44-federation-diagnostics": "node scripts/patch-base44-federation-diagnostics.mjs",
     "diagnose:iframe-sandbox": "node scripts/diagnose-federation-iframe-sandbox.mjs",
     "build:runtime-workspace": "node scripts/build-runtime-workspace-v2.mjs",
+    "verify:runtime-topology": "node scripts/verify-runtime-topology-links.mjs",
     "visual-check": "node scripts/runtime-visual-check.mjs",
     "apply:base44-runtime-viewers": "node scripts/apply-all-base44-runtime-viewers.mjs"
   },

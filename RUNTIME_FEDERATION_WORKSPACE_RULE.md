@@ -51,7 +51,7 @@ Canonical URLs (`grafana/runtime-workspace-routes.json`):
 
 * フリート運用 → `https://fleet-operations-console.base44.app/viewer/fleet?runtime_embed=grafana`
 * サービス拠点 → `https://service-hub-console.base44.app/viewer/service-hub?runtime_embed=grafana`
-* 生活取引 → `https://life-ledger-link.base44.app/viewer/life?runtime_embed=grafana`
+* 生活取引 → `https://life-transaction-console.base44.app/viewer/life?runtime_embed=grafana`
 * 都市運行 → `https://urban-operation-console.base44.app/viewer/urban?runtime_embed=grafana`
 
 See `BASE44_RUNTIME_PUBLIC_VIEWER.md`.
@@ -64,9 +64,20 @@ Middle row, right: **＋** opens Federation Connect (name, URL, optional reposit
 
 ### Header
 
-* **連携探索** (handshake 🤝) — was Discovery
-* Needs翻訳
+* **連携探索** (handshake 🤝) — was Discovery → `/runtime_discovery`
+* Needs翻訳 → `/need_impact`
 * アライメント
+
+### Route topology (`grafana/runtime-topology-routes.json`)
+
+| World | Path |
+|-------|------|
+| Runtime center | `/d/sa8ljn4/runtime` (logical `/`) |
+| Calendar | `/calendar` |
+| Map | `/map` |
+| 運行制御アーキテクチャ card | Runtime center (same tab, no dead integrated-surface link) |
+
+Verify: `npm run verify:runtime-topology` (also runs in deploy CI after build).
 
 ---
 

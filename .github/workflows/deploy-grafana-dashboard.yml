@@ -14,6 +14,7 @@ on:
       - 'scripts/build-federation-viewer-surfaces.mjs'
       - 'scripts/ensure-grafana-iframe-plugin.mjs'
       - 'scripts/build-runtime-workspace-v2.mjs'
+      - 'scripts/verify-runtime-topology-links.mjs'
       - 'scripts/runtime-visual-check.mjs'
       - 'scripts/diagnose-federation-iframe-sandbox.mjs'
       - 'scripts/lib/**'
@@ -45,6 +46,9 @@ jobs:
 
       - name: Build Runtime Workspace router
         run: node scripts/build-runtime-workspace-v2.mjs
+
+      - name: Verify Runtime topology links
+        run: node scripts/verify-runtime-topology-links.mjs
 
       - name: Validate runtime workspace JSON
         run: node -e "const d=require('./grafana/runtime-workspace-v2.json'); if(!d.uid||!Array.isArray(d.panels)) { console.error('invalid dashboard'); process.exit(1); } console.log('ok', d.uid, d.panels.length, 'panels');"
