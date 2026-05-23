@@ -3,6 +3,8 @@
 export function federationConnectPanelHtml(routes) {
   const fc = routes.federationConnect ?? {};
   const storageKey = fc.storageKey ?? 'runtimeFederationConnectSystems';
+  const memoryKey = fc.memoryKey ?? 'runtimeFederationMemory';
+  const releasedMemoryKey = fc.releasedMemoryKey ?? 'runtimeReleasedSystemMemory';
   const patterns = JSON.stringify(fc.urlPatterns ?? []);
   const seed = JSON.stringify(fc.seedSystems ?? []);
 
@@ -23,6 +25,8 @@ export function federationConnectPanelHtml(routes) {
 <script>
 (function(){
   var SK=${JSON.stringify(storageKey)};
+  var MK=${JSON.stringify(memoryKey)};
+  var RK=${JSON.stringify(releasedMemoryKey)};
   var PATTERNS=${patterns};
   var SEED=${seed};
   var openBtn=document.getElementById('rt-fc-open');
@@ -31,16 +35,45 @@ export function federationConnectPanelHtml(routes) {
   var closeBtn=document.getElementById('rt-fc-close');
   var form=document.getElementById('rt-fc-form');
   var listEl=document.getElementById('rt-fc-list');
-  function load(){try{return JSON.parse(localStorage.getItem(SK)||'[]');}catch(e){return[];}}
-  function save(items){try{localStorage.setItem(SK,JSON.stringify(items));}catch(e){}}
+  function load(k,fallback){try{return JSON.parse(localStorage.getItem(k)||JSON.stringify(fallback||[]));}catch(e){return fallback||[];}}
+  function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+  function loadSystems(){return load(SK,[]);} 
+  function saveSystems(items){save(SK,items);} 
   function urlOk(u){try{var x=new URL(u);if(x.protocol!=='https:'&&x.protocol!=='http:')return false;var h=(x.hostname+x.pathname).toLowerCase();if(h.indexOf('localhost')>=0||/^\\d+\\.\\d+\\.\\d+\\.\\d+/.test(x.hostname))return true;return PATTERNS.some(function(p){return h.indexOf(String(p).toLowerCase())>=0;});}catch(e){return false;}}
   function show(on){dlg.hidden=!on;backdrop.hidden=!on;}
+  function sameSystem(a,b){return String(a.url||'')===String(b.url||'')||String(a.repository||'')&&String(a.repository||'')===String(b.repository||'')||String(a.name||'')===String(b.name||'');}
+  function releaseSystemMemory(system){
+    var memory=load(MK,{});
+    var released=load(RK,[]);
+    var snapshot={system:system,releasedAt:new Date().toISOString(),memoryBeforeRelease:memory};
+    released.push(snapshot);
+    save(RK,released);
+    if(memory&&typeof memory==='object'){
+      if(Array.isArray(memory.selfSystems)){memory.selfSystems=memory.selfSystems.filter(function(x){return !sameSystem(x,system);});}
+      if(memory.systemMemory&&typeof memory.systemMemory==='object'){
+        Object.keys(memory.systemMemory).forEach(function(k){if(k===system.name||k===system.url||k===system.repository){delete memory.systemMemory[k];}});
+      }
+      memory.updatedAt=new Date().toISOString();
+      memory.lastRelease={name:system.name,url:system.url,repository:system.repository,releasedAt:new Date().toISOString()};
+      save(MK,memory);
+    }
+  }
+  function deleteSystem(idx){
+    var items=loadSystems();
+    var system=items[idx];
+    if(!system)return;
+    var release=confirm('「'+(system.name||'このシステム')+'」を削除します。関連するRuntime内部記憶も解放しますか？\n\nOK: カードと内部記憶を解放\nキャンセル: カードだけ削除して内部記憶は保持');
+    items.splice(idx,1);
+    saveSystems(items);
+    if(release)releaseSystemMemory(system);
+    render();
+  }
   openBtn.addEventListener('click',function(){show(true);render();});
   closeBtn.addEventListener('click',function(){show(false);});
   backdrop.addEventListener('click',function(){show(false);});
   function render(){
-    var items=load();
-    if(!items.length&&SEED.length){items=SEED.slice();save(items);}
+    var items=loadSystems();
+    if(!items.length&&SEED.length){items=SEED.slice();saveSystems(items);}
     listEl.innerHTML='';
     if(!items.length){listEl.innerHTML='<div style="font-size:11px;color:#64748b;">なし</div>';return;}
     items.forEach(function(it,idx){
@@ -49,10 +82,10 @@ export function federationConnectPanelHtml(routes) {
       var name=document.createElement('div');name.style.fontWeight='900';name.textContent=it.name||'—';
       var url=document.createElement('div');url.style.color='#67e8f9';url.style.marginTop='4px';url.style.wordBreak='break-all';url.textContent=it.url||'';
       var repo=document.createElement('div');repo.style.color='#94a3b8';repo.style.marginTop='2px';repo.textContent=it.repository?('repository: '+it.repository):'';
-      var actions=document.createElement('div');actions.style.marginTop='8px';actions.style.display='flex';gap='8px';
+      var actions=document.createElement('div');actions.style.marginTop='8px';actions.style.display='flex';actions.style.gap='8px';
       var go=document.createElement('a');go.href=it.url;go.textContent='開く';go.style.cssText='text-decoration:none;color:#fff;background:#0284c7;padding:4px 10px;border-radius:6px;font-weight:700;';
       var del=document.createElement('button');del.type='button';del.textContent='削除';del.style.cssText='background:transparent;border:1px solid #ef4444;color:#ef4444;padding:4px 10px;border-radius:6px;cursor:pointer;';
-      del.addEventListener('click',function(){var n=load();n.splice(idx,1);save(n);render();});
+      del.addEventListener('click',function(){deleteSystem(idx);});
       actions.appendChild(go);actions.appendChild(del);
       row.appendChild(name);row.appendChild(url);if(it.repository)row.appendChild(repo);row.appendChild(actions);
       listEl.appendChild(row);
@@ -64,8 +97,8 @@ export function federationConnectPanelHtml(routes) {
     var url=document.getElementById('rt-fc-url').value.trim();
     var repository=document.getElementById('rt-fc-repo').value.trim();
     if(!name||!url||!urlOk(url)){alert('URLを確認してください（Base44 / Grafana / Excel / Sheets / Planner / HILS / Queue / ETA / Internal SaaS）');return;}
-    var items=load();items.push({name:name,url:url,repository:repository||undefined});
-    save(items);form.reset();render();
+    var items=loadSystems();items.push({name:name,url:url,repository:repository||undefined});
+    saveSystems(items);form.reset();render();
   });
 })();
 </script>`;
