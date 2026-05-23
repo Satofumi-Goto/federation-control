@@ -1,6 +1,7 @@
 {
   "description": "Canonical link map for /runtime. Row3 same-tab navigation to Base44 Operational Runtime (runtime_embed=grafana).",
-  "layoutVersion": 33,
+  "layoutVersion": 34,
+  "theme": "adaptive",
   "runtimeUid": "sa8ljn4",
   "runtimeTopPath": "/d/sa8ljn4/runtime",
   "row1": {

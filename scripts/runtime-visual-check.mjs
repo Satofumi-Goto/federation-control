@@ -47,10 +47,21 @@ async function checkRuntimeRouter(page) {
   const row3TitleVisible = await page.getByText(row3Title, { exact: true }).count();
   const federationConnectPlus = await page.locator('#rt-fc-open').count();
 
+  const themeAdaptive =
+    html.includes('rt-surface') &&
+    html.includes('--background-primary') &&
+    html.includes('rt-card');
+  const noNavyDemo =
+    !html.includes('#0b1220') &&
+    !html.includes('#02060c') &&
+    !html.includes('linear-gradient(180deg,#0b1220');
+
   return {
     discoveryRenamed: discoveryVisible > 0,
     row3SectionTitle: row3TitleVisible > 0,
     federationConnectPresent: federationConnectPlus > 0,
+    themeAdaptive,
+    noNavyDemo,
     row3Checks,
     row3AllOk: Object.values(row3Checks).every(
       (c) =>
@@ -79,6 +90,8 @@ async function main() {
     runtimeEmbedDetected: false,
     row3SameTabNavigation: false,
     discoveryRenamed: false,
+    themeAdaptive: false,
+    noNavyDemo: false,
     results: [],
   };
 
@@ -119,6 +132,8 @@ async function main() {
           manifest.discoveryRenamed = routerCheck.discoveryRenamed;
           manifest.row3SameTabNavigation = routerCheck.row3AllOk;
           manifest.runtimeEmbedDetected = routerCheck.row3AllOk;
+          manifest.themeAdaptive = routerCheck.themeAdaptive;
+          manifest.noNavyDemo = routerCheck.noNavyDemo;
           manifest.iframePresent = false;
           manifest.federationViewerBanner = false;
         }
@@ -132,7 +147,9 @@ async function main() {
             (routerCheck.row3AllOk &&
               routerCheck.discoveryRenamed &&
               routerCheck.row3SectionTitle &&
-              routerCheck.noFederationViewerInHtml));
+              routerCheck.noFederationViewerInHtml &&
+              routerCheck.themeAdaptive &&
+              routerCheck.noNavyDemo));
         await page.screenshot({ path: file, fullPage: true });
         manifest.results.push({
           name: target.name,
