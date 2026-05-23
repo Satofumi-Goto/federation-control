@@ -1,6 +1,6 @@
 {
-  "description": "Canonical link map for /runtime. Row3 same-tab navigation to Base44 Operational Runtime (runtime_embed=grafana).",
-  "layoutVersion": 34,
+  "description": "Canonical link map for /runtime. Row3 → Base44 /viewer/* public read-only URLs (runtime_embed=grafana).",
+  "layoutVersion": 35,
   "theme": "adaptive",
   "runtimeUid": "sa8ljn4",
   "runtimeTopPath": "/d/sa8ljn4/runtime",
@@ -17,10 +17,10 @@
   },
   "row3": {
     "title": "自システム",
-    "fleetOperation": "https://fleet-operations-console.base44.app/?runtime_embed=grafana",
-    "serviceHub": "https://service-hub-console.base44.app/?runtime_embed=grafana",
-    "lifeTransaction": "https://life-ledger-link.base44.app/?runtime_embed=grafana",
-    "urbanOperation": "https://urban-operation-console.base44.app/?runtime_embed=grafana"
+    "fleetOperation": "https://fleet-operations-console.base44.app/viewer/fleet?runtime_embed=grafana",
+    "serviceHub": "https://service-hub-console.base44.app/viewer/service-hub?runtime_embed=grafana",
+    "lifeTransaction": "https://life-ledger-link.base44.app/viewer/life?runtime_embed=grafana",
+    "urbanOperation": "https://urban-operation-console.base44.app/viewer/urban?runtime_embed=grafana"
   },
   "row3ConsoleMeta": {
     "fleetOperation": { "name": "フリート運用", "border": "#3b82f6" },
@@ -30,7 +30,7 @@
   },
   "row3OperationalSurfaces": {
     "provider": "Base44",
-    "integration": "same-tab-runtime-navigation",
+    "integration": "runtime-public-viewer-same-tab",
     "embedQuery": "runtime_embed=grafana",
     "navigation": "same-tab-anchor-only",
     "forbidden": [

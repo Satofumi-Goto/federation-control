@@ -39,7 +39,9 @@ async function checkRuntimeRouter(page) {
       present: count > 0,
       sameTab: targetAttr !== '_blank',
       runtimeEmbed: Boolean(href?.includes('runtime_embed=grafana')),
+      viewerPath: Boolean(href?.includes('/viewer/')),
       notFederationViewer: !href?.includes('federation-viewer'),
+      notRootAppOnly: !href?.match(/^https:\/\/[^/]+\/?\?runtime_embed=grafana$/),
     };
   }
 
@@ -73,7 +75,9 @@ async function checkRuntimeRouter(page) {
         c.present &&
         c.sameTab &&
         c.runtimeEmbed &&
+        c.viewerPath &&
         c.notFederationViewer &&
+        c.notRootAppOnly &&
         c.href?.includes('runtime_embed=grafana')
     ),
     noFederationViewerInHtml: !html.includes('runtime-fleet-federation-viewer'),

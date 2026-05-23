@@ -158,7 +158,7 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"https://fleet-operations-console.base44.app/?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center\">フリート運用</a>",
+        "content": "<a href=\"https://fleet-operations-console.base44.app/viewer/fleet?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center\">フリート運用</a>",
         "code": {
           "language": "html",
           "showLineNumbers": false,
@@ -180,7 +180,7 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"https://service-hub-console.base44.app/?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center\">サービス拠点</a>",
+        "content": "<a href=\"https://service-hub-console.base44.app/viewer/service-hub?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center\">サービス拠点</a>",
         "code": {
           "language": "html",
           "showLineNumbers": false,
@@ -202,7 +202,7 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"https://life-ledger-link.base44.app/?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center\">生活取引</a>",
+        "content": "<a href=\"https://life-ledger-link.base44.app/viewer/life?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center\">生活取引</a>",
         "code": {
           "language": "html",
           "showLineNumbers": false,
@@ -224,7 +224,7 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"https://urban-operation-console.base44.app/?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center\">都市運行</a>",
+        "content": "<a href=\"https://urban-operation-console.base44.app/viewer/urban?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center\">都市運行</a>",
         "code": {
           "language": "html",
           "showLineNumbers": false,

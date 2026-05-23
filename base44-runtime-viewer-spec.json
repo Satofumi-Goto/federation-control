@@ -1,0 +1,30 @@
+{
+  "grafanaRuntimeTop": "https://satofumigoto.grafana.net/d/sa8ljn4/runtime",
+  "embedQuery": "runtime_embed=grafana",
+  "consoles": {
+    "fleet": {
+      "github": "Satofumi-Goto/fleet-operations-console",
+      "host": "fleet-operations-console.base44.app",
+      "viewerPath": "/viewer/fleet",
+      "labelJa": "フリート運用"
+    },
+    "serviceHub": {
+      "github": "Satofumi-Goto/service-hub-console",
+      "host": "service-hub-console.base44.app",
+      "viewerPath": "/viewer/service-hub",
+      "labelJa": "サービス拠点"
+    },
+    "life": {
+      "github": "Satofumi-Goto/life-transaction-console",
+      "host": "life-ledger-link.base44.app",
+      "viewerPath": "/viewer/life",
+      "labelJa": "生活取引"
+    },
+    "urban": {
+      "github": "Satofumi-Goto/urban-operation-console",
+      "host": "urban-operation-console.base44.app",
+      "viewerPath": "/viewer/urban",
+      "labelJa": "都市運行"
+    }
+  }
+}
