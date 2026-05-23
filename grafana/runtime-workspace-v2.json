@@ -3,10 +3,10 @@
   "editable": true,
   "schemaVersion": 39,
   "title": "Runtime",
-  "version": 28,
+  "version": 29,
   "refresh": "30s",
   "timezone": "browser",
-  "description": "都市OS Runtime Workspace — theme-adaptive SaaS layout, Runtime Federation Brain",
+  "description": "都市OS Runtime Workspace — HTML text panels (sanitizer-safe), Runtime Federation Brain",
   "tags": [
     "runtime",
     "urban-os-runtime",
@@ -39,6 +39,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -47,7 +48,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<style>\n.rt-root,.rt-root a{text-decoration:none}\n.rt-surface{background:var(--background-primary,#fff);color:var(--text-primary,#111827);border:1px solid var(--border-weak,#e5e7eb);border-radius:12px;box-sizing:border-box}\n.rt-muted{color:var(--text-secondary,#64748b)}\n.rt-accent{color:#0891b2;font-weight:600}\n.rt-card{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center;transition:background .15s,border-color .15s,box-shadow .15s}\n.rt-card:hover{background:rgba(14,165,233,.08);border-color:#38bdf8;box-shadow:0 1px 4px rgba(14,165,233,.12)}\n.rt-nav{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;transition:background .15s,border-color .15s}\n.rt-nav:hover{background:rgba(14,165,233,.06);border-color:#7dd3fc}\n.rt-header-link{display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;transition:background .15s,border-color .15s}\n.rt-header-link:hover{background:rgba(14,165,233,.06);border-color:#7dd3fc}\n.rt-fc-btn{width:100%;height:100%;min-height:48px;border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;background:var(--background-primary,#fff);color:#0891b2;font-size:28px;font-weight:700;cursor:pointer;line-height:1;transition:background .15s,border-color .15s,box-shadow .15s}\n.rt-fc-btn:hover{background:rgba(14,165,233,.08);border-color:#22d3ee;box-shadow:0 1px 4px rgba(14,165,233,.15)}\n</style>\n<div class=\"rt-root rt-surface\" style=\"width:100%;height:100%;min-height:0;overflow:hidden;display:flex;align-items:center;justify-content:space-between;padding:10px 18px;box-shadow:0 1px 2px rgba(15,23,42,.04);\">\n  <div>\n    <div style=\"font-size:26px;font-weight:700;line-height:1.1;color:var(--text-primary,#111827);\">Runtime</div>\n    <div class=\"rt-muted\" style=\"margin-top:4px;font-size:11px;\">Federated Runtime Control Platform</div>\n  </div>\n  <div style=\"display:flex;gap:12px;flex-shrink:0;\">\n    <a href=\"/runtime_discovery\" class=\"rt-header-link\" style=\"color:var(--text-primary,#111827);\">\n      <div style=\"font-size:22px;line-height:1;\">🤝</div>\n      <div style=\"font-size:11px;margin-top:4px;font-weight:700;color:#0891b2;\">連携探索</div>\n    </a>\n    <a href=\"/need_impact\" class=\"rt-header-link\" style=\"color:var(--text-primary,#111827);\">\n      <div style=\"font-size:22px;line-height:1;\">🗣️</div>\n      <div style=\"font-size:11px;margin-top:4px;font-weight:700;color:#d97706;\">Needs翻訳</div>\n    </a>\n    <a href=\"/d/external-federation-view/external-federation-view\" class=\"rt-header-link\" style=\"color:var(--text-primary,#111827);\">\n      <div style=\"font-size:22px;line-height:1;\">🧩</div>\n      <div style=\"font-size:11px;margin-top:4px;font-weight:700;color:#7c3aed;\">アライメント</div>\n    </a>\n  </div>\n</div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:12px;box-sizing:border-box;color:var(--text-primary,#111827);box-shadow:0 1px 2px rgba(15,23,42,.04);\">\n  <div>\n    <div style=\"font-size:26px;font-weight:700;line-height:1.1;color:var(--text-primary,#111827);\">Runtime</div>\n    <div style=\"margin-top:4px;font-size:11px;color:var(--text-secondary,#64748b);\">Federated Runtime Control Platform</div>\n  </div>\n  <div style=\"display:flex;gap:12px;flex-shrink:0;\">\n    <a href=\"/runtime_discovery\" style=\"display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;text-decoration:none;color:var(--text-primary,#111827);\">\n      <div style=\"font-size:22px;line-height:1;\">🤝</div>\n      <div style=\"font-size:11px;margin-top:4px;font-weight:700;color:#0891b2;\">連携探索</div>\n    </a>\n    <a href=\"/need_impact\" style=\"display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;text-decoration:none;color:var(--text-primary,#111827);\">\n      <div style=\"font-size:22px;line-height:1;\">🗣️</div>\n      <div style=\"font-size:11px;margin-top:4px;font-weight:700;color:#d97706;\">Needs翻訳</div>\n    </a>\n    <a href=\"/d/external-federation-view/external-federation-view\" style=\"display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;text-decoration:none;color:var(--text-primary,#111827);\">\n      <div style=\"font-size:22px;line-height:1;\">🧩</div>\n      <div style=\"font-size:11px;margin-top:4px;font-weight:700;color:#7c3aed;\">アライメント</div>\n    </a>\n  </div>\n</div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -55,6 +61,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 5,
         "w": 11,
@@ -63,7 +70,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/go-program-index/grafana-obsidian-program-index\" class=\"rt-root\" style=\"display:block;width:100%;height:100%;min-height:0;overflow:hidden;padding:12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:12px;box-sizing:border-box;color:var(--text-primary,#111827);box-shadow:0 1px 2px rgba(15,23,42,.04);\">\n    <div style=\"display:flex;align-items:center;justify-content:space-between;gap:8px;\"><div><div class=\"rt-muted\" style=\"font-size:11px;font-weight:600;\">Knowledge Graph</div><div style=\"font-size:18px;font-weight:700;margin-top:4px;color:var(--text-primary,#111827);\">知識グラフ</div></div><div class=\"rt-accent\" style=\"font-size:10px;\">Runtime全体参照</div></div>\n    <div style=\"margin-top:8px;height:118px;border-radius:10px;background:var(--background-secondary,#f8fafc);border:1px solid var(--border-weak,#e5e7eb);overflow:hidden;\">\n      <svg viewBox=\"0 0 560 180\" width=\"100%\" height=\"118\" preserveAspectRatio=\"xMidYMid meet\"><line x1=\"180\" y1=\"68\" x2=\"80\" y2=\"42\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"180\" y1=\"68\" x2=\"80\" y2=\"42\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><line x1=\"180\" y1=\"68\" x2=\"292\" y2=\"44\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"180\" y1=\"68\" x2=\"292\" y2=\"44\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><line x1=\"180\" y1=\"68\" x2=\"72\" y2=\"122\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"180\" y1=\"68\" x2=\"72\" y2=\"122\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><line x1=\"180\" y1=\"68\" x2=\"158\" y2=\"148\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"180\" y1=\"68\" x2=\"158\" y2=\"148\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><line x1=\"180\" y1=\"68\" x2=\"280\" y2=\"132\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"180\" y1=\"68\" x2=\"280\" y2=\"132\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><line x1=\"280\" y1=\"132\" x2=\"392\" y2=\"74\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"280\" y1=\"132\" x2=\"392\" y2=\"74\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><line x1=\"72\" y1=\"122\" x2=\"292\" y2=\"44\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"72\" y1=\"122\" x2=\"292\" y2=\"44\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><line x1=\"80\" y1=\"42\" x2=\"158\" y2=\"148\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"80\" y1=\"42\" x2=\"158\" y2=\"148\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><line x1=\"158\" y1=\"148\" x2=\"280\" y2=\"132\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"158\" y1=\"148\" x2=\"280\" y2=\"132\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><line x1=\"392\" y1=\"74\" x2=\"392\" y2=\"150\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"392\" y1=\"74\" x2=\"392\" y2=\"150\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><line x1=\"292\" y1=\"44\" x2=\"500\" y2=\"54\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"292\" y1=\"44\" x2=\"500\" y2=\"54\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><line x1=\"280\" y1=\"132\" x2=\"504\" y2=\"138\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"280\" y1=\"132\" x2=\"504\" y2=\"138\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><line x1=\"392\" y1=\"150\" x2=\"504\" y2=\"138\" stroke=\"#cbd5e1\" stroke-width=\"1.2\"/><line x1=\"392\" y1=\"150\" x2=\"504\" y2=\"138\" stroke=\"#bae6fd\" stroke-width=\"0.6\" opacity=\".8\"/><g><circle cx=\"180\" cy=\"68\" r=\"9\" fill=\"#0ea5e9\"/><text x=\"180\" y=\"92\" text-anchor=\"middle\" font-size=\"10\" fill=\"#475569\" font-weight=\"600\">Runtime</text></g><g><circle cx=\"80\" cy=\"42\" r=\"9\" fill=\"#f59e0b\"/><text x=\"80\" y=\"66\" text-anchor=\"middle\" font-size=\"10\" fill=\"#475569\" font-weight=\"600\">Queue</text></g><g><circle cx=\"292\" cy=\"44\" r=\"9\" fill=\"#8b5cf6\"/><text x=\"292\" y=\"68\" text-anchor=\"middle\" font-size=\"10\" fill=\"#475569\" font-weight=\"600\">ODD</text></g><g><circle cx=\"72\" cy=\"122\" r=\"9\" fill=\"#ef4444\"/><text x=\"72\" y=\"146\" text-anchor=\"middle\" font-size=\"10\" fill=\"#475569\" font-weight=\"600\">Constraint</text></g><g><circle cx=\"158\" cy=\"148\" r=\"9\" fill=\"#38bdf8\"/><text x=\"158\" y=\"172\" text-anchor=\"middle\" font-size=\"10\" fill=\"#475569\" font-weight=\"600\">ETA</text></g><g><circle cx=\"280\" cy=\"132\" r=\"9\" fill=\"#22c55e\"/><text x=\"280\" y=\"156\" text-anchor=\"middle\" font-size=\"10\" fill=\"#475569\" font-weight=\"600\">Dispatch</text></g><g><circle cx=\"392\" cy=\"74\" r=\"9\" fill=\"#3b82f6\"/><text x=\"392\" y=\"98\" text-anchor=\"middle\" font-size=\"10\" fill=\"#475569\" font-weight=\"600\">Fleet</text></g><g><circle cx=\"392\" cy=\"150\" r=\"9\" fill=\"#10b981\"/><text x=\"392\" y=\"174\" text-anchor=\"middle\" font-size=\"10\" fill=\"#475569\" font-weight=\"600\">Energy</text></g><g><circle cx=\"500\" cy=\"54\" r=\"9\" fill=\"#64748b\"/><text x=\"500\" y=\"78\" text-anchor=\"middle\" font-size=\"10\" fill=\"#475569\" font-weight=\"600\">HILS</text></g><g><circle cx=\"504\" cy=\"138\" r=\"9\" fill=\"#eab308\"/><text x=\"504\" y=\"162\" text-anchor=\"middle\" font-size=\"10\" fill=\"#475569\" font-weight=\"600\">PL/IRR</text></g></svg>\n    </div>\n    <div class=\"rt-muted\" style=\"margin-top:7px;display:flex;gap:6px;font-size:10px;\"><span>Runtime</span><span>Queue</span><span>ODD</span><span>Constraint</span><span>Dispatch</span><span>PL</span></div>\n  </a>"
+        "content": "<a href=\"/d/go-program-index/grafana-obsidian-program-index\" style=\"display:block;width:100%;height:100%;min-height:0;overflow:hidden;padding:12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:12px;box-sizing:border-box;color:var(--text-primary,#111827);box-shadow:0 1px 2px rgba(15,23,42,.04);\">\n    <div style=\"display:flex;align-items:center;justify-content:space-between;gap:8px;\"><div><div style=\"font-size:11px;font-weight:600;color:var(--text-secondary,#64748b);\">Knowledge Graph</div><div style=\"font-size:18px;font-weight:700;margin-top:4px;color:var(--text-primary,#111827);\">知識グラフ</div></div><div style=\"font-size:10px;font-weight:600;color:#0891b2;\">Runtime全体参照</div></div>\n    <div style=\"margin-top:8px;height:118px;border-radius:10px;background:var(--background-secondary,#f8fafc);border:1px solid var(--border-weak,#e5e7eb);overflow:hidden;\"><img alt=\"Knowledge Graph\" width=\"560\" height=\"118\" style=\"width:100%;height:118px;object-fit:contain;display:block;\" src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20560%20180%22%20width%3D%22560%22%20height%3D%22180%22%3E%3Cline%20x1%3D%22180%22%20y1%3D%2268%22%20x2%3D%2280%22%20y2%3D%2242%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%22180%22%20y1%3D%2268%22%20x2%3D%22292%22%20y2%3D%2244%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%22180%22%20y1%3D%2268%22%20x2%3D%2272%22%20y2%3D%22122%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%22180%22%20y1%3D%2268%22%20x2%3D%22158%22%20y2%3D%22148%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%22180%22%20y1%3D%2268%22%20x2%3D%22280%22%20y2%3D%22132%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%22132%22%20x2%3D%22392%22%20y2%3D%2274%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%2272%22%20y1%3D%22122%22%20x2%3D%22292%22%20y2%3D%2244%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%2280%22%20y1%3D%2242%22%20x2%3D%22158%22%20y2%3D%22148%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%22158%22%20y1%3D%22148%22%20x2%3D%22280%22%20y2%3D%22132%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%22392%22%20y1%3D%2274%22%20x2%3D%22392%22%20y2%3D%22150%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%22292%22%20y1%3D%2244%22%20x2%3D%22500%22%20y2%3D%2254%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%22132%22%20x2%3D%22504%22%20y2%3D%22138%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%22392%22%20y1%3D%22150%22%20x2%3D%22504%22%20y2%3D%22138%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.5%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%2268%22%20r%3D%229%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22180%22%20y%3D%2290%22%20text-anchor%3D%22middle%22%20font-size%3D%229%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ERuntime%3C%2Ftext%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2242%22%20r%3D%229%22%20fill%3D%22%23f59e0b%22%2F%3E%3Ctext%20x%3D%2280%22%20y%3D%2264%22%20text-anchor%3D%22middle%22%20font-size%3D%229%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EQueue%3C%2Ftext%3E%3Ccircle%20cx%3D%22292%22%20cy%3D%2244%22%20r%3D%229%22%20fill%3D%22%238b5cf6%22%2F%3E%3Ctext%20x%3D%22292%22%20y%3D%2266%22%20text-anchor%3D%22middle%22%20font-size%3D%229%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EODD%3C%2Ftext%3E%3Ccircle%20cx%3D%2272%22%20cy%3D%22122%22%20r%3D%229%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%2272%22%20y%3D%22144%22%20text-anchor%3D%22middle%22%20font-size%3D%229%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EConstraint%3C%2Ftext%3E%3Ccircle%20cx%3D%22158%22%20cy%3D%22148%22%20r%3D%229%22%20fill%3D%22%2338bdf8%22%2F%3E%3Ctext%20x%3D%22158%22%20y%3D%22170%22%20text-anchor%3D%22middle%22%20font-size%3D%229%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EETA%3C%2Ftext%3E%3Ccircle%20cx%3D%22280%22%20cy%3D%22132%22%20r%3D%229%22%20fill%3D%22%2322c55e%22%2F%3E%3Ctext%20x%3D%22280%22%20y%3D%22154%22%20text-anchor%3D%22middle%22%20font-size%3D%229%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EDispatch%3C%2Ftext%3E%3Ccircle%20cx%3D%22392%22%20cy%3D%2274%22%20r%3D%229%22%20fill%3D%22%233b82f6%22%2F%3E%3Ctext%20x%3D%22392%22%20y%3D%2296%22%20text-anchor%3D%22middle%22%20font-size%3D%229%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EFleet%3C%2Ftext%3E%3Ccircle%20cx%3D%22392%22%20cy%3D%22150%22%20r%3D%229%22%20fill%3D%22%2310b981%22%2F%3E%3Ctext%20x%3D%22392%22%20y%3D%22172%22%20text-anchor%3D%22middle%22%20font-size%3D%229%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EEnergy%3C%2Ftext%3E%3Ccircle%20cx%3D%22500%22%20cy%3D%2254%22%20r%3D%229%22%20fill%3D%22%2364748b%22%2F%3E%3Ctext%20x%3D%22500%22%20y%3D%2276%22%20text-anchor%3D%22middle%22%20font-size%3D%229%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EHILS%3C%2Ftext%3E%3Ccircle%20cx%3D%22504%22%20cy%3D%22138%22%20r%3D%229%22%20fill%3D%22%23eab308%22%2F%3E%3Ctext%20x%3D%22504%22%20y%3D%22160%22%20text-anchor%3D%22middle%22%20font-size%3D%229%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EPL%2FIRR%3C%2Ftext%3E%3C%2Fsvg%3E\" /></div>\n    <div style=\"margin-top:7px;display:flex;gap:6px;font-size:10px;color:var(--text-secondary,#64748b);\"><span>Runtime</span><span>Queue</span><span>ODD</span><span>Constraint</span><span>Dispatch</span><span>PL</span></div>\n  </a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -71,6 +83,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 5,
         "w": 11,
@@ -79,7 +92,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/go-integrated-surface/integrated-control-surface\" class=\"rt-root\" style=\"display:block;width:100%;height:100%;min-height:0;overflow:hidden;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:12px;box-sizing:border-box;color:var(--text-primary,#111827);box-shadow:0 1px 2px rgba(15,23,42,.04);\">\n    <div style=\"display:flex;align-items:center;justify-content:space-between;gap:8px;\"><div><div class=\"rt-accent\" style=\"font-size:11px;\">崩壊制御 Runtime</div><div style=\"font-size:18px;font-weight:700;margin-top:2px;color:var(--text-primary,#111827);\">統合制御</div></div><div style=\"font-size:10px;color:#d97706;font-weight:700;\">3段構造</div></div>\n    <div style=\"display:grid;grid-template-columns:116px 1fr;gap:10px;align-items:center;margin-top:6px;height:86px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;padding:6px;\">\n      <svg viewBox=\"0 0 116 116\" width=\"86\" height=\"86\" style=\"justify-self:center;\"><circle cx=\"58\" cy=\"58\" r=\"42\" fill=\"none\" stroke=\"#e5e7eb\" stroke-width=\"13\"/><circle cx=\"58\" cy=\"58\" r=\"42\" fill=\"none\" stroke=\"#f59e0b\" stroke-width=\"13\" stroke-dasharray=\"32 68\" stroke-dashoffset=\"-25\" pathLength=\"100\" transform=\"rotate(-90 58 58)\"/><circle cx=\"58\" cy=\"58\" r=\"42\" fill=\"none\" stroke=\"#38bdf8\" stroke-width=\"13\" stroke-dasharray=\"24 76\" stroke-dashoffset=\"-57\" pathLength=\"100\" transform=\"rotate(-90 58 58)\"/><circle cx=\"58\" cy=\"58\" r=\"42\" fill=\"none\" stroke=\"#8b5cf6\" stroke-width=\"13\" stroke-dasharray=\"18 82\" stroke-dashoffset=\"-81\" pathLength=\"100\" transform=\"rotate(-90 58 58)\"/><circle cx=\"58\" cy=\"58\" r=\"42\" fill=\"none\" stroke=\"#ef4444\" stroke-width=\"13\" stroke-dasharray=\"16 84\" stroke-dashoffset=\"-99\" pathLength=\"100\" transform=\"rotate(-90 58 58)\"/><circle cx=\"58\" cy=\"58\" r=\"42\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"13\" stroke-dasharray=\"10 90\" stroke-dashoffset=\"-115\" pathLength=\"100\" transform=\"rotate(-90 58 58)\"/><text x=\"58\" y=\"55\" text-anchor=\"middle\" font-size=\"11\" fill=\"#111827\" font-weight=\"700\">直ぐに</text><text x=\"58\" y=\"70\" text-anchor=\"middle\" font-size=\"11\" fill=\"#111827\" font-weight=\"700\">崩壊</text></svg>\n      <div style=\"display:grid;grid-template-columns:repeat(2,1fr);gap:4px;font-size:10px;\"><div style=\"display:flex;align-items:center;gap:5px;min-width:0;color:var(--text-secondary,#64748b);\"><span style=\"width:7px;height:7px;border-radius:50%;background:#f59e0b;display:inline-block;flex:0 0 auto;\"></span><span style=\"white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Queue 32%</span></div><div style=\"display:flex;align-items:center;gap:5px;min-width:0;color:var(--text-secondary,#64748b);\"><span style=\"width:7px;height:7px;border-radius:50%;background:#38bdf8;display:inline-block;flex:0 0 auto;\"></span><span style=\"white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">ETA 24%</span></div><div style=\"display:flex;align-items:center;gap:5px;min-width:0;color:var(--text-secondary,#64748b);\"><span style=\"width:7px;height:7px;border-radius:50%;background:#8b5cf6;display:inline-block;flex:0 0 auto;\"></span><span style=\"white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">ODD 18%</span></div><div style=\"display:flex;align-items:center;gap:5px;min-width:0;color:var(--text-secondary,#64748b);\"><span style=\"width:7px;height:7px;border-radius:50%;background:#ef4444;display:inline-block;flex:0 0 auto;\"></span><span style=\"white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Constraint 16%</span></div><div style=\"display:flex;align-items:center;gap:5px;min-width:0;color:var(--text-secondary,#64748b);\"><span style=\"width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;flex:0 0 auto;\"></span><span style=\"white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Dispatch 10%</span></div></div>\n    </div>\n    <div style=\"margin-top:6px;padding:7px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:9px;\"><div style=\"display:grid;grid-template-columns:92px 1fr 30px;align-items:center;gap:6px;margin-bottom:4px;\"><div style=\"font-size:10px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Queue→ETA</div><div style=\"height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;\"><div style=\"height:7px;width:86%;background:#f59e0b;border-radius:999px;\"></div></div><div style=\"font-size:10px;color:var(--text-secondary,#64748b);text-align:right;\">86</div></div><div style=\"display:grid;grid-template-columns:92px 1fr 30px;align-items:center;gap:6px;margin-bottom:4px;\"><div style=\"font-size:10px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">ETA→Dispatch</div><div style=\"height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;\"><div style=\"height:7px;width:72%;background:#38bdf8;border-radius:999px;\"></div></div><div style=\"font-size:10px;color:var(--text-secondary,#64748b);text-align:right;\">72</div></div><div style=\"display:grid;grid-template-columns:92px 1fr 30px;align-items:center;gap:6px;margin-bottom:4px;\"><div style=\"font-size:10px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Constraint→ODD</div><div style=\"height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;\"><div style=\"height:7px;width:64%;background:#ef4444;border-radius:999px;\"></div></div><div style=\"font-size:10px;color:var(--text-secondary,#64748b);text-align:right;\">64</div></div><div style=\"display:grid;grid-template-columns:92px 1fr 30px;align-items:center;gap:6px;margin-bottom:4px;\"><div style=\"font-size:10px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">ODD→Fleet</div><div style=\"height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;\"><div style=\"height:7px;width:58%;background:#8b5cf6;border-radius:999px;\"></div></div><div style=\"font-size:10px;color:var(--text-secondary,#64748b);text-align:right;\">58</div></div></div>\n    <div style=\"margin-top:6px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;\"><div style=\"padding:6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #22c55e;border-radius:8px;min-width:0;\"><div style=\"font-size:9px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">成立率</div><div style=\"font-size:15px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">74%</div></div><div style=\"padding:6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #38bdf8;border-radius:8px;min-width:0;\"><div style=\"font-size:9px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Trips</div><div style=\"font-size:15px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">35/日</div></div><div style=\"padding:6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #f59e0b;border-radius:8px;min-width:0;\"><div style=\"font-size:9px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Queue</div><div style=\"font-size:15px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">12分</div></div><div style=\"padding:6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #eab308;border-radius:8px;min-width:0;\"><div style=\"font-size:9px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">PL</div><div style=\"font-size:15px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">+18%</div></div></div>\n  </a>"
+        "content": "<a href=\"/d/go-integrated-surface/integrated-control-surface\" style=\"display:block;width:100%;height:100%;min-height:0;overflow:hidden;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:12px;box-sizing:border-box;color:var(--text-primary,#111827);box-shadow:0 1px 2px rgba(15,23,42,.04);\">\n    <div style=\"display:flex;align-items:center;justify-content:space-between;gap:8px;\"><div><div style=\"font-size:11px;font-weight:600;color:#0891b2;\">崩壊制御 Runtime</div><div style=\"font-size:18px;font-weight:700;margin-top:2px;color:var(--text-primary,#111827);\">統合制御</div></div><div style=\"font-size:10px;color:#d97706;font-weight:700;\">3段構造</div></div>\n    <div style=\"display:grid;grid-template-columns:116px 1fr;gap:10px;align-items:center;margin-top:6px;height:86px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;padding:6px;\"><div style=\"width:86px;height:86px;border-radius:50%;background:conic-gradient(from -90deg,#f59e0b 0% 32%,#38bdf8 32% 56%,#8b5cf6 56% 74%,#ef4444 74% 90%,#22c55e 90% 100%);position:relative;justify-self:center;\"><div style=\"position:absolute;top:13px;left:13px;right:13px;bottom:13px;border-radius:50%;background:var(--background-primary,#fff);display:flex;align-items:center;justify-content:center;text-align:center;font-size:10px;font-weight:700;line-height:1.2;color:var(--text-primary,#111827);\">直ぐに<br/>崩壊</div></div><div style=\"display:grid;grid-template-columns:repeat(2,1fr);gap:4px;font-size:10px;\"><div style=\"display:flex;align-items:center;gap:5px;min-width:0;color:var(--text-secondary,#64748b);\"><span style=\"width:7px;height:7px;border-radius:50%;background:#f59e0b;display:inline-block;flex:0 0 auto;\"></span><span style=\"white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Queue 32%</span></div><div style=\"display:flex;align-items:center;gap:5px;min-width:0;color:var(--text-secondary,#64748b);\"><span style=\"width:7px;height:7px;border-radius:50%;background:#38bdf8;display:inline-block;flex:0 0 auto;\"></span><span style=\"white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">ETA 24%</span></div><div style=\"display:flex;align-items:center;gap:5px;min-width:0;color:var(--text-secondary,#64748b);\"><span style=\"width:7px;height:7px;border-radius:50%;background:#8b5cf6;display:inline-block;flex:0 0 auto;\"></span><span style=\"white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">ODD 18%</span></div><div style=\"display:flex;align-items:center;gap:5px;min-width:0;color:var(--text-secondary,#64748b);\"><span style=\"width:7px;height:7px;border-radius:50%;background:#ef4444;display:inline-block;flex:0 0 auto;\"></span><span style=\"white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Constraint 16%</span></div><div style=\"display:flex;align-items:center;gap:5px;min-width:0;color:var(--text-secondary,#64748b);\"><span style=\"width:7px;height:7px;border-radius:50%;background:#22c55e;display:inline-block;flex:0 0 auto;\"></span><span style=\"white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Dispatch 10%</span></div></div></div>\n    <div style=\"margin-top:6px;padding:7px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:9px;\"><div style=\"display:grid;grid-template-columns:92px 1fr 30px;align-items:center;gap:6px;margin-bottom:4px;\"><div style=\"font-size:10px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Queue→ETA</div><div style=\"height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;\"><div style=\"height:7px;width:86%;background:#f59e0b;border-radius:999px;\"></div></div><div style=\"font-size:10px;color:var(--text-secondary,#64748b);text-align:right;\">86</div></div><div style=\"display:grid;grid-template-columns:92px 1fr 30px;align-items:center;gap:6px;margin-bottom:4px;\"><div style=\"font-size:10px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">ETA→Dispatch</div><div style=\"height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;\"><div style=\"height:7px;width:72%;background:#38bdf8;border-radius:999px;\"></div></div><div style=\"font-size:10px;color:var(--text-secondary,#64748b);text-align:right;\">72</div></div><div style=\"display:grid;grid-template-columns:92px 1fr 30px;align-items:center;gap:6px;margin-bottom:4px;\"><div style=\"font-size:10px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Constraint→ODD</div><div style=\"height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;\"><div style=\"height:7px;width:64%;background:#ef4444;border-radius:999px;\"></div></div><div style=\"font-size:10px;color:var(--text-secondary,#64748b);text-align:right;\">64</div></div><div style=\"display:grid;grid-template-columns:92px 1fr 30px;align-items:center;gap:6px;margin-bottom:4px;\"><div style=\"font-size:10px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">ODD→Fleet</div><div style=\"height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;\"><div style=\"height:7px;width:58%;background:#8b5cf6;border-radius:999px;\"></div></div><div style=\"font-size:10px;color:var(--text-secondary,#64748b);text-align:right;\">58</div></div></div>\n    <div style=\"margin-top:6px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;\"><div style=\"padding:6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #22c55e;border-radius:8px;min-width:0;\"><div style=\"font-size:9px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">成立率</div><div style=\"font-size:15px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">74%</div></div><div style=\"padding:6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #38bdf8;border-radius:8px;min-width:0;\"><div style=\"font-size:9px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Trips</div><div style=\"font-size:15px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">35/日</div></div><div style=\"padding:6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #f59e0b;border-radius:8px;min-width:0;\"><div style=\"font-size:9px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Queue</div><div style=\"font-size:15px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">12分</div></div><div style=\"padding:6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #eab308;border-radius:8px;min-width:0;\"><div style=\"font-size:9px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">PL</div><div style=\"font-size:15px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">+18%</div></div></div>\n  </a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -87,6 +105,7 @@
       "type": "text",
       "title": "Federation Connect",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 5,
         "w": 2,
@@ -95,7 +114,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<style>\n.rt-root,.rt-root a{text-decoration:none}\n.rt-surface{background:var(--background-primary,#fff);color:var(--text-primary,#111827);border:1px solid var(--border-weak,#e5e7eb);border-radius:12px;box-sizing:border-box}\n.rt-muted{color:var(--text-secondary,#64748b)}\n.rt-accent{color:#0891b2;font-weight:600}\n.rt-card{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center;transition:background .15s,border-color .15s,box-shadow .15s}\n.rt-card:hover{background:rgba(14,165,233,.08);border-color:#38bdf8;box-shadow:0 1px 4px rgba(14,165,233,.12)}\n.rt-nav{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;transition:background .15s,border-color .15s}\n.rt-nav:hover{background:rgba(14,165,233,.06);border-color:#7dd3fc}\n.rt-header-link{display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;transition:background .15s,border-color .15s}\n.rt-header-link:hover{background:rgba(14,165,233,.06);border-color:#7dd3fc}\n.rt-fc-btn{width:100%;height:100%;min-height:48px;border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;background:var(--background-primary,#fff);color:#0891b2;font-size:28px;font-weight:700;cursor:pointer;line-height:1;transition:background .15s,border-color .15s,box-shadow .15s}\n.rt-fc-btn:hover{background:rgba(14,165,233,.08);border-color:#22d3ee;box-shadow:0 1px 4px rgba(14,165,233,.15)}\n</style><div id=\"rt-fc-root\" class=\"rt-root\" style=\"width:100%;height:100%;min-height:0;display:flex;align-items:center;justify-content:center;box-sizing:border-box;\">\n<button type=\"button\" id=\"rt-fc-open\" class=\"rt-fc-btn\" title=\"Federation Connect\">＋</button>\n<div id=\"rt-fc-backdrop\" hidden style=\"position:fixed;inset:0;background:rgba(15,23,42,.25);z-index:9998;\"></div>\n<div id=\"rt-fc-dialog\" hidden style=\"position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(420px,92vw);max-height:80vh;overflow:auto;z-index:9999;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:14px;padding:16px;color:var(--text-primary,#111827);box-sizing:border-box;font-family:system-ui,sans-serif;box-shadow:0 12px 40px rgba(15,23,42,.12);\">\n<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;\"><div style=\"font-size:16px;font-weight:700;\">Federation Connect</div><button type=\"button\" id=\"rt-fc-close\" style=\"background:transparent;border:none;color:var(--text-secondary,#64748b);font-size:20px;cursor:pointer;\">×</button></div>\n<form id=\"rt-fc-form\" style=\"display:flex;flex-direction:column;gap:8px;\">\n<label style=\"font-size:10px;color:var(--text-secondary,#64748b);\">名前</label><input id=\"rt-fc-name\" required style=\"padding:8px;border-radius:8px;border:1px solid var(--border-weak,#e5e7eb);background:var(--background-primary,#fff);color:var(--text-primary,#111827);\" />\n<label style=\"font-size:10px;color:var(--text-secondary,#64748b);\">URL</label><input id=\"rt-fc-url\" type=\"url\" required placeholder=\"https://...\" style=\"padding:8px;border-radius:8px;border:1px solid var(--border-weak,#e5e7eb);background:var(--background-primary,#fff);color:var(--text-primary,#111827);\" />\n<label style=\"font-size:10px;color:var(--text-secondary,#64748b);\">repository（optional）</label><input id=\"rt-fc-repo\" style=\"padding:8px;border-radius:8px;border:1px solid var(--border-weak,#e5e7eb);background:var(--background-primary,#fff);color:var(--text-primary,#111827);\" />\n<button type=\"submit\" style=\"margin-top:4px;padding:10px;border:none;border-radius:8px;background:#0891b2;color:#fff;font-weight:700;cursor:pointer;\">追加</button>\n</form>\n<div style=\"margin-top:14px;font-size:11px;font-weight:700;color:#0891b2;\">追加済みシステム</div>\n<div id=\"rt-fc-list\" style=\"margin-top:8px;display:flex;flex-direction:column;gap:8px;\"></div>\n</div></div>\n<script>\n(function(){\n  var SK=\"runtimeFederationConnectSystems\";\n  var PATTERNS=[\"base44.app\",\"grafana.net\",\"grafana.com\",\"excel.office.com\",\"office.com\",\"sharepoint.com\",\"docs.google.com\",\"sheets.google.com\",\"planner.cloud.microsoft.com\",\"tasks.office.com\",\"hils\",\"queue\",\"eta\"];\n  var SEED=[];\n  var openBtn=document.getElementById('rt-fc-open');\n  var dlg=document.getElementById('rt-fc-dialog');\n  var backdrop=document.getElementById('rt-fc-backdrop');\n  var closeBtn=document.getElementById('rt-fc-close');\n  var form=document.getElementById('rt-fc-form');\n  var listEl=document.getElementById('rt-fc-list');\n  function load(){try{return JSON.parse(localStorage.getItem(SK)||'[]');}catch(e){return[];}}\n  function save(items){try{localStorage.setItem(SK,JSON.stringify(items));}catch(e){}}\n  function urlOk(u){try{var x=new URL(u);if(x.protocol!=='https:'&&x.protocol!=='http:')return false;var h=(x.hostname+x.pathname).toLowerCase();if(h.indexOf('localhost')>=0||/^\\d+\\.\\d+\\.\\d+\\.\\d+/.test(x.hostname))return true;return PATTERNS.some(function(p){return h.indexOf(String(p).toLowerCase())>=0;});}catch(e){return false;}}\n  function show(on){dlg.hidden=!on;backdrop.hidden=!on;}\n  openBtn.addEventListener('click',function(){show(true);render();});\n  closeBtn.addEventListener('click',function(){show(false);});\n  backdrop.addEventListener('click',function(){show(false);});\n  function render(){\n    var items=load();\n    if(!items.length&&SEED.length){items=SEED.slice();save(items);}\n    listEl.innerHTML='';\n    if(!items.length){listEl.innerHTML='<div style=\"font-size:11px;color:var(--text-secondary,#64748b);\">なし</div>';return;}\n    items.forEach(function(it,idx){\n      var row=document.createElement('div');\n      row.style.cssText='padding:10px;background:var(--background-secondary,#f8fafc);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;font-size:11px;color:var(--text-primary,#111827);';\n      var name=document.createElement('div');name.style.fontWeight='700';name.textContent=it.name||'—';\n      var url=document.createElement('div');url.style.color='#0891b2';url.style.marginTop='4px';url.style.wordBreak='break-all';url.textContent=it.url||'';\n      var repo=document.createElement('div');repo.style.color='var(--text-secondary,#64748b)';repo.style.marginTop='2px';repo.textContent=it.repository?('repository: '+it.repository):'';\n      var actions=document.createElement('div');actions.style.marginTop='8px';actions.style.display='flex';gap='8px';\n      var go=document.createElement('a');go.href=it.url;go.textContent='開く';go.style.cssText='text-decoration:none;color:#fff;background:#0891b2;padding:4px 10px;border-radius:6px;font-weight:700;';\n      var del=document.createElement('button');del.type='button';del.textContent='削除';del.style.cssText='background:transparent;border:1px solid #ef4444;color:#ef4444;padding:4px 10px;border-radius:6px;cursor:pointer;';\n      del.addEventListener('click',function(){var n=load();n.splice(idx,1);save(n);render();});\n      actions.appendChild(go);actions.appendChild(del);\n      row.appendChild(name);row.appendChild(url);if(it.repository)row.appendChild(repo);row.appendChild(actions);\n      listEl.appendChild(row);\n    });\n  }\n  form.addEventListener('submit',function(ev){\n    ev.preventDefault();\n    var name=document.getElementById('rt-fc-name').value.trim();\n    var url=document.getElementById('rt-fc-url').value.trim();\n    var repository=document.getElementById('rt-fc-repo').value.trim();\n    if(!name||!url||!urlOk(url)){alert('URLを確認してください（Base44 / Grafana / Excel / Sheets / Planner / HILS / Queue / ETA / Internal SaaS）');return;}\n    var items=load();items.push({name:name,url:url,repository:repository||undefined});\n    save(items);form.reset();render();\n  });\n})();\n</script>"
+        "content": "<div id=\"rt-fc-root\" class=\"rt-root\" style=\"width:100%;height:100%;min-height:0;display:flex;align-items:center;justify-content:center;box-sizing:border-box;\">\n<button type=\"button\" id=\"rt-fc-open\" title=\"Federation Connect\" style=\"width:100%;height:100%;min-height:48px;border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;background:var(--background-primary,#fff);color:#0891b2;font-size:28px;font-weight:700;cursor:pointer;line-height:1;\">＋</button>\n<div id=\"rt-fc-backdrop\" hidden style=\"position:fixed;inset:0;background:rgba(15,23,42,.25);z-index:9998;\"></div>\n<div id=\"rt-fc-dialog\" hidden style=\"position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(420px,92vw);max-height:80vh;overflow:auto;z-index:9999;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:14px;padding:16px;color:var(--text-primary,#111827);box-sizing:border-box;font-family:system-ui,sans-serif;box-shadow:0 12px 40px rgba(15,23,42,.12);\">\n<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;\"><div style=\"font-size:16px;font-weight:700;\">Federation Connect</div><button type=\"button\" id=\"rt-fc-close\" style=\"background:transparent;border:none;color:var(--text-secondary,#64748b);font-size:20px;cursor:pointer;\">×</button></div>\n<form id=\"rt-fc-form\" style=\"display:flex;flex-direction:column;gap:8px;\">\n<label style=\"font-size:10px;color:var(--text-secondary,#64748b);\">名前</label><input id=\"rt-fc-name\" required style=\"padding:8px;border-radius:8px;border:1px solid var(--border-weak,#e5e7eb);background:var(--background-primary,#fff);color:var(--text-primary,#111827);\" />\n<label style=\"font-size:10px;color:var(--text-secondary,#64748b);\">URL</label><input id=\"rt-fc-url\" type=\"url\" required placeholder=\"https://...\" style=\"padding:8px;border-radius:8px;border:1px solid var(--border-weak,#e5e7eb);background:var(--background-primary,#fff);color:var(--text-primary,#111827);\" />\n<label style=\"font-size:10px;color:var(--text-secondary,#64748b);\">repository（optional）</label><input id=\"rt-fc-repo\" style=\"padding:8px;border-radius:8px;border:1px solid var(--border-weak,#e5e7eb);background:var(--background-primary,#fff);color:var(--text-primary,#111827);\" />\n<button type=\"submit\" style=\"margin-top:4px;padding:10px;border:none;border-radius:8px;background:#0891b2;color:#fff;font-weight:700;cursor:pointer;\">追加</button>\n</form>\n<div style=\"margin-top:14px;font-size:11px;font-weight:700;color:#0891b2;\">追加済みシステム</div>\n<div id=\"rt-fc-list\" style=\"margin-top:8px;display:flex;flex-direction:column;gap:8px;\"></div>\n</div></div>\n<script>\n(function(){\n  var SK=\"runtimeFederationConnectSystems\";\n  var PATTERNS=[\"base44.app\",\"grafana.net\",\"grafana.com\",\"excel.office.com\",\"office.com\",\"sharepoint.com\",\"docs.google.com\",\"sheets.google.com\",\"planner.cloud.microsoft.com\",\"tasks.office.com\",\"hils\",\"queue\",\"eta\"];\n  var SEED=[];\n  var openBtn=document.getElementById('rt-fc-open');\n  var dlg=document.getElementById('rt-fc-dialog');\n  var backdrop=document.getElementById('rt-fc-backdrop');\n  var closeBtn=document.getElementById('rt-fc-close');\n  var form=document.getElementById('rt-fc-form');\n  var listEl=document.getElementById('rt-fc-list');\n  function load(){try{return JSON.parse(localStorage.getItem(SK)||'[]');}catch(e){return[];}}\n  function save(items){try{localStorage.setItem(SK,JSON.stringify(items));}catch(e){}}\n  function urlOk(u){try{var x=new URL(u);if(x.protocol!=='https:'&&x.protocol!=='http:')return false;var h=(x.hostname+x.pathname).toLowerCase();if(h.indexOf('localhost')>=0||/^\\d+\\.\\d+\\.\\d+\\.\\d+/.test(x.hostname))return true;return PATTERNS.some(function(p){return h.indexOf(String(p).toLowerCase())>=0;});}catch(e){return false;}}\n  function show(on){dlg.hidden=!on;backdrop.hidden=!on;}\n  openBtn.addEventListener('click',function(){show(true);render();});\n  closeBtn.addEventListener('click',function(){show(false);});\n  backdrop.addEventListener('click',function(){show(false);});\n  function render(){\n    var items=load();\n    if(!items.length&&SEED.length){items=SEED.slice();save(items);}\n    listEl.innerHTML='';\n    if(!items.length){listEl.innerHTML='<div style=\"font-size:11px;color:var(--text-secondary,#64748b);\">なし</div>';return;}\n    items.forEach(function(it,idx){\n      var row=document.createElement('div');\n      row.style.cssText='padding:10px;background:var(--background-secondary,#f8fafc);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;font-size:11px;color:var(--text-primary,#111827);';\n      var name=document.createElement('div');name.style.fontWeight='700';name.textContent=it.name||'—';\n      var url=document.createElement('div');url.style.color='#0891b2';url.style.marginTop='4px';url.style.wordBreak='break-all';url.textContent=it.url||'';\n      var repo=document.createElement('div');repo.style.color='var(--text-secondary,#64748b)';repo.style.marginTop='2px';repo.textContent=it.repository?('repository: '+it.repository):'';\n      var actions=document.createElement('div');actions.style.marginTop='8px';actions.style.display='flex';gap='8px';\n      var go=document.createElement('a');go.href=it.url;go.textContent='開く';go.style.cssText='text-decoration:none;color:#fff;background:#0891b2;padding:4px 10px;border-radius:6px;font-weight:700;';\n      var del=document.createElement('button');del.type='button';del.textContent='削除';del.style.cssText='background:transparent;border:1px solid #ef4444;color:#ef4444;padding:4px 10px;border-radius:6px;cursor:pointer;';\n      del.addEventListener('click',function(){var n=load();n.splice(idx,1);save(n);render();});\n      actions.appendChild(go);actions.appendChild(del);\n      row.appendChild(name);row.appendChild(url);if(it.repository)row.appendChild(repo);row.appendChild(actions);\n      listEl.appendChild(row);\n    });\n  }\n  form.addEventListener('submit',function(ev){\n    ev.preventDefault();\n    var name=document.getElementById('rt-fc-name').value.trim();\n    var url=document.getElementById('rt-fc-url').value.trim();\n    var repository=document.getElementById('rt-fc-repo').value.trim();\n    if(!name||!url||!urlOk(url)){alert('URLを確認してください（Base44 / Grafana / Excel / Sheets / Planner / HILS / Queue / ETA / Internal SaaS）');return;}\n    var items=load();items.push({name:name,url:url,repository:repository||undefined});\n    save(items);form.reset();render();\n  });\n})();\n</script>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -103,6 +127,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -111,7 +136,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<div class=\"rt-root\" style=\"width:100%;height:100%;display:flex;align-items:center;padding:0 6px;box-sizing:border-box;\"><div style=\"font-size:12px;font-weight:700;color:var(--text-secondary,#64748b);letter-spacing:.14em;\">自システム</div></div>"
+        "content": "<div style=\"width:100%;height:100%;display:flex;align-items:center;padding:0 6px;box-sizing:border-box;\"><div style=\"font-size:12px;font-weight:700;color:var(--text-secondary,#64748b);letter-spacing:.14em;\">自システム</div></div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -119,6 +149,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 4,
         "w": 6,
@@ -127,7 +158,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<style>\n.rt-root,.rt-root a{text-decoration:none}\n.rt-surface{background:var(--background-primary,#fff);color:var(--text-primary,#111827);border:1px solid var(--border-weak,#e5e7eb);border-radius:12px;box-sizing:border-box}\n.rt-muted{color:var(--text-secondary,#64748b)}\n.rt-accent{color:#0891b2;font-weight:600}\n.rt-card{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center;transition:background .15s,border-color .15s,box-shadow .15s}\n.rt-card:hover{background:rgba(14,165,233,.08);border-color:#38bdf8;box-shadow:0 1px 4px rgba(14,165,233,.12)}\n.rt-nav{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;transition:background .15s,border-color .15s}\n.rt-nav:hover{background:rgba(14,165,233,.06);border-color:#7dd3fc}\n.rt-header-link{display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;transition:background .15s,border-color .15s}\n.rt-header-link:hover{background:rgba(14,165,233,.06);border-color:#7dd3fc}\n.rt-fc-btn{width:100%;height:100%;min-height:48px;border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;background:var(--background-primary,#fff);color:#0891b2;font-size:28px;font-weight:700;cursor:pointer;line-height:1;transition:background .15s,border-color .15s,box-shadow .15s}\n.rt-fc-btn:hover{background:rgba(14,165,233,.08);border-color:#22d3ee;box-shadow:0 1px 4px rgba(14,165,233,.15)}\n</style><a href=\"https://fleet-operations-console.base44.app/?runtime_embed=grafana\" class=\"rt-card\">フリート運用</a>"
+        "content": "<a href=\"https://fleet-operations-console.base44.app/?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center\">フリート運用</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -135,6 +171,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 4,
         "w": 6,
@@ -143,7 +180,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<style>\n.rt-root,.rt-root a{text-decoration:none}\n.rt-surface{background:var(--background-primary,#fff);color:var(--text-primary,#111827);border:1px solid var(--border-weak,#e5e7eb);border-radius:12px;box-sizing:border-box}\n.rt-muted{color:var(--text-secondary,#64748b)}\n.rt-accent{color:#0891b2;font-weight:600}\n.rt-card{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center;transition:background .15s,border-color .15s,box-shadow .15s}\n.rt-card:hover{background:rgba(14,165,233,.08);border-color:#38bdf8;box-shadow:0 1px 4px rgba(14,165,233,.12)}\n.rt-nav{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;transition:background .15s,border-color .15s}\n.rt-nav:hover{background:rgba(14,165,233,.06);border-color:#7dd3fc}\n.rt-header-link{display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;transition:background .15s,border-color .15s}\n.rt-header-link:hover{background:rgba(14,165,233,.06);border-color:#7dd3fc}\n.rt-fc-btn{width:100%;height:100%;min-height:48px;border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;background:var(--background-primary,#fff);color:#0891b2;font-size:28px;font-weight:700;cursor:pointer;line-height:1;transition:background .15s,border-color .15s,box-shadow .15s}\n.rt-fc-btn:hover{background:rgba(14,165,233,.08);border-color:#22d3ee;box-shadow:0 1px 4px rgba(14,165,233,.15)}\n</style><a href=\"https://service-hub-console.base44.app/?runtime_embed=grafana\" class=\"rt-card\">サービス拠点</a>"
+        "content": "<a href=\"https://service-hub-console.base44.app/?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center\">サービス拠点</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -151,6 +193,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 4,
         "w": 6,
@@ -159,7 +202,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<style>\n.rt-root,.rt-root a{text-decoration:none}\n.rt-surface{background:var(--background-primary,#fff);color:var(--text-primary,#111827);border:1px solid var(--border-weak,#e5e7eb);border-radius:12px;box-sizing:border-box}\n.rt-muted{color:var(--text-secondary,#64748b)}\n.rt-accent{color:#0891b2;font-weight:600}\n.rt-card{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center;transition:background .15s,border-color .15s,box-shadow .15s}\n.rt-card:hover{background:rgba(14,165,233,.08);border-color:#38bdf8;box-shadow:0 1px 4px rgba(14,165,233,.12)}\n.rt-nav{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;transition:background .15s,border-color .15s}\n.rt-nav:hover{background:rgba(14,165,233,.06);border-color:#7dd3fc}\n.rt-header-link{display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;transition:background .15s,border-color .15s}\n.rt-header-link:hover{background:rgba(14,165,233,.06);border-color:#7dd3fc}\n.rt-fc-btn{width:100%;height:100%;min-height:48px;border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;background:var(--background-primary,#fff);color:#0891b2;font-size:28px;font-weight:700;cursor:pointer;line-height:1;transition:background .15s,border-color .15s,box-shadow .15s}\n.rt-fc-btn:hover{background:rgba(14,165,233,.08);border-color:#22d3ee;box-shadow:0 1px 4px rgba(14,165,233,.15)}\n</style><a href=\"https://life-ledger-link.base44.app/?runtime_embed=grafana\" class=\"rt-card\">生活取引</a>"
+        "content": "<a href=\"https://life-ledger-link.base44.app/?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center\">生活取引</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -167,6 +215,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 4,
         "w": 6,
@@ -175,7 +224,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<style>\n.rt-root,.rt-root a{text-decoration:none}\n.rt-surface{background:var(--background-primary,#fff);color:var(--text-primary,#111827);border:1px solid var(--border-weak,#e5e7eb);border-radius:12px;box-sizing:border-box}\n.rt-muted{color:var(--text-secondary,#64748b)}\n.rt-accent{color:#0891b2;font-weight:600}\n.rt-card{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center;transition:background .15s,border-color .15s,box-shadow .15s}\n.rt-card:hover{background:rgba(14,165,233,.08);border-color:#38bdf8;box-shadow:0 1px 4px rgba(14,165,233,.12)}\n.rt-nav{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;transition:background .15s,border-color .15s}\n.rt-nav:hover{background:rgba(14,165,233,.06);border-color:#7dd3fc}\n.rt-header-link{display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;transition:background .15s,border-color .15s}\n.rt-header-link:hover{background:rgba(14,165,233,.06);border-color:#7dd3fc}\n.rt-fc-btn{width:100%;height:100%;min-height:48px;border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;background:var(--background-primary,#fff);color:#0891b2;font-size:28px;font-weight:700;cursor:pointer;line-height:1;transition:background .15s,border-color .15s,box-shadow .15s}\n.rt-fc-btn:hover{background:rgba(14,165,233,.08);border-color:#22d3ee;box-shadow:0 1px 4px rgba(14,165,233,.15)}\n</style><a href=\"https://urban-operation-console.base44.app/?runtime_embed=grafana\" class=\"rt-card\">都市運行</a>"
+        "content": "<a href=\"https://urban-operation-console.base44.app/?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;color:var(--text-primary,#111827);font-size:15px;font-weight:700;text-align:center\">都市運行</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -183,6 +237,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 2,
         "w": 8,
@@ -191,7 +246,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/go-integrated-analysis/integrated-control-analysis\" class=\"rt-nav\" style=\"border-left:3px solid #ef4444;\">崩壊制御アーキテクチャ</a>"
+        "content": "<a href=\"/d/go-integrated-analysis/integrated-control-analysis\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #ef4444;\">崩壊制御アーキテクチャ</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -199,6 +259,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 2,
         "w": 8,
@@ -207,7 +268,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/mieruka_discovery\" class=\"rt-nav\" style=\"border-left:3px solid #0ea5e9;\">機能アーキテクチャ図</a>"
+        "content": "<a href=\"/mieruka_discovery\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #0ea5e9;\">機能アーキテクチャ図</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -215,6 +281,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 2,
         "w": 8,
@@ -223,7 +290,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/mieruka_discovery\" class=\"rt-nav\" style=\"border-left:3px solid #f59e0b;\">シーケンス図</a>"
+        "content": "<a href=\"/mieruka_discovery\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #f59e0b;\">シーケンス図</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -231,6 +303,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 2,
         "w": 8,
@@ -239,7 +312,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/go-business-simulation/business-simulation\" class=\"rt-nav\" style=\"border-left:3px solid #22c55e;\">収支シミュレーション</a>"
+        "content": "<a href=\"/d/go-business-simulation/business-simulation\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #22c55e;\">収支シミュレーション</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -247,6 +325,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 2,
         "w": 8,
@@ -255,7 +334,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/go-investment-recovery/investment-recovery-plan\" class=\"rt-nav\" style=\"border-left:3px solid #14b8a6;\">コスト回収計画</a>"
+        "content": "<a href=\"/d/go-investment-recovery/investment-recovery-plan\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #14b8a6;\">コスト回収計画</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -263,6 +347,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 2,
         "w": 8,
@@ -271,7 +356,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/go-execution-tasks/execution-tasks\" class=\"rt-nav\" style=\"border-left:3px solid #94a3b8;\">WBS</a>"
+        "content": "<a href=\"/d/go-execution-tasks/execution-tasks\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #94a3b8;\">WBS</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -279,6 +369,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 2,
         "w": 8,
@@ -287,7 +378,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/go-operational-planning/operational-planning\" class=\"rt-nav\" style=\"border-left:3px solid #3b82f6;\">サービス運用</a>"
+        "content": "<a href=\"/d/go-operational-planning/operational-planning\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #3b82f6;\">サービス運用</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -295,6 +391,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 2,
         "w": 8,
@@ -303,7 +400,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/application-toyota-logic/application-for-toyota-parameter-driven-federation-model\" class=\"rt-nav\" style=\"border-left:3px solid #a855f7;\">PL</a>"
+        "content": "<a href=\"/d/application-toyota-logic/application-for-toyota-parameter-driven-federation-model\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #a855f7;\">PL</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     },
     {
@@ -311,6 +413,7 @@
       "type": "text",
       "title": "",
       "transparent": true,
+      "pluginVersion": "11.5.2",
       "gridPos": {
         "h": 2,
         "w": 8,
@@ -319,7 +422,12 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/go-investment-recovery/investment-recovery-plan\" class=\"rt-nav\" style=\"border-left:3px solid #eab308;\">IRR</a>"
+        "content": "<a href=\"/d/go-investment-recovery/investment-recovery-plan\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;color:var(--text-primary,#111827);font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #eab308;\">IRR</a>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
       }
     }
   ]

@@ -7,7 +7,7 @@ export function federationConnectPanelHtml(routes) {
   const seed = JSON.stringify(fc.seedSystems ?? []);
 
   return `<div id="rt-fc-root" class="rt-root" style="width:100%;height:100%;min-height:0;display:flex;align-items:center;justify-content:center;box-sizing:border-box;">
-<button type="button" id="rt-fc-open" class="rt-fc-btn" title="Federation Connect">＋</button>
+<button type="button" id="rt-fc-open" title="Federation Connect" style="width:100%;height:100%;min-height:48px;border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;background:var(--background-primary,#fff);color:#0891b2;font-size:28px;font-weight:700;cursor:pointer;line-height:1;">＋</button>
 <div id="rt-fc-backdrop" hidden style="position:fixed;inset:0;background:rgba(15,23,42,.25);z-index:9998;"></div>
 <div id="rt-fc-dialog" hidden style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(420px,92vw);max-height:80vh;overflow:auto;z-index:9999;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:14px;padding:16px;color:var(--text-primary,#111827);box-sizing:border-box;font-family:system-ui,sans-serif;box-shadow:0 12px 40px rgba(15,23,42,.12);">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><div style="font-size:16px;font-weight:700;">Federation Connect</div><button type="button" id="rt-fc-close" style="background:transparent;border:none;color:var(--text-secondary,#64748b);font-size:20px;cursor:pointer;">×</button></div>

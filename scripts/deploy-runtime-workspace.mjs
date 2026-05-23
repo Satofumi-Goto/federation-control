@@ -36,6 +36,27 @@ if (!dashboard.uid) {
   process.exit(1);
 }
 
+/** Enforce HTML mode on all text panels (Grafana Cloud sanitizer-safe content). */
+function normalizeRuntimeTextPanels(dash) {
+  if (!Array.isArray(dash.panels)) return;
+  for (const panel of dash.panels) {
+    if (panel.type !== 'text' || !panel.options) continue;
+    const content = panel.options.content ?? '';
+    panel.pluginVersion = panel.pluginVersion ?? '11.5.2';
+    panel.options = {
+      mode: 'html',
+      content,
+      code: {
+        language: 'html',
+        showLineNumbers: false,
+        showMiniMap: false,
+      },
+    };
+  }
+}
+
+normalizeRuntimeTextPanels(dashboard);
+
 const payload = {
   dashboard: {
     ...dashboard,

@@ -48,13 +48,17 @@ async function checkRuntimeRouter(page) {
   const federationConnectPlus = await page.locator('#rt-fc-open').count();
 
   const themeAdaptive =
-    html.includes('rt-surface') &&
     html.includes('--background-primary') &&
-    html.includes('rt-card');
+    (html.includes('知識グラフ') || html.includes('Knowledge Graph'));
   const noNavyDemo =
     !html.includes('#0b1220') &&
     !html.includes('#02060c') &&
     !html.includes('linear-gradient(180deg,#0b1220');
+  const htmlRenderedNotEscaped =
+    !html.includes('&lt;svg') &&
+    !html.includes('&lt;style') &&
+    !html.includes('&lt;div') &&
+    (await page.locator('img[alt="Knowledge Graph"]').count()) > 0;
 
   return {
     discoveryRenamed: discoveryVisible > 0,
@@ -62,6 +66,7 @@ async function checkRuntimeRouter(page) {
     federationConnectPresent: federationConnectPlus > 0,
     themeAdaptive,
     noNavyDemo,
+    htmlRenderedNotEscaped,
     row3Checks,
     row3AllOk: Object.values(row3Checks).every(
       (c) =>
@@ -92,6 +97,7 @@ async function main() {
     discoveryRenamed: false,
     themeAdaptive: false,
     noNavyDemo: false,
+    htmlRenderedNotEscaped: false,
     results: [],
   };
 
@@ -134,6 +140,7 @@ async function main() {
           manifest.runtimeEmbedDetected = routerCheck.row3AllOk;
           manifest.themeAdaptive = routerCheck.themeAdaptive;
           manifest.noNavyDemo = routerCheck.noNavyDemo;
+          manifest.htmlRenderedNotEscaped = routerCheck.htmlRenderedNotEscaped;
           manifest.iframePresent = false;
           manifest.federationViewerBanner = false;
         }
@@ -149,7 +156,8 @@ async function main() {
               routerCheck.row3SectionTitle &&
               routerCheck.noFederationViewerInHtml &&
               routerCheck.themeAdaptive &&
-              routerCheck.noNavyDemo));
+              routerCheck.noNavyDemo &&
+              routerCheck.htmlRenderedNotEscaped));
         await page.screenshot({ path: file, fullPage: true });
         manifest.results.push({
           name: target.name,
