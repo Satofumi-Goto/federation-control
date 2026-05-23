@@ -3,433 +3,188 @@
   "editable": true,
   "schemaVersion": 39,
   "title": "Runtime",
-  "version": 31,
+  "version": 40,
   "refresh": "30s",
   "timezone": "browser",
-  "description": "都市OS Runtime Federation Brain — Knowledge → Memory → Collapse Control → Operational Runtime",
-  "tags": [
-    "runtime",
-    "urban-os-runtime",
-    "workspace-router",
-    "theme-adaptive",
-    "federation-navigation",
-    "collapse-control",
-    "federation-brain"
-  ],
+  "description": "Federated Operational Governance Workspace",
+  "tags": ["runtime", "federation", "governance"],
   "links": [
-    {
-      "title": "Runtime",
-      "url": "/d/sa8ljn4/runtime"
-    },
-    {
-      "title": "連携探索",
-      "url": "/runtime_discovery"
-    },
-    {
-      "title": "Needs翻訳",
-      "url": "/need_impact"
-    },
-    {
-      "title": "アライメント",
-      "url": "/d/external-federation-view/external-federation-view"
-    }
+    { "title": "Runtime", "url": "/d/sa8ljn4/runtime" },
+    { "title": "連携探索", "url": "/runtime_discovery" },
+    { "title": "Needs翻訳", "url": "/need_impact" },
+    { "title": "アライメント", "url": "/d/external-federation-view/external-federation-view" }
   ],
   "panels": [
     {
       "id": 100,
       "type": "text",
-      "title": "",
+      "title": "Runtime",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 3,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "options": {
-        "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;box-shadow:0 1px 2px rgba(15,23,42,.04);\">\n  <a href=\"/d/sa8ljn4/runtime\" style=\"text-decoration:none;color:inherit;\">\n    <div style=\"font-size:26px;font-weight:700;line-height:1.1;color:var(--text-primary,#111827);\">Runtime</div>\n    <div style=\"margin-top:4px;font-size:11px;color:var(--text-secondary,#64748b);\">都市OS Runtime Federation Brain</div>\n  </a>\n  <div style=\"display:flex;gap:12px;flex-shrink:0;\">\n    <a href=\"/runtime_discovery\" style=\"display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;text-decoration:none;color:var(--text-primary,#111827);\">\n      <div style=\"font-size:22px;line-height:1;\">🤝</div>\n      <div style=\"font-size:11px;margin-top:4px;font-weight:700;color:#0891b2;\">連携探索</div>\n    </a>\n    <a href=\"/need_impact\" style=\"display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;text-decoration:none;color:var(--text-primary,#111827);\">\n      <div style=\"font-size:22px;line-height:1;\">🗣️</div>\n      <div style=\"font-size:11px;margin-top:4px;font-weight:700;color:#d97706;\">Needs翻訳</div>\n    </a>\n    <a href=\"/d/external-federation-view/external-federation-view\" style=\"display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:10px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);min-width:64px;text-decoration:none;color:var(--text-primary,#111827);\">\n      <div style=\"font-size:22px;line-height:1;\">🧩</div>\n      <div style=\"font-size:11px;margin-top:4px;font-weight:700;color:#7c3aed;\">アライメント</div>\n    </a>\n  </div>\n</div>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 0 },
+      "options": { "mode": "markdown", "content": "# Runtime\nFederation Brain\n\n[連携探索](/runtime_discovery)　[Needs翻訳](/need_impact)　[アライメント](/d/external-federation-view/external-federation-view)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 201,
       "type": "text",
-      "title": "",
+      "title": "Obsidian Knowledge Graph",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 5,
-        "w": 11,
-        "x": 0,
-        "y": 3
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"/d/go-program-index/grafana-obsidian-program-index\" style=\"display:block;width:100%;height:100%;min-height:0;overflow:hidden;padding:12px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;box-shadow:0 1px 2px rgba(15,23,42,.04);\">\n    <div style=\"display:flex;align-items:flex-start;justify-content:space-between;gap:8px;\">\n      <div>\n        <div style=\"font-size:10px;font-weight:600;color:#0891b2;letter-spacing:.06em;\">Runtime Federation Memory</div>\n        <div style=\"font-size:17px;font-weight:700;margin-top:3px;color:var(--text-primary,#111827);\">Growing Runtime Knowledge Graph</div>\n      </div>\n      <div style=\"font-size:9px;font-weight:600;color:var(--text-secondary,#64748b);text-align:right;max-width:42%;line-height:1.35;\">Memory参照</div>\n    </div>\n    <div style=\"margin-top:6px;font-size:9px;color:var(--text-secondary,#64748b);line-height:1.4;\">Growth: 自システム · Runtime Card · Seneschal Event · Queue collapse · ETA drift · Dispatch failure · ODD failure · Knowledge export</div>\n    <div style=\"margin-top:6px;height:118px;border-radius:10px;background:var(--background-secondary,#f8fafc);border:1px solid var(--border-weak,#e5e7eb);overflow:hidden;\"><img alt=\"Growing Runtime Knowledge Graph\" width=\"580\" height=\"118\" style=\"width:100%;height:118px;object-fit:contain;display:block;\" src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20580%20180%22%20width%3D%22580%22%20height%3D%22180%22%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%2280%22%20y2%3D%2240%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%22420%22%20y2%3D%2236%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%2260%22%20y2%3D%22120%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%22160%22%20y2%3D%22150%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%22360%22%20y2%3D%22140%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%2280%22%20y1%3D%2240%22%20x2%3D%22160%22%20y2%3D%22150%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22160%22%20y1%3D%22150%22%20x2%3D%22360%22%20y2%3D%22140%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%2260%22%20y1%3D%22120%22%20x2%3D%22420%22%20y2%3D%2236%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22420%22%20y1%3D%2236%22%20x2%3D%22480%22%20y2%3D%2288%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22360%22%20y1%3D%22140%22%20x2%3D%22480%22%20y2%3D%2288%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22120%22%20y1%3D%2228%22%20x2%3D%22340%22%20y2%3D%2224%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22340%22%20y1%3D%2224%22%20x2%3D%22280%22%20y2%3D%2290%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22120%22%20y1%3D%2228%22%20x2%3D%2280%22%20y2%3D%2240%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22200%22%20y1%3D%2228%22%20x2%3D%22280%22%20y2%3D%2290%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22480%22%20y1%3D%2288%22%20x2%3D%22500%22%20y2%3D%22155%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22500%22%20y1%3D%22155%22%20x2%3D%22520%22%20y2%3D%22110%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Cline%20x1%3D%22540%22%20y1%3D%22150%22%20x2%3D%22548%22%20y2%3D%22128%22%20stroke%3D%22%23cbd5e1%22%20stroke-width%3D%221.2%22%2F%3E%3Ccircle%20cx%3D%22280%22%20cy%3D%2290%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22280%22%20y%3D%22108%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ERuntime%3C%2Ftext%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%228%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%2280%22%20y%3D%2258%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EQueue%3C%2Ftext%3E%3Ccircle%20cx%3D%22420%22%20cy%3D%2236%22%20r%3D%228%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22420%22%20y%3D%2254%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EODD%3C%2Ftext%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%22120%22%20r%3D%228%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%22138%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EConstraint%3C%2Ftext%3E%3Ccircle%20cx%3D%22160%22%20cy%3D%22150%22%20r%3D%228%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22160%22%20y%3D%22168%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EETA%3C%2Ftext%3E%3Ccircle%20cx%3D%22360%22%20cy%3D%22140%22%20r%3D%228%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22360%22%20y%3D%22158%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EDispatch%3C%2Ftext%3E%3Ccircle%20cx%3D%22480%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22480%22%20y%3D%22106%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EFleet%3C%2Ftext%3E%3Ccircle%20cx%3D%22500%22%20cy%3D%22155%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22500%22%20y%3D%22173%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EEnergy%3C%2Ftext%3E%3Ccircle%20cx%3D%22520%22%20cy%3D%22110%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22520%22%20y%3D%22128%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ENode%3C%2Ftext%3E%3Ccircle%20cx%3D%22440%22%20cy%3D%2228%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22440%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EHILS%3C%2Ftext%3E%3Ccircle%20cx%3D%22540%22%20cy%3D%22150%22%20r%3D%228%22%20fill%3D%22%23eab308%22%2F%3E%3Ctext%20x%3D%22540%22%20y%3D%22168%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EPL%3C%2Ftext%3E%3Ccircle%20cx%3D%22548%22%20cy%3D%22128%22%20r%3D%228%22%20fill%3D%22%23eab308%22%2F%3E%3Ctext%20x%3D%22548%22%20y%3D%22146%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EIRR%3C%2Ftext%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%2228%22%20r%3D%228%22%20fill%3D%22%23eab308%22%2F%3E%3Ctext%20x%3D%22200%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ERuntime%20Draft%3C%2Ftext%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2228%22%20r%3D%228%22%20fill%3D%22%238b5cf6%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ESeneschal%3C%2Ftext%3E%3Ccircle%20cx%3D%22340%22%20cy%3D%2224%22%20r%3D%228%22%20fill%3D%22%238b5cf6%22%2F%3E%3Ctext%20x%3D%22340%22%20y%3D%2242%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EIntent%3C%2Ftext%3E%3C%2Fsvg%3E\" /></div>\n    <div style=\"margin-top:6px;display:flex;flex-wrap:wrap;gap:8px;font-size:9px;color:var(--text-secondary,#64748b);\">\n    <span><span style=\"display:inline-block;width:8px;height:8px;border-radius:50%;background:#ef4444;vertical-align:middle;margin-right:3px;\"></span>崩壊しやすい</span>\n    <span><span style=\"display:inline-block;width:8px;height:8px;border-radius:50%;background:#0ea5e9;vertical-align:middle;margin-right:3px;\"></span>安定</span>\n    <span><span style=\"display:inline-block;width:8px;height:8px;border-radius:50%;background:#8b5cf6;vertical-align:middle;margin-right:3px;\"></span>Knowledge</span>\n    <span><span style=\"display:inline-block;width:8px;height:8px;border-radius:50%;background:#eab308;vertical-align:middle;margin-right:3px;\"></span>Draft/未同期</span>\n  </div>\n  </a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 5, "w": 11, "x": 0, "y": 3 },
+      "options": { "mode": "markdown", "content": "## Obsidian Knowledge Graph\nObsidian · Graph role\n\nNote · Wikilink · Program · ADR\n\nKnowledge source: /d/go-program-index/grafana-obsidian-program-index", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 202,
       "type": "text",
-      "title": "",
+      "title": "Runtime Federation Graph",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 5,
-        "w": 11,
-        "x": 11,
-        "y": 3
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"/d/sa8ljn4/runtime\" style=\"display:block;width:100%;height:100%;min-height:0;overflow:hidden;padding:10px 12px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;box-shadow:0 1px 2px rgba(15,23,42,.04);\">\n    <div style=\"display:flex;align-items:center;justify-content:space-between;gap:6px;\">\n      <div>\n        <div style=\"font-size:10px;font-weight:600;color:#0891b2;\">崩壊制御 Runtime</div>\n        <div style=\"font-size:17px;font-weight:700;margin-top:2px;color:var(--text-primary,#111827);\">運行制御アーキテクチャ</div>\n      </div>\n      <div style=\"font-size:9px;font-weight:700;color:#d97706;text-align:right;\">3段構造<br/>Seneschal 6</div>\n    </div>\n    <div style=\"display:grid;grid-template-columns:108px 1fr;gap:8px;align-items:center;margin-top:6px;padding:6px;background:var(--background-secondary,#f8fafc);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;\"><div style=\"width:86px;height:86px;border-radius:50%;background:conic-gradient(from -90deg,#f59e0b 0% 32%,#38bdf8 32% 56%,#8b5cf6 56% 74%,#ef4444 74% 90%,#22c55e 90% 100%);position:relative;justify-self:center;\"><div style=\"position:absolute;top:13px;left:13px;right:13px;bottom:13px;border-radius:50%;background:var(--background-primary,#fff);display:flex;align-items:center;justify-content:center;text-align:center;font-size:9px;font-weight:700;line-height:1.25;color:var(--text-primary,#111827);\">直ぐに<br/>崩壊</div></div><div style=\"display:grid;grid-template-columns:1fr 1fr;gap:3px;\"><div style=\"display:flex;align-items:center;gap:5px;color:var(--text-secondary,#64748b);font-size:9px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#f59e0b;flex:0 0 auto;\"></span><span>Queue 32%</span></div><div style=\"display:flex;align-items:center;gap:5px;color:var(--text-secondary,#64748b);font-size:9px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#38bdf8;flex:0 0 auto;\"></span><span>ETA 24%</span></div><div style=\"display:flex;align-items:center;gap:5px;color:var(--text-secondary,#64748b);font-size:9px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#8b5cf6;flex:0 0 auto;\"></span><span>ODD 18%</span></div><div style=\"display:flex;align-items:center;gap:5px;color:var(--text-secondary,#64748b);font-size:9px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#ef4444;flex:0 0 auto;\"></span><span>Constraint 16%</span></div><div style=\"display:flex;align-items:center;gap:5px;color:var(--text-secondary,#64748b);font-size:9px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#22c55e;flex:0 0 auto;\"></span><span>Dispatch 10%</span></div></div></div>\n    <div style=\"margin-top:5px;padding:6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:8px;\"><div style=\"display:grid;grid-template-columns:88px 1fr 28px;align-items:center;gap:5px;margin-bottom:3px;\"><div style=\"font-size:9px;color:var(--text-secondary,#64748b);\">Queue→ETA</div><div style=\"height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;\"><div style=\"height:7px;width:86%;background:#f59e0b;border-radius:999px;\"></div></div><div style=\"font-size:9px;text-align:right;color:var(--text-secondary,#64748b);\">86</div></div><div style=\"display:grid;grid-template-columns:88px 1fr 28px;align-items:center;gap:5px;margin-bottom:3px;\"><div style=\"font-size:9px;color:var(--text-secondary,#64748b);\">ETA→Dispatch</div><div style=\"height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;\"><div style=\"height:7px;width:72%;background:#38bdf8;border-radius:999px;\"></div></div><div style=\"font-size:9px;text-align:right;color:var(--text-secondary,#64748b);\">72</div></div><div style=\"display:grid;grid-template-columns:88px 1fr 28px;align-items:center;gap:5px;margin-bottom:3px;\"><div style=\"font-size:9px;color:var(--text-secondary,#64748b);\">Constraint→ODD</div><div style=\"height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;\"><div style=\"height:7px;width:64%;background:#ef4444;border-radius:999px;\"></div></div><div style=\"font-size:9px;text-align:right;color:var(--text-secondary,#64748b);\">64</div></div><div style=\"display:grid;grid-template-columns:88px 1fr 28px;align-items:center;gap:5px;margin-bottom:3px;\"><div style=\"font-size:9px;color:var(--text-secondary,#64748b);\">ODD→Fleet</div><div style=\"height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;\"><div style=\"height:7px;width:58%;background:#8b5cf6;border-radius:999px;\"></div></div><div style=\"font-size:9px;text-align:right;color:var(--text-secondary,#64748b);\">58</div></div></div>\n    <div style=\"margin-top:5px;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;\"><div style=\"padding:5px 4px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #22c55e;border-radius:7px;min-width:0;\"><div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Throughput</div><div style=\"font-size:13px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">74%</div></div><div style=\"padding:5px 4px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #22c55e;border-radius:7px;min-width:0;\"><div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Trips</div><div style=\"font-size:13px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">35/日</div></div><div style=\"padding:5px 4px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #f59e0b;border-radius:7px;min-width:0;\"><div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Queue</div><div style=\"font-size:13px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">12分</div></div><div style=\"padding:5px 4px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #22c55e;border-radius:7px;min-width:0;\"><div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Runtime</div><div style=\"font-size:13px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">AUTHORIZED</div></div><div style=\"padding:5px 4px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #22c55e;border-radius:7px;min-width:0;\"><div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">PL</div><div style=\"font-size:13px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">+18%</div></div><div style=\"padding:5px 4px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #22c55e;border-radius:7px;min-width:0;\"><div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">IRR</div><div style=\"font-size:13px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">12.4%</div></div></div>\n  </a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 5, "w": 11, "x": 11, "y": 3 },
+      "options": { "mode": "markdown", "content": "## Runtime Federation Graph\nRuntime · Federation role\n\nQueue · ETA · Throughput · Drift · Alignment · Collapse Risk\n\nHealth: 82% / Alignment: 74%", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 203,
       "type": "text",
-      "title": "Federation Connect",
+      "title": "Federation Add",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 5,
-        "w": 2,
-        "x": 22,
-        "y": 3
-      },
-      "options": {
-        "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;min-height:0;display:flex;flex-direction:column;box-sizing:border-box;padding:6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;\">\n  <details style=\"width:100%;flex:1;display:flex;flex-direction:column;\">\n    <summary style=\"list-style:none;cursor:pointer;width:100%;flex:1;min-height:40px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;color:#0891b2;border:1px dashed var(--border-weak,#cbd5e1);border-radius:8px;background:var(--background-primary,#fff);\">＋</summary>\n    <div style=\"margin-top:8px;padding:8px;border-top:1px solid var(--border-weak,#e5e7eb);font-family:system-ui,sans-serif;\">\n      <div style=\"font-size:12px;font-weight:700;color:var(--text-primary,#111827);\">Federation Connect</div>\n      <div style=\"margin-top:6px;font-size:9px;color:var(--text-secondary,#64748b);line-height:1.45;\">\n        名前 · URL · repository（任意）<br/>\n        追加・同期は <a href=\"/runtime_discovery\" style=\"color:#0891b2;font-weight:700;text-decoration:none;\">連携探索</a> または Runtime 全体記憶と連動。\n      </div>\n      <div style=\"margin-top:10px;font-size:10px;font-weight:700;color:#0891b2;\">追加済みシステム</div>\n      <div style=\"margin-top:8px;font-size:10px;color:var(--text-secondary,#64748b);\">登録なし</div>\n    </div>\n  </details>\n</div>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 5, "w": 2, "x": 22, "y": 3 },
+      "options": { "mode": "markdown", "content": "## Federation Add\nGlobal system onboarding\n\n＋", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 300,
       "type": "text",
-      "title": "",
+      "title": "Operational Systems",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 8
-      },
-      "options": {
-        "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;display:flex;align-items:center;padding:0 6px;box-sizing:border-box;\"><div style=\"font-size:12px;font-weight:700;color:var(--text-secondary,#64748b);letter-spacing:.14em;\">自システム</div></div>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 8 },
+      "options": { "mode": "markdown", "content": "## Operational Systems　　　　　　　　　　　　　　　　　　　　　　　　　＋", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 311,
       "type": "text",
-      "title": "",
+      "title": "フリート運用",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 0,
-        "y": 9
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"https://fleet-operations-console.base44.app/viewer/fleet?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:10px;color:#111827;font-size:15px;font-weight:700;text-align:center\">フリート運用</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 9 },
+      "options": { "mode": "markdown", "content": "[フリート運用](https://fleet-operations-console.base44.app/viewer/fleet?runtime_embed=grafana)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 312,
       "type": "text",
-      "title": "",
+      "title": "サービス拠点",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 6,
-        "y": 9
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"https://service-hub-console.base44.app/viewer/service-hub?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:10px;color:#111827;font-size:15px;font-weight:700;text-align:center\">サービス拠点</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 9 },
+      "options": { "mode": "markdown", "content": "[サービス拠点](https://service-hub-console.base44.app/viewer/service-hub?runtime_embed=grafana)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 313,
       "type": "text",
-      "title": "",
+      "title": "生活取引",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 12,
-        "y": 9
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"https://life-transaction-console.base44.app/viewer/life?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:10px;color:#111827;font-size:15px;font-weight:700;text-align:center\">生活取引</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 9 },
+      "options": { "mode": "markdown", "content": "[生活取引](https://life-transaction-console.base44.app/viewer/life?runtime_embed=grafana)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 314,
       "type": "text",
-      "title": "",
+      "title": "都市運行",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 18,
-        "y": 9
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"https://urban-operation-console.base44.app/viewer/urban?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:10px;color:#111827;font-size:15px;font-weight:700;text-align:center\">都市運行</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 9 },
+      "options": { "mode": "markdown", "content": "[都市運行](https://urban-operation-console.base44.app/viewer/urban?runtime_embed=grafana)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
+    },
+    {
+      "id": 350,
+      "type": "text",
+      "title": "System Artifacts",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 13 },
+      "options": { "mode": "markdown", "content": "## System Artifacts　　　　　　　　　　　　　　　　　　　　　　　　　＋", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 401,
       "type": "text",
-      "title": "",
+      "title": "Collapse Control Architecture",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 2,
-        "w": 8,
-        "x": 0,
-        "y": 13
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"/d/go-integrated-analysis/integrated-control-analysis\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:8px;color:#111827;font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #ef4444;\">崩壊制御アーキテクチャ</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 2, "w": 8, "x": 0, "y": 14 },
+      "options": { "mode": "markdown", "content": "[Collapse Control Architecture](/d/go-integrated-analysis/integrated-control-analysis)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 402,
       "type": "text",
-      "title": "",
+      "title": "Functional Topology",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 2,
-        "w": 8,
-        "x": 8,
-        "y": 13
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"/mieruka_discovery\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:8px;color:#111827;font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #0ea5e9;\">機能アーキテクチャ図</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 2, "w": 8, "x": 8, "y": 14 },
+      "options": { "mode": "markdown", "content": "[Functional Topology](/mieruka_discovery)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 403,
       "type": "text",
-      "title": "",
+      "title": "Federation Sequence",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 2,
-        "w": 8,
-        "x": 16,
-        "y": 13
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"/mieruka_discovery\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:8px;color:#111827;font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #f59e0b;\">シーケンス図</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 2, "w": 8, "x": 16, "y": 14 },
+      "options": { "mode": "markdown", "content": "[Federation Sequence](/mieruka_discovery)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 404,
       "type": "text",
-      "title": "",
+      "title": "Business Simulation",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 2,
-        "w": 8,
-        "x": 0,
-        "y": 15
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"/d/go-business-simulation/business-simulation\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:8px;color:#111827;font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #22c55e;\">収支シミュレーション</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 2, "w": 8, "x": 0, "y": 16 },
+      "options": { "mode": "markdown", "content": "[Business Simulation](/d/go-business-simulation/business-simulation)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 405,
       "type": "text",
-      "title": "",
+      "title": "Cost Recovery",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 2,
-        "w": 8,
-        "x": 8,
-        "y": 15
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"/d/go-investment-recovery/investment-recovery-plan\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:8px;color:#111827;font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #14b8a6;\">コスト回収計画</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 2, "w": 8, "x": 8, "y": 16 },
+      "options": { "mode": "markdown", "content": "[Cost Recovery](/d/go-investment-recovery/investment-recovery-plan)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 406,
       "type": "text",
-      "title": "",
+      "title": "Execution Planning",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 2,
-        "w": 8,
-        "x": 16,
-        "y": 15
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"/d/go-execution-tasks/execution-tasks\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:8px;color:#111827;font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #94a3b8;\">WBS</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 2, "w": 8, "x": 16, "y": 16 },
+      "options": { "mode": "markdown", "content": "[Execution Planning](/d/go-execution-tasks/execution-tasks)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 407,
       "type": "text",
-      "title": "",
+      "title": "Service Operations",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 2,
-        "w": 8,
-        "x": 0,
-        "y": 17
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"/d/go-operational-planning/operational-planning\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:8px;color:#111827;font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #3b82f6;\">サービス運用</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 2, "w": 8, "x": 0, "y": 18 },
+      "options": { "mode": "markdown", "content": "[Service Operations](/d/go-operational-planning/operational-planning)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 408,
       "type": "text",
-      "title": "",
+      "title": "Profit & Loss",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 2,
-        "w": 8,
-        "x": 8,
-        "y": 17
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"/d/application-toyota-logic/application-for-toyota-parameter-driven-federation-model\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:8px;color:#111827;font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #a855f7;\">PL</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 2, "w": 8, "x": 8, "y": 18 },
+      "options": { "mode": "markdown", "content": "[Profit & Loss](/d/application-toyota-logic/application-for-toyota-parameter-driven-federation-model)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     },
     {
       "id": 409,
       "type": "text",
-      "title": "",
+      "title": "Investment Return",
       "transparent": true,
       "pluginVersion": "11.5.2",
-      "gridPos": {
-        "h": 2,
-        "w": 8,
-        "x": 16,
-        "y": 17
-      },
-      "options": {
-        "mode": "html",
-        "content": "<a href=\"/d/go-investment-recovery/investment-recovery-plan\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:4px 6px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:8px;color:#111827;font-size:10px;font-weight:700;text-align:center;line-height:1.25;border-left:3px solid #eab308;\">IRR</a>",
-        "code": {
-          "language": "html",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        }
-      }
+      "gridPos": { "h": 2, "w": 8, "x": 16, "y": 18 },
+      "options": { "mode": "markdown", "content": "[Investment Return](/d/go-investment-recovery/investment-recovery-plan)", "code": { "language": "html", "showLineNumbers": false, "showMiniMap": false } }
     }
   ]
 }
