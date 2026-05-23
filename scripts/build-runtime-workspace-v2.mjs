@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { federationConnectPanelHtml } from './lib/federation-connect-panel.mjs';
 
 const routesPath = path.resolve('grafana/runtime-workspace-routes.json');
 const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
@@ -8,20 +9,29 @@ function navCard(href, label, border) {
   return `<a href="${href}" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:4px 6px;text-decoration:none;background:#111827;border:1px solid ${border};border-radius:8px;color:#fff;font-size:10px;font-weight:700;text-align:center;line-height:1.25;">${label}</a>`;
 }
 
-function consoleCard(href, title, sub, border, { pending = false } = {}) {
-  const subColor = pending ? '#fbbf24' : '#94a3b8';
-  const bg = pending ? '#1e293b' : '#0f172a';
-  const borderStyle = pending ? 'dashed' : 'solid';
-  return `<a href="${href}" style="display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:${bg};border:1px ${borderStyle} ${border};border-bottom:3px ${borderStyle} ${border};border-radius:10px;color:#fff;"><div style="font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${title}</div><div style="margin-top:4px;font-size:10px;color:${subColor};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${sub}</div></a>`;
+/** Same-tab operational console card — name only. */
+function operationalCard(href, title, border) {
+  return `<a href="${href}" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid ${border};border-bottom:3px solid ${border};border-radius:10px;color:#fff;font-size:15px;font-weight:900;text-align:center;white-space:nowrap;text-overflow:ellipsis;">${title}</a>`;
 }
 
 function row3Meta(routes, key) {
-  return routes.row3ConsoleMeta?.[key] ?? { sub: 'Grafana', pending: false };
+  return routes.row3ConsoleMeta?.[key] ?? { name: key, border: '#64748b' };
 }
 
 const r = routes;
 const row3 = r.row3;
 const row4 = r.row4;
+const discoveryLabel = r.row1.discoveryLabel ?? '連携探索';
+const discoveryIcon = r.row1.discoveryIcon ?? '🤝';
+const row3Title = row3.title ?? r.row3Title ?? '自システム';
+const row4StartY = r.row4Layout?.gridPos?.y ?? 13;
+
+const row3Cards = [
+  ['fleetOperation', row3.fleetOperation],
+  ['serviceHub', row3.serviceHub],
+  ['lifeTransaction', row3.lifeTransaction],
+  ['urbanOperation', row3.urbanOperation],
+];
 
 const navItems = [
   [row4.collapseArchitecture, '崩壊制御アーキテクチャ', 'rgba(239,68,68,.35)'],
@@ -43,7 +53,7 @@ const navPanels = navItems.map(([href, label, border], index) => {
     type: 'text',
     title: '',
     transparent: true,
-    gridPos: { h: 2, w: 8, x: col * 8, y: 12 + row * 2 },
+    gridPos: { h: 2, w: 8, x: col * 8, y: row4StartY + row * 2 },
     options: { mode: 'html', content: navCard(href, label, border) },
   };
 });
@@ -54,14 +64,14 @@ const dashboard = {
   schemaVersion: 39,
   style: 'dark',
   title: 'Runtime',
-  version: 25,
+  version: 26,
   refresh: '30s',
   timezone: 'browser',
-  description: '都市OS Runtime Workspace Router',
-  tags: ['runtime', 'urban-os-runtime', 'workspace-router', 'toyota-denso'],
+  description: '都市OS Runtime Workspace Router — same-tab Base44 Operational Runtime navigation',
+  tags: ['runtime', 'urban-os-runtime', 'workspace-router', 'toyota-denso', 'federation-navigation'],
   links: [
-    { title: 'Runtime', url: '/d/sa8ljn4/runtime' },
-    { title: 'Discovery', url: r.row1.discovery },
+    { title: 'Runtime', url: r.runtimeTopPath ?? '/d/sa8ljn4/runtime' },
+    { title: discoveryLabel, url: r.row1.discovery },
     { title: 'Needs翻訳', url: r.row1.needsTranslation },
     { title: 'アライメント', url: r.row1.alignment ?? r.row1.alliance },
   ],
@@ -74,7 +84,7 @@ const dashboard = {
       gridPos: { h: 3, w: 24, x: 0, y: 0 },
       options: {
         mode: 'html',
-        content: `<div style="width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:12px;color:#fff;"><div><div style="font-size:28px;font-weight:900;line-height:1.1;">Runtime</div><div style="margin-top:4px;font-size:11px;color:#67e8f9;">都市OS Runtime Workspace Router</div></div><div style="display:flex;gap:20px;flex-shrink:0;"><a href="${r.row1.discovery}" style="text-decoration:none;color:#67e8f9;text-align:center;"><div style="font-size:24px;line-height:1;">🕸️</div><div style="font-size:11px;margin-top:2px;font-weight:700;">Discovery</div></a><a href="${r.row1.needsTranslation}" style="text-decoration:none;color:#fbbf24;text-align:center;"><div style="font-size:24px;line-height:1;">🗣️</div><div style="font-size:11px;margin-top:2px;font-weight:700;">Needs翻訳</div></a><a href="${r.row1.alignment ?? r.row1.alliance}" style="text-decoration:none;color:#a78bfa;text-align:center;"><div style="font-size:24px;line-height:1;">🧩</div><div style="font-size:11px;margin-top:2px;font-weight:700;">アライメント</div></a></div></div>`,
+        content: `<div style="width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:12px;color:#fff;"><div><div style="font-size:28px;font-weight:900;line-height:1.1;">Runtime</div><div style="margin-top:4px;font-size:11px;color:#67e8f9;">Federated Runtime Control Platform</div></div><div style="display:flex;gap:20px;flex-shrink:0;"><a href="${r.row1.discovery}" style="text-decoration:none;color:#67e8f9;text-align:center;"><div style="font-size:24px;line-height:1;">${discoveryIcon}</div><div style="font-size:11px;margin-top:2px;font-weight:700;">${discoveryLabel}</div></a><a href="${r.row1.needsTranslation}" style="text-decoration:none;color:#fbbf24;text-align:center;"><div style="font-size:24px;line-height:1;">🗣️</div><div style="font-size:11px;margin-top:2px;font-weight:700;">Needs翻訳</div></a><a href="${r.row1.alignment ?? r.row1.alliance}" style="text-decoration:none;color:#a78bfa;text-align:center;"><div style="font-size:24px;line-height:1;">🧩</div><div style="font-size:11px;margin-top:2px;font-weight:700;">アライメント</div></a></div></div>`,
       },
     },
     {
@@ -93,80 +103,48 @@ const dashboard = {
       type: 'text',
       title: '',
       transparent: true,
-      gridPos: { h: 5, w: 13, x: 11, y: 3 },
+      gridPos: { h: 5, w: 11, x: 11, y: 3 },
       options: {
         mode: 'html',
         content: `<a href="${r.row2.runtimePanel}" style="display:block;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;text-decoration:none;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:12px;color:#fff;"><div style="font-size:11px;color:#67e8f9;">Runtime Panel</div><div style="font-size:18px;font-weight:900;margin-top:4px;">統合制御</div><div style="margin-top:8px;display:flex;gap:6px;font-size:10px;"><span style="flex:1;padding:6px 4px;background:#111827;border-left:2px solid #22c55e;border-radius:6px;text-align:center;">許可</span><span style="flex:1;padding:6px 4px;background:#111827;border-left:2px solid #f59e0b;border-radius:6px;text-align:center;">保留</span><span style="flex:1;padding:6px 4px;background:#111827;border-left:2px solid #ef4444;border-radius:6px;text-align:center;">停止</span></div><div style="margin-top:6px;font-size:11px;color:#94a3b8;">開く →</div></a>`,
       },
     },
     {
-      id: 311,
+      id: 203,
       type: 'text',
-      title: '',
+      title: 'Federation Connect',
       transparent: true,
-      gridPos: { h: 4, w: 6, x: 0, y: 8 },
+      gridPos: { h: 5, w: 2, x: 22, y: 3 },
       options: {
         mode: 'html',
-        content: consoleCard(
-          row3.fleetOperation,
-          'フリート運用',
-          row3Meta(r, 'fleetOperation').sub,
-          '#3b82f6',
-          { pending: row3Meta(r, 'fleetOperation').pending }
-        ),
+        content: federationConnectPanelHtml(r),
       },
     },
     {
-      id: 312,
+      id: 300,
       type: 'text',
       title: '',
       transparent: true,
-      gridPos: { h: 4, w: 6, x: 6, y: 8 },
+      gridPos: { h: 1, w: 24, x: 0, y: 8 },
       options: {
         mode: 'html',
-        content: consoleCard(
-          row3.serviceHub,
-          'サービス拠点',
-          row3Meta(r, 'serviceHub').sub,
-          '#8b5cf6',
-          { pending: row3Meta(r, 'serviceHub').pending }
-        ),
+        content: `<div style="width:100%;height:100%;display:flex;align-items:center;padding:0 4px;box-sizing:border-box;"><div style="font-size:12px;font-weight:900;color:#94a3b8;letter-spacing:.12em;">${row3Title}</div></div>`,
       },
     },
-    {
-      id: 313,
-      type: 'text',
-      title: '',
-      transparent: true,
-      gridPos: { h: 4, w: 6, x: 12, y: 8 },
-      options: {
-        mode: 'html',
-        content: consoleCard(
-          row3.lifeTransaction,
-          '生活取引',
-          row3Meta(r, 'lifeTransaction').sub,
-          '#f97316',
-          { pending: row3Meta(r, 'lifeTransaction').pending }
-        ),
-      },
-    },
-    {
-      id: 314,
-      type: 'text',
-      title: '',
-      transparent: true,
-      gridPos: { h: 4, w: 6, x: 18, y: 8 },
-      options: {
-        mode: 'html',
-        content: consoleCard(
-          row3.urbanOperation,
-          '都市運行',
-          row3Meta(r, 'urbanOperation').sub,
-          '#22c55e',
-          { pending: row3Meta(r, 'urbanOperation').pending }
-        ),
-      },
-    },
+    ...row3Cards.map(([key, href], index) => {
+      const meta = row3Meta(r, key);
+      return {
+        id: 311 + index,
+        type: 'text',
+        title: '',
+        transparent: true,
+        gridPos: { h: 4, w: 6, x: index * 6, y: 9 },
+        options: {
+          mode: 'html',
+          content: operationalCard(href, meta.name, meta.border),
+        },
+      };
+    }),
     ...navPanels,
   ],
 };

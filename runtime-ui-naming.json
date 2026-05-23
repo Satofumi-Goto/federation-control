@@ -4,8 +4,8 @@
     "left": "Runtime",
     "right": [
       {
-        "title": "Discovery",
-        "icon": "🕸️"
+        "title": "連携探索",
+        "icon": "🤝"
       },
       {
         "title": "Needs翻訳",
@@ -17,9 +17,15 @@
       }
     ]
   },
+  "row3": {
+    "sectionTitle": "自システム",
+    "cardsNameOnly": true
+  },
   "forbidden": [
     "Federation rename drift",
     "Alliance naming",
-    "Handshake icon"
+    "target=_blank on row3",
+    "window.open on row3",
+    "federation-viewer row3 links"
   ]
 }

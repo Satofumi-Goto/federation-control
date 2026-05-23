@@ -4,15 +4,16 @@
   "schemaVersion": 39,
   "style": "dark",
   "title": "Runtime",
-  "version": 25,
+  "version": 26,
   "refresh": "30s",
   "timezone": "browser",
-  "description": "都市OS Runtime Workspace Router",
+  "description": "都市OS Runtime Workspace Router — same-tab Base44 Operational Runtime navigation",
   "tags": [
     "runtime",
     "urban-os-runtime",
     "workspace-router",
-    "toyota-denso"
+    "toyota-denso",
+    "federation-navigation"
   ],
   "links": [
     {
@@ -20,7 +21,7 @@
       "url": "/d/sa8ljn4/runtime"
     },
     {
-      "title": "Discovery",
+      "title": "連携探索",
       "url": "/runtime_discovery"
     },
     {
@@ -46,7 +47,7 @@
       },
       "options": {
         "mode": "html",
-        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:12px;color:#fff;\"><div><div style=\"font-size:28px;font-weight:900;line-height:1.1;\">Runtime</div><div style=\"margin-top:4px;font-size:11px;color:#67e8f9;\">都市OS Runtime Workspace Router</div></div><div style=\"display:flex;gap:20px;flex-shrink:0;\"><a href=\"/runtime_discovery\" style=\"text-decoration:none;color:#67e8f9;text-align:center;\"><div style=\"font-size:24px;line-height:1;\">🕸️</div><div style=\"font-size:11px;margin-top:2px;font-weight:700;\">Discovery</div></a><a href=\"/need_impact\" style=\"text-decoration:none;color:#fbbf24;text-align:center;\"><div style=\"font-size:24px;line-height:1;\">🗣️</div><div style=\"font-size:11px;margin-top:2px;font-weight:700;\">Needs翻訳</div></a><a href=\"/d/external-federation-view/external-federation-view\" style=\"text-decoration:none;color:#a78bfa;text-align:center;\"><div style=\"font-size:24px;line-height:1;\">🧩</div><div style=\"font-size:11px;margin-top:2px;font-weight:700;\">アライメント</div></a></div></div>"
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:12px;color:#fff;\"><div><div style=\"font-size:28px;font-weight:900;line-height:1.1;\">Runtime</div><div style=\"margin-top:4px;font-size:11px;color:#67e8f9;\">Federated Runtime Control Platform</div></div><div style=\"display:flex;gap:20px;flex-shrink:0;\"><a href=\"/runtime_discovery\" style=\"text-decoration:none;color:#67e8f9;text-align:center;\"><div style=\"font-size:24px;line-height:1;\">🤝</div><div style=\"font-size:11px;margin-top:2px;font-weight:700;\">連携探索</div></a><a href=\"/need_impact\" style=\"text-decoration:none;color:#fbbf24;text-align:center;\"><div style=\"font-size:24px;line-height:1;\">🗣️</div><div style=\"font-size:11px;margin-top:2px;font-weight:700;\">Needs翻訳</div></a><a href=\"/d/external-federation-view/external-federation-view\" style=\"text-decoration:none;color:#a78bfa;text-align:center;\"><div style=\"font-size:24px;line-height:1;\">🧩</div><div style=\"font-size:11px;margin-top:2px;font-weight:700;\">アライメント</div></a></div></div>"
       }
     },
     {
@@ -72,13 +73,45 @@
       "transparent": true,
       "gridPos": {
         "h": 5,
-        "w": 13,
+        "w": 11,
         "x": 11,
         "y": 3
       },
       "options": {
         "mode": "html",
         "content": "<a href=\"/d/go-integrated-surface/integrated-control-surface\" style=\"display:block;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:12px;text-decoration:none;background:linear-gradient(180deg,#0b1220,#02060c);border:1px solid rgba(56,189,248,.35);border-radius:12px;color:#fff;\"><div style=\"font-size:11px;color:#67e8f9;\">Runtime Panel</div><div style=\"font-size:18px;font-weight:900;margin-top:4px;\">統合制御</div><div style=\"margin-top:8px;display:flex;gap:6px;font-size:10px;\"><span style=\"flex:1;padding:6px 4px;background:#111827;border-left:2px solid #22c55e;border-radius:6px;text-align:center;\">許可</span><span style=\"flex:1;padding:6px 4px;background:#111827;border-left:2px solid #f59e0b;border-radius:6px;text-align:center;\">保留</span><span style=\"flex:1;padding:6px 4px;background:#111827;border-left:2px solid #ef4444;border-radius:6px;text-align:center;\">停止</span></div><div style=\"margin-top:6px;font-size:11px;color:#94a3b8;\">開く →</div></a>"
+      }
+    },
+    {
+      "id": 203,
+      "type": "text",
+      "title": "Federation Connect",
+      "transparent": true,
+      "gridPos": {
+        "h": 5,
+        "w": 2,
+        "x": 22,
+        "y": 3
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div id=\"rt-fc-root\" style=\"width:100%;height:100%;min-height:0;display:flex;align-items:center;justify-content:center;box-sizing:border-box;\">\n<button type=\"button\" id=\"rt-fc-open\" title=\"Federation Connect\" style=\"width:100%;height:100%;min-height:48px;border:1px dashed rgba(56,189,248,.5);border-radius:10px;background:#0f172a;color:#67e8f9;font-size:28px;font-weight:900;cursor:pointer;line-height:1;\">＋</button>\n<div id=\"rt-fc-backdrop\" hidden style=\"position:fixed;inset:0;background:rgba(2,6,12,.72);z-index:9998;\"></div>\n<div id=\"rt-fc-dialog\" hidden style=\"position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(420px,92vw);max-height:80vh;overflow:auto;z-index:9999;background:#0b1220;border:1px solid rgba(56,189,248,.45);border-radius:14px;padding:16px;color:#fff;box-sizing:border-box;font-family:system-ui,sans-serif;\">\n<div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;\"><div style=\"font-size:16px;font-weight:900;\">Federation Connect</div><button type=\"button\" id=\"rt-fc-close\" style=\"background:transparent;border:none;color:#94a3b8;font-size:20px;cursor:pointer;\">×</button></div>\n<form id=\"rt-fc-form\" style=\"display:flex;flex-direction:column;gap:8px;\">\n<label style=\"font-size:10px;color:#94a3b8;\">名前</label><input id=\"rt-fc-name\" required style=\"padding:8px;border-radius:8px;border:1px solid #334155;background:#111827;color:#fff;\" />\n<label style=\"font-size:10px;color:#94a3b8;\">URL</label><input id=\"rt-fc-url\" type=\"url\" required placeholder=\"https://...\" style=\"padding:8px;border-radius:8px;border:1px solid #334155;background:#111827;color:#fff;\" />\n<label style=\"font-size:10px;color:#94a3b8;\">repository（optional）</label><input id=\"rt-fc-repo\" style=\"padding:8px;border-radius:8px;border:1px solid #334155;background:#111827;color:#fff;\" />\n<button type=\"submit\" style=\"margin-top:4px;padding:10px;border:none;border-radius:8px;background:#0284c7;color:#fff;font-weight:700;cursor:pointer;\">追加</button>\n</form>\n<div style=\"margin-top:14px;font-size:11px;font-weight:700;color:#67e8f9;\">追加済みシステム</div>\n<div id=\"rt-fc-list\" style=\"margin-top:8px;display:flex;flex-direction:column;gap:8px;\"></div>\n</div></div>\n<script>\n(function(){\n  var SK=\"runtimeFederationConnectSystems\";\n  var PATTERNS=[\"base44.app\",\"grafana.net\",\"grafana.com\",\"excel.office.com\",\"office.com\",\"sharepoint.com\",\"docs.google.com\",\"sheets.google.com\",\"planner.cloud.microsoft.com\",\"tasks.office.com\",\"hils\",\"queue\",\"eta\"];\n  var SEED=[];\n  var openBtn=document.getElementById('rt-fc-open');\n  var dlg=document.getElementById('rt-fc-dialog');\n  var backdrop=document.getElementById('rt-fc-backdrop');\n  var closeBtn=document.getElementById('rt-fc-close');\n  var form=document.getElementById('rt-fc-form');\n  var listEl=document.getElementById('rt-fc-list');\n  function load(){try{return JSON.parse(localStorage.getItem(SK)||'[]');}catch(e){return[];}}\n  function save(items){try{localStorage.setItem(SK,JSON.stringify(items));}catch(e){}}\n  function urlOk(u){try{var x=new URL(u);if(x.protocol!=='https:'&&x.protocol!=='http:')return false;var h=(x.hostname+x.pathname).toLowerCase();if(h.indexOf('localhost')>=0||/^\\d+\\.\\d+\\.\\d+\\.\\d+/.test(x.hostname))return true;return PATTERNS.some(function(p){return h.indexOf(String(p).toLowerCase())>=0;});}catch(e){return false;}}\n  function show(on){dlg.hidden=!on;backdrop.hidden=!on;}\n  openBtn.addEventListener('click',function(){show(true);render();});\n  closeBtn.addEventListener('click',function(){show(false);});\n  backdrop.addEventListener('click',function(){show(false);});\n  function render(){\n    var items=load();\n    if(!items.length&&SEED.length){items=SEED.slice();save(items);}\n    listEl.innerHTML='';\n    if(!items.length){listEl.innerHTML='<div style=\"font-size:11px;color:#64748b;\">なし</div>';return;}\n    items.forEach(function(it,idx){\n      var row=document.createElement('div');\n      row.style.cssText='padding:10px;background:#111827;border:1px solid #334155;border-radius:8px;font-size:11px;';\n      var name=document.createElement('div');name.style.fontWeight='900';name.textContent=it.name||'—';\n      var url=document.createElement('div');url.style.color='#67e8f9';url.style.marginTop='4px';url.style.wordBreak='break-all';url.textContent=it.url||'';\n      var repo=document.createElement('div');repo.style.color='#94a3b8';repo.style.marginTop='2px';repo.textContent=it.repository?('repository: '+it.repository):'';\n      var actions=document.createElement('div');actions.style.marginTop='8px';actions.style.display='flex';gap='8px';\n      var go=document.createElement('a');go.href=it.url;go.textContent='開く';go.style.cssText='text-decoration:none;color:#fff;background:#0284c7;padding:4px 10px;border-radius:6px;font-weight:700;';\n      var del=document.createElement('button');del.type='button';del.textContent='削除';del.style.cssText='background:transparent;border:1px solid #ef4444;color:#ef4444;padding:4px 10px;border-radius:6px;cursor:pointer;';\n      del.addEventListener('click',function(){var n=load();n.splice(idx,1);save(n);render();});\n      actions.appendChild(go);actions.appendChild(del);\n      row.appendChild(name);row.appendChild(url);if(it.repository)row.appendChild(repo);row.appendChild(actions);\n      listEl.appendChild(row);\n    });\n  }\n  form.addEventListener('submit',function(ev){\n    ev.preventDefault();\n    var name=document.getElementById('rt-fc-name').value.trim();\n    var url=document.getElementById('rt-fc-url').value.trim();\n    var repository=document.getElementById('rt-fc-repo').value.trim();\n    if(!name||!url||!urlOk(url)){alert('URLを確認してください（Base44 / Grafana / Excel / Sheets / Planner / HILS / Queue / ETA / Internal SaaS）');return;}\n    var items=load();items.push({name:name,url:url,repository:repository||undefined});\n    save(items);form.reset();render();\n  });\n})();\n</script>"
+      }
+    },
+    {
+      "id": 300,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;display:flex;align-items:center;padding:0 4px;box-sizing:border-box;\"><div style=\"font-size:12px;font-weight:900;color:#94a3b8;letter-spacing:.12em;\">自システム</div></div>"
       }
     },
     {
@@ -90,11 +123,11 @@
         "h": 4,
         "w": 6,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/runtime-fleet-federation-viewer/fleet-federation-viewer\" style=\"display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid #3b82f6;border-bottom:3px solid #3b82f6;border-radius:10px;color:#fff;\"><div style=\"font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">フリート運用</div><div style=\"margin-top:4px;font-size:10px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Federation Viewer · フリート</div></a>"
+        "content": "<a href=\"https://fleet-operations-console.base44.app/?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid #3b82f6;border-bottom:3px solid #3b82f6;border-radius:10px;color:#fff;font-size:15px;font-weight:900;text-align:center;white-space:nowrap;text-overflow:ellipsis;\">フリート運用</a>"
       }
     },
     {
@@ -106,11 +139,11 @@
         "h": 4,
         "w": 6,
         "x": 6,
-        "y": 8
+        "y": 9
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/runtime-service-hub-federation-viewer/service-hub-federation-viewer\" style=\"display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid #8b5cf6;border-bottom:3px solid #8b5cf6;border-radius:10px;color:#fff;\"><div style=\"font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">サービス拠点</div><div style=\"margin-top:4px;font-size:10px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Federation Viewer · 拠点</div></a>"
+        "content": "<a href=\"https://service-hub-console.base44.app/?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid #8b5cf6;border-bottom:3px solid #8b5cf6;border-radius:10px;color:#fff;font-size:15px;font-weight:900;text-align:center;white-space:nowrap;text-overflow:ellipsis;\">サービス拠点</a>"
       }
     },
     {
@@ -122,11 +155,11 @@
         "h": 4,
         "w": 6,
         "x": 12,
-        "y": 8
+        "y": 9
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/runtime-life-federation-viewer/life-federation-viewer\" style=\"display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid #f97316;border-bottom:3px solid #f97316;border-radius:10px;color:#fff;\"><div style=\"font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">生活取引</div><div style=\"margin-top:4px;font-size:10px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Federation Viewer · 生活取引</div></a>"
+        "content": "<a href=\"https://life-ledger-link.base44.app/?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid #f97316;border-bottom:3px solid #f97316;border-radius:10px;color:#fff;font-size:15px;font-weight:900;text-align:center;white-space:nowrap;text-overflow:ellipsis;\">生活取引</a>"
       }
     },
     {
@@ -138,11 +171,11 @@
         "h": 4,
         "w": 6,
         "x": 18,
-        "y": 8
+        "y": 9
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/runtime-urban-federation-viewer/urban-federation-viewer\" style=\"display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid #22c55e;border-bottom:3px solid #22c55e;border-radius:10px;color:#fff;\"><div style=\"font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">都市運行</div><div style=\"margin-top:4px;font-size:10px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Federation Viewer · 都市運行</div></a>"
+        "content": "<a href=\"https://urban-operation-console.base44.app/?runtime_embed=grafana\" style=\"display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;overflow:hidden;box-sizing:border-box;padding:10px 12px;text-decoration:none;background:#0f172a;border:1px solid #22c55e;border-bottom:3px solid #22c55e;border-radius:10px;color:#fff;font-size:15px;font-weight:900;text-align:center;white-space:nowrap;text-overflow:ellipsis;\">都市運行</a>"
       }
     },
     {
@@ -154,7 +187,7 @@
         "h": 2,
         "w": 8,
         "x": 0,
-        "y": 12
+        "y": 13
       },
       "options": {
         "mode": "html",
@@ -170,7 +203,7 @@
         "h": 2,
         "w": 8,
         "x": 8,
-        "y": 12
+        "y": 13
       },
       "options": {
         "mode": "html",
@@ -186,7 +219,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 12
+        "y": 13
       },
       "options": {
         "mode": "html",
@@ -202,7 +235,7 @@
         "h": 2,
         "w": 8,
         "x": 0,
-        "y": 14
+        "y": 15
       },
       "options": {
         "mode": "html",
@@ -218,7 +251,7 @@
         "h": 2,
         "w": 8,
         "x": 8,
-        "y": 14
+        "y": 15
       },
       "options": {
         "mode": "html",
@@ -234,7 +267,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 14
+        "y": 15
       },
       "options": {
         "mode": "html",
@@ -250,7 +283,7 @@
         "h": 2,
         "w": 8,
         "x": 0,
-        "y": 16
+        "y": 17
       },
       "options": {
         "mode": "html",
@@ -266,7 +299,7 @@
         "h": 2,
         "w": 8,
         "x": 8,
-        "y": 16
+        "y": 17
       },
       "options": {
         "mode": "html",
@@ -282,7 +315,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 16
+        "y": 17
       },
       "options": {
         "mode": "html",

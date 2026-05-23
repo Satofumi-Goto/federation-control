@@ -36,62 +36,57 @@ Operational Console handles:
 
 ## Runtime Router
 
-/runtime acts as:
+`/runtime` acts as:
 
 * Runtime Federation Workspace
-* Operational Console Router
+* Operational Console Router (same-tab navigation)
 
-/runtime must not expose Base44 preview URLs.
+### Row3 — 自システム
 
-`/runtime` row3 opens **Federation Viewer** dashboards only (not raw Base44 URLs).
+Row3 opens **Base44 Operational Runtime** in the **same browser tab** (`runtime_embed=grafana`). No Federation Viewer dashboard, no iframe from the router, no `target="_blank"`, no `window.open()`.
 
-Row3 = Grafana Federation overlay + Base44 Operational Runtime in **`nmcclain-iframe-panel`** (`runtime_embed=grafana`). No Text panel HTML iframe. See `grafana/runtime-federation-viewer.json`, `GRAFANA_IFRAME_PANEL.md`, and `BASE44_FEDERATION_VIEWER_RUNTIME.md`.
+Browser **Back** returns to Runtime Top: `/d/sa8ljn4/runtime`.
 
-Current row3 targets (canonical):
+Canonical URLs (`grafana/runtime-workspace-routes.json`):
 
-* フリート運用 → `/d/runtime-fleet-federation-viewer/fleet-federation-viewer`
-* サービス拠点 → `/d/runtime-service-hub-federation-viewer/service-hub-federation-viewer`
-* 生活取引 → `/d/runtime-life-federation-viewer/life-federation-viewer`
-* 都市運行 → `/d/runtime-urban-federation-viewer/urban-federation-viewer`
+* フリート運用 → `https://fleet-operations-console.base44.app/?runtime_embed=grafana`
+* サービス拠点 → `https://service-hub-console.base44.app/?runtime_embed=grafana`
+* 生活取引 → `https://life-ledger-link.base44.app/?runtime_embed=grafana`
+* 都市運行 → `https://urban-operation-console.base44.app/?runtime_embed=grafana`
 
-Build: `node scripts/build-federation-viewer-surfaces.mjs` then `node scripts/build-runtime-workspace-v2.mjs`.
+Build: `node scripts/build-runtime-workspace-v2.mjs`
 
-Grafana = Federation OS overlay. Base44 = Operational Runtime (viewer read-only in iframe). Not native console replacement.
+### Federation Connect
 
-Do not expose:
+Middle row, right: **＋** opens Federation Connect (name, URL, optional repository). Supports Base44, Grafana, Excel Online, Google Sheets, Planner, HILS, Queue tool, ETA tool, Internal SaaS. Added systems persist in `localStorage` (`runtimeFederationConnectSystems`).
 
-* Base44 login redirect / popup auth inside federation viewer iframe
-* direct Base44 production URL from Router panels
-* 準備中カード as row3 destination
-* app launcher dialog
-* external app routing feeling
+### Header
 
----
-
-## Federation Naming
-
-Needs翻訳:
-
-* rename toward Runtime Federation / Needs Federation
-
-アライメント:
-
-* rename toward Federation alignment
-* Router icon: puzzle (🧩)
-
-Reason:
-The workspace handles runtime synchronization rather than alliance management.
+* **連携探索** (handshake 🤝) — was Discovery
+* Needs翻訳
+* アライメント
 
 ---
 
-## Canonical Rule
+## Runtime Rule
 
-GitHub = Canonical
-Grafana = Runtime Workspace
-Base44 = Operational Console
+| Layer | Role |
+|-------|------|
+| GitHub | Canonical |
+| Runtime (Grafana) | Federated Runtime Control Platform |
+| Base44 | Operational Runtime |
 
 ---
 
-## Long-term Rule
+## Federation Viewer (legacy)
 
-This structure is treated as a permanent Runtime Federation operation rule.
+`grafana/runtime-federation-viewer.json` and viewer dashboards remain for reference/CI but are **not** row3 destinations. Do not run `build-federation-viewer-surfaces.mjs` to overwrite `runtime-workspace-routes.json` row3.
+
+---
+
+## Forbidden on /runtime router
+
+* `target="_blank"` / `window.open()` for row3
+* Federation Viewer as row3 link
+* app launcher / “which app to open?” dialog
+* iframe embed from router panels

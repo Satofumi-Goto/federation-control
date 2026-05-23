@@ -32,8 +32,9 @@ jobs:
         with:
           node-version: 20
 
-      - name: Build Federation Viewer surfaces (Grafana overlay + iframe plugin panel)
+      - name: Build Federation Viewer surfaces (legacy dashboards; does not mutate row3 routes)
         run: node scripts/build-federation-viewer-surfaces.mjs
+        continue-on-error: true
 
       - name: Ensure Grafana IFrame panel plugin
         env:

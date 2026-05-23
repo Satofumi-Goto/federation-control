@@ -1,9 +1,12 @@
 {
-  "description": "Canonical link map for /runtime. Row3 opens Federation Viewer dashboards (Grafana overlay + Base44 iframe plugin panel).",
-  "layoutVersion": 32,
+  "description": "Canonical link map for /runtime. Row3 same-tab navigation to Base44 Operational Runtime (runtime_embed=grafana).",
+  "layoutVersion": 33,
   "runtimeUid": "sa8ljn4",
+  "runtimeTopPath": "/d/sa8ljn4/runtime",
   "row1": {
     "discovery": "/runtime_discovery",
+    "discoveryLabel": "連携探索",
+    "discoveryIcon": "🤝",
     "needsTranslation": "/need_impact",
     "alignment": "/d/external-federation-view/external-federation-view"
   },
@@ -12,42 +15,49 @@
     "runtimePanel": "/d/go-integrated-surface/integrated-control-surface"
   },
   "row3": {
-    "fleetOperation": "/d/runtime-fleet-federation-viewer/fleet-federation-viewer",
-    "serviceHub": "/d/runtime-service-hub-federation-viewer/service-hub-federation-viewer",
-    "lifeTransaction": "/d/runtime-life-federation-viewer/life-federation-viewer",
-    "urbanOperation": "/d/runtime-urban-federation-viewer/urban-federation-viewer"
+    "title": "自システム",
+    "fleetOperation": "https://fleet-operations-console.base44.app/?runtime_embed=grafana",
+    "serviceHub": "https://service-hub-console.base44.app/?runtime_embed=grafana",
+    "lifeTransaction": "https://life-ledger-link.base44.app/?runtime_embed=grafana",
+    "urbanOperation": "https://urban-operation-console.base44.app/?runtime_embed=grafana"
   },
   "row3ConsoleMeta": {
-    "fleetOperation": {
-      "sub": "Federation Viewer · フリート",
-      "pending": false
-    },
-    "serviceHub": {
-      "sub": "Federation Viewer · 拠点",
-      "pending": false
-    },
-    "lifeTransaction": {
-      "sub": "Federation Viewer · 生活取引",
-      "pending": false
-    },
-    "urbanOperation": {
-      "sub": "Federation Viewer · 都市運行",
-      "pending": false
-    }
+    "fleetOperation": { "name": "フリート運用", "border": "#3b82f6" },
+    "serviceHub": { "name": "サービス拠点", "border": "#8b5cf6" },
+    "lifeTransaction": { "name": "生活取引", "border": "#f97316" },
+    "urbanOperation": { "name": "都市運行", "border": "#22c55e" }
   },
   "row3OperationalSurfaces": {
-    "provider": "Grafana+Base44",
-    "integration": "federation-viewer-runtime",
-    "canonical": "grafana/runtime-federation-viewer.json",
+    "provider": "Base44",
+    "integration": "same-tab-runtime-navigation",
     "embedQuery": "runtime_embed=grafana",
-    "iframePanel": "nmcclain-iframe-panel",
+    "navigation": "same-tab-anchor-only",
     "forbidden": [
-      "text-panel-html-iframe",
-      "unsafe-html-iframe-embed",
-      "login-redirect",
-      "popup-auth",
-      "native-replacement-only"
+      "target=_blank",
+      "window.open",
+      "federation-viewer-dashboard",
+      "iframe-embed-from-router",
+      "app-launcher-dialog"
     ]
+  },
+  "federationConnect": {
+    "storageKey": "runtimeFederationConnectSystems",
+    "urlPatterns": [
+      "base44.app",
+      "grafana.net",
+      "grafana.com",
+      "excel.office.com",
+      "office.com",
+      "sharepoint.com",
+      "docs.google.com",
+      "sheets.google.com",
+      "planner.cloud.microsoft.com",
+      "tasks.office.com",
+      "hils",
+      "queue",
+      "eta"
+    ],
+    "seedSystems": []
   },
   "row4": {
     "collapseArchitecture": "/d/go-integrated-analysis/integrated-control-analysis",
@@ -62,23 +72,7 @@
   },
   "row4Layout": {
     "mode": "grafana-grid-3x3",
-    "panelIds": [
-      401,
-      402,
-      403,
-      404,
-      405,
-      406,
-      407,
-      408,
-      409
-    ],
-    "gridPos": {
-      "w": 8,
-      "h": 2,
-      "cols": 3,
-      "rows": 3,
-      "y": 12
-    }
+    "panelIds": [401, 402, 403, 404, 405, 406, 407, 408, 409],
+    "gridPos": { "w": 8, "h": 2, "cols": 3, "rows": 3, "y": 13 }
   }
 }

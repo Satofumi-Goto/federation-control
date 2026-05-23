@@ -9,143 +9,58 @@ import {
 const { grafanaUrl } = resolveGrafanaAuthEnv();
 const outDir = path.resolve(process.env.VISUAL_CHECK_OUT || 'artifacts/runtime-visual-check');
 
-const targets = [
-  { name: 'runtime-router', path: '/d/sa8ljn4/runtime', checkIframe: false },
-  {
-    name: 'fleet-federation-viewer',
-    path: '/d/runtime-fleet-federation-viewer/fleet-federation-viewer',
-    checkIframe: true,
-    base44Host: 'fleet-operations-console.base44.app',
-  },
-  {
-    name: 'service-hub-federation-viewer',
-    path: '/d/runtime-service-hub-federation-viewer/service-hub-federation-viewer',
-    checkIframe: true,
-    base44Host: 'service-hub-console.base44.app',
-  },
-  {
-    name: 'life-federation-viewer',
-    path: '/d/runtime-life-federation-viewer/life-federation-viewer',
-    checkIframe: true,
-    base44Host: 'life-ledger-link.base44.app',
-  },
-  {
-    name: 'urban-federation-viewer',
-    path: '/d/runtime-urban-federation-viewer/urban-federation-viewer',
-    checkIframe: true,
-    base44Host: 'urban-operation-console.base44.app',
-  },
+const routesPath = path.resolve('grafana/runtime-workspace-routes.json');
+const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
+
+const row3Expectations = [
+  { key: 'fleetOperation', host: 'fleet-operations-console.base44.app' },
+  { key: 'serviceHub', host: 'service-hub-console.base44.app' },
+  { key: 'lifeTransaction', host: 'life-ledger-link.base44.app' },
+  { key: 'urbanOperation', host: 'urban-operation-console.base44.app' },
 ];
 
-function runtimeIframeLocator(page, base44Host) {
-  return page.locator(`iframe[src*="${base44Host}"]`);
-}
+const targets = [{ name: 'runtime-router', path: '/d/sa8ljn4/runtime', checkRow3: true }];
 
-async function checkFederationViewerIframe(page, target) {
-  const iframe = runtimeIframeLocator(page, target.base44Host);
-  const count = await iframe.count();
-  if (count === 0) {
-    const pluginMissing = await page
-      .locator('text=/plugin not found|Panel plugin not found|nmcclain-iframe-panel/i')
-      .count();
-    const status401 = await page.locator('text=/401|unauthorized/i').count();
-    return {
-      iframePresent: false,
-      iframeLoaded: false,
-      loginRedirect: false,
-      blank: true,
-      pluginPanelMissing: pluginMissing > 0,
-      http401Hint: status401 > 0,
-      federationViewerBanner: false,
-      runtimeEmbedDetected: false,
+async function checkRuntimeRouter(page) {
+  const discoveryLabel = routes.row1?.discoveryLabel ?? '連携探索';
+  const row3Title = routes.row3?.title ?? '自システム';
+  const html = await page.content();
+  const row3Checks = {};
+
+  for (const { key, host } of row3Expectations) {
+    const expectedUrl = routes.row3[key];
+    const anchor = page.locator(`a[href*="${host}"]`).first();
+    const count = await anchor.count();
+    const href = count ? await anchor.getAttribute('href') : null;
+    const targetAttr = count ? await anchor.getAttribute('target') : null;
+    row3Checks[key] = {
+      href,
+      expectedUrl,
+      present: count > 0,
+      sameTab: targetAttr !== '_blank',
+      runtimeEmbed: Boolean(href?.includes('runtime_embed=grafana')),
+      notFederationViewer: !href?.includes('federation-viewer'),
     };
   }
-  const frameEl = iframe.first();
-  const src = await frameEl.getAttribute('src');
-  const sandboxAttr = await frameEl.getAttribute('sandbox');
-  const allowAttr = await frameEl.getAttribute('allow');
-  const hasEmbed = src?.includes('runtime_embed=grafana');
-  const box = await frameEl.boundingBox();
-  let loginRedirect = false;
-  let iframeLoaded = false;
-  let popupDetected = false;
-  let viewerBannerVisible = false;
-  let rootHeight = 0;
-  let operationalVisible = false;
-  let embedState = null;
-  try {
-    const frame = page.frameLocator(`iframe[src*="${target.base44Host}"]`);
-    await frame.locator('body').waitFor({ state: 'attached', timeout: 45000 });
-    iframeLoaded = true;
-    embedState = await frame.locator('body').evaluate(() => {
-      let federationViewerSession = null;
-      let sessionStorageError = null;
-      try {
-        federationViewerSession = sessionStorage.getItem('federationViewerSession');
-      } catch (e) {
-        sessionStorageError = e?.message || String(e);
-      }
-      return {
-        federationViewerSession,
-        sessionStorageError,
-        windowRuntimeFlag: Boolean(window.__FEDERATION_VIEWER_RUNTIME__),
-        dataRuntimeEmbed: document.documentElement.getAttribute('data-runtime-embed'),
-        bannerPresent: Boolean(document.querySelector('.federation-viewer-banner')),
-        bodyTextLength: (document.body?.innerText || '').length,
-        rootChildren: document.getElementById('root')?.childElementCount ?? 0,
-      };
-    });
-    const rootBox = await frame.locator('#root').boundingBox().catch(() => null);
-    rootHeight = rootBox?.height ?? 0;
-    const shellBox = await frame.locator('.federation-viewer-root').boundingBox().catch(() => null);
-    if (!rootHeight && shellBox?.height) rootHeight = shellBox.height;
-    operationalVisible = await frame
-      .locator('[data-federation-viewer-shell]')
-      .isVisible()
-      .catch(() => false);
-    const text = (await frame.locator('body').innerText({ timeout: 15000 }).catch(() => '')) || '';
-    viewerBannerVisible =
-      embedState?.bannerPresent ||
-      (await frame
-        .locator('.federation-viewer-banner')
-        .isVisible()
-        .catch(() => false)) ||
-      /Federation Viewer|read-only/i.test(text);
-    loginRedirect =
-      /log in to continue|sign in to continue|redirecting to login|サインインして続行/i.test(text) &&
-      !/Federation Viewer|federation-viewer|read-only/i.test(text);
-  } catch {
-    iframeLoaded = false;
-  }
-  const blank =
-    !box ||
-    box.height < 120 ||
-    (iframeLoaded && rootHeight < 120) ||
-    (iframeLoaded && !viewerBannerVisible);
-  const pages = page.context().pages();
-  popupDetected = pages.length > 1;
+
+  const discoveryVisible = await page.getByText(discoveryLabel, { exact: true }).count();
+  const row3TitleVisible = await page.getByText(row3Title, { exact: true }).count();
+  const federationConnectPlus = await page.locator('#rt-fc-open').count();
+
   return {
-    iframePresent: true,
-    iframeLoaded,
-    hasEmbed,
-    runtimeEmbedDetected: Boolean(hasEmbed),
-    loginRedirect,
-    blank,
-    popupDetected,
-    viewerBannerVisible,
-    federationViewerBanner: viewerBannerVisible,
-    rootHeight,
-    operationalVisible,
-    iframeBoxHeight: box?.height ?? 0,
-    pluginPanelMissing: false,
-    sandbox: sandboxAttr,
-    allow: allowAttr,
-    sandboxRestrictsStorage:
-      Boolean(sandboxAttr) &&
-      !sandboxAttr.includes('allow-same-origin') &&
-      !sandboxAttr.includes('allow-scripts'),
-    embedState,
-    src: src?.slice(0, 120),
+    discoveryRenamed: discoveryVisible > 0,
+    row3SectionTitle: row3TitleVisible > 0,
+    federationConnectPresent: federationConnectPlus > 0,
+    row3Checks,
+    row3AllOk: Object.values(row3Checks).every(
+      (c) =>
+        c.present &&
+        c.sameTab &&
+        c.runtimeEmbed &&
+        c.notFederationViewer &&
+        c.href?.includes('runtime_embed=grafana')
+    ),
+    noFederationViewerInHtml: !html.includes('runtime-fleet-federation-viewer'),
   };
 }
 
@@ -162,6 +77,8 @@ async function main() {
     iframePresent: false,
     federationViewerBanner: false,
     runtimeEmbedDetected: false,
+    row3SameTabNavigation: false,
+    discoveryRenamed: false,
     results: [],
   };
 
@@ -190,48 +107,32 @@ async function main() {
     console.log(`Grafana login OK (${loginResult.loginMethod})`);
 
     for (const target of targets) {
-      const url = `${grafanaUrl}${target.path}?kiosk`;
+      const url = `${grafanaUrl}${target.path}`;
       const file = path.join(outDir, `${target.name}.png`);
-      const iframeFile = path.join(outDir, `${target.name}-iframe.png`);
       try {
         await page.goto(url, { waitUntil: 'networkidle', timeout: 120000 });
-        await page.waitForTimeout(4000);
+        await page.waitForTimeout(3000);
         const bodyText = await page.locator('body').innerText();
-        let iframeCheck = {};
-        if (target.checkIframe) {
-          iframeCheck = await checkFederationViewerIframe(page, target);
-          manifest.iframePresent = manifest.iframePresent || iframeCheck.iframePresent;
-          manifest.federationViewerBanner =
-            manifest.federationViewerBanner || iframeCheck.federationViewerBanner;
-          manifest.runtimeEmbedDetected =
-            manifest.runtimeEmbedDetected || iframeCheck.runtimeEmbedDetected;
-          if (iframeCheck.iframePresent) {
-            try {
-              await runtimeIframeLocator(page, target.base44Host).first().screenshot({
-                path: iframeFile,
-              });
-              iframeCheck.screenshot = path.basename(iframeFile);
-            } catch {
-              iframeCheck.screenshot = null;
-            }
-          }
+        let routerCheck = {};
+        if (target.checkRow3) {
+          routerCheck = await checkRuntimeRouter(page);
+          manifest.discoveryRenamed = routerCheck.discoveryRenamed;
+          manifest.row3SameTabNavigation = routerCheck.row3AllOk;
+          manifest.runtimeEmbedDetected = routerCheck.row3AllOk;
+          manifest.iframePresent = false;
+          manifest.federationViewerBanner = false;
         }
         const topLevelLogin =
-          !target.checkIframe &&
           /log in|login|サインイン/i.test(bodyText) &&
-          !/Runtime Federation/i.test(bodyText);
+          !/Runtime|自システム|連携探索/i.test(bodyText);
         const ok =
           manifest.oauthLoginSuccess &&
           !topLevelLogin &&
-          (!target.checkIframe ||
-            (iframeCheck.iframePresent &&
-              iframeCheck.runtimeEmbedDetected &&
-              iframeCheck.iframeLoaded &&
-              !iframeCheck.loginRedirect &&
-              !iframeCheck.blank &&
-              !iframeCheck.popupDetected &&
-              !iframeCheck.pluginPanelMissing &&
-              iframeCheck.federationViewerBanner));
+          (!target.checkRow3 ||
+            (routerCheck.row3AllOk &&
+              routerCheck.discoveryRenamed &&
+              routerCheck.row3SectionTitle &&
+              routerCheck.noFederationViewerInHtml));
         await page.screenshot({ path: file, fullPage: true });
         manifest.results.push({
           name: target.name,
@@ -239,10 +140,10 @@ async function main() {
           screenshot: path.basename(file),
           ok,
           oauthLoginSuccess: manifest.oauthLoginSuccess,
-          iframePresent: iframeCheck.iframePresent ?? false,
-          federationViewerBanner: iframeCheck.federationViewerBanner ?? false,
-          runtimeEmbedDetected: iframeCheck.runtimeEmbedDetected ?? false,
-          iframeCheck,
+          iframePresent: false,
+          federationViewerBanner: false,
+          runtimeEmbedDetected: manifest.runtimeEmbedDetected,
+          routerCheck,
           topLevelLogin,
         });
         console.log(`${ok ? 'OK' : 'WARN'} ${target.name}`);

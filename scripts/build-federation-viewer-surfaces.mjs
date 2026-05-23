@@ -100,43 +100,4 @@ for (const v of spec.viewers) {
   console.log(`Wrote ${outFile}`);
 }
 
-const routesPath = path.join(repoRoot, 'grafana/runtime-workspace-routes.json');
-const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
-routes.layoutVersion = 32;
-routes.description =
-  'Canonical link map for /runtime. Row3 opens Federation Viewer dashboards (Grafana overlay + Base44 iframe plugin panel).';
-routes.row3 = Object.fromEntries(
-  spec.viewers.map((v) => {
-    const key =
-      v.key === 'fleet'
-        ? 'fleetOperation'
-        : v.key === 'serviceHub'
-          ? 'serviceHub'
-          : v.key === 'life'
-            ? 'lifeTransaction'
-            : 'urbanOperation';
-    return [key, `/d/${v.uid}/${v.slug}`];
-  })
-);
-routes.row3ConsoleMeta = {
-  fleetOperation: { sub: 'Federation Viewer · フリート', pending: false },
-  serviceHub: { sub: 'Federation Viewer · 拠点', pending: false },
-  lifeTransaction: { sub: 'Federation Viewer · 生活取引', pending: false },
-  urbanOperation: { sub: 'Federation Viewer · 都市運行', pending: false },
-};
-routes.row3OperationalSurfaces = {
-  provider: 'Grafana+Base44',
-  integration: 'federation-viewer-runtime',
-  canonical: 'grafana/runtime-federation-viewer.json',
-  embedQuery: spec.embedQuery,
-  iframePanel: iframeSpec.type,
-  forbidden: [
-    'text-panel-html-iframe',
-    'unsafe-html-iframe-embed',
-    'login-redirect',
-    'popup-auth',
-    'native-replacement-only',
-  ],
-};
-fs.writeFileSync(routesPath, `${JSON.stringify(routes, null, 2)}\n`);
-console.log(`Updated ${routesPath}`);
+// Row3 routes are canonical in grafana/runtime-workspace-routes.json (same-tab Base44 navigation).
