@@ -10,6 +10,7 @@ import {
   RUNTIME_PUBLIC_VIEW_EMBED_SNIPPET,
   RUNTIME_PUBLIC_VIEW_INDEX_BOOTSTRAP,
 } from './lib/runtime-public-viewer-embed-snippet.mjs';
+import { runtimeFederationMemoryExportJs } from './lib/runtime-federation-memory-export-snippet.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const spec = JSON.parse(
@@ -65,6 +66,9 @@ export function getRuntimePublicViewerState() {
     deleteDisabled: active,
     federationConnectDisabled: active,
     runtimeDraftCreateDisabled: active,
+    knowledgeExportDisabled: active,
+    documentExportDisabled: active,
+    syncRefactorDisabled: active,
     displayOnly: true,
   };
 }
@@ -118,7 +122,11 @@ html.runtime-public-view #root {
 }
 html.runtime-public-view [data-runtime-draft-create],
 html.runtime-public-view [data-federation-connect],
-html.runtime-public-view [data-runtime-federation-connect] {
+html.runtime-public-view [data-runtime-federation-connect],
+html.runtime-public-view [data-knowledge-export],
+html.runtime-public-view [data-document-export],
+html.runtime-public-view [data-sync-refactor],
+html.runtime-public-view [data-runtime-sync-refactor] {
   display: none !important;
   pointer-events: none !important;
 }
@@ -148,7 +156,11 @@ export default function RuntimePublicViewerShell({ children }) {
       const t = e.target;
       if (t?.closest?.('[data-runtime-allow]')) return;
       if (e.type === 'submit') e.preventDefault();
-      if (t?.closest?.('[data-delete], [data-save], [data-runtime-draft-create], [data-federation-connect]')) {
+      if (
+        t?.closest?.(
+          '[data-delete], [data-save], [data-runtime-draft-create], [data-federation-connect], [data-knowledge-export], [data-document-export], [data-sync-refactor], [data-runtime-sync-refactor]',
+        )
+      ) {
         e.preventDefault();
         e.stopPropagation();
       }
@@ -174,10 +186,15 @@ export default function RuntimePublicViewerShell({ children }) {
 }
 `;
 
+const memoryNs =
+  consoleKey === 'serviceHub' ? 'serviceHub' : consoleKey === 'life' ? 'life' : consoleKey;
+
 const runtimeViewerBootstrapJs = `import { primeRuntimePublicViewFromPath, primeFederationViewerFromUrl } from '@/lib/runtimeFederationEmbed';
+import { startRuntimeFederationMemoryExport } from '@/lib/runtimeFederationMemoryExport';
 
 primeRuntimePublicViewFromPath();
 primeFederationViewerFromUrl();
+startRuntimeFederationMemoryExport(30);
 `;
 
 function mergeRuntimeFederationEmbed() {
@@ -418,6 +435,10 @@ function patchConfig() {
 console.log(`Applying Runtime Public Viewer to ${root} (${consoleKey} → ${viewerPath})`);
 
 write('src/lib/runtimePublicViewerRuntime.js', runtimePublicViewerRuntimeJs);
+write(
+  'src/lib/runtimeFederationMemoryExport.js',
+  runtimeFederationMemoryExportJs(memoryNs),
+);
 write('src/styles/runtime-public-viewer.css', runtimePublicViewerCss);
 write('src/components/RuntimePublicViewerShell.jsx', runtimePublicViewerShellJsx);
 write('src/lib/runtimeViewerBootstrap.js', runtimeViewerBootstrapJs);

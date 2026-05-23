@@ -16,7 +16,7 @@
     },
     "life": {
       "github": "Satofumi-Goto/life-transaction-console",
-      "host": "life-ledger-link.base44.app",
+      "host": "life-transaction-console.base44.app",
       "viewerPath": "/viewer/life",
       "labelJa": "生活取引"
     },

@@ -1,0 +1,130 @@
+{
+  "updatedAt": "2026-05-23T12:00:00.000Z",
+  "title": "Runtime Federation Memory",
+  "knowledgeGraph": {
+    "title": "Growing Runtime Knowledge Graph",
+    "growthSources": [
+      "自システム",
+      "Runtime Card",
+      "Seneschal Event",
+      "Queue collapse",
+      "ETA drift",
+      "Dispatch failure",
+      "ODD failure",
+      "Knowledge export"
+    ],
+    "nodes": [
+      { "id": "runtime", "label": "Runtime", "x": 280, "y": 90, "kind": "stable" },
+      { "id": "queue", "label": "Queue", "x": 80, "y": 40, "kind": "collapse" },
+      { "id": "odd", "label": "ODD", "x": 420, "y": 36, "kind": "collapse" },
+      { "id": "constraint", "label": "Constraint", "x": 60, "y": 120, "kind": "collapse" },
+      { "id": "eta", "label": "ETA", "x": 160, "y": 150, "kind": "collapse" },
+      { "id": "dispatch", "label": "Dispatch", "x": 360, "y": 140, "kind": "collapse" },
+      { "id": "fleet", "label": "Fleet", "x": 480, "y": 88, "kind": "stable" },
+      { "id": "energy", "label": "Energy", "x": 500, "y": 155, "kind": "stable" },
+      { "id": "node", "label": "Node", "x": 520, "y": 110, "kind": "stable" },
+      { "id": "hils", "label": "HILS", "x": 440, "y": 28, "kind": "stable" },
+      { "id": "pl", "label": "PL", "x": 540, "y": 150, "kind": "draft" },
+      { "id": "irr", "label": "IRR", "x": 548, "y": 128, "kind": "draft" },
+      { "id": "draft", "label": "Runtime Draft", "x": 200, "y": 28, "kind": "draft" },
+      { "id": "seneschal", "label": "Seneschal", "x": 120, "y": 28, "kind": "knowledge" },
+      { "id": "intent", "label": "Intent", "x": 340, "y": 24, "kind": "knowledge" }
+    ],
+    "edges": [
+      ["runtime", "queue"],
+      ["runtime", "odd"],
+      ["runtime", "constraint"],
+      ["runtime", "eta"],
+      ["runtime", "dispatch"],
+      ["queue", "eta"],
+      ["eta", "dispatch"],
+      ["constraint", "odd"],
+      ["odd", "fleet"],
+      ["dispatch", "fleet"],
+      ["seneschal", "intent"],
+      ["intent", "runtime"],
+      ["seneschal", "queue"],
+      ["draft", "runtime"],
+      ["fleet", "energy"],
+      ["energy", "node"],
+      ["pl", "irr"]
+    ]
+  },
+  "collapseControl": {
+    "imminent": [
+      { "label": "Queue", "pct": 32 },
+      { "label": "ETA", "pct": 24 },
+      { "label": "ODD", "pct": 18 },
+      { "label": "Constraint", "pct": 16 },
+      { "label": "Dispatch", "pct": 10 }
+    ],
+    "propagation": [
+      { "label": "Queue→ETA", "pct": 86 },
+      { "label": "ETA→Dispatch", "pct": 72 },
+      { "label": "Constraint→ODD", "pct": 64 },
+      { "label": "ODD→Fleet", "pct": 58 }
+    ],
+    "feasibility": [
+      { "label": "Throughput", "value": "74%", "tone": "ok" },
+      { "label": "Trips", "value": "35/日", "tone": "ok" },
+      { "label": "Queue", "value": "12分", "tone": "warn" },
+      { "label": "Runtime", "value": "AUTHORIZED", "tone": "ok" },
+      { "label": "PL", "value": "+18%", "tone": "ok" },
+      { "label": "IRR", "value": "12.4%", "tone": "ok" }
+    ]
+  },
+  "consoles": {
+    "fleet": {
+      "Queue": 12,
+      "ETA": 8,
+      "ODD": "HOLD",
+      "Constraint": 3,
+      "Dispatch": 94,
+      "Fleet": 28,
+      "Energy": 82,
+      "Node": 14,
+      "collapseSignal": "Queue delay"
+    },
+    "serviceHub": {
+      "Queue": 9,
+      "ETA": 11,
+      "ODD": "OK",
+      "Constraint": 2,
+      "Dispatch": 91,
+      "Fleet": 0,
+      "Energy": 76,
+      "Node": 22,
+      "collapseSignal": "ETA drift"
+    },
+    "life": {
+      "Queue": 4,
+      "ETA": 6,
+      "ODD": "OK",
+      "Constraint": 1,
+      "Dispatch": 88,
+      "Fleet": 0,
+      "Energy": 0,
+      "Node": 8,
+      "collapseSignal": "none"
+    },
+    "urban": {
+      "Queue": 15,
+      "ETA": 9,
+      "ODD": "WARN",
+      "Constraint": 4,
+      "Dispatch": 87,
+      "Fleet": 31,
+      "Energy": 79,
+      "Node": 19,
+      "collapseSignal": "Dispatch failure"
+    }
+  },
+  "runtimeSeneschalEvents": [
+    { "type": "Queue delay", "severity": "high", "console": "fleet" },
+    { "type": "ETA drift", "severity": "medium", "console": "serviceHub" },
+    { "type": "Dispatch failure", "severity": "high", "console": "urban" },
+    { "type": "ODD failure", "severity": "medium", "console": "urban" },
+    { "type": "Node congestion", "severity": "low", "console": "serviceHub" },
+    { "type": "Calendar relation", "severity": "info", "console": "life" }
+  ]
+}

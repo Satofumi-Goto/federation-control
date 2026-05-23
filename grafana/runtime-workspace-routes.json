@@ -1,6 +1,6 @@
 {
   "description": "Canonical link map for /runtime. Row3 → Base44 /viewer/* public read-only URLs (runtime_embed=grafana).",
-  "layoutVersion": 35,
+  "layoutVersion": 36,
   "theme": "adaptive",
   "runtimeUid": "sa8ljn4",
   "runtimeTopPath": "/d/sa8ljn4/runtime",
@@ -19,7 +19,7 @@
     "title": "自システム",
     "fleetOperation": "https://fleet-operations-console.base44.app/viewer/fleet?runtime_embed=grafana",
     "serviceHub": "https://service-hub-console.base44.app/viewer/service-hub?runtime_embed=grafana",
-    "lifeTransaction": "https://life-ledger-link.base44.app/viewer/life?runtime_embed=grafana",
+    "lifeTransaction": "https://life-transaction-console.base44.app/viewer/life?runtime_embed=grafana",
     "urbanOperation": "https://urban-operation-console.base44.app/viewer/urban?runtime_embed=grafana"
   },
   "row3ConsoleMeta": {
@@ -40,6 +40,11 @@
       "iframe-embed-from-router",
       "app-launcher-dialog"
     ]
+  },
+  "runtimeFederationMemory": {
+    "storageKey": "runtimeFederationMemory",
+    "seneschalKey": "runtimeSeneschalEvents",
+    "snapshotPath": "runtime_data/runtime-federation-memory.json"
   },
   "federationConnect": {
     "storageKey": "runtimeFederationConnectSystems",

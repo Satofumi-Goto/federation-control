@@ -2,15 +2,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { federationConnectPanelHtml } from './lib/federation-connect-panel.mjs';
 import {
-  cardBase,
-  cardLink,
-  navLink,
-  svgDataUri,
-  textPanelOptions,
-} from './lib/runtime-workspace-theme.mjs';
+  collapseControlPanelHtml,
+  knowledgeGraphPanelHtml,
+  loadRuntimeFederationMemory,
+} from './lib/runtime-federation-brain-panels.mjs';
+import { cardBase, cardLink, navLink, textPanelOptions } from './lib/runtime-workspace-theme.mjs';
 
 const routesPath = path.resolve('grafana/runtime-workspace-routes.json');
 const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
+const federationMemory = loadRuntimeFederationMemory();
 
 const TEXT_PLUGIN_VERSION = '11.5.2';
 
@@ -38,90 +38,6 @@ function row3Meta(routes, key) {
   return routes.row3ConsoleMeta?.[key] ?? { name: key };
 }
 
-function knowledgeGraphPanelHtml(href) {
-  const nodes = [
-    ['Runtime', 180, 68, '#0ea5e9'],
-    ['Queue', 80, 42, '#f59e0b'],
-    ['ODD', 292, 44, '#8b5cf6'],
-    ['Constraint', 72, 122, '#ef4444'],
-    ['ETA', 158, 148, '#38bdf8'],
-    ['Dispatch', 280, 132, '#22c55e'],
-    ['Fleet', 392, 74, '#3b82f6'],
-    ['Energy', 392, 150, '#10b981'],
-    ['HILS', 500, 54, '#64748b'],
-    ['PL/IRR', 504, 138, '#eab308'],
-  ];
-  const edges = [
-    [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [5, 6], [3, 2], [1, 4], [4, 5], [6, 7], [2, 8],
-    [5, 9], [7, 9],
-  ];
-  const edgeSvg = edges
-    .map(
-      ([a, b]) =>
-        `<line x1="${nodes[a][1]}" y1="${nodes[a][2]}" x2="${nodes[b][1]}" y2="${nodes[b][2]}" stroke="#cbd5e1" stroke-width="1.5"/>`
-    )
-    .join('');
-  const nodeSvg = nodes
-    .map(
-      ([label, x, y, color]) =>
-        `<circle cx="${x}" cy="${y}" r="9" fill="${color}"/><text x="${x}" y="${y + 22}" text-anchor="middle" font-size="9" fill="#475569" font-family="system-ui,sans-serif">${label}</text>`
-    )
-    .join('');
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 180" width="560" height="180">${edgeSvg}${nodeSvg}</svg>`;
-  const graphImg = `<img alt="Knowledge Graph" width="560" height="118" style="width:100%;height:118px;object-fit:contain;display:block;" src="${svgDataUri(svg)}" />`;
-
-  return `<a href="${href}" style="display:block;width:100%;height:100%;min-height:0;overflow:hidden;padding:12px;text-decoration:none;${cardBase};box-shadow:0 1px 2px rgba(15,23,42,.04);">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;"><div><div style="font-size:11px;font-weight:600;color:var(--text-secondary,#64748b);">Knowledge Graph</div><div style="font-size:18px;font-weight:700;margin-top:4px;color:var(--text-primary,#111827);">知識グラフ</div></div><div style="font-size:10px;font-weight:600;color:#0891b2;">Runtime全体参照</div></div>
-    <div style="margin-top:8px;height:118px;border-radius:10px;background:var(--background-secondary,#f8fafc);border:1px solid var(--border-weak,#e5e7eb);overflow:hidden;">${graphImg}</div>
-    <div style="margin-top:7px;display:flex;gap:6px;font-size:10px;color:var(--text-secondary,#64748b);"><span>Runtime</span><span>Queue</span><span>ODD</span><span>Constraint</span><span>Dispatch</span><span>PL</span></div>
-  </a>`;
-}
-
-function collapseControlPanelHtml(href) {
-  const ring = [
-    ['Queue', 32, '#f59e0b'],
-    ['ETA', 24, '#38bdf8'],
-    ['ODD', 18, '#8b5cf6'],
-    ['Constraint', 16, '#ef4444'],
-    ['Dispatch', 10, '#22c55e'],
-  ];
-  const legend = ring
-    .map(
-      ([label, value, color]) =>
-        `<div style="display:flex;align-items:center;gap:5px;min-width:0;color:var(--text-secondary,#64748b);"><span style="width:7px;height:7px;border-radius:50%;background:${color};display:inline-block;flex:0 0 auto;"></span><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label} ${value}%</span></div>`
-    )
-    .join('');
-  const donut = `<div style="width:86px;height:86px;border-radius:50%;background:conic-gradient(from -90deg,#f59e0b 0% 32%,#38bdf8 32% 56%,#8b5cf6 56% 74%,#ef4444 74% 90%,#22c55e 90% 100%);position:relative;justify-self:center;"><div style="position:absolute;top:13px;left:13px;right:13px;bottom:13px;border-radius:50%;background:var(--background-primary,#fff);display:flex;align-items:center;justify-content:center;text-align:center;font-size:10px;font-weight:700;line-height:1.2;color:var(--text-primary,#111827);">直ぐに<br/>崩壊</div></div>`;
-  const bars = [
-    ['Queue→ETA', 86, '#f59e0b'],
-    ['ETA→Dispatch', 72, '#38bdf8'],
-    ['Constraint→ODD', 64, '#ef4444'],
-    ['ODD→Fleet', 58, '#8b5cf6'],
-  ]
-    .map(
-      ([label, value, color]) =>
-        `<div style="display:grid;grid-template-columns:92px 1fr 30px;align-items:center;gap:6px;margin-bottom:4px;"><div style="font-size:10px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</div><div style="height:7px;background:#f1f5f9;border-radius:999px;overflow:hidden;"><div style="height:7px;width:${value}%;background:${color};border-radius:999px;"></div></div><div style="font-size:10px;color:var(--text-secondary,#64748b);text-align:right;">${value}</div></div>`
-    )
-    .join('');
-  const nums = [
-    ['成立率', '74%', '#22c55e'],
-    ['Trips', '35/日', '#38bdf8'],
-    ['Queue', '12分', '#f59e0b'],
-    ['PL', '+18%', '#eab308'],
-  ]
-    .map(
-      ([label, value, color]) =>
-        `<div style="padding:6px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid ${color};border-radius:8px;min-width:0;"><div style="font-size:9px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</div><div style="font-size:15px;font-weight:700;color:var(--text-primary,#111827);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${value}</div></div>`
-    )
-    .join('');
-  return `<a href="${href}" style="display:block;width:100%;height:100%;min-height:0;overflow:hidden;padding:10px 12px;text-decoration:none;${cardBase};box-shadow:0 1px 2px rgba(15,23,42,.04);">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;"><div><div style="font-size:11px;font-weight:600;color:#0891b2;">崩壊制御 Runtime</div><div style="font-size:18px;font-weight:700;margin-top:2px;color:var(--text-primary,#111827);">統合制御</div></div><div style="font-size:10px;color:#d97706;font-weight:700;">3段構造</div></div>
-    <div style="display:grid;grid-template-columns:116px 1fr;gap:10px;align-items:center;margin-top:6px;height:86px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:10px;padding:6px;">${donut}<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:4px;font-size:10px;">${legend}</div></div>
-    <div style="margin-top:6px;padding:7px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-radius:9px;">${bars}</div>
-    <div style="margin-top:6px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;">${nums}</div>
-  </a>`;
-}
-
 const r = routes;
 const row3 = r.row3;
 const row4 = r.row4;
@@ -136,7 +52,7 @@ const headerLinkStyle =
 const headerHtml = `<div style="width:100%;height:100%;min-height:0;overflow:hidden;display:flex;align-items:center;justify-content:space-between;padding:10px 18px;${cardBase};box-shadow:0 1px 2px rgba(15,23,42,.04);">
   <div>
     <div style="font-size:26px;font-weight:700;line-height:1.1;color:var(--text-primary,#111827);">Runtime</div>
-    <div style="margin-top:4px;font-size:11px;color:var(--text-secondary,#64748b);">Federated Runtime Control Platform</div>
+    <div style="margin-top:4px;font-size:11px;color:var(--text-secondary,#64748b);">都市OS Runtime Federation Brain</div>
   </div>
   <div style="display:flex;gap:12px;flex-shrink:0;">
     <a href="${r.row1.discovery}" style="${headerLinkStyle}">
@@ -188,11 +104,11 @@ const dashboard = {
   editable: true,
   schemaVersion: 39,
   title: 'Runtime',
-  version: 29,
+  version: 30,
   refresh: '30s',
   timezone: 'browser',
   description:
-    '都市OS Runtime Workspace — HTML text panels (sanitizer-safe), Runtime Federation Brain',
+    '都市OS Runtime Federation Brain — Knowledge → Memory → Collapse Control → Operational Runtime',
   tags: [
     'runtime',
     'urban-os-runtime',
@@ -200,6 +116,7 @@ const dashboard = {
     'theme-adaptive',
     'federation-navigation',
     'collapse-control',
+    'federation-brain',
   ],
   links: [
     { title: 'Runtime', url: r.runtimeTopPath ?? '/d/sa8ljn4/runtime' },
@@ -212,12 +129,12 @@ const dashboard = {
     makeTextPanel({
       id: 201,
       gridPos: { h: 5, w: 11, x: 0, y: 3 },
-      content: knowledgeGraphPanelHtml(r.row2.obsidianGraph),
+      content: knowledgeGraphPanelHtml(r.row2.obsidianGraph, federationMemory),
     }),
     makeTextPanel({
       id: 202,
       gridPos: { h: 5, w: 11, x: 11, y: 3 },
-      content: collapseControlPanelHtml(r.row2.runtimePanel),
+      content: collapseControlPanelHtml(r.row2.runtimePanel, federationMemory),
     }),
     makeTextPanel({
       id: 203,
