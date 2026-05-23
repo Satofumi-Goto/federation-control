@@ -1,0 +1,96 @@
+{
+  "title": "Runtime Federation Memory",
+  "purpose": "Grafana acts as Runtime Federation Brain by storing four-console runtime state and showing the difference between knowledge and operational control architecture.",
+  "storage": {
+    "runtimeFederationMemory": {
+      "description": "Runtime-wide memory used by collaboration discovery, needs translation, alignment, sync refactor, and output actions.",
+      "contains": [
+        "selfSystems",
+        "runtimeDraftCards",
+        "consoleState",
+        "knowledgeExports",
+        "architectureDiff"
+      ]
+    },
+    "runtimeConsoleState": {
+      "description": "Exported state from four operational consoles.",
+      "namespaces": [
+        "fleet",
+        "serviceHub",
+        "life",
+        "urban"
+      ]
+    }
+  },
+  "consoleStateExport": {
+    "targets": [
+      "Fleet Operations Console",
+      "Service Hub Console",
+      "Life Ledger Link",
+      "Urban Operation Console"
+    ],
+    "intervalSeconds": 30,
+    "requiredFields": [
+      "Queue",
+      "ETA",
+      "ODD",
+      "Constraint",
+      "Dispatch",
+      "Fleet",
+      "Energy",
+      "Node",
+      "Runtime status",
+      "Collapse signal"
+    ]
+  },
+  "knowledgeArchitectureDiffPanel": {
+    "targetPanel": "runtime-workspace-v2 row2 right panel",
+    "title": "ナレッジ差分",
+    "compares": {
+      "knowledge": [
+        "Runtime cards",
+        "Runtime memory",
+        "Discovery / 連携探索",
+        "Drafts",
+        "Knowledge export"
+      ],
+      "architecture": [
+        "Queue",
+        "ODD",
+        "Constraint",
+        "Dispatch",
+        "Runtime topology",
+        "Collapse architecture"
+      ]
+    },
+    "displayItems": [
+      "未反映",
+      "Runtime未接続",
+      "Queue未同期",
+      "ODD差分",
+      "Constraint未反映",
+      "Dispatch未整合"
+    ]
+  },
+  "publicRuntimeMode": {
+    "showUi": true,
+    "blockWrites": true,
+    "blockedActions": [
+      "save",
+      "delete",
+      "knowledgeExport",
+      "documentExport",
+      "syncRefactor"
+    ],
+    "message": "公開Runtimeでは編集できません"
+  },
+  "runtimeRule": {
+    "flow": [
+      "Knowledge",
+      "Runtime Federation Memory",
+      "運行制御アーキテクチャ",
+      "Operational Runtime"
+    ],
+    "grafanaRole": "Runtime Federation Brain"
+  }
+}
