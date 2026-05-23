@@ -36,6 +36,28 @@ function assertEqual(actual, expected, code, label) {
   }
 }
 
+const forbiddenUiLabels = [
+  '自システム',
+  '崩壊制御アーキテクチャ',
+  '機能アーキテクチャ図',
+  'シーケンス図',
+  'Growing Runtime Knowledge Graph',
+  'Runtime Federation Memory',
+  '崩壊制御 Runtime',
+  '運行制御アーキテクチャ',
+];
+
+const requiredUiLabels = [
+  'Operational Systems',
+  'System Artifacts',
+  'Obsidian Knowledge Graph',
+  'Runtime Federation Graph',
+  'Federation Add',
+  'Collapse Control Architecture',
+  'Functional Topology',
+  'Federation Sequence',
+];
+
 // --- Canonical route sync (routes.json ↔ topology) ---
 const center = resolveRuntimeCenterHref(routes, topology);
 assertEqual(
@@ -67,12 +89,30 @@ if (routes.row2.runtimePanel !== center) {
   );
 }
 
-// --- Built dashboard href audit ---
+// --- Built dashboard href and stale UI audit ---
 const v2Path = path.join(repoRoot, 'grafana/runtime-workspace-v2.json');
 if (!fs.existsSync(v2Path)) {
   fail('missing-v2', 'Run node scripts/build-runtime-workspace-v2.mjs first');
 } else {
-  const dash = JSON.parse(fs.readFileSync(v2Path, 'utf8'));
+  const rawDashboard = fs.readFileSync(v2Path, 'utf8');
+  const dash = JSON.parse(rawDashboard);
+
+  for (const label of forbiddenUiLabels) {
+    if (rawDashboard.includes(label)) {
+      fail('stale-ui-label', `runtime-workspace-v2.json still contains stale UI label: ${label}`);
+    }
+  }
+
+  for (const label of requiredUiLabels) {
+    if (!rawDashboard.includes(label)) {
+      fail('missing-required-ui-label', `runtime-workspace-v2.json missing required UI label: ${label}`);
+    }
+  }
+
+  if (dash.version < 32) {
+    fail('stale-dashboard-version', `runtime-workspace-v2.json version must be regenerated above 31, got ${dash.version}`);
+  }
+
   const hrefs = new Set();
   for (const panel of dash.panels ?? []) {
     const content = panel.options?.content ?? '';
@@ -100,7 +140,7 @@ if (!fs.existsSync(v2Path)) {
 
   for (const forbidden of topology.row2Panels?.operationalArchitecture?.forbiddenTargets ?? []) {
     if (hrefs.has(forbidden)) {
-      fail('forbidden-op-arch-target', `運行制御アーキテクチャ card still links to ${forbidden}`);
+      fail('forbidden-op-arch-target', `stale card still links to ${forbidden}`);
     }
   }
 
@@ -124,19 +164,41 @@ if (!fs.existsSync(v2Path)) {
     }
   }
 
-  // Panel 202 = collapse / 運行制御アーキテクチャ
+  const panel201 = (dash.panels ?? []).find((p) => p.id === 201);
+  if (panel201) {
+    const content = panel201.options?.content ?? '';
+    if (!content.includes('Obsidian Knowledge Graph')) {
+      fail('panel-201-label', 'Panel 201 must be Obsidian Knowledge Graph');
+    }
+  }
+
   const panel202 = (dash.panels ?? []).find((p) => p.id === 202);
   if (panel202) {
     const content = panel202.options?.content ?? '';
-    if (!content.includes('運行制御アーキテクチャ')) {
-      fail('panel-202-label', 'Panel 202 missing 運行制御アーキテクチャ label');
+    if (!content.includes('Runtime Federation Graph')) {
+      fail('panel-202-label', 'Panel 202 must be Runtime Federation Graph');
     }
     if (!content.includes(`href="${center}"`)) {
       fail('panel-202-href', `Panel 202 must link to Runtime center ${center}`);
     }
   }
 
-  // Header icons
+  const panel300 = (dash.panels ?? []).find((p) => p.id === 300);
+  if (panel300) {
+    const content = panel300.options?.content ?? '';
+    if (!content.includes('Operational Systems')) {
+      fail('panel-300-label', 'Panel 300 must be Operational Systems');
+    }
+  }
+
+  const panel350 = (dash.panels ?? []).find((p) => p.id === 350);
+  if (panel350) {
+    const content = panel350.options?.content ?? '';
+    if (!content.includes('System Artifacts')) {
+      fail('panel-350-label', 'Panel 350 must be System Artifacts');
+    }
+  }
+
   const panel100 = (dash.panels ?? []).find((p) => p.id === 100);
   if (panel100) {
     const c = panel100.options?.content ?? '';
@@ -149,13 +211,23 @@ if (!fs.existsSync(v2Path)) {
   }
 }
 
-// --- Remnant scan in scripts (canonical build only) ---
-const buildSrc = fs.readFileSync(
-  path.join(repoRoot, 'scripts/build-runtime-workspace-v2.mjs'),
-  'utf8',
-);
-if (buildSrc.includes('go-integrated-surface/integrated-control-surface')) {
-  fail('build-dead-op-arch', 'build script still references integrated-control-surface for op arch');
+// --- Remnant scan in source scripts ---
+const sourceFilesToScan = [
+  'scripts/build-runtime-workspace-v2.mjs',
+  'scripts/runtime-visual-check.mjs',
+  'scripts/lib/runtime-federation-brain-panels.mjs',
+  'scripts/lib/federation-connect-panel.mjs',
+  'grafana/runtime-workspace-routes.json',
+];
+for (const relPath of sourceFilesToScan) {
+  const p = path.join(repoRoot, relPath);
+  if (!fs.existsSync(p)) continue;
+  const src = fs.readFileSync(p, 'utf8');
+  for (const label of forbiddenUiLabels) {
+    if (src.includes(label)) {
+      fail('stale-source-label', `${relPath} still contains stale UI label: ${label}`);
+    }
+  }
 }
 
 // --- Report ---
