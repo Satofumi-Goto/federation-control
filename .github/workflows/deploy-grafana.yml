@@ -7,7 +7,8 @@ on:
     paths:
       - 'dashboards/**.json'
       - 'grafana/**.json'
-      - 'scripts/deploy-grafana-dashboard.mjs'
+      - 'scripts/**.mjs'
+      - 'package.json'
       - '.github/workflows/deploy-grafana.yml'
   workflow_dispatch:
 
@@ -24,16 +25,15 @@ jobs:
         with:
           node-version: 20
 
+      - name: Build Runtime workspace dashboard
+        run: npm run build:runtime-workspace
+
       - name: Validate dashboard JSON
         run: |
           for file in dashboards/*.json; do
             echo "Checking $file"
             python -m json.tool "$file" > /dev/null
           done
-
-      - name: Sync Runtime workspace dashboard
-        run: |
-          cp grafana/runtime-workspace-v2.json dashboards/runtime-workspace-v2.json
 
       - name: Deploy dashboards to Grafana
         env:
