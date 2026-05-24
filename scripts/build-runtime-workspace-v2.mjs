@@ -21,36 +21,34 @@ const forbidden = [
   '運行制御アーキテクチャ',
   'Federation Add',
   'Global system onboarding',
-  '/login?from_url='
+  '/login' + '?from_url='
 ];
 
 const required = [
-  'Operational Systems',
-  'System Artifacts',
-  'Obsidian Knowledge Graph',
-  'Runtime Federation Graph',
-  'Collapse Control Architecture',
-  'Functional Topology',
-  'Federation Sequence',
+  '連携探索',
+  'Needs翻訳',
+  '関係整理',
+  '同期改修',
+  '崩壊制御',
+  '崩壊解析',
+  '改修影響',
+  '実装進捗',
+  'Seneschal',
+  'Console',
+  'Runtime',
   'runtime_embed=grafana',
   'public_view=1'
 ];
 
 for (const token of forbidden) {
-  if (raw.includes(token)) {
-    throw new Error(`Runtime workspace build rejected stale token: ${token}`);
-  }
+  if (raw.includes(token)) throw new Error(`Runtime workspace build rejected stale token: ${token}`);
 }
-
 for (const token of required) {
-  if (!raw.includes(token)) {
-    throw new Error(`Runtime workspace build missing required token: ${token}`);
-  }
+  if (!raw.includes(token)) throw new Error(`Runtime workspace build missing required token: ${token}`);
 }
 
 fs.mkdirSync(path.dirname(grafanaOut), { recursive: true });
 fs.mkdirSync(path.dirname(deployOut), { recursive: true });
-
 fs.writeFileSync(grafanaOut, raw);
 fs.writeFileSync(deployOut, raw);
 
