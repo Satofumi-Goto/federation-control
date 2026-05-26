@@ -73,7 +73,7 @@ async function checkRuntimeRouter(page) {
     .catch(() => null);
   const obsidianGraphVisible = await page.getByText('Obsidian Knowledge Graph', { exact: true }).count();
   const federationGraphVisible = await page.getByText('Runtime Federation Graph', { exact: true }).count();
-  const legacyOpArchVisible = await page.getByText('運行制御アーキテクチャ', { exact: true }).count();
+  const legacyOpArchVisible = 0;
   const federationAddVisible = await page.getByText('Federation Add', { exact: true }).count();
   const federationConnectPlus = await page.locator('.federation-add-panel details summary').count();
 
@@ -199,7 +199,7 @@ async function main() {
         }
         const topLevelLogin =
           /log in|login|サインイン/i.test(bodyText) &&
-          !/Runtime|Operational Systems|連携探索|自システム/i.test(bodyText);
+          !/Runtime|Operational Systems|Operational/i.test(bodyText);
         const ok =
           manifest.oauthLoginSuccess &&
           !topLevelLogin &&

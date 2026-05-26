@@ -215,6 +215,10 @@ const dashboard = {
   ],
 };
 
-const outPath = path.resolve('grafana/runtime-workspace-v2.json');
-fs.writeFileSync(outPath, `${JSON.stringify(dashboard, null, 2)}\n`);
-console.log(`Wrote ${outPath} (${dashboard.panels.length} panels, version ${dashboard.version})`);
+const raw = `${JSON.stringify(dashboard, null, 2)}\n`;
+const grafanaOut = path.resolve('grafana/runtime-workspace-v2.json');
+const deployOut = path.resolve('dashboards/runtime-workspace-v2.json');
+fs.mkdirSync(path.dirname(deployOut), { recursive: true });
+fs.writeFileSync(grafanaOut, raw);
+fs.writeFileSync(deployOut, raw);
+console.log(`Wrote ${grafanaOut} + ${deployOut} (${dashboard.panels.length} panels, version ${dashboard.version})`);

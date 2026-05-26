@@ -302,7 +302,61 @@ if (!fs.existsSync(v2Path)) {
   }
 }
 
-// --- Remnant scan in scripts (canonical build only) ---
+// --- UI label consistency ---
+const forbiddenUiLabels = [
+  '自システム',
+  '崩壊制御アーキテクチャ',
+  '機能アーキテクチャ図',
+  'シーケンス図',
+  'Growing Runtime Knowledge Graph',
+  'Runtime Federation Memory',
+  '崩壊制御 Runtime',
+  '運行制御アーキテクチャ',
+];
+const requiredUiLabels = [
+  'Operational Systems',
+  'System Artifacts',
+  'Obsidian Knowledge Graph',
+  'Federation Graph',
+  'Federation Add',
+  'Collapse Control',
+  'Functional Topology',
+  'Federation Sequence',
+];
+
+{
+  const rawDashboard = fs.readFileSync(path.join(repoRoot, 'grafana/runtime-workspace-v2.json'), 'utf8');
+  for (const label of forbiddenUiLabels) {
+    if (rawDashboard.includes(label)) {
+      fail('stale-ui-label', `runtime-workspace-v2.json still contains stale UI label: ${label}`);
+    }
+  }
+  for (const label of requiredUiLabels) {
+    if (!rawDashboard.includes(label)) {
+      fail('missing-required-ui-label', `runtime-workspace-v2.json missing required UI label: ${label}`);
+    }
+  }
+}
+
+// --- Remnant scan in source scripts ---
+const sourceFilesToScan = [
+  'scripts/build-runtime-workspace-v2.mjs',
+  'scripts/runtime-visual-check.mjs',
+  'scripts/lib/runtime-federation-brain-panels.mjs',
+  'scripts/lib/federation-connect-panel.mjs',
+  'grafana/runtime-workspace-routes.json',
+];
+for (const relPath of sourceFilesToScan) {
+  const p = path.join(repoRoot, relPath);
+  if (!fs.existsSync(p)) continue;
+  const src = fs.readFileSync(p, 'utf8');
+  for (const label of forbiddenUiLabels) {
+    if (src.includes(label)) {
+      fail('stale-source-label', `${relPath} still contains stale UI label: ${label}`);
+    }
+  }
+}
+
 const buildSrc = fs.readFileSync(
   path.join(repoRoot, 'scripts/build-runtime-workspace-v2.mjs'),
   'utf8',

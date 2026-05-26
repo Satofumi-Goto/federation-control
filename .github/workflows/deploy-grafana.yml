@@ -6,7 +6,9 @@ on:
       - main
     paths:
       - 'dashboards/**.json'
-      - 'scripts/deploy-grafana-dashboard.mjs'
+      - 'grafana/**.json'
+      - 'scripts/**.mjs'
+      - 'package.json'
       - '.github/workflows/deploy-grafana.yml'
   workflow_dispatch:
 
@@ -22,6 +24,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: Build Runtime workspace dashboard
+        run: npm run build:runtime-workspace
 
       - name: Validate dashboard JSON
         run: |
