@@ -1,0 +1,193 @@
+{
+  "uid": "sassvwp",
+  "editable": true,
+  "schemaVersion": 39,
+  "title": "実装進捗 — Implement Progress",
+  "version": 1,
+  "refresh": "30s",
+  "timezone": "browser",
+  "description": "Federation Runtime 実装進捗 Operational Surface — キュー・ゲート・セッション・デプロイ・監視・タイムライン",
+  "tags": [
+    "federation-runtime",
+    "operational-surface"
+  ],
+  "style": "dark",
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;display:flex;align-items:center;padding:4px 12px;background:#0f172a;border:1px solid #334155;border-radius:8px;border-bottom:2px solid #06b6d4;box-sizing:border-box;\">\n    <div style=\"font-size:13px;font-weight:800;color:#e2e8f0;letter-spacing:.02em;\">実装進捗 Implement Progress</div>\n    <div style=\"margin-left:10px;font-size:9px;color:#64748b;\">キュー · ゲート · セッション · デプロイ · 監視 · タイムライン</div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 10,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 1
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #06b6d4;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#06b6d4;letter-spacing:.06em;text-transform:uppercase;\">Execution · Queue</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">実行キュー</div>\n    <div style=\"margin-top:4px;display:flex;align-items:baseline;gap:8px;\">\n      <span style=\"font-size:26px;font-weight:900;color:#06b6d4;letter-spacing:-0.02em;\">autonomous</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">実行モード</span>\n    </div>\n    <div style=\"margin-top:6px;font-size:8px;font-weight:600;color:#64748b;text-transform:uppercase;\">キュー内容</div>\n    <div style=\"margin-top:2px;\"><div style=\"font-size:8px;color:#22c55e;padding:2px 0;\">キュー空 — 即時実行可能</div></div>\n    <div style=\"margin-top:6px;font-size:8px;font-weight:600;color:#64748b;text-transform:uppercase;\">スーパーバイザーカウンター</div>\n    <div style=\"margin-top:2px;\"><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">repair</span>\n    <span style=\"font-size:10px;font-weight:700;color:#64748b;\">0</span>\n  </div><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">deploy</span>\n    <span style=\"font-size:10px;font-weight:700;color:#64748b;\">0</span>\n  </div><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">rollback</span>\n    <span style=\"font-size:10px;font-weight:700;color:#64748b;\">0</span>\n  </div><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">drift</span>\n    <span style=\"font-size:10px;font-weight:700;color:#64748b;\">0</span>\n  </div><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">totalEvents</span>\n    <span style=\"font-size:10px;font-weight:700;color:#64748b;\">0</span>\n  </div><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">pressure</span>\n    <span style=\"font-size:10px;font-weight:700;color:#64748b;\">0</span>\n  </div></div>\n    <div style=\"margin-top:4px;\">\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">圧力スコア</span>\n    <span style=\"font-size:10px;font-weight:700;color:#06b6d4;\">3</span>\n  </div>\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">ストーム検出</span>\n    <span style=\"font-size:10px;font-weight:700;color:#22c55e;\">なし</span>\n  </div>\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">ループ回数</span>\n    <span style=\"font-size:10px;font-weight:700;color:#94a3b8;\">1</span>\n  </div>\n    </div></div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 11,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 1
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #22c55e;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#22c55e;letter-spacing:.06em;text-transform:uppercase;\">Governance · Gate</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">ガバナンスゲート</div>\n    <div style=\"margin-top:4px;display:flex;gap:10px;\">\n      <div><span style=\"font-size:26px;font-weight:900;color:#22c55e;letter-spacing:-0.02em;\">proceed</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">判定</span></div>\n      <div><span style=\"font-size:26px;font-weight:900;color:#22c55e;letter-spacing:-0.02em;\">4/4</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">ゲート</span></div>\n    </div>\n    <div style=\"margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:4px;\"><div style=\"display:flex;align-items:center;gap:4px;padding:4px 6px;background:#22c55e12;border:1px solid #22c55e33;border-radius:6px;\">\n      <span style=\"font-size:11px;font-weight:700;color:#22c55e;\">✓</span>\n      <div style=\"flex:1;min-width:0;\">\n        <div style=\"font-size:9px;font-weight:600;color:#e2e8f0;\">workspace-binding</div>\n        <div style=\"font-size:7px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">Bound to federation-control</div>\n      </div>\n    </div><div style=\"display:flex;align-items:center;gap:4px;padding:4px 6px;background:#22c55e12;border:1px solid #22c55e33;border-radius:6px;\">\n      <span style=\"font-size:11px;font-weight:700;color:#22c55e;\">✓</span>\n      <div style=\"flex:1;min-width:0;\">\n        <div style=\"font-size:9px;font-weight:600;color:#e2e8f0;\">payload-safety</div>\n        <div style=\"font-size:7px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">No forbidden operations</div>\n      </div>\n    </div><div style=\"display:flex;align-items:center;gap:4px;padding:4px 6px;background:#22c55e12;border:1px solid #22c55e33;border-radius:6px;\">\n      <span style=\"font-size:11px;font-weight:700;color:#22c55e;\">✓</span>\n      <div style=\"flex:1;min-width:0;\">\n        <div style=\"font-size:9px;font-weight:600;color:#e2e8f0;\">governance-deploy</div>\n        <div style=\"font-size:7px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">Deploy policy: allowed</div>\n      </div>\n    </div><div style=\"display:flex;align-items:center;gap:4px;padding:4px 6px;background:#22c55e12;border:1px solid #22c55e33;border-radius:6px;\">\n      <span style=\"font-size:11px;font-weight:700;color:#22c55e;\">✓</span>\n      <div style=\"flex:1;min-width:0;\">\n        <div style=\"font-size:9px;font-weight:600;color:#e2e8f0;\">execution-mode</div>\n        <div style=\"font-size:7px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">Mode: unknown</div>\n      </div>\n    </div></div>\n    </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 12,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 1
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #22c55e;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#22c55e;letter-spacing:.06em;text-transform:uppercase;\">Execution · Session</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">実行セッション</div>\n    <div style=\"margin-top:4px;\"><div style=\"display:inline-flex;align-items:center;gap:3px;\">\n    <div style=\"width:7px;height:7px;border-radius:50%;background:#475569;box-shadow:0 0 4px #47556966;\"></div>\n    <span style=\"font-size:9px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.04em;\">completed</span>\n  </div></div>\n    <div style=\"margin-top:6px;\">\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">モデル</span>\n    <span style=\"font-size:10px;font-weight:700;color:#06b6d4;\">composer-2.5</span>\n  </div>\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">実行ID</span>\n    <span style=\"font-size:10px;font-weight:700;color:#94a3b8;\">--...</span>\n  </div>\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">開始</span>\n    <span style=\"font-size:10px;font-weight:700;color:#94a3b8;\">2026/5/26 18:11:48</span>\n  </div>\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">終了</span>\n    <span style=\"font-size:10px;font-weight:700;color:#94a3b8;\">2026/5/26 18:12:15</span>\n  </div>\n    </div>\n    <div style=\"margin-top:6px;font-size:8px;font-weight:600;color:#64748b;text-transform:uppercase;\">プロンプト</div>\n    <div style=\"margin-top:2px;font-size:8px;color:#94a3b8;background:#1e293b;padding:4px 6px;border-radius:4px;word-break:break-all;\">list current runtime status</div></div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 1
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #22c55e;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#22c55e;letter-spacing:.06em;text-transform:uppercase;\">Deploy · State</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">デプロイ状態</div>\n    <div style=\"margin-top:4px;display:flex;gap:10px;\">\n      <div><span style=\"font-size:26px;font-weight:900;color:#06b6d4;letter-spacing:-0.02em;\">v0</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">バージョン</span></div>\n      <div><span style=\"font-size:26px;font-weight:900;color:#22c55e;letter-spacing:-0.02em;\">合格</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">検証</span></div>\n    </div>\n    <div style=\"margin-top:6px;\">\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">パネル数</span>\n    <span style=\"font-size:10px;font-weight:700;color:#06b6d4;\">0</span>\n  </div>\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">レジストリ数</span>\n    <span style=\"font-size:10px;font-weight:700;color:#06b6d4;\">5</span>\n  </div>\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">ビルド結果</span>\n    <span style=\"font-size:10px;font-weight:700;color:#94a3b8;\">未実行</span>\n  </div>\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">変更ファイル</span>\n    <span style=\"font-size:10px;font-weight:700;color:#94a3b8;\">43</span>\n  </div>\n    </div>\n    <div style=\"margin-top:4px;font-size:8px;font-weight:600;color:#64748b;text-transform:uppercase;\">変更ファイル</div><div style=\"margin-top:2px;\"><div style=\"font-size:8px;color:#94a3b8;padding:1px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">M .gitignore</div><div style=\"font-size:8px;color:#94a3b8;padding:1px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\"> M dashboards/runtime-workspace-v2.json</div><div style=\"font-size:8px;color:#94a3b8;padding:1px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\"> M grafana/runtime-workspace-routes.json</div><div style=\"font-size:8px;color:#94a3b8;padding:1px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\"> M grafana/runtime-workspace-v2.json</div><div style=\"font-size:8px;color:#94a3b8;padding:1px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\"> M package.json</div><div style=\"font-size:8px;color:#94a3b8;padding:1px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\"> M runtime_data/runtime-federation-memory.json</div></div></div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 20,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 9
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #22c55e;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#22c55e;letter-spacing:.06em;text-transform:uppercase;\">Trigger · Supervisor</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">トリガー監視</div>\n    <div style=\"margin-top:4px;display:flex;gap:8px;\">\n      <div><span style=\"font-size:26px;font-weight:900;color:#22c55e;letter-spacing:-0.02em;\">稼働</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">状態</span></div>\n      <div><span style=\"font-size:26px;font-weight:900;color:#f59e0b;letter-spacing:-0.02em;\">50%</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">ブロック率</span></div>\n    </div>\n    <div style=\"margin-top:6px;\">\n      <div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#94a3b8;\">\n      <span>ブロック率</span><span style=\"font-weight:700;color:#f59e0b;\">50%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#1e293b;\">\n      <div style=\"height:100%;width:50%;background:#f59e0b;border-radius:2px;\"></div>\n    </div>\n  </div>\n    </div>\n    <div style=\"margin-top:4px;\">\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">総実行</span>\n    <span style=\"font-size:10px;font-weight:700;color:#06b6d4;\">1</span>\n  </div>\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">総ブロック</span>\n    <span style=\"font-size:10px;font-weight:700;color:#f59e0b;\">1</span>\n  </div>\n      <div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">連続失敗</span>\n    <span style=\"font-size:10px;font-weight:700;color:#22c55e;\">0</span>\n  </div>\n    </div></div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 21,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 9
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #67e8f9;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#67e8f9;letter-spacing:.06em;text-transform:uppercase;\">Operational · Timeline</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">運用タイムライン</div>\n    <div style=\"margin-top:6px;max-height:220px;overflow-y:auto;\"><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#14b8a6;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#14b8a6;text-transform:uppercase;\">health propagation</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">圧力:3</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:07</div>\n  </div><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#22c55e;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#22c55e;text-transform:uppercase;\">verification</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">合格</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:07</div>\n  </div><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#67e8f9;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#67e8f9;text-transform:uppercase;\">governance decision</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">autonomous_proceed</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:07</div>\n  </div><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#f59e0b;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#f59e0b;text-transform:uppercase;\">pressure evaluation</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">圧力:3 nominal</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:07</div>\n  </div><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#06b6d4;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#06b6d4;text-transform:uppercase;\">policy evaluation</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">モード:normal</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:07</div>\n  </div><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#34d399;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#34d399;text-transform:uppercase;\">repair cycle</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">no_action</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:07</div>\n  </div><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#14b8a6;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#14b8a6;text-transform:uppercase;\">health propagation</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">圧力:3</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:07</div>\n  </div><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#22c55e;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#22c55e;text-transform:uppercase;\">verification</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">合格</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:07</div>\n  </div><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#67e8f9;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#67e8f9;text-transform:uppercase;\">governance decision</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">repair_first</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:07</div>\n  </div><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#f59e0b;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#f59e0b;text-transform:uppercase;\">pressure evaluation</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">圧力:3 nominal</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:07</div>\n  </div></div></div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 22,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 9
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #ef4444;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#ef4444;letter-spacing:.06em;text-transform:uppercase;\">Environment · Health</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">環境ヘルス</div>\n    <div style=\"margin-top:4px;\"><span style=\"font-size:26px;font-weight:900;color:#ef4444;letter-spacing:-0.02em;\">0</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">ヘルススコア</span></div>\n    <div style=\"margin-top:4px;\"><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#94a3b8;\">\n      <span>環境健全性</span><span style=\"font-weight:700;color:#ef4444;\">0%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#1e293b;\">\n      <div style=\"height:100%;width:0%;background:#ef4444;border-radius:2px;\"></div>\n    </div>\n  </div></div>\n    <div style=\"margin-top:6px;font-size:8px;font-weight:600;color:#64748b;text-transform:uppercase;\">アクティブモジュール</div>\n    <div style=\"margin-top:2px;display:flex;flex-wrap:wrap;gap:3px;\"><span style=\"padding:2px 6px;border-radius:4px;font-size:8px;font-weight:700;color:#06b6d4;background:#06b6d418;border:1px solid #06b6d444;\">governance</span> <span style=\"padding:2px 6px;border-radius:4px;font-size:8px;font-weight:700;color:#06b6d4;background:#06b6d418;border:1px solid #06b6d444;\">safety-layer</span> <span style=\"padding:2px 6px;border-radius:4px;font-size:8px;font-weight:700;color:#06b6d4;background:#06b6d418;border:1px solid #06b6d444;\">policy-engine</span></div>\n    </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    }
+  ]
+}

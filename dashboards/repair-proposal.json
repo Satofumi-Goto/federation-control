@@ -1,0 +1,171 @@
+{
+  "uid": "sajbd8b",
+  "editable": true,
+  "schemaVersion": 39,
+  "title": "改修提案 — Repair Proposal",
+  "version": 1,
+  "refresh": "30s",
+  "timezone": "browser",
+  "description": "Federation Runtime 改修提案 Operational Surface — 提案・構造進化・変更管理・判定・インパクト・適応",
+  "tags": [
+    "federation-runtime",
+    "operational-surface"
+  ],
+  "style": "dark",
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;display:flex;align-items:center;padding:4px 12px;background:#0f172a;border:1px solid #334155;border-radius:8px;border-bottom:2px solid #67e8f9;box-sizing:border-box;\">\n    <div style=\"font-size:13px;font-weight:800;color:#e2e8f0;letter-spacing:.02em;\">改修提案 Repair Proposal</div>\n    <div style=\"margin-left:10px;font-size:9px;color:#64748b;\">提案 · 構造進化 · 変更管理 · 判定 · インパクト</div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 10,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 1
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #67e8f9;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#67e8f9;letter-spacing:.06em;text-transform:uppercase;\">Proposal · Active</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">改修提案一覧</div>\n    <div style=\"margin-top:6px;display:flex;justify-content:space-around;gap:8px;\"><div style=\"text-align:center;\">\n      <div style=\"font-size:18px;font-weight:900;color:#f59e0b;\">0</div>\n      <div style=\"font-size:8px;color:#94a3b8;\">保留中</div>\n    </div><div style=\"text-align:center;\">\n      <div style=\"font-size:18px;font-weight:900;color:#22c55e;\">0</div>\n      <div style=\"font-size:8px;color:#94a3b8;\">承認済</div>\n    </div><div style=\"text-align:center;\">\n      <div style=\"font-size:18px;font-weight:900;color:#ef4444;\">0</div>\n      <div style=\"font-size:8px;color:#94a3b8;\">却下</div>\n    </div></div>\n    <div style=\"margin-top:8px;font-size:8px;font-weight:600;color:#64748b;text-transform:uppercase;\">提案詳細</div>\n    <div style=\"margin-top:2px;max-height:160px;overflow-y:auto;\"><div style=\"padding:3px 0;border-bottom:1px solid #334155;\">\n      <div style=\"display:flex;align-items:center;gap:4px;\">\n        <span style=\"padding:2px 6px;border-radius:4px;font-size:8px;font-weight:700;color:#f59e0b;background:#f59e0b18;border:1px solid #f59e0b44;\">unknown</span>\n        <span style=\"font-size:9px;font-weight:600;color:#e2e8f0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">Reduce execution block rate</span>\n      </div>\n      <div style=\"font-size:8px;color:#94a3b8;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">50% of execution attempts blocked. Propose relaxing throttling when consecutive failures are zero.</div>\n    </div></div></div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 11,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 1
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #38bdf8;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#38bdf8;letter-spacing:.06em;text-transform:uppercase;\">Structure · Evolution</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">構造進化モデル</div>\n    <div style=\"margin-top:4px;display:flex;gap:10px;\">\n      <div><span style=\"font-size:26px;font-weight:900;color:#38bdf8;letter-spacing:-0.02em;\">0</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">トポロジー変更</span></div>\n      <div><span style=\"font-size:26px;font-weight:900;color:#22c55e;letter-spacing:-0.02em;\">0</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">循環依存</span></div>\n    </div>\n    <div style=\"margin-top:6px;\">\n      <div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;margin-bottom:1px;\">\n      <span>トポロジー変更</span><span style=\"font-weight:700;color:#38bdf8;\">0</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#1e293b;overflow:hidden;\">\n      <div style=\"height:100%;width:0%;background:#38bdf8;border-radius:2px;\"></div>\n    </div>\n  </div>\n      <div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;margin-bottom:1px;\">\n      <span>モジュール変更</span><span style=\"font-weight:700;color:#06b6d4;\">0</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#1e293b;overflow:hidden;\">\n      <div style=\"height:100%;width:0%;background:#06b6d4;border-radius:2px;\"></div>\n    </div>\n  </div>\n      <div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;margin-bottom:1px;\">\n      <span>ポリシー遷移</span><span style=\"font-weight:700;color:#f59e0b;\">0</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#1e293b;overflow:hidden;\">\n      <div style=\"height:100%;width:0%;background:#f59e0b;border-radius:2px;\"></div>\n    </div>\n  </div>\n      <div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#94a3b8;margin-bottom:1px;\">\n      <span>循環依存検出</span><span style=\"font-weight:700;color:#22c55e;\">0</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#1e293b;overflow:hidden;\">\n      <div style=\"height:100%;width:0%;background:#22c55e;border-radius:2px;\"></div>\n    </div>\n  </div>\n    </div>\n    <div style=\"margin-top:4px;\">\n      <div style=\"font-size:8px;color:#22c55e;padding:2px 0;\">循環依存なし</div>\n    </div></div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 12,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #06b6d4;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#06b6d4;letter-spacing:.06em;text-transform:uppercase;\">Change · Control</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">変更管理ボード</div>\n    <div style=\"margin-top:4px;\">\n      <span style=\"font-size:26px;font-weight:900;color:#06b6d4;letter-spacing:-0.02em;\">0</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">レコード</span>\n    </div>\n    <div style=\"margin-top:6px;\"><div style=\"font-size:8px;color:#64748b;\">変更レコードなし</div></div></div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 20,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 9
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #f59e0b;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#f59e0b;letter-spacing:.06em;text-transform:uppercase;\">Repair · Decisions</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">改修判定タイムライン</div>\n    <div style=\"margin-top:4px;font-size:8px;font-weight:600;color:#64748b;text-transform:uppercase;\">判定分布</div>\n    <div style=\"margin-top:2px;\"><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #334155;\">\n    <span style=\"font-size:9px;color:#94a3b8;\">no_action</span>\n    <span style=\"font-size:10px;font-weight:700;color:#64748b;\">4</span>\n  </div></div>\n    <div style=\"margin-top:6px;font-size:8px;font-weight:600;color:#64748b;text-transform:uppercase;\">直近タイムライン</div>\n    <div style=\"margin-top:2px;\"><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#64748b;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#64748b;text-transform:uppercase;\">no_action</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">drift:0 proposal:0</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:21</div>\n  </div><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#64748b;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#64748b;text-transform:uppercase;\">no_action</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">drift:0 proposal:0</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:07</div>\n  </div><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#64748b;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#64748b;text-transform:uppercase;\">no_action</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">drift:0 proposal:0</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:07</div>\n  </div><div style=\"display:flex;align-items:flex-start;gap:6px;padding:3px 0;border-bottom:1px solid #334155;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#64748b;margin-top:4px;flex-shrink:0;\"></div>\n    <div style=\"flex:1;min-width:0;\">\n      <div style=\"font-size:9px;font-weight:700;color:#64748b;text-transform:uppercase;\">no_action</div>\n      <div style=\"font-size:8px;color:#94a3b8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;\">drift:0 proposal:0</div>\n    </div>\n    <div style=\"font-size:8px;color:#64748b;flex-shrink:0;\">12:04</div>\n  </div></div></div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 21,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 9
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #ef4444;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#ef4444;letter-spacing:.06em;text-transform:uppercase;\">Business · Impact</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">ビジネスインパクト</div>\n    <div style=\"margin-top:4px;\"><span style=\"font-size:26px;font-weight:900;color:#ef4444;letter-spacing:-0.02em;\">0</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">総合スコア</span></div>\n    <div style=\"margin-top:6px;\">\n      <div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#94a3b8;\">\n      <span>オペレーション</span><span style=\"font-weight:700;color:#f59e0b;\">0%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#1e293b;\">\n      <div style=\"height:100%;width:0%;background:#f59e0b;border-radius:2px;\"></div>\n    </div>\n  </div>\n      <div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#94a3b8;\">\n      <span>サービス</span><span style=\"font-weight:700;color:#f59e0b;\">0%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#1e293b;\">\n      <div style=\"height:100%;width:0%;background:#f59e0b;border-radius:2px;\"></div>\n    </div>\n  </div>\n      <div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#94a3b8;\">\n      <span>コスト</span><span style=\"font-weight:700;color:#f59e0b;\">0%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#1e293b;\">\n      <div style=\"height:100%;width:0%;background:#f59e0b;border-radius:2px;\"></div>\n    </div>\n  </div>\n    </div></div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 22,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 9
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:auto;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:10px;border-left:3px solid #14b8a6;box-sizing:border-box;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;\"><div style=\"font-size:9px;font-weight:600;color:#14b8a6;letter-spacing:.06em;text-transform:uppercase;\">Adaptation · Density</div>\n  <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:#e2e8f0;\">適応密度マップ</div>\n    <div style=\"margin-top:4px;\"><span style=\"font-size:26px;font-weight:900;color:#14b8a6;letter-spacing:-0.02em;\">1</span>\n  <span style=\"font-size:10px;font-weight:600;color:#94a3b8;margin-left:3px;\">アクション総数</span></div>\n    <div style=\"margin-top:6px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;\"><div style=\"padding:4px 6px;border-radius:4px;background:transparent;border:1px solid #334155;text-align:center;\">\n      <div style=\"font-size:14px;font-weight:900;color:#64748b;\">0</div>\n      <div style=\"font-size:7px;color:#94a3b8;margin-top:1px;\">topology</div>\n    </div><div style=\"padding:4px 6px;border-radius:4px;background:transparent;border:1px solid #334155;text-align:center;\">\n      <div style=\"font-size:14px;font-weight:900;color:#64748b;\">0</div>\n      <div style=\"font-size:7px;color:#94a3b8;margin-top:1px;\">execution</div>\n    </div><div style=\"padding:4px 6px;border-radius:4px;background:#f59e0b22;border:1px solid #334155;text-align:center;\">\n      <div style=\"font-size:14px;font-weight:900;color:#f59e0b;\">1</div>\n      <div style=\"font-size:7px;color:#94a3b8;margin-top:1px;\">queues</div>\n    </div><div style=\"padding:4px 6px;border-radius:4px;background:transparent;border:1px solid #334155;text-align:center;\">\n      <div style=\"font-size:14px;font-weight:900;color:#64748b;\">0</div>\n      <div style=\"font-size:7px;color:#94a3b8;margin-top:1px;\">governancePressure</div>\n    </div><div style=\"padding:4px 6px;border-radius:4px;background:transparent;border:1px solid #334155;text-align:center;\">\n      <div style=\"font-size:14px;font-weight:900;color:#64748b;\">0</div>\n      <div style=\"font-size:7px;color:#94a3b8;margin-top:1px;\">orchestration</div>\n    </div></div></div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    }
+  ]
+}
