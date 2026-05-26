@@ -112,7 +112,9 @@
     "runtime:observability": "node src/runtime/observability/runtimeObservability.mjs",
     "runtime:stability-check": "node src/runtime/stability/runtimeStabilityControls.mjs",
     "runtime:corruption-check": "node src/runtime/protection/runtimeCorruptionProtection.mjs",
-    "runtime:survivability-validate": "node scripts/runtime/runtimeSurvivabilityValidation.mjs"
+    "runtime:survivability-validate": "node scripts/runtime/runtimeSurvivabilityValidation.mjs",
+    "deploy": "npm run build:federation-governance && wrangler deploy",
+    "preview": "npm run build:federation-governance && wrangler dev"
   },
   "dependencies": {
     "@cursor/sdk": "^1.0.13",
@@ -125,6 +127,7 @@
     "zustand": "^5.0.5"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.38.0",
     "@tailwindcss/vite": "^4.1.8",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
@@ -132,6 +135,7 @@
     "playwright": "^1.52.0",
     "tailwindcss": "^4.1.8",
     "typescript": "^5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "wrangler": "^4.94.0"
   }
 }
