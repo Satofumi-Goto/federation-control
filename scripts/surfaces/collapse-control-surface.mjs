@@ -23,6 +23,7 @@ import {
   makeDashboard, makeTextPanel,
   stateTransitionPanelHtml, rollbackLineagePanelHtml,
   collapsePredictionPanelHtml, repairQueuePanelHtml,
+  integrityPanelHtml, corruptionProtectionPanelHtml,
   loadHealthGraph, loadDigitalTwin, loadOrchestrationState,
   loadSlaExecution, loadLockState, loadGovernanceTimeline,
   loadFederationMemory,
@@ -256,7 +257,9 @@ export function buildCollapseControl() {
       makeTextPanel({ id: 30, gridPos: { h: 5, w: 8, x: 0, y: 15 }, content: stateTransitionPanelHtml() }),
       makeTextPanel({ id: 31, gridPos: { h: 5, w: 8, x: 8, y: 15 }, content: rollbackLineagePanelHtml() }),
       makeTextPanel({ id: 32, gridPos: { h: 5, w: 8, x: 16, y: 15 }, content: collapsePredictionPanelHtml() }),
-      makeTextPanel({ id: 40, gridPos: { h: 5, w: 24, x: 0, y: 20 }, content: repairQueuePanelHtml() }),
+      makeTextPanel({ id: 40, gridPos: { h: 5, w: 8, x: 0, y: 20 }, content: repairQueuePanelHtml() }),
+      makeTextPanel({ id: 41, gridPos: { h: 5, w: 8, x: 8, y: 20 }, content: integrityPanelHtml() }),
+      makeTextPanel({ id: 42, gridPos: { h: 5, w: 8, x: 16, y: 20 }, content: corruptionProtectionPanelHtml() }),
     ],
   });
 }

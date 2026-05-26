@@ -27,6 +27,7 @@ import {
   makeDashboard, makeTextPanel,
   stateTransitionPanelHtml,
   collapsePredictionPanelHtml, governanceBlockPanelHtml,
+  stabilityPanelHtml,
   loadEvolutionProposals, loadRepairAudit,
   loadAdaptiveTopology, loadChangeControl, loadStructuralEvolution,
 } from '../lib/runtime-surface-shared.mjs';
@@ -240,6 +241,7 @@ export function buildRepairProposal() {
       makeTextPanel({ id: 30, gridPos: { h: 5, w: 8, x: 0, y: 15 }, content: stateTransitionPanelHtml() }),
       makeTextPanel({ id: 31, gridPos: { h: 5, w: 8, x: 8, y: 15 }, content: collapsePredictionPanelHtml() }),
       makeTextPanel({ id: 32, gridPos: { h: 5, w: 8, x: 16, y: 15 }, content: governanceBlockPanelHtml() }),
+      makeTextPanel({ id: 40, gridPos: { h: 5, w: 24, x: 0, y: 20 }, content: stabilityPanelHtml() }),
     ],
   });
 }

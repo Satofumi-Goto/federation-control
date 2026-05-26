@@ -1,0 +1,78 @@
+{
+  "timestamp": "2026-05-26T10:55:16.062Z",
+  "integrityScore": 100,
+  "passed": 6,
+  "total": 6,
+  "corrupted": [],
+  "orphanStates": [],
+  "checks": [
+    {
+      "domain": "registry",
+      "ok": true,
+      "cardCount": 5,
+      "orphanCards": 0,
+      "checksum": "d9ef50c1a3e3"
+    },
+    {
+      "domain": "topology",
+      "ok": true,
+      "routeCount": 0
+    },
+    {
+      "domain": "dependency-graph",
+      "ok": true,
+      "nodeCount": 14,
+      "depCount": 12,
+      "orphanDeps": 0
+    },
+    {
+      "domain": "state-history",
+      "ok": true,
+      "entryCount": 1,
+      "duplicates": false
+    },
+    {
+      "domain": "repair-graph",
+      "ok": true,
+      "nodeCount": 6,
+      "edgeCount": 2,
+      "orphanEdges": 0
+    },
+    {
+      "domain": "data-checksums",
+      "ok": true,
+      "files": [
+        {
+          "file": "runtimeRegistryData.json",
+          "exists": false,
+          "parseable": false,
+          "checksum": null
+        },
+        {
+          "file": "runtime-orchestration-state.json",
+          "exists": true,
+          "parseable": true,
+          "checksum": "fde0ce6617c6"
+        },
+        {
+          "file": "runtime-invocation-lock-state.json",
+          "exists": true,
+          "parseable": true,
+          "checksum": "67438a8edcf8"
+        },
+        {
+          "file": "runtime-federation-health-graph.json",
+          "exists": true,
+          "parseable": true,
+          "checksum": "4a5d0b84532b"
+        },
+        {
+          "file": "runtime-operational-digital-twin-graph.json",
+          "exists": true,
+          "parseable": true,
+          "checksum": "013c5cae48b3"
+        }
+      ]
+    }
+  ]
+}

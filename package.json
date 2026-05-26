@@ -106,7 +106,13 @@
     "runtime:repair-queue": "node src/runtime/repair/repairQueueRuntime.mjs",
     "runtime:recovery-evaluate": "node src/runtime/repair/autonomousRecoveryEvaluator.mjs",
     "runtime:repair-graph": "node src/runtime/repair/runtimeRepairGraph.mjs",
-    "runtime:repair-verify": "node src/runtime/repair/repairEngineVerify.mjs"
+    "runtime:repair-verify": "node src/runtime/repair/repairEngineVerify.mjs",
+    "runtime:integrity-check": "node src/runtime/integrity/runtimeIntegrityLayer.mjs",
+    "runtime:recovery-validate": "node src/runtime/recovery/runtimeRecoveryLayer.mjs",
+    "runtime:observability": "node src/runtime/observability/runtimeObservability.mjs",
+    "runtime:stability-check": "node src/runtime/stability/runtimeStabilityControls.mjs",
+    "runtime:corruption-check": "node src/runtime/protection/runtimeCorruptionProtection.mjs",
+    "runtime:survivability-validate": "node scripts/runtime/runtimeSurvivabilityValidation.mjs"
   },
   "dependencies": {
     "@cursor/sdk": "^1.0.13",

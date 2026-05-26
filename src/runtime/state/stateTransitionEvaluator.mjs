@@ -46,6 +46,14 @@ export const STATES = {
   RECOVERY_VALIDATION: { id: 'RECOVERY_VALIDATION', label: '復旧確認中', severity: 35 },
   PARTIAL_RECOVERY: { id: 'PARTIAL_RECOVERY', label: '部分復旧', severity: 48 },
   BLOCKED_BY_GOVERNANCE: { id: 'BLOCKED_BY_GOVERNANCE', label: 'ガバナンス停止', severity: 65 },
+  // Phase 30: Stabilization states
+  STABLE: { id: 'STABLE', label: '安定', severity: 0 },
+  DEGRADED_RUNTIME: { id: 'DEGRADED_RUNTIME', label: 'Runtime劣化', severity: 55 },
+  RECOVERY_READY: { id: 'RECOVERY_READY', label: '復旧可能', severity: 30 },
+  PARTIALLY_CORRUPTED: { id: 'PARTIALLY_CORRUPTED', label: '部分破損', severity: 70 },
+  QUARANTINED: { id: 'QUARANTINED', label: '隔離中', severity: 75 },
+  SURVIVABLE: { id: 'SURVIVABLE', label: '継続運用可能', severity: 20 },
+  GOVERNANCE_PROTECTED: { id: 'GOVERNANCE_PROTECTED', label: 'ガバナンス保護中', severity: 40 },
 };
 
 export function evaluateState(snapshot) {

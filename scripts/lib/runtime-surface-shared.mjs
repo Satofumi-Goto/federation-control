@@ -103,6 +103,13 @@ export function loadRepairQueue() { return loadJson('repair/runtime-repair-queue
 export function loadRecoveryEvaluation() { return loadJson('repair/runtime-recovery-evaluation.json'); }
 export function loadRepairGraph() { return loadJson('repair/runtime-repair-graph.json'); }
 
+// Stabilization data (Phase 30)
+export function loadIntegrityResult() { return loadJson('stability/runtime-integrity-result.json'); }
+export function loadRecoveryResult() { return loadJson('stability/runtime-recovery-result.json'); }
+export function loadObservabilityData() { return loadJson('stability/runtime-observability.json'); }
+export function loadStabilityResult() { return loadJson('stability/runtime-stability-result.json'); }
+export function loadCorruptionResult() { return loadJson('stability/runtime-corruption-result.json'); }
+
 // ── Escape helper ──
 
 export function esc(s) {
@@ -261,6 +268,10 @@ const STATE_LABELS = {
   ANALYZING: '解析中', PREDICTING: '予測中', VERIFYING: '検証中', GOVERNANCE_REVIEW: 'ガバナンス確認中',
   SAFE_EXECUTE_READY: '安全実行可能', EXECUTING_SAFE: '安全実行中', RECOVERY_VALIDATION: '復旧確認中',
   PARTIAL_RECOVERY: '部分復旧', BLOCKED_BY_GOVERNANCE: 'ガバナンス停止',
+  // Phase 30
+  STABLE: '安定', DEGRADED_RUNTIME: 'Runtime劣化', RECOVERY_READY: '復旧可能',
+  PARTIALLY_CORRUPTED: '部分破損', QUARANTINED: '隔離中', SURVIVABLE: '継続運用可能',
+  GOVERNANCE_PROTECTED: 'ガバナンス保護中',
 };
 
 const STATE_SEVERITY_COLORS = {
@@ -272,6 +283,11 @@ const STATE_SEVERITY_COLORS = {
   GOVERNANCE_REVIEW: SURFACE_COLORS.warning, SAFE_EXECUTE_READY: SURFACE_COLORS.healthy,
   EXECUTING_SAFE: SURFACE_COLORS.accentTeal, RECOVERY_VALIDATION: SURFACE_COLORS.repairing,
   PARTIAL_RECOVERY: SURFACE_COLORS.degraded, BLOCKED_BY_GOVERNANCE: SURFACE_COLORS.critical,
+  // Phase 30
+  STABLE: SURFACE_COLORS.healthy, DEGRADED_RUNTIME: SURFACE_COLORS.degraded,
+  RECOVERY_READY: SURFACE_COLORS.accentTeal, PARTIALLY_CORRUPTED: SURFACE_COLORS.critical,
+  QUARANTINED: SURFACE_COLORS.collapsed, SURVIVABLE: SURFACE_COLORS.accentSteel,
+  GOVERNANCE_PROTECTED: SURFACE_COLORS.warning,
 };
 
 export function stateTransitionPanelHtml() {
@@ -556,6 +572,123 @@ export function repairExecutionStagePanelHtml() {
     <div style="margin-top:6px;">${pipelineHtml}</div>`;
 
   return surfaceCard(SURFACE_COLORS.accentCyan, content);
+}
+
+// ── Phase 30 Stabilization panels ──
+
+export function integrityPanelHtml() {
+  const data = loadIntegrityResult();
+  const score = data?.integrityScore ?? 100;
+  const corrupted = data?.corrupted ?? [];
+  const color = score === 100 ? SURFACE_COLORS.healthy
+    : score >= 80 ? SURFACE_COLORS.warning : SURFACE_COLORS.critical;
+
+  const checksHtml = (data?.checks ?? []).map(c => {
+    const ic = c.ok ? SURFACE_COLORS.healthy : SURFACE_COLORS.critical;
+    return `<div style="display:flex;align-items:center;gap:4px;padding:2px 0;border-bottom:1px solid ${SURFACE_COLORS.cardBorder};">
+      <span style="font-size:10px;font-weight:700;color:${ic};">${c.ok ? '✓' : '✗'}</span>
+      <span style="font-size:9px;color:${SURFACE_COLORS.text};">${esc(c.domain)}</span>
+    </div>`;
+  }).join('');
+
+  const content = `${surfaceHeader('Integrity · Check', 'Runtime整合性', color)}
+    <div style="margin-top:4px;">${bigMetric(score + '%', '整合性', color)}</div>
+    <div style="margin-top:6px;">${checksHtml}</div>
+    ${corrupted.length > 0 ? `<div style="margin-top:4px;font-size:8px;color:${SURFACE_COLORS.critical};">破損: ${esc(corrupted.join(', '))}</div>` : ''}`;
+
+  return surfaceCard(color, content);
+}
+
+export function stabilityPanelHtml() {
+  const data = loadStabilityResult();
+  const passed = data?.passed ?? 0;
+  const total = data?.total ?? 0;
+  const stable = data?.stable ?? true;
+  const color = stable ? SURFACE_COLORS.healthy : SURFACE_COLORS.warning;
+
+  const controlsHtml = (data?.controls ?? []).map(c => {
+    const ic = c.ok ? SURFACE_COLORS.healthy : SURFACE_COLORS.warning;
+    return `<div style="display:flex;align-items:center;gap:4px;padding:2px 0;border-bottom:1px solid ${SURFACE_COLORS.cardBorder};">
+      <span style="font-size:10px;font-weight:700;color:${ic};">${c.ok ? '✓' : '!'}</span>
+      <span style="font-size:9px;color:${SURFACE_COLORS.text};flex:1;">${esc(c.control)}</span>
+      ${c.action ? `<span style="font-size:7px;color:${SURFACE_COLORS.warning};">${esc(c.action)}</span>` : ''}
+    </div>`;
+  }).join('');
+
+  const content = `${surfaceHeader('Stability · Controls', '安定性制御', color)}
+    <div style="margin-top:4px;">${bigMetric(passed + '/' + total, '制御', color)}</div>
+    <div style="margin-top:6px;">${controlsHtml}</div>`;
+
+  return surfaceCard(color, content);
+}
+
+export function observabilityPanelHtml() {
+  const data = loadObservabilityData();
+  const metrics = data?.metrics ?? [];
+
+  const metricsHtml = metrics.map(m => {
+    const val = m.value ?? '--';
+    const color = m.metric.includes('ブロック') || m.metric.includes('再発') || m.metric.includes('飽和')
+      ? (typeof val === 'number' && val > 30 ? SURFACE_COLORS.warning : SURFACE_COLORS.healthy)
+      : SURFACE_COLORS.accentCyan;
+    return dataRow(m.metric, `${val}${m.unit ?? ''}`, color);
+  }).join('');
+
+  const content = `${surfaceHeader('Observability · Metrics', 'Runtime観測', SURFACE_COLORS.accentCyan)}
+    <div style="margin-top:6px;">${metricsHtml || '<div style="font-size:8px;color:' + SURFACE_COLORS.textDim + ';">メトリクスなし</div>'}</div>`;
+
+  return surfaceCard(SURFACE_COLORS.accentCyan, content);
+}
+
+export function corruptionProtectionPanelHtml() {
+  const data = loadCorruptionResult();
+  const clean = data?.clean ?? true;
+  const issueCount = data?.issueCount ?? 0;
+  const quarantined = data?.quarantinedCount ?? 0;
+  const color = clean ? SURFACE_COLORS.healthy
+    : quarantined > 0 ? SURFACE_COLORS.critical : SURFACE_COLORS.warning;
+
+  const issuesHtml = (data?.issues ?? []).slice(0, 5).map(i => {
+    return `<div style="padding:2px 0;border-bottom:1px solid ${SURFACE_COLORS.cardBorder};font-size:8px;color:${SURFACE_COLORS.critical};">
+      [${esc(i.type)}] ${esc(i.file ?? i.detail ?? '')}
+    </div>`;
+  }).join('');
+
+  const content = `${surfaceHeader('Corruption · Protection', '破損保護', color)}
+    <div style="margin-top:4px;display:flex;gap:6px;">
+      ${stateChip(clean ? '正常' : '検出あり', clean ? 'healthy' : 'critical')}
+      ${stateChip('隔離:' + quarantined, quarantined > 0 ? 'critical' : 'healthy')}
+    </div>
+    <div style="margin-top:6px;">${issuesHtml || '<div style="font-size:8px;color:' + SURFACE_COLORS.healthy + ';">破損なし</div>'}</div>`;
+
+  return surfaceCard(color, content);
+}
+
+export function recoveryReadinessPanelHtml() {
+  const data = loadRecoveryResult();
+  const ready = data?.overallReady ?? true;
+  const color = ready ? SURFACE_COLORS.healthy : SURFACE_COLORS.warning;
+
+  const sections = [
+    { label: 'スナップショット復帰', ok: data?.snapshotFallback?.available ?? false },
+    { label: '劣化継続', ok: data?.degradedContinuation?.canContinueDegraded ?? true },
+    { label: '再起動準備', ok: data?.restartReadiness?.ready ?? true },
+  ];
+
+  const sectionsHtml = sections.map(s => {
+    const ic = s.ok ? SURFACE_COLORS.healthy : SURFACE_COLORS.critical;
+    return `<div style="display:flex;align-items:center;gap:4px;padding:2px 0;border-bottom:1px solid ${SURFACE_COLORS.cardBorder};">
+      <span style="font-size:10px;font-weight:700;color:${ic};">${s.ok ? '✓' : '✗'}</span>
+      <span style="font-size:9px;color:${SURFACE_COLORS.text};">${esc(s.label)}</span>
+    </div>`;
+  }).join('');
+
+  const content = `${surfaceHeader('Recovery · Readiness', '復旧準備', color)}
+    <div style="margin-top:4px;">${bigMetric(ready ? '可能' : '要対応', '復旧', color)}</div>
+    <div style="margin-top:6px;">${sectionsHtml}</div>
+    ${data?.overallRecommendation ? `<div style="margin-top:4px;font-size:8px;color:${SURFACE_COLORS.textMuted};">${esc(data.overallRecommendation)}</div>` : ''}`;
+
+  return surfaceCard(color, content);
 }
 
 // ── Grafana dashboard skeleton ──

@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-05-26T10:52:23.366Z",
+  "passed": 5,
+  "total": 5,
+  "stable": true,
+  "actions": [],
+  "controls": [
+    {
+      "control": "履歴サイズ",
+      "current": 1,
+      "limit": 50,
+      "ok": true,
+      "action": null
+    },
+    {
+      "control": "キュー滞留",
+      "total": 1,
+      "staleCount": 0,
+      "ok": true,
+      "action": null
+    },
+    {
+      "control": "状態遷移蓄積",
+      "current": 1,
+      "limit": 100,
+      "ok": true,
+      "action": null
+    },
+    {
+      "control": "孤立修復チェーン",
+      "orphanCount": 0,
+      "ok": true,
+      "action": null
+    },
+    {
+      "control": "ドリフト蓄積",
+      "totalEvents": 0,
+      "unresolvedCount": 0,
+      "limit": 100,
+      "ok": true,
+      "action": null
+    }
+  ]
+}

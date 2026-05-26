@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-05-26T10:52:22.770Z",
+  "metricCount": 7,
+  "metrics": [
+    {
+      "metric": "検証間隔",
+      "value": 25486,
+      "unit": "ms"
+    },
+    {
+      "metric": "修復パイプライン遅延",
+      "value": null,
+      "unit": "ms",
+      "note": "完了済みキューなし"
+    },
+    {
+      "metric": "ガバナンスブロック率",
+      "value": 0,
+      "unit": "%"
+    },
+    {
+      "metric": "ドリフト再発件数",
+      "value": 0,
+      "unit": "件"
+    },
+    {
+      "metric": "キュー飽和度",
+      "value": 0,
+      "unit": "%",
+      "blocked": 0,
+      "total": 1
+    },
+    {
+      "metric": "劣化傾向",
+      "value": "stable",
+      "note": "履歴不足"
+    },
+    {
+      "metric": "修復成功率",
+      "value": 100,
+      "unit": "%"
+    }
+  ]
+}

@@ -27,6 +27,7 @@ import {
   makeDashboard, makeTextPanel,
   stateTransitionPanelHtml, repairHistoryPanelHtml,
   repairQueuePanelHtml, recoveryEvaluationPanelHtml,
+  integrityPanelHtml, stabilityPanelHtml,
   loadLockState, loadOrchestrationState, loadHeadlessSession,
   loadExecutionResult, loadOperationalSnapshot, loadTriggerSupervisor,
   loadServiceState, loadGovernanceTimeline, loadEnvironmentState,
@@ -305,7 +306,9 @@ export function buildImplementProgress() {
       makeTextPanel({ id: 30, gridPos: { h: 5, w: 8, x: 0, y: 15 }, content: stateTransitionPanelHtml() }),
       makeTextPanel({ id: 31, gridPos: { h: 5, w: 8, x: 8, y: 15 }, content: repairHistoryPanelHtml() }),
       makeTextPanel({ id: 32, gridPos: { h: 5, w: 8, x: 16, y: 15 }, content: repairQueuePanelHtml() }),
-      makeTextPanel({ id: 40, gridPos: { h: 5, w: 24, x: 0, y: 20 }, content: recoveryEvaluationPanelHtml() }),
+      makeTextPanel({ id: 40, gridPos: { h: 5, w: 8, x: 0, y: 20 }, content: recoveryEvaluationPanelHtml() }),
+      makeTextPanel({ id: 41, gridPos: { h: 5, w: 8, x: 8, y: 20 }, content: integrityPanelHtml() }),
+      makeTextPanel({ id: 42, gridPos: { h: 5, w: 8, x: 16, y: 20 }, content: stabilityPanelHtml() }),
     ],
   });
 }

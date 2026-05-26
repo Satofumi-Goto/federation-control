@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-05-26T10:55:16.762Z",
+  "overallReady": true,
+  "overallRecommendation": "正常 — 長期運用継続可能",
+  "snapshotFallback": {
+    "available": true,
+    "safepointCount": 1,
+    "latestSafepoint": "2026-05-26T10:10:18.142Z",
+    "recommendation": "ロールバック安全点あり"
+  },
+  "corruptionIsolation": {
+    "corruptedDomains": [],
+    "isolationNeeded": false,
+    "isolationAction": "隔離不要"
+  },
+  "degradedContinuation": {
+    "integrityScore": 100,
+    "canContinueDegraded": true,
+    "recommendation": "整合性 100% — 劣化運用継続可能"
+  },
+  "restartReadiness": {
+    "ready": true,
+    "checks": [
+      {
+        "file": "Registry",
+        "exists": true,
+        "parseable": true,
+        "ok": true
+      },
+      {
+        "file": "Orchestration State",
+        "exists": true,
+        "parseable": true,
+        "ok": true
+      },
+      {
+        "file": "Invocation Lock",
+        "exists": true,
+        "parseable": true,
+        "ok": true
+      }
+    ],
+    "recommendation": "安全再起動可能"
+  }
+}
