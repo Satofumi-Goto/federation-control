@@ -22,6 +22,22 @@ import {
   sectionHeaderWithOverlayHtml,
   workspaceOverlaysBundleHtml,
 } from './lib/runtime-workspace-overlay.mjs';
+import {
+  executionSurfaceHeaderHtml,
+  queueRuntimePanelHtml,
+  syncRuntimePanelHtml,
+  driftRuntimePanelHtml,
+  repairRuntimePanelHtml,
+  federationHealthPanelHtml,
+} from './lib/runtime-execution-surface.mjs';
+import {
+  operationalSurfaceHeaderHtml,
+  collapseRadiusPanelHtml,
+  throughputSurfacePanelHtml,
+  congestionSurfacePanelHtml,
+  pressureMapPanelHtml,
+  forecastPanelHtml,
+} from './lib/runtime-operational-surface.mjs';
 
 const routesPath = path.resolve('grafana/runtime-workspace-routes.json');
 const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
@@ -65,7 +81,13 @@ const row4Title = row4.title ?? 'System Artifacts';
 const rtCardsHeaderY = 8;
 const rtCardsRowY = 9;
 const rtCardsRowH = 3;
-const row3HeaderY = rtCardsRowY + rtCardsRowH;
+const execSurfaceHeaderY = rtCardsRowY + rtCardsRowH;
+const execSurfaceRowY = execSurfaceHeaderY + 1;
+const execSurfaceRowH = 4;
+const opSurfaceHeaderY = execSurfaceRowY + execSurfaceRowH;
+const opSurfaceRowY = opSurfaceHeaderY + 1;
+const opSurfaceRowH = 4;
+const row3HeaderY = opSurfaceRowY + opSurfaceRowH;
 const row3CardsY = row3HeaderY + 1;
 const row3CardsH = 4;
 const row4HeaderY = row3CardsY + row3CardsH;
@@ -134,7 +156,7 @@ const dashboard = {
   editable: true,
   schemaVersion: 39,
   title: 'Runtime',
-  version: 37,
+  version: 39,
   refresh: '30s',
   timezone: 'browser',
   description: 'Federated Operational Governance Workspace — Federation Brain',
@@ -178,6 +200,68 @@ const dashboard = {
       id: 252,
       gridPos: { h: rtCardsRowH, w: 2, x: 22, y: rtCardsRowY },
       content: runtimeCardCreatePanelHtml(),
+    }),
+
+    makeTextPanel({
+      id: 260,
+      gridPos: { h: 1, w: 24, x: 0, y: execSurfaceHeaderY },
+      content: executionSurfaceHeaderHtml(),
+    }),
+    makeTextPanel({
+      id: 261,
+      gridPos: { h: execSurfaceRowH, w: 5, x: 0, y: execSurfaceRowY },
+      content: queueRuntimePanelHtml(),
+    }),
+    makeTextPanel({
+      id: 262,
+      gridPos: { h: execSurfaceRowH, w: 5, x: 5, y: execSurfaceRowY },
+      content: syncRuntimePanelHtml(),
+    }),
+    makeTextPanel({
+      id: 263,
+      gridPos: { h: execSurfaceRowH, w: 5, x: 10, y: execSurfaceRowY },
+      content: driftRuntimePanelHtml(),
+    }),
+    makeTextPanel({
+      id: 264,
+      gridPos: { h: execSurfaceRowH, w: 5, x: 15, y: execSurfaceRowY },
+      content: repairRuntimePanelHtml(),
+    }),
+    makeTextPanel({
+      id: 265,
+      gridPos: { h: execSurfaceRowH, w: 4, x: 20, y: execSurfaceRowY },
+      content: federationHealthPanelHtml(),
+    }),
+
+    makeTextPanel({
+      id: 270,
+      gridPos: { h: 1, w: 24, x: 0, y: opSurfaceHeaderY },
+      content: operationalSurfaceHeaderHtml(),
+    }),
+    makeTextPanel({
+      id: 271,
+      gridPos: { h: opSurfaceRowH, w: 5, x: 0, y: opSurfaceRowY },
+      content: collapseRadiusPanelHtml(),
+    }),
+    makeTextPanel({
+      id: 272,
+      gridPos: { h: opSurfaceRowH, w: 5, x: 5, y: opSurfaceRowY },
+      content: throughputSurfacePanelHtml(),
+    }),
+    makeTextPanel({
+      id: 273,
+      gridPos: { h: opSurfaceRowH, w: 5, x: 10, y: opSurfaceRowY },
+      content: congestionSurfacePanelHtml(),
+    }),
+    makeTextPanel({
+      id: 274,
+      gridPos: { h: opSurfaceRowH, w: 5, x: 15, y: opSurfaceRowY },
+      content: pressureMapPanelHtml(),
+    }),
+    makeTextPanel({
+      id: 275,
+      gridPos: { h: opSurfaceRowH, w: 4, x: 20, y: opSurfaceRowY },
+      content: forecastPanelHtml(),
     }),
 
     makeTextPanel({

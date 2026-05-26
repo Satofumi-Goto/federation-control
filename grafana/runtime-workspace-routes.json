@@ -1,6 +1,6 @@
 {
   "description": "Canonical link map for /runtime. Row3 → Base44 /viewer/* public read-only URLs (runtime_embed=grafana).",
-  "layoutVersion": 43,
+  "layoutVersion": 45,
   "theme": "adaptive",
   "runtimeUid": "sa8ljn4",
   "runtimeTopPath": "/d/sa8ljn4/runtime",
@@ -111,10 +111,48 @@
     "registrySource": "src/runtime/registry/runtimeRegistry.js",
     "panelIds": [250, 251, 252]
   },
+  "executionSurface": {
+    "sectionTitle": "Federation Execution Runtime",
+    "panelIds": [260, 261, 262, 263, 264, 265],
+    "panels": {
+      "header": 260,
+      "queue": 261,
+      "sync": 262,
+      "drift": 263,
+      "repair": 264,
+      "health": 265
+    },
+    "engines": [
+      "src/runtime/execution/runtimeExecutionQueue.js",
+      "src/runtime/sync/runtimeSynchronizationEngine.js",
+      "src/runtime/drift/runtimeDriftEngine.js",
+      "src/runtime/telemetry/runtimeExecutionTelemetry.js",
+      "src/runtime/timeline/runtimeExecutionTimeline.js"
+    ]
+  },
+  "operationalSurface": {
+    "sectionTitle": "Operational Federation Runtime",
+    "panelIds": [270, 271, 272, 273, 274, 275],
+    "panels": {
+      "header": 270,
+      "collapseRadius": 271,
+      "throughput": 272,
+      "congestion": 273,
+      "pressure": 274,
+      "forecast": 275
+    },
+    "engines": [
+      "src/runtime/operations/runtimeOperationalStateEngine.js",
+      "src/runtime/throughput/runtimeThroughputEngine.js",
+      "src/runtime/topology/runtimeFederationTopology.js",
+      "src/runtime/collapse/runtimeCollapseRadiusEngine.js",
+      "src/runtime/forecast/runtimeExecutionForecast.js"
+    ]
+  },
   "row4Layout": {
     "mode": "grafana-grid-3x3",
     "panelIds": [401, 402, 403, 404, 405, 406, 407, 408, 409],
     "headerPanelId": 350,
-    "gridPos": { "w": 8, "h": 2, "cols": 3, "rows": 3, "y": 18 }
+    "gridPos": { "w": 8, "h": 2, "cols": 3, "rows": 3, "y": 28 }
   }
 }

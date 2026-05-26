@@ -3,7 +3,7 @@
   "editable": true,
   "schemaVersion": 39,
   "title": "Runtime",
-  "version": 37,
+  "version": 39,
   "refresh": "30s",
   "timezone": "browser",
   "description": "Federated Operational Governance Workspace — Federation Brain",
@@ -89,7 +89,7 @@
       },
       "options": {
         "mode": "html",
-        "content": "<a href=\"/d/sa8ljn4/runtime\" style=\"display:block;width:100%;height:100%;min-height:0;overflow:hidden;padding:12px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;box-shadow:0 1px 2px rgba(15,23,42,.04);border-left:3px solid #0891b2;\">\n    <div style=\"display:flex;align-items:flex-start;justify-content:space-between;gap:8px;\">\n      <div>\n        <div style=\"font-size:10px;font-weight:600;color:#0891b2;letter-spacing:.06em;\">Federation · Live state</div>\n        <div style=\"font-size:17px;font-weight:700;margin-top:3px;color:var(--text-primary,#111827);\">Federation Graph</div>\n      </div>\n      <div style=\"font-size:9px;font-weight:600;color:#0891b2;text-align:right;\">live · 222242s</div>\n    </div>\n    <div style=\"margin-top:6px;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;\"><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #22c55e;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Federation Health</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">73</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #f59e0b;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Queue Drift</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">12</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #f97316;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">ETA Drift</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">7</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #0ea5e9;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Throughput Drift</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">3</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #8b5cf6;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Alignment</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">81</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #ef4444;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Collapse Risk</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">35</div>\n        </div></div>\n    <div style=\"margin-top:6px;height:90px;border-radius:10px;background:var(--background-secondary,#f8fafc);border:1px solid var(--border-weak,#e5e7eb);overflow:hidden;\"><img alt=\"Federation Graph\" width=\"580\" height=\"90\" style=\"width:100%;height:90px;object-fit:contain;display:block;\" src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20580%20180%22%20width%3D%22580%22%20height%3D%22180%22%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%2280%22%20y2%3D%2240%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%22420%22%20y2%3D%2236%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%2260%22%20y2%3D%22120%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%22160%22%20y2%3D%22150%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%22360%22%20y2%3D%22140%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%2280%22%20y1%3D%2240%22%20x2%3D%22160%22%20y2%3D%22150%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22160%22%20y1%3D%22150%22%20x2%3D%22360%22%20y2%3D%22140%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%2260%22%20y1%3D%22120%22%20x2%3D%22420%22%20y2%3D%2236%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22420%22%20y1%3D%2236%22%20x2%3D%22480%22%20y2%3D%2288%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22360%22%20y1%3D%22140%22%20x2%3D%22480%22%20y2%3D%2288%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22120%22%20y1%3D%2228%22%20x2%3D%22340%22%20y2%3D%2224%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22340%22%20y1%3D%2224%22%20x2%3D%22280%22%20y2%3D%2290%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22120%22%20y1%3D%2228%22%20x2%3D%2280%22%20y2%3D%2240%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22200%22%20y1%3D%2228%22%20x2%3D%22280%22%20y2%3D%2290%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22480%22%20y1%3D%2288%22%20x2%3D%22500%22%20y2%3D%22155%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22500%22%20y1%3D%22155%22%20x2%3D%22520%22%20y2%3D%22110%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Cline%20x1%3D%22540%22%20y1%3D%22150%22%20x2%3D%22548%22%20y2%3D%22128%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221%22%2F%3E%3Ccircle%20cx%3D%22280%22%20cy%3D%2290%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22280%22%20y%3D%22108%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ERuntime%3C%2Ftext%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%229%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%2280%22%20y%3D%2258%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EQueue%3C%2Ftext%3E%3Ccircle%20cx%3D%22420%22%20cy%3D%2236%22%20r%3D%229%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22420%22%20y%3D%2254%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EODD%3C%2Ftext%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%22120%22%20r%3D%229%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%22138%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EConstraint%3C%2Ftext%3E%3Ccircle%20cx%3D%22160%22%20cy%3D%22150%22%20r%3D%229%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22160%22%20y%3D%22168%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EETA%3C%2Ftext%3E%3Ccircle%20cx%3D%22360%22%20cy%3D%22140%22%20r%3D%229%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22360%22%20y%3D%22158%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EDispatch%3C%2Ftext%3E%3Ccircle%20cx%3D%22480%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22480%22%20y%3D%22106%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EFleet%3C%2Ftext%3E%3Ccircle%20cx%3D%22500%22%20cy%3D%22155%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22500%22%20y%3D%22173%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EEnergy%3C%2Ftext%3E%3Ccircle%20cx%3D%22520%22%20cy%3D%22110%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22520%22%20y%3D%22128%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ENode%3C%2Ftext%3E%3Ccircle%20cx%3D%22440%22%20cy%3D%2228%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22440%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EHILS%3C%2Ftext%3E%3Ccircle%20cx%3D%22540%22%20cy%3D%22150%22%20r%3D%228%22%20fill%3D%22%23eab308%22%2F%3E%3Ctext%20x%3D%22540%22%20y%3D%22168%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EPL%3C%2Ftext%3E%3Ccircle%20cx%3D%22548%22%20cy%3D%22128%22%20r%3D%228%22%20fill%3D%22%23eab308%22%2F%3E%3Ctext%20x%3D%22548%22%20y%3D%22146%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EIRR%3C%2Ftext%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%2228%22%20r%3D%228%22%20fill%3D%22%23eab308%22%2F%3E%3Ctext%20x%3D%22200%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ERuntime%20Draft%3C%2Ftext%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2228%22%20r%3D%228%22%20fill%3D%22%238b5cf6%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ESeneschal%3C%2Ftext%3E%3Ccircle%20cx%3D%22340%22%20cy%3D%2224%22%20r%3D%228%22%20fill%3D%22%238b5cf6%22%2F%3E%3Ctext%20x%3D%22340%22%20y%3D%2242%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EIntent%3C%2Ftext%3E%3C%2Fsvg%3E\" /></div>\n    <div style=\"margin-top:6px;padding:6px 8px;border-radius:8px;background:#fffbeb;border:1px solid #fde68a;font-size:8px;color:#92400e;line-height:1.4;\">\n    Persistence: <strong>localStorage-poc</strong> (PoC) → target <strong>federation-api</strong> for multi-session federation.\n  </div>\n  </a>",
+        "content": "<a href=\"/d/sa8ljn4/runtime\" style=\"display:block;width:100%;height:100%;min-height:0;overflow:hidden;padding:12px;text-decoration:none;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;box-shadow:0 1px 2px rgba(15,23,42,.04);border-left:3px solid #0891b2;\">\n    <div style=\"display:flex;align-items:flex-start;justify-content:space-between;gap:8px;\">\n      <div>\n        <div style=\"font-size:10px;font-weight:600;color:#0891b2;letter-spacing:.06em;\">Federation · Live state</div>\n        <div style=\"font-size:17px;font-weight:700;margin-top:3px;color:var(--text-primary,#111827);\">Federation Graph</div>\n      </div>\n      <div style=\"font-size:9px;font-weight:600;color:#0891b2;text-align:right;\">live · 241034s</div>\n    </div>\n    <div style=\"margin-top:6px;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;\"><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #22c55e;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Federation Health</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">72</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #f59e0b;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Queue Drift</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">11</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #f97316;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">ETA Drift</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">7</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #0ea5e9;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Throughput Drift</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">3</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #8b5cf6;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Alignment</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">80</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #ef4444;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Collapse Risk</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">35</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #6366f1;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Dependency Depth</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">4</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #34d399;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Repair Queue</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">2</div>\n        </div><div style=\"padding:5px 6px;border-radius:8px;background:var(--background-primary,#fff);border:1px solid var(--border-weak,#e5e7eb);border-left:3px solid #06b6d4;min-width:0;\">\n          <div style=\"font-size:8px;color:var(--text-secondary,#64748b);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;\">Health State</div>\n          <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);\">running</div>\n        </div></div>\n    <div style=\"margin-top:6px;height:90px;border-radius:10px;background:var(--background-secondary,#f8fafc);border:1px solid var(--border-weak,#e5e7eb);overflow:hidden;\"><img alt=\"Federation Graph\" width=\"580\" height=\"90\" style=\"width:100%;height:90px;object-fit:contain;display:block;\" src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20580%20180%22%20width%3D%22580%22%20height%3D%22180%22%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%2280%22%20y2%3D%2240%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.0%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%22420%22%20y2%3D%2236%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.0%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%2260%22%20y2%3D%22120%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.0%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%22160%22%20y2%3D%22150%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.0%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22280%22%20y1%3D%2290%22%20x2%3D%22360%22%20y2%3D%22140%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.0%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%2280%22%20y1%3D%2240%22%20x2%3D%22160%22%20y2%3D%22150%22%20stroke%3D%22%23ef4444%22%20stroke-width%3D%221.7%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22160%22%20y1%3D%22150%22%20x2%3D%22360%22%20y2%3D%22140%22%20stroke%3D%22%23ef4444%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%2260%22%20y1%3D%22120%22%20x2%3D%22420%22%20y2%3D%2236%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%221.4%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22420%22%20y1%3D%2236%22%20x2%3D%22480%22%20y2%3D%2288%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%221.4%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22360%22%20y1%3D%22140%22%20x2%3D%22480%22%20y2%3D%2288%22%20stroke%3D%22%23ef4444%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22120%22%20y1%3D%2228%22%20x2%3D%22340%22%20y2%3D%2224%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.0%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22340%22%20y1%3D%2224%22%20x2%3D%22280%22%20y2%3D%2290%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.0%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22120%22%20y1%3D%2228%22%20x2%3D%2280%22%20y2%3D%2240%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.0%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22200%22%20y1%3D%2228%22%20x2%3D%22280%22%20y2%3D%2290%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.0%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22480%22%20y1%3D%2288%22%20x2%3D%22500%22%20y2%3D%22155%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.3%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22500%22%20y1%3D%22155%22%20x2%3D%22520%22%20y2%3D%22110%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.2%22%20stroke-opacity%3D%220.7%22%2F%3E%3Cline%20x1%3D%22540%22%20y1%3D%22150%22%20x2%3D%22548%22%20y2%3D%22128%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.4%22%20stroke-opacity%3D%220.7%22%2F%3E%3Ccircle%20cx%3D%22280%22%20cy%3D%2290%22%20r%3D%2211%22%20fill%3D%22none%22%20stroke%3D%22%2306b6d4%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22280%22%20cy%3D%2290%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22280%22%20y%3D%22108%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ERuntime%3C%2Ftext%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%229%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%2280%22%20y%3D%2258%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EQueue%3C%2Ftext%3E%3Ccircle%20cx%3D%22420%22%20cy%3D%2236%22%20r%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22420%22%20cy%3D%2236%22%20r%3D%229%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22420%22%20y%3D%2254%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EODD%3C%2Ftext%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%22120%22%20r%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%2306b6d4%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%22120%22%20r%3D%229%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%22138%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EConstraint%3C%2Ftext%3E%3Ccircle%20cx%3D%22160%22%20cy%3D%22150%22%20r%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22160%22%20cy%3D%22150%22%20r%3D%229%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22160%22%20y%3D%22168%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EETA%3C%2Ftext%3E%3Ccircle%20cx%3D%22360%22%20cy%3D%22140%22%20r%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%2306b6d4%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22360%22%20cy%3D%22140%22%20r%3D%229%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22360%22%20y%3D%22158%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EDispatch%3C%2Ftext%3E%3Ccircle%20cx%3D%22480%22%20cy%3D%2288%22%20r%3D%2211%22%20fill%3D%22none%22%20stroke%3D%22%2322c55e%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22480%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22480%22%20y%3D%22106%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EFleet%3C%2Ftext%3E%3Ccircle%20cx%3D%22500%22%20cy%3D%22155%22%20r%3D%2211%22%20fill%3D%22none%22%20stroke%3D%22%2322c55e%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22500%22%20cy%3D%22155%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22500%22%20y%3D%22173%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EEnergy%3C%2Ftext%3E%3Ccircle%20cx%3D%22520%22%20cy%3D%22110%22%20r%3D%2211%22%20fill%3D%22none%22%20stroke%3D%22%2306b6d4%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22520%22%20cy%3D%22110%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22520%22%20y%3D%22128%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ENode%3C%2Ftext%3E%3Ccircle%20cx%3D%22440%22%20cy%3D%2228%22%20r%3D%2211%22%20fill%3D%22none%22%20stroke%3D%22%2322c55e%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22440%22%20cy%3D%2228%22%20r%3D%228%22%20fill%3D%22%230ea5e9%22%2F%3E%3Ctext%20x%3D%22440%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EHILS%3C%2Ftext%3E%3Ccircle%20cx%3D%22540%22%20cy%3D%22150%22%20r%3D%2211%22%20fill%3D%22none%22%20stroke%3D%22%2306b6d4%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22540%22%20cy%3D%22150%22%20r%3D%228%22%20fill%3D%22%2322c55e%22%2F%3E%3Ctext%20x%3D%22540%22%20y%3D%22168%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EPL%3C%2Ftext%3E%3Ccircle%20cx%3D%22548%22%20cy%3D%22128%22%20r%3D%2211%22%20fill%3D%22none%22%20stroke%3D%22%2322c55e%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22548%22%20cy%3D%22128%22%20r%3D%228%22%20fill%3D%22%2322c55e%22%2F%3E%3Ctext%20x%3D%22548%22%20y%3D%22146%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EIRR%3C%2Ftext%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%2228%22%20r%3D%2211%22%20fill%3D%22none%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%2228%22%20r%3D%228%22%20fill%3D%22%23eab308%22%2F%3E%3Ctext%20x%3D%22200%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ERuntime%20Draft%3C%2Ftext%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2228%22%20r%3D%2211%22%20fill%3D%22none%22%20stroke%3D%22%2306b6d4%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2228%22%20r%3D%228%22%20fill%3D%22%238b5cf6%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3ESeneschal%3C%2Ftext%3E%3Ccircle%20cx%3D%22340%22%20cy%3D%2224%22%20r%3D%2211%22%20fill%3D%22none%22%20stroke%3D%22%2306b6d4%22%20stroke-width%3D%221.5%22%20stroke-opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22340%22%20cy%3D%2224%22%20r%3D%228%22%20fill%3D%22%238b5cf6%22%2F%3E%3Ctext%20x%3D%22340%22%20y%3D%2242%22%20text-anchor%3D%22middle%22%20font-size%3D%228%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%2Csans-serif%22%3EIntent%3C%2Ftext%3E%3C%2Fsvg%3E\" /></div>\n    <div style=\"margin-top:6px;padding:6px 8px;border-radius:8px;background:#fffbeb;border:1px solid #fde68a;font-size:8px;color:#92400e;line-height:1.4;\">\n    Persistence: <strong>localStorage-poc</strong> (PoC) → target <strong>federation-api</strong> for multi-session federation.\n  </div>\n  </a>",
         "code": {
           "language": "html",
           "showLineNumbers": false,
@@ -155,7 +155,7 @@
       },
       "options": {
         "mode": "html",
-        "content": "<div id=\"rt-registry-cards\" style=\"width:100%;height:100%;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;align-items:stretch;box-sizing:border-box;\">\n<a href=\"https://satofumigoto.grafana.net/d/sa8ljn4/runtime?orgId=1\" target=\"_top\" rel=\"noreferrer\"\n    style=\"display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:100%;height:100%;min-height:0;padding:10px;text-decoration:none;\n    background:#fff;border:1px solid rgba(255,92,92,0.55);border-radius:10px;\n    box-sizing:border-box;text-align:center;color:#111827;transition:box-shadow .15s;\">\n    <div style=\"font-size:20px;line-height:1;\">◉</div>\n    <div style=\"font-size:13px;font-weight:800;color:#FF5C5C;\">崩壊制御</div>\n    <div style=\"font-size:10px;color:#64748b;\">要注意</div>\n    <div style=\"font-size:18px;font-weight:900;color:#FF5C5C;\">12</div>\n  </a><a href=\"https://satofumigoto.grafana.net/runtime_discovery\" target=\"_top\" rel=\"noreferrer\"\n    style=\"display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:100%;height:100%;min-height:0;padding:10px;text-decoration:none;\n    background:#fff;border:1px solid rgba(168,231,255,0.36);border-radius:10px;\n    box-sizing:border-box;text-align:center;color:#111827;transition:box-shadow .15s;\">\n    <div style=\"font-size:20px;line-height:1;\">⌕</div>\n    <div style=\"font-size:13px;font-weight:800;color:#A8E7FF;\">崩壊解析</div>\n    <div style=\"font-size:10px;color:#64748b;\">解析対象</div>\n    <div style=\"font-size:18px;font-weight:900;color:#A8E7FF;\">4</div>\n  </a><a href=\"https://satofumigoto.grafana.net/need_impact\" target=\"_top\" rel=\"noreferrer\"\n    style=\"display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:100%;height:100%;min-height:0;padding:10px;text-decoration:none;\n    background:#fff;border:1px solid rgba(245,184,75,0.52);border-radius:10px;\n    box-sizing:border-box;text-align:center;color:#111827;transition:box-shadow .15s;\">\n    <div style=\"font-size:20px;line-height:1;\">◎</div>\n    <div style=\"font-size:13px;font-weight:800;color:#F5B84B;\">改修影響</div>\n    <div style=\"font-size:10px;color:#64748b;\">影響箇所</div>\n    <div style=\"font-size:18px;font-weight:900;color:#F5B84B;\">9</div>\n  </a><a href=\"https://satofumigoto.grafana.net/d/external-federation-view/external-federation-view?orgId=1\" target=\"_top\" rel=\"noreferrer\"\n    style=\"display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:100%;height:100%;min-height:0;padding:10px;text-decoration:none;\n    background:#fff;border:1px solid rgba(57,217,138,0.40);border-radius:10px;\n    box-sizing:border-box;text-align:center;color:#111827;transition:box-shadow .15s;\">\n    <div style=\"font-size:20px;line-height:1;\">↺</div>\n    <div style=\"font-size:13px;font-weight:800;color:#39D98A;\">改修提案</div>\n    <div style=\"font-size:10px;color:#64748b;\">提案対象</div>\n    <div style=\"font-size:18px;font-weight:900;color:#39D98A;\">6</div>\n  </a><a href=\"https://satofumigoto.grafana.net/d/go-execution-tasks/execution-tasks?orgId=1\" target=\"_top\" rel=\"noreferrer\"\n    style=\"display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:100%;height:100%;min-height:0;padding:10px;text-decoration:none;\n    background:#fff;border:1px solid rgba(50,217,255,0.48);border-radius:10px;\n    box-sizing:border-box;text-align:center;color:#111827;transition:box-shadow .15s;\">\n    <div style=\"font-size:20px;line-height:1;\">▣</div>\n    <div style=\"font-size:13px;font-weight:800;color:#32D9FF;\">実装進捗</div>\n    <div style=\"font-size:10px;color:#64748b;\">進行中</div>\n    <div style=\"font-size:18px;font-weight:900;color:#32D9FF;\">3</div>\n  </a>\n</div>\n<script>\n(function(){\n  var SK='runtimeRegistryCards';\n  var root=document.getElementById('rt-registry-cards');\n  try{\n    var items=JSON.parse(localStorage.getItem(SK)||'[]');\n    items.forEach(function(e){\n      if(e.visibility!=='active')return;\n      var target=e.target||{};var href=target.url||'/';var tm='_self';\n      if(target.type==='grafana-runtime'||target.type==='grafana-dashboard'||target.type==='seneschal'){tm='_top';}\n      else if(target.type==='base44-viewer'){href+=(href.indexOf('?')>-1?'&':'?')+'runtime_embed=grafana&public_view=1';tm='_top';}\n      else if(target.type==='internal-runtime'){tm='_self';}\n      var a=document.createElement('a');a.href=href;a.target=tm;a.rel='noreferrer';\n      a.style.cssText='display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;padding:10px;text-decoration:none;background:#fff;border:1px solid '+(e.border||'#e5e7eb')+';border-radius:10px;text-align:center;color:#111827;box-sizing:border-box;';\n      a.innerHTML='<div style=\"font-size:20px;\">'+(e.icon||'●')+'</div><div style=\"font-size:13px;font-weight:800;color:'+(e.accent||'#111827')+';\">'+(e.title||'')+'</div><div style=\"font-size:10px;color:#64748b;\">'+(e.label||'')+'</div><div style=\"font-size:18px;font-weight:900;color:'+(e.accent||'#111827')+';\">'+(e.count!=null?e.count:'')+'</div>';\n      root.appendChild(a);\n    });\n  }catch(ex){}\n})();\n</script>",
+        "content": "<div id=\"rt-registry-cards\" style=\"width:100%;height:100%;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;align-items:stretch;box-sizing:border-box;\">\n<a href=\"https://satofumigoto.grafana.net/d/samvklp/collapse-control\" target=\"_top\" rel=\"noreferrer\"\n    style=\"display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;width:100%;height:100%;min-height:0;padding:10px;text-decoration:none;\n    background:#fff;border:1px solid rgba(255,92,92,0.55);border-bottom:3px solid #f59e0b;border-radius:10px;\n    box-sizing:border-box;text-align:center;color:#111827;transition:box-shadow .15s;\">\n    <div style=\"font-size:20px;line-height:1;\">◉</div>\n    <div style=\"font-size:13px;font-weight:800;color:#FF5C5C;\">崩壊制御</div>\n    <div style=\"font-size:10px;color:#64748b;\">要注意</div>\n    <div style=\"font-size:18px;font-weight:900;color:#FF5C5C;\">12</div>\n    <div style=\"display:flex;align-items:center;gap:3px;margin-top:2px;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0;\"></div>\n    <div style=\"font-size:8px;color:#f59e0b;font-weight:700;text-transform:uppercase;letter-spacing:.04em;\">warning</div>\n  </div>\n  </a><a href=\"https://satofumigoto.grafana.net/d/saz2p8x/collapse-analysis\" target=\"_top\" rel=\"noreferrer\"\n    style=\"display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;width:100%;height:100%;min-height:0;padding:10px;text-decoration:none;\n    background:#fff;border:1px solid rgba(168,231,255,0.36);border-bottom:3px solid #06b6d4;border-radius:10px;\n    box-sizing:border-box;text-align:center;color:#111827;transition:box-shadow .15s;\">\n    <div style=\"font-size:20px;line-height:1;\">⌕</div>\n    <div style=\"font-size:13px;font-weight:800;color:#A8E7FF;\">崩壊解析</div>\n    <div style=\"font-size:10px;color:#64748b;\">解析対象</div>\n    <div style=\"font-size:18px;font-weight:900;color:#A8E7FF;\">4</div>\n    <div style=\"display:flex;align-items:center;gap:3px;margin-top:2px;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#06b6d4;flex-shrink:0;\"></div>\n    <div style=\"font-size:8px;color:#06b6d4;font-weight:700;text-transform:uppercase;letter-spacing:.04em;\">running</div>\n  </div>\n  </a><a href=\"https://satofumigoto.grafana.net/d/sambt57/repair-impact\" target=\"_top\" rel=\"noreferrer\"\n    style=\"display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;width:100%;height:100%;min-height:0;padding:10px;text-decoration:none;\n    background:#fff;border:1px solid rgba(245,184,75,0.52);border-bottom:3px solid #f59e0b;border-radius:10px;\n    box-sizing:border-box;text-align:center;color:#111827;transition:box-shadow .15s;\">\n    <div style=\"font-size:20px;line-height:1;\">◎</div>\n    <div style=\"font-size:13px;font-weight:800;color:#F5B84B;\">改修影響</div>\n    <div style=\"font-size:10px;color:#64748b;\">影響箇所</div>\n    <div style=\"font-size:18px;font-weight:900;color:#F5B84B;\">9</div>\n    <div style=\"display:flex;align-items:center;gap:3px;margin-top:2px;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#f59e0b;flex-shrink:0;\"></div>\n    <div style=\"font-size:8px;color:#f59e0b;font-weight:700;text-transform:uppercase;letter-spacing:.04em;\">warning</div>\n  </div>\n  </a><a href=\"https://satofumigoto.grafana.net/d/sajbd8b/repair-proposal\" target=\"_top\" rel=\"noreferrer\"\n    style=\"display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;width:100%;height:100%;min-height:0;padding:10px;text-decoration:none;\n    background:#fff;border:1px solid rgba(57,217,138,0.40);border-bottom:3px solid #06b6d4;border-radius:10px;\n    box-sizing:border-box;text-align:center;color:#111827;transition:box-shadow .15s;\">\n    <div style=\"font-size:20px;line-height:1;\">↺</div>\n    <div style=\"font-size:13px;font-weight:800;color:#39D98A;\">改修提案</div>\n    <div style=\"font-size:10px;color:#64748b;\">提案対象</div>\n    <div style=\"font-size:18px;font-weight:900;color:#39D98A;\">6</div>\n    <div style=\"display:flex;align-items:center;gap:3px;margin-top:2px;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#06b6d4;flex-shrink:0;\"></div>\n    <div style=\"font-size:8px;color:#06b6d4;font-weight:700;text-transform:uppercase;letter-spacing:.04em;\">running</div>\n  </div>\n  </a><a href=\"https://satofumigoto.grafana.net/d/sassvwp/implement-progress\" target=\"_top\" rel=\"noreferrer\"\n    style=\"display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;width:100%;height:100%;min-height:0;padding:10px;text-decoration:none;\n    background:#fff;border:1px solid rgba(50,217,255,0.48);border-bottom:3px solid #22c55e;border-radius:10px;\n    box-sizing:border-box;text-align:center;color:#111827;transition:box-shadow .15s;\">\n    <div style=\"font-size:20px;line-height:1;\">▣</div>\n    <div style=\"font-size:13px;font-weight:800;color:#32D9FF;\">実装進捗</div>\n    <div style=\"font-size:10px;color:#64748b;\">進行中</div>\n    <div style=\"font-size:18px;font-weight:900;color:#32D9FF;\">3</div>\n    <div style=\"display:flex;align-items:center;gap:3px;margin-top:2px;\">\n    <div style=\"width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0;\"></div>\n    <div style=\"font-size:8px;color:#22c55e;font-weight:700;text-transform:uppercase;letter-spacing:.04em;\">healthy</div>\n  </div>\n  </a>\n</div>\n<script>\n(function(){\n  var SK='runtimeRegistryCards';\n  var root=document.getElementById('rt-registry-cards');\n  try{\n    var items=JSON.parse(localStorage.getItem(SK)||'[]');\n    items.forEach(function(e){\n      if(e.visibility!=='active')return;\n      var target=e.target||{};var href=target.url||'/';var tm='_self';\n      if(target.type==='grafana-runtime'||target.type==='grafana-dashboard'||target.type==='seneschal'){tm='_top';}\n      else if(target.type==='base44-viewer'){href+=(href.indexOf('?')>-1?'&':'?')+'runtime_embed=grafana&public_view=1';tm='_top';}\n      else if(target.type==='internal-runtime'){tm='_self';}\n      var a=document.createElement('a');a.href=href;a.target=tm;a.rel='noreferrer';\n      a.style.cssText='display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;padding:10px;text-decoration:none;background:#fff;border:1px solid '+(e.border||'#e5e7eb')+';border-radius:10px;text-align:center;color:#111827;box-sizing:border-box;';\n      var hc={'healthy':'#22c55e','running':'#06b6d4','warning':'#f59e0b','critical':'#ef4444','repairing':'#34d399','hold':'#94a3b8','conflict':'#f97316'};\n      var hs=e.health&&e.health.state?e.health.state:'';var hcol=hc[hs]||'';\n      if(hcol){a.style.borderBottom='3px solid '+hcol;}\n      a.innerHTML='<div style=\"font-size:20px;\">'+(e.icon||'●')+'</div><div style=\"font-size:13px;font-weight:800;color:'+(e.accent||'#111827')+';\">'+(e.title||'')+'</div><div style=\"font-size:10px;color:#64748b;\">'+(e.label||'')+'</div><div style=\"font-size:18px;font-weight:900;color:'+(e.accent||'#111827')+';\">'+(e.count!=null?e.count:'')+'</div>'+(hs?'<div style=\"display:flex;align-items:center;gap:3px;margin-top:2px;\"><div style=\"width:6px;height:6px;border-radius:50%;background:'+hcol+';\"></div><div style=\"font-size:8px;color:'+hcol+';font-weight:700;text-transform:uppercase;\">'+hs+'</div></div>':'');\n      root.appendChild(a);\n    });\n  }catch(ex){}\n})();\n</script>",
         "code": {
           "language": "html",
           "showLineNumbers": false,
@@ -186,7 +186,7 @@
       }
     },
     {
-      "id": 300,
+      "id": 260,
       "type": "text",
       "title": "",
       "transparent": true,
@@ -196,6 +196,270 @@
         "w": 24,
         "x": 0,
         "y": 12
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;display:flex;align-items:center;padding:4px 12px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;border-bottom:2px solid #06b6d4;\">\n    <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);letter-spacing:.02em;\">Federation Execution Runtime</div>\n    <div style=\"margin-left:10px;font-size:9px;color:#64748b;\">Queue · Sync · Drift · Repair · Health</div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 261,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 0,
+        "y": 13
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;padding:10px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;border-left:3px solid #06b6d4;\">\n    <div style=\"font-size:9px;font-weight:600;color:#0891b2;letter-spacing:.06em;\">Execution · Queue</div>\n    <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:var(--text-primary,#111827);\">Queue Runtime</div>\n    <div style=\"margin-top:6px;\"><div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#64748b;margin-bottom:1px;\">\n      <span>queued</span><span style=\"font-weight:700;color:#94a3b8;\">3</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#e5e7eb;overflow:hidden;\">\n      <div style=\"height:100%;width:30%;background:#94a3b8;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#64748b;margin-bottom:1px;\">\n      <span>scheduled</span><span style=\"font-weight:700;color:#94a3b8;\">1</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#e5e7eb;overflow:hidden;\">\n      <div style=\"height:100%;width:10%;background:#94a3b8;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#64748b;margin-bottom:1px;\">\n      <span>running</span><span style=\"font-weight:700;color:#06b6d4;\">2</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#e5e7eb;overflow:hidden;\">\n      <div style=\"height:100%;width:20%;background:#06b6d4;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#64748b;margin-bottom:1px;\">\n      <span>blocked</span><span style=\"font-weight:700;color:#f97316;\">0</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#e5e7eb;overflow:hidden;\">\n      <div style=\"height:100%;width:0%;background:#f97316;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#64748b;margin-bottom:1px;\">\n      <span>repairing</span><span style=\"font-weight:700;color:#94a3b8;\">0</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#e5e7eb;overflow:hidden;\">\n      <div style=\"height:100%;width:0%;background:#94a3b8;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#64748b;margin-bottom:1px;\">\n      <span>rollback</span><span style=\"font-weight:700;color:#94a3b8;\">0</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#e5e7eb;overflow:hidden;\">\n      <div style=\"height:100%;width:0%;background:#94a3b8;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#64748b;margin-bottom:1px;\">\n      <span>completed</span><span style=\"font-weight:700;color:#22c55e;\">8</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#e5e7eb;overflow:hidden;\">\n      <div style=\"height:100%;width:80%;background:#22c55e;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#64748b;margin-bottom:1px;\">\n      <span>failed</span><span style=\"font-weight:700;color:#ef4444;\">1</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#e5e7eb;overflow:hidden;\">\n      <div style=\"height:100%;width:10%;background:#ef4444;border-radius:2px;\"></div>\n    </div>\n  </div></div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 262,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 5,
+        "y": 13
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;padding:10px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;border-left:3px solid #22c55e;\">\n    <div style=\"font-size:9px;font-weight:600;color:#16a34a;letter-spacing:.06em;\">Synchronization · State</div>\n    <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:var(--text-primary,#111827);\">Sync Runtime</div>\n    <div style=\"margin-top:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f1f5f9;\">\n    <span style=\"font-size:9px;color:#475569;\">Registry ↔ Memory</span>\n    <div style=\"display:inline-flex;align-items:center;gap:3px;\">\n    <div style=\"width:7px;height:7px;border-radius:50%;background:#22c55e;\"></div>\n    <span style=\"font-size:9px;font-weight:700;color:#22c55e;text-transform:uppercase;letter-spacing:.04em;\">synced</span>\n  </div>\n  </div><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f1f5f9;\">\n    <span style=\"font-size:9px;color:#475569;\">Topology</span>\n    <div style=\"display:inline-flex;align-items:center;gap:3px;\">\n    <div style=\"width:7px;height:7px;border-radius:50%;background:#22c55e;\"></div>\n    <span style=\"font-size:9px;font-weight:700;color:#22c55e;text-transform:uppercase;letter-spacing:.04em;\">synced</span>\n  </div>\n  </div><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f1f5f9;\">\n    <span style=\"font-size:9px;color:#475569;\">Propagation</span>\n    <div style=\"display:inline-flex;align-items:center;gap:3px;\">\n    <div style=\"width:7px;height:7px;border-radius:50%;background:#f97316;\"></div>\n    <span style=\"font-size:9px;font-weight:700;color:#f97316;text-transform:uppercase;letter-spacing:.04em;\">drifting</span>\n  </div>\n  </div><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f1f5f9;\">\n    <span style=\"font-size:9px;color:#475569;\">Overall</span>\n    <div style=\"display:inline-flex;align-items:center;gap:3px;\">\n    <div style=\"width:7px;height:7px;border-radius:50%;background:#f59e0b;\"></div>\n    <span style=\"font-size:9px;font-weight:700;color:#f59e0b;text-transform:uppercase;letter-spacing:.04em;\">partial</span>\n  </div>\n  </div></div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 263,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 10,
+        "y": 13
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;padding:10px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;border-left:3px solid #f97316;\">\n    <div style=\"font-size:9px;font-weight:600;color:#ea580c;letter-spacing:.06em;\">Drift · Detection</div>\n    <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:var(--text-primary,#111827);\">Drift Runtime</div>\n    <div style=\"margin-top:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f1f5f9;\">\n      <span style=\"font-size:9px;color:#475569;\">Registry↔Memory</span>\n      <span style=\"font-size:10px;font-weight:700;color:#22c55e;\">0</span>\n    </div><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f1f5f9;\">\n      <span style=\"font-size:9px;color:#475569;\">Orphan Cards</span>\n      <span style=\"font-size:10px;font-weight:700;color:#22c55e;\">0</span>\n    </div><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f1f5f9;\">\n      <span style=\"font-size:9px;color:#475569;\">Unresolved Deps</span>\n      <span style=\"font-size:10px;font-weight:700;color:#f59e0b;\">1</span>\n    </div><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f1f5f9;\">\n      <span style=\"font-size:9px;color:#475569;\">Health Divergence</span>\n      <span style=\"font-size:10px;font-weight:700;color:#22c55e;\">0</span>\n    </div><div style=\"display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid #f1f5f9;\">\n      <span style=\"font-size:9px;color:#475569;\">Stale Memory</span>\n      <span style=\"font-size:10px;font-weight:700;color:#22c55e;\">0</span>\n    </div></div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 264,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 15,
+        "y": 13
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;padding:10px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;border-left:3px solid #34d399;\">\n    <div style=\"font-size:9px;font-weight:600;color:#059669;letter-spacing:.06em;\">Repair · Lifecycle</div>\n    <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:var(--text-primary,#111827);\">Repair Runtime</div>\n    <div style=\"margin-top:6px;display:flex;align-items:center;gap:3px;flex-wrap:wrap;\"><div style=\"padding:2px 6px;border-radius:4px;background:#06b6d4;color:#fff;font-size:8px;font-weight:700;\">Detection</div><div style=\"font-size:8px;color:#cbd5e1;\">→</div><div style=\"padding:2px 6px;border-radius:4px;background:#06b6d4;color:#fff;font-size:8px;font-weight:700;\">Proposal</div><div style=\"font-size:8px;color:#cbd5e1;\">→</div><div style=\"padding:2px 6px;border-radius:4px;background:#e2e8f0;color:#94a3b8;font-size:8px;font-weight:700;\">Impact Analysis</div><div style=\"font-size:8px;color:#cbd5e1;\">→</div><div style=\"padding:2px 6px;border-radius:4px;background:#e2e8f0;color:#94a3b8;font-size:8px;font-weight:700;\">Execution</div><div style=\"font-size:8px;color:#cbd5e1;\">→</div><div style=\"padding:2px 6px;border-radius:4px;background:#e2e8f0;color:#94a3b8;font-size:8px;font-weight:700;\">Validation</div></div>\n    <div style=\"margin-top:8px;\">\n      <div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#64748b;margin-bottom:1px;\">\n      <span>High severity</span><span style=\"font-weight:700;color:#ef4444;\">2</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#e5e7eb;overflow:hidden;\">\n      <div style=\"height:100%;width:40%;background:#ef4444;border-radius:2px;\"></div>\n    </div>\n  </div>\n      <div style=\"margin-bottom:4px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:9px;color:#64748b;margin-bottom:1px;\">\n      <span>Medium severity</span><span style=\"font-weight:700;color:#f59e0b;\">2</span>\n    </div>\n    <div style=\"height:4px;border-radius:2px;background:#e5e7eb;overflow:hidden;\">\n      <div style=\"height:100%;width:40%;background:#f59e0b;border-radius:2px;\"></div>\n    </div>\n  </div>\n    </div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 265,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 13
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;padding:10px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;border-left:3px solid #f59e0b;\">\n    <div style=\"display:flex;justify-content:space-between;align-items:flex-start;\">\n      <div>\n        <div style=\"font-size:9px;font-weight:600;color:#f59e0b;letter-spacing:.06em;\">Federation · Health</div>\n        <div style=\"font-size:14px;font-weight:700;margin-top:2px;color:var(--text-primary,#111827);\">Federation Runtime Health</div>\n      </div>\n      <div style=\"display:inline-flex;align-items:center;gap:3px;\">\n    <div style=\"width:7px;height:7px;border-radius:50%;background:#f59e0b;\"></div>\n    <span style=\"font-size:9px;font-weight:700;color:#f59e0b;text-transform:uppercase;letter-spacing:.04em;\">warning</span>\n  </div>\n    </div>\n    <div style=\"margin-top:6px;display:flex;flex-wrap:wrap;gap:3px;\"><span style=\"padding:1px 5px;border-radius:999px;font-size:8px;font-weight:700;color:#06b6d4;background:#06b6d414;border:1px solid #06b6d433;\">running: 7</span> <span style=\"padding:1px 5px;border-radius:999px;font-size:8px;font-weight:700;color:#f59e0b;background:#f59e0b14;border:1px solid #f59e0b33;\">warning: 3</span> <span style=\"padding:1px 5px;border-radius:999px;font-size:8px;font-weight:700;color:#22c55e;background:#22c55e14;border:1px solid #22c55e33;\">healthy: 4</span> <span style=\"padding:1px 5px;border-radius:999px;font-size:8px;font-weight:700;color:#94a3b8;background:#94a3b814;border:1px solid #94a3b833;\">hold: 1</span></div>\n    <div style=\"margin-top:6px;display:flex;flex-direction:column;gap:2px;\"><div style=\"display:flex;align-items:center;gap:4px;font-size:9px;\">\n      <span style=\"color:#f59e0b;font-weight:700;\">Queue</span>\n      <span style=\"color:#cbd5e1;\">→</span>\n      <span style=\"color:#f59e0b;font-weight:700;\">ETA</span>\n    </div><div style=\"display:flex;align-items:center;gap:4px;font-size:9px;\">\n      <span style=\"color:#f59e0b;font-weight:700;\">ETA</span>\n      <span style=\"color:#cbd5e1;\">→</span>\n      <span style=\"color:#06b6d4;font-weight:700;\">Dispatch</span>\n    </div><div style=\"display:flex;align-items:center;gap:4px;font-size:9px;\">\n      <span style=\"color:#06b6d4;font-weight:700;\">Dispatch</span>\n      <span style=\"color:#cbd5e1;\">→</span>\n      <span style=\"color:#06b6d4;font-weight:700;\">PL</span>\n    </div><div style=\"display:flex;align-items:center;gap:4px;font-size:9px;\">\n      <span style=\"color:#06b6d4;font-weight:700;\">PL</span>\n      <span style=\"color:#cbd5e1;\">→</span>\n      <span style=\"color:#06b6d4;font-weight:700;\">Federation</span>\n    </div></div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 270,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;display:flex;align-items:center;padding:4px 12px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;border-bottom:2px solid #f59e0b;\">\n    <div style=\"font-size:13px;font-weight:800;color:var(--text-primary,#111827);letter-spacing:.02em;\">Operational Federation Runtime</div>\n    <div style=\"margin-left:10px;font-size:9px;color:#64748b;\">Radius · Throughput · Congestion · Pressure · Forecast</div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 271,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 0,
+        "y": 18
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;padding:8px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;border-left:3px solid #ef4444;\">\n    <div style=\"font-size:9px;font-weight:600;color:#dc2626;letter-spacing:.06em;\">Collapse · Radius</div>\n    <div style=\"font-size:13px;font-weight:700;margin-top:1px;color:var(--text-primary,#111827);\">Blast Radius</div>\n    <div style=\"margin-top:4px;border-radius:8px;background:#fef2f2;border:1px solid #fecaca;overflow:hidden;\"><img alt=\"Collapse Radius\" width=\"300\" height=\"120\" style=\"width:100%;height:80px;object-fit:contain;display:block;\" src=\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20300%20120%22%20width%3D%22300%22%20height%3D%22120%22%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22150%22%20cy%3D%2260%22%20r%3D%2220%22%20fill%3D%22%23ef4444%22%20fill-opacity%3D%220.3%22%20stroke%3D%22%23ef4444%22%20stroke-width%3D%220.5%22%20stroke-opacity%3D%220.4%22%2F%3E%3Ccircle%20cx%3D%22150%22%20cy%3D%2260%22%20r%3D%2240%22%20fill%3D%22%23f59e0b%22%20fill-opacity%3D%220.2%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%220.5%22%20stroke-opacity%3D%220.4%22%2F%3E%3Ccircle%20cx%3D%22150%22%20cy%3D%2260%22%20r%3D%2255%22%20fill%3D%22%2322c55e%22%20fill-opacity%3D%220.1%22%20stroke%3D%22%2322c55e%22%20stroke-width%3D%220.5%22%20stroke-opacity%3D%220.4%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22150%22%20cy%3D%2260%22%20r%3D%224%22%20fill%3D%22%23991b1b%22%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%22150%22%20y%3D%2274%22%20text-anchor%3D%22middle%22%20font-size%3D%226%22%20fill%3D%22%23991b1b%22%20font-family%3D%22system-ui%22%3EOrigin%3C%2Ftext%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22150%22%20cy%3D%2230%22%20r%3D%225%22%20fill%3D%22%23ef4444%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22150%22%20y%3D%2242%22%20text-anchor%3D%22middle%22%20font-size%3D%226%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%22%3EQueue%3C%2Ftext%3E%3Ccircle%20cx%3D%22193%22%20cy%3D%2246%22%20r%3D%225%22%20fill%3D%22%23ef4444%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22193%22%20y%3D%2258%22%20text-anchor%3D%22middle%22%20font-size%3D%226%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%22%3EODD%3C%2Ftext%3E%3Ccircle%20cx%3D%22168%22%20cy%3D%2284%22%20r%3D%225%22%20fill%3D%22%23ef4444%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22168%22%20y%3D%2296%22%20text-anchor%3D%22middle%22%20font-size%3D%226%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%22%3EConstraint%3C%2Ftext%3E%3Ccircle%20cx%3D%22124%22%20cy%3D%2296%22%20r%3D%225%22%20fill%3D%22%23ef4444%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22124%22%20y%3D%22108%22%20text-anchor%3D%22middle%22%20font-size%3D%226%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%22%3EETA%3C%2Ftext%3E%3Ccircle%20cx%3D%22121%22%20cy%3D%2251%22%20r%3D%225%22%20fill%3D%22%23ef4444%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22121%22%20y%3D%2263%22%20text-anchor%3D%22middle%22%20font-size%3D%226%22%20fill%3D%22%23475569%22%20font-family%3D%22system-ui%22%3EDispatch%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E\" /></div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 272,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 5,
+        "y": 18
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;padding:8px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;border-left:3px solid #0ea5e9;\">\n    <div style=\"font-size:9px;font-weight:600;color:#0284c7;letter-spacing:.06em;\">Throughput · Surface</div>\n    <div style=\"font-size:13px;font-weight:700;margin-top:1px;color:var(--text-primary,#111827);\">Runtime Throughput</div>\n    <div style=\"margin-top:4px;\"><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#64748b;\">\n      <span>fleet</span><span style=\"font-weight:700;color:#f59e0b;\">70%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#e5e7eb;\">\n      <div style=\"height:100%;width:70%;background:#f59e0b;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#64748b;\">\n      <span>serviceHub</span><span style=\"font-weight:700;color:#22c55e;\">73%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#e5e7eb;\">\n      <div style=\"height:100%;width:73%;background:#22c55e;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#64748b;\">\n      <span>life</span><span style=\"font-weight:700;color:#22c55e;\">80%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#e5e7eb;\">\n      <div style=\"height:100%;width:80%;background:#22c55e;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#64748b;\">\n      <span>urban</span><span style=\"font-weight:700;color:#f59e0b;\">57%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#e5e7eb;\">\n      <div style=\"height:100%;width:57%;background:#f59e0b;border-radius:2px;\"></div>\n    </div>\n  </div></div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 273,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 10,
+        "y": 18
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;padding:8px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;border-left:3px solid #f59e0b;\">\n    <div style=\"font-size:9px;font-weight:600;color:#d97706;letter-spacing:.06em;\">Congestion · Surface</div>\n    <div style=\"font-size:13px;font-weight:700;margin-top:1px;color:var(--text-primary,#111827);\">Runtime Congestion</div>\n    <div style=\"margin-top:4px;\"><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#64748b;\">\n      <span>fleet</span><span style=\"font-weight:700;color:#22c55e;\">26%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#e5e7eb;\">\n      <div style=\"height:100%;width:26%;background:#22c55e;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#64748b;\">\n      <span>serviceHub</span><span style=\"font-weight:700;color:#22c55e;\">22%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#e5e7eb;\">\n      <div style=\"height:100%;width:22%;background:#22c55e;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#64748b;\">\n      <span>life</span><span style=\"font-weight:700;color:#22c55e;\">13%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#e5e7eb;\">\n      <div style=\"height:100%;width:13%;background:#22c55e;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#64748b;\">\n      <span>urban</span><span style=\"font-weight:700;color:#f59e0b;\">35%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#e5e7eb;\">\n      <div style=\"height:100%;width:35%;background:#f59e0b;border-radius:2px;\"></div>\n    </div>\n  </div></div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 274,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 15,
+        "y": 18
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;padding:8px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;border-left:3px solid #22c55e;\">\n    <div style=\"font-size:9px;font-weight:600;color:#22c55e;letter-spacing:.06em;\">Federation · Pressure</div>\n    <div style=\"font-size:13px;font-weight:700;margin-top:1px;color:var(--text-primary,#111827);\">Pressure Score</div>\n    <div style=\"margin-top:4px;display:flex;align-items:baseline;gap:6px;\">\n      <span style=\"font-size:28px;font-weight:900;color:#22c55e;\">27</span>\n      <span style=\"font-size:9px;font-weight:700;color:#22c55e;text-transform:uppercase;\">normal</span>\n    </div>\n    <div style=\"margin-top:4px;\"><div style=\"display:flex;justify-content:space-between;font-size:8px;padding:1px 0;color:#475569;\">\n      <span>Queue pressure</span><span style=\"color:#94a3b8;\">30%</span>\n    </div><div style=\"display:flex;justify-content:space-between;font-size:8px;padding:1px 0;color:#475569;\">\n      <span>ETA drift</span><span style=\"color:#94a3b8;\">25%</span>\n    </div><div style=\"display:flex;justify-content:space-between;font-size:8px;padding:1px 0;color:#475569;\">\n      <span>Dispatch degradation</span><span style=\"color:#94a3b8;\">25%</span>\n    </div><div style=\"display:flex;justify-content:space-between;font-size:8px;padding:1px 0;color:#475569;\">\n      <span>ODD restriction</span><span style=\"color:#94a3b8;\">20%</span>\n    </div></div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 275,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 18
+      },
+      "options": {
+        "mode": "html",
+        "content": "<div style=\"width:100%;height:100%;min-height:0;overflow:hidden;padding:8px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-sizing:border-box;color:#111827;border-left:3px solid #6366f1;\">\n    <div style=\"font-size:9px;font-weight:600;color:#4f46e5;letter-spacing:.06em;\">Forecast · Prediction</div>\n    <div style=\"display:flex;justify-content:space-between;align-items:baseline;\">\n      <div style=\"font-size:13px;font-weight:700;margin-top:1px;color:var(--text-primary,#111827);\">Runtime Forecast</div>\n      <span style=\"font-size:8px;font-weight:700;color:#22c55e;text-transform:uppercase;\">stable</span>\n    </div>\n    <div style=\"margin-top:4px;\"><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#64748b;\">\n      <span>Now</span><span style=\"font-weight:700;color:#22c55e;\">20%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#e5e7eb;\">\n      <div style=\"height:100%;width:20%;background:#22c55e;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#64748b;\">\n      <span>15m</span><span style=\"font-weight:700;color:#22c55e;\">20%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#e5e7eb;\">\n      <div style=\"height:100%;width:20%;background:#22c55e;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#64748b;\">\n      <span>30m</span><span style=\"font-weight:700;color:#22c55e;\">19%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#e5e7eb;\">\n      <div style=\"height:100%;width:19%;background:#22c55e;border-radius:2px;\"></div>\n    </div>\n  </div><div style=\"margin-bottom:3px;\">\n    <div style=\"display:flex;justify-content:space-between;font-size:8px;color:#64748b;\">\n      <span>1h</span><span style=\"font-weight:700;color:#22c55e;\">18%</span>\n    </div>\n    <div style=\"height:3px;border-radius:2px;background:#e5e7eb;\">\n      <div style=\"height:100%;width:18%;background:#22c55e;border-radius:2px;\"></div>\n    </div>\n  </div></div>\n  </div>",
+        "code": {
+          "language": "html",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        }
+      }
+    },
+    {
+      "id": 300,
+      "type": "text",
+      "title": "",
+      "transparent": true,
+      "pluginVersion": "11.5.2",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 22
       },
       "options": {
         "mode": "html",
@@ -217,7 +481,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 27
       },
       "options": {
         "mode": "html",
@@ -239,7 +503,7 @@
         "h": 4,
         "w": 6,
         "x": 0,
-        "y": 13
+        "y": 23
       },
       "options": {
         "mode": "html",
@@ -261,7 +525,7 @@
         "h": 4,
         "w": 6,
         "x": 6,
-        "y": 13
+        "y": 23
       },
       "options": {
         "mode": "html",
@@ -283,7 +547,7 @@
         "h": 4,
         "w": 6,
         "x": 12,
-        "y": 13
+        "y": 23
       },
       "options": {
         "mode": "html",
@@ -305,7 +569,7 @@
         "h": 4,
         "w": 6,
         "x": 18,
-        "y": 13
+        "y": 23
       },
       "options": {
         "mode": "html",
@@ -327,7 +591,7 @@
         "h": 2,
         "w": 8,
         "x": 0,
-        "y": 18
+        "y": 28
       },
       "options": {
         "mode": "html",
@@ -349,7 +613,7 @@
         "h": 2,
         "w": 8,
         "x": 8,
-        "y": 18
+        "y": 28
       },
       "options": {
         "mode": "html",
@@ -371,7 +635,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 18
+        "y": 28
       },
       "options": {
         "mode": "html",
@@ -393,7 +657,7 @@
         "h": 2,
         "w": 8,
         "x": 0,
-        "y": 20
+        "y": 30
       },
       "options": {
         "mode": "html",
@@ -415,7 +679,7 @@
         "h": 2,
         "w": 8,
         "x": 8,
-        "y": 20
+        "y": 30
       },
       "options": {
         "mode": "html",
@@ -437,7 +701,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 20
+        "y": 30
       },
       "options": {
         "mode": "html",
@@ -459,7 +723,7 @@
         "h": 2,
         "w": 8,
         "x": 0,
-        "y": 22
+        "y": 32
       },
       "options": {
         "mode": "html",
@@ -481,7 +745,7 @@
         "h": 2,
         "w": 8,
         "x": 8,
-        "y": 22
+        "y": 32
       },
       "options": {
         "mode": "html",
@@ -503,7 +767,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 22
+        "y": 32
       },
       "options": {
         "mode": "html",
@@ -525,7 +789,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 34
       },
       "options": {
         "mode": "html",

@@ -41,16 +41,38 @@ function resolveTarget(target) {
   }
 }
 
+const HEALTH_COLORS = {
+  healthy: '#22c55e',
+  running: '#06b6d4',
+  warning: '#f59e0b',
+  critical: '#ef4444',
+  repairing: '#34d399',
+  hold: '#94a3b8',
+  conflict: '#f97316',
+};
+
+function healthIndicatorHtml(health) {
+  if (!health || !health.state) return '';
+  const color = HEALTH_COLORS[health.state] || '#94a3b8';
+  return `<div style="display:flex;align-items:center;gap:3px;margin-top:2px;">
+    <div style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;"></div>
+    <div style="font-size:8px;color:${color};font-weight:700;text-transform:uppercase;letter-spacing:.04em;">${esc(health.state)}</div>
+  </div>`;
+}
+
 export function registryCardHtml(entry) {
   const { href, targetMode } = resolveTarget(entry.target);
+  const healthColor = HEALTH_COLORS[entry.health?.state] || null;
+  const borderBottom = healthColor ? `border-bottom:3px solid ${healthColor};` : '';
   return `<a href="${esc(href)}" target="${esc(targetMode)}" rel="noreferrer"
-    style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:100%;height:100%;min-height:0;padding:10px;text-decoration:none;
-    background:#fff;border:1px solid ${entry.border || '#e5e7eb'};border-radius:10px;
+    style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;width:100%;height:100%;min-height:0;padding:10px;text-decoration:none;
+    background:#fff;border:1px solid ${entry.border || '#e5e7eb'};${borderBottom}border-radius:10px;
     box-sizing:border-box;text-align:center;color:#111827;transition:box-shadow .15s;">
     <div style="font-size:20px;line-height:1;">${esc(entry.icon || '●')}</div>
     <div style="font-size:13px;font-weight:800;color:${entry.accent || '#111827'};">${esc(entry.title)}</div>
     <div style="font-size:10px;color:#64748b;">${esc(entry.label || '')}</div>
     <div style="font-size:18px;font-weight:900;color:${entry.accent || '#111827'};">${entry.count ?? ''}</div>
+    ${healthIndicatorHtml(entry.health)}
   </a>`;
 }
 
@@ -171,7 +193,10 @@ ${staticCards}
       else if(target.type==='internal-runtime'){tm='_self';}
       var a=document.createElement('a');a.href=href;a.target=tm;a.rel='noreferrer';
       a.style.cssText='display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;padding:10px;text-decoration:none;background:#fff;border:1px solid '+(e.border||'#e5e7eb')+';border-radius:10px;text-align:center;color:#111827;box-sizing:border-box;';
-      a.innerHTML='<div style="font-size:20px;">'+(e.icon||'●')+'</div><div style="font-size:13px;font-weight:800;color:'+(e.accent||'#111827')+';">'+(e.title||'')+'</div><div style="font-size:10px;color:#64748b;">'+(e.label||'')+'</div><div style="font-size:18px;font-weight:900;color:'+(e.accent||'#111827')+';">'+(e.count!=null?e.count:'')+'</div>';
+      var hc={'healthy':'#22c55e','running':'#06b6d4','warning':'#f59e0b','critical':'#ef4444','repairing':'#34d399','hold':'#94a3b8','conflict':'#f97316'};
+      var hs=e.health&&e.health.state?e.health.state:'';var hcol=hc[hs]||'';
+      if(hcol){a.style.borderBottom='3px solid '+hcol;}
+      a.innerHTML='<div style="font-size:20px;">'+(e.icon||'●')+'</div><div style="font-size:13px;font-weight:800;color:'+(e.accent||'#111827')+';">'+(e.title||'')+'</div><div style="font-size:10px;color:#64748b;">'+(e.label||'')+'</div><div style="font-size:18px;font-weight:900;color:'+(e.accent||'#111827')+';">'+(e.count!=null?e.count:'')+'</div>'+(hs?'<div style="display:flex;align-items:center;gap:3px;margin-top:2px;"><div style="width:6px;height:6px;border-radius:50%;background:'+hcol+';"></div><div style="font-size:8px;color:'+hcol+';font-weight:700;text-transform:uppercase;">'+hs+'</div></div>':'');
       root.appendChild(a);
     });
   }catch(ex){}

@@ -8,9 +8,10 @@
     "accent": "#FF5C5C",
     "border": "rgba(255,92,92,0.55)",
     "target": {
-      "type": "grafana-runtime",
-      "url": "https://satofumigoto.grafana.net/d/sa8ljn4/runtime?orgId=1"
+      "type": "grafana-dashboard",
+      "url": "https://satofumigoto.grafana.net/d/samvklp/collapse-control"
     },
+    "health": { "state": "warning", "severity": 65 },
     "visibility": "active",
     "source": "runtime-registry"
   },
@@ -24,8 +25,9 @@
     "border": "rgba(168,231,255,0.36)",
     "target": {
       "type": "grafana-dashboard",
-      "url": "https://satofumigoto.grafana.net/runtime_discovery"
+      "url": "https://satofumigoto.grafana.net/d/saz2p8x/collapse-analysis"
     },
+    "health": { "state": "running", "severity": 30 },
     "visibility": "active",
     "source": "runtime-registry"
   },
@@ -39,8 +41,9 @@
     "border": "rgba(245,184,75,0.52)",
     "target": {
       "type": "grafana-dashboard",
-      "url": "https://satofumigoto.grafana.net/need_impact"
+      "url": "https://satofumigoto.grafana.net/d/sambt57/repair-impact"
     },
+    "health": { "state": "warning", "severity": 55 },
     "visibility": "active",
     "source": "runtime-registry"
   },
@@ -54,8 +57,9 @@
     "border": "rgba(57,217,138,0.40)",
     "target": {
       "type": "grafana-dashboard",
-      "url": "https://satofumigoto.grafana.net/d/external-federation-view/external-federation-view?orgId=1"
+      "url": "https://satofumigoto.grafana.net/d/sajbd8b/repair-proposal"
     },
+    "health": { "state": "running", "severity": 20 },
     "visibility": "active",
     "source": "runtime-registry"
   },
@@ -69,8 +73,9 @@
     "border": "rgba(50,217,255,0.48)",
     "target": {
       "type": "grafana-dashboard",
-      "url": "https://satofumigoto.grafana.net/d/go-execution-tasks/execution-tasks?orgId=1"
+      "url": "https://satofumigoto.grafana.net/d/sassvwp/implement-progress"
     },
+    "health": { "state": "healthy", "severity": 10 },
     "visibility": "active",
     "source": "runtime-registry"
   }

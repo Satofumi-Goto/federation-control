@@ -26,11 +26,11 @@ check('Card: 改修影響', allContent.includes('改修影響'));
 check('Card: 改修提案', allContent.includes('改修提案'));
 check('Card: 実装進捗', allContent.includes('実装進捗'));
 
-check('Route: grafana.net/d/sa8ljn4', allContent.includes('satofumigoto.grafana.net/d/sa8ljn4'));
-check('Route: runtime_discovery', allContent.includes('satofumigoto.grafana.net/runtime_discovery'));
-check('Route: need_impact', allContent.includes('satofumigoto.grafana.net/need_impact'));
-check('Route: external-federation-view', allContent.includes('external-federation-view'));
-check('Route: go-execution-tasks', allContent.includes('go-execution-tasks'));
+check('Route: 崩壊制御 → samvklp', allContent.includes('/d/samvklp/collapse-control'));
+check('Route: 崩壊解析 → saz2p8x', allContent.includes('/d/saz2p8x/collapse-analysis'));
+check('Route: 改修影響 → sambt57', allContent.includes('/d/sambt57/repair-impact'));
+check('Route: 改修提案 → sajbd8b', allContent.includes('/d/sajbd8b/repair-proposal'));
+check('Route: 実装進捗 → sassvwp', allContent.includes('/d/sassvwp/implement-progress'));
 
 check('＋window: runtimeRegistryCards storage', allContent.includes('runtimeRegistryCards'));
 check('＋window: Runtime Card Create dialog', allContent.includes('Runtime Card Create'));
