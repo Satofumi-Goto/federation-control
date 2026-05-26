@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "nodes": [
+    { "id": "platform-command", "type": "control", "authority": "full", "scope": "ecosystem-wide", "level": 0 },
+    { "id": "governance-command", "type": "governance", "authority": "governance", "scope": "policy-enforcement", "level": 1 },
+    { "id": "emergency-command", "type": "emergency", "authority": "override", "scope": "crisis-response", "level": 1 },
+    { "id": "deploy-command", "type": "deploy", "authority": "deploy", "scope": "release-management", "level": 2 },
+    { "id": "repair-command", "type": "repair", "authority": "repair", "scope": "recovery-operations", "level": 2 },
+    { "id": "rollback-command", "type": "rollback", "authority": "rollback", "scope": "state-reversion", "level": 2 },
+    { "id": "execution-command", "type": "execution", "authority": "execution", "scope": "task-orchestration", "level": 3 },
+    { "id": "coordination-command", "type": "coordination", "authority": "coordination", "scope": "cross-domain", "level": 3 }
+  ],
+  "controlAuthority": [
+    { "from": "platform-command", "to": "governance-command", "type": "delegation", "revocable": true },
+    { "from": "platform-command", "to": "emergency-command", "type": "delegation", "revocable": false },
+    { "from": "governance-command", "to": "deploy-command", "type": "approval-gate", "revocable": true },
+    { "from": "governance-command", "to": "repair-command", "type": "approval-gate", "revocable": true },
+    { "from": "governance-command", "to": "rollback-command", "type": "approval-gate", "revocable": true }
+  ],
+  "escalationAuthority": [
+    { "from": "execution-command", "to": "deploy-command", "trigger": "execution-failure", "auto": true },
+    { "from": "deploy-command", "to": "governance-command", "trigger": "deploy-blocked", "auto": true },
+    { "from": "repair-command", "to": "emergency-command", "trigger": "repair-failed-critical", "auto": true },
+    { "from": "coordination-command", "to": "platform-command", "trigger": "cross-domain-conflict", "auto": false }
+  ],
+  "emergencyAuthority": {
+    "controller": "emergency-command",
+    "overrideTargets": ["deploy-command", "execution-command", "coordination-command"],
+    "protectedTargets": ["governance-command", "platform-command"],
+    "activationThreshold": { "pressure": 80, "crashes": 3, "consecutiveFailures": 5 }
+  },
+  "deployAuthority": {
+    "approver": "governance-command",
+    "executor": "deploy-command",
+    "rollbackAuthority": "rollback-command",
+    "requiresApproval": true
+  },
+  "repairAuthority": {
+    "detector": "execution-command",
+    "executor": "repair-command",
+    "escalation": "emergency-command",
+    "maxAutonomousCycles": 3
+  },
+  "rollbackAuthority": {
+    "trigger": "deploy-command",
+    "executor": "rollback-command",
+    "approver": "governance-command",
+    "autoRollbackOnFailure": true
+  },
+  "lastUpdated": null
+}

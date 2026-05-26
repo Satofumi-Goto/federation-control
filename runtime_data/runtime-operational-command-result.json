@@ -1,0 +1,87 @@
+{
+  "command": {
+    "authority": {
+      "operational": true,
+      "nodes": 8,
+      "levels": 4,
+      "controlFlows": 5,
+      "escalationPaths": 4
+    },
+    "crossRuntime": {
+      "totalPaths": 4,
+      "autoEscalations": 3,
+      "manualEscalations": 1,
+      "paths": [
+        {
+          "from": "execution-command",
+          "to": "deploy-command",
+          "trigger": "execution-failure",
+          "auto": true
+        },
+        {
+          "from": "deploy-command",
+          "to": "governance-command",
+          "trigger": "deploy-blocked",
+          "auto": true
+        },
+        {
+          "from": "repair-command",
+          "to": "emergency-command",
+          "trigger": "repair-failed-critical",
+          "auto": true
+        },
+        {
+          "from": "coordination-command",
+          "to": "platform-command",
+          "trigger": "cross-domain-conflict",
+          "auto": false
+        }
+      ]
+    },
+    "emergency": {
+      "controller": "emergency-command",
+      "activated": false,
+      "pressure": 3,
+      "crashes": 0,
+      "overrideTargets": 3,
+      "protectedTargets": 2
+    },
+    "dispatch": {
+      "approver": "governance-command",
+      "executor": "deploy-command",
+      "requiresApproval": true,
+      "executionsTotal": 1,
+      "executionsBlocked": 1,
+      "throughputEfficiency": 50
+    },
+    "recovery": {
+      "detector": "execution-command",
+      "executor": "repair-command",
+      "escalation": "emergency-command",
+      "maxAutonomousCycles": 3,
+      "currentRecoveries": 2,
+      "currentCrashes": 0,
+      "withinLimits": true
+    },
+    "repair": {
+      "configured": true,
+      "executor": "repair-command",
+      "maxCycles": 3
+    },
+    "governanceEscalation": {
+      "safetyLocksEnforced": true,
+      "registryCanonical": true,
+      "blocked": 0,
+      "escalationNeeded": false
+    }
+  },
+  "summary": {
+    "authorityOperational": true,
+    "emergencyActivated": false,
+    "governanceEnforced": true,
+    "registryCanonical": true,
+    "dispatchEfficiency": 50,
+    "recoveryWithinLimits": true
+  },
+  "timestamp": "2026-05-26T06:55:53.300Z"
+}

@@ -1,0 +1,69 @@
+{
+  "emergency": {
+    "level": "none",
+    "triggers": [],
+    "activated": false
+  },
+  "responses": {
+    "governance": {
+      "safetyLocked": true,
+      "registryCanonical": true,
+      "actions": []
+    },
+    "coordination": {
+      "actions": []
+    },
+    "recovery": {
+      "currentRecoveries": 2,
+      "actions": []
+    }
+  },
+  "isolation": {
+    "isolated": false,
+    "actions": []
+  },
+  "protection": {
+    "assets": [
+      {
+        "asset": "runtime-registry",
+        "path": "src/runtime/registry/runtimeRegistryData.json",
+        "protected": true,
+        "exists": true
+      },
+      {
+        "asset": "governance-result",
+        "path": "runtime_data/runtime-evolution-governance-result.json",
+        "protected": true,
+        "exists": true
+      },
+      {
+        "asset": "authority-graph",
+        "path": "runtime_data/runtime-command-authority-graph.json",
+        "protected": true,
+        "exists": true
+      },
+      {
+        "asset": "federation-domain-model",
+        "path": "runtime_data/runtime-federation-domain-model.json",
+        "protected": true,
+        "exists": true
+      }
+    ],
+    "allProtected": true
+  },
+  "safetyRules": {
+    "forbiddenActions": 7,
+    "manualApprovalRequired": 5,
+    "enforced": true
+  },
+  "summary": {
+    "emergencyLevel": "none",
+    "emergencyActivated": false,
+    "triggerCount": 0,
+    "governanceEnforced": true,
+    "registryCanonical": true,
+    "canonicalProtected": true,
+    "isolationActive": false
+  },
+  "timestamp": "2026-05-26T06:56:14.252Z"
+}

@@ -1,0 +1,97 @@
+{
+  "checks": [
+    {
+      "id": "authority-graph",
+      "label": "Command authority graph exists",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "command-timeline",
+      "label": "Command timeline exists",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "command-engine",
+      "label": "Operational command engine exists",
+      "passed": true,
+      "detail": "File exists"
+    },
+    {
+      "id": "coordination-engine",
+      "label": "Autonomous coordination engine exists",
+      "passed": true,
+      "detail": "File exists"
+    },
+    {
+      "id": "emergency-engine",
+      "label": "Emergency command engine exists",
+      "passed": true,
+      "detail": "File exists"
+    },
+    {
+      "id": "governance-enforced",
+      "label": "Governance enforcement active",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "registry-canonical",
+      "label": "Runtime Registry canonical",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "safety-locks",
+      "label": "Safety locks active",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "command-live",
+      "label": "Command engine operational",
+      "passed": true,
+      "detail": "authority=true, governance=true"
+    },
+    {
+      "id": "coordination-live",
+      "label": "Autonomous coordination operational",
+      "passed": true,
+      "detail": "0 actions, critical=0"
+    },
+    {
+      "id": "emergency-live",
+      "label": "Emergency command operational",
+      "passed": true,
+      "detail": "level=none, canonical=true"
+    },
+    {
+      "id": "ecosystem-stable",
+      "label": "Ecosystem stability operational",
+      "passed": true,
+      "detail": "0 critical actions"
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0,
+    "ready": true
+  },
+  "liveResults": {
+    "command": {
+      "authorityOperational": true,
+      "dispatchEfficiency": 50
+    },
+    "coordination": {
+      "totalActions": 0,
+      "criticalActions": 0
+    },
+    "emergency": {
+      "level": "none",
+      "canonicalProtected": true
+    }
+  },
+  "timestamp": "2026-05-26T06:55:53.298Z"
+}

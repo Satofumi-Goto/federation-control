@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "nodes": [
+    { "id": "core", "domain": "runtime-core", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "governance", "domain": "governance-runtime", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "execution", "domain": "execution-runtime", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "repair", "domain": "repair-runtime", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "fleet", "domain": "fleet-runtime", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "urban", "domain": "urban-runtime", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "service-hub", "domain": "service-hub-runtime", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "life-tx", "domain": "life-transaction-runtime", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "mobility", "domain": "mobility-runtime", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "energy", "domain": "energy-runtime", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "logistics", "domain": "logistics-runtime", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "emergency", "domain": "emergency-runtime", "state": "standby", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "infrastructure", "domain": "infrastructure-runtime", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" },
+    { "id": "seneschal", "domain": "seneschal-runtime", "state": "active", "pressure": 0, "congestion": 0, "health": "healthy" }
+  ],
+  "dependencies": [
+    { "from": "core", "to": "governance", "type": "authority", "latency": 0, "healthy": true },
+    { "from": "core", "to": "execution", "type": "authority", "latency": 0, "healthy": true },
+    { "from": "core", "to": "repair", "type": "authority", "latency": 0, "healthy": true },
+    { "from": "execution", "to": "fleet", "type": "execution", "latency": 0, "healthy": true },
+    { "from": "fleet", "to": "mobility", "type": "coordination", "latency": 0, "healthy": true },
+    { "from": "mobility", "to": "logistics", "type": "coordination", "latency": 0, "healthy": true },
+    { "from": "infrastructure", "to": "energy", "type": "control", "latency": 0, "healthy": true },
+    { "from": "infrastructure", "to": "urban", "type": "monitoring", "latency": 0, "healthy": true },
+    { "from": "urban", "to": "service-hub", "type": "data", "latency": 0, "healthy": true },
+    { "from": "service-hub", "to": "life-tx", "type": "service", "latency": 0, "healthy": true },
+    { "from": "governance", "to": "emergency", "type": "escalation", "latency": 0, "healthy": true },
+    { "from": "seneschal", "to": "governance", "type": "intelligence", "latency": 0, "healthy": true }
+  ],
+  "pressure": {
+    "composite": 0,
+    "byDomain": {}
+  },
+  "congestion": {
+    "level": "none",
+    "hotspots": []
+  },
+  "governance": {
+    "mode": "normal",
+    "safetyLocksActive": true,
+    "escalationLevel": "none"
+  },
+  "recovery": {
+    "activeRecoveries": 0,
+    "pendingRepairs": 0
+  },
+  "execution": {
+    "queueDepth": 0,
+    "activeExecutions": 0,
+    "throughput": 0
+  },
+  "lastSynchronized": null
+}

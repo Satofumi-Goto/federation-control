@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "events": [
+    {
+      "type": "command-evaluation",
+      "detail": "authority=true, emergency=false",
+      "timestamp": "2026-05-26T06:46:58.750Z"
+    },
+    {
+      "type": "autonomous-coordination",
+      "detail": "0 actions",
+      "timestamp": "2026-05-26T06:47:01.235Z"
+    },
+    {
+      "type": "command-evaluation",
+      "detail": "authority=true, emergency=false",
+      "timestamp": "2026-05-26T06:47:02.704Z"
+    },
+    {
+      "type": "autonomous-coordination",
+      "detail": "0 actions",
+      "timestamp": "2026-05-26T06:47:02.706Z"
+    },
+    {
+      "type": "command-evaluation",
+      "detail": "authority=true, emergency=false",
+      "timestamp": "2026-05-26T06:55:53.302Z"
+    },
+    {
+      "type": "autonomous-coordination",
+      "detail": "0 actions",
+      "timestamp": "2026-05-26T06:55:53.305Z"
+    }
+  ],
+  "counters": {
+    "commandsIssued": 3,
+    "escalations": 0,
+    "coordinationEvents": 3,
+    "emergencyEvents": 0,
+    "recoveryCoordinations": 0,
+    "deployCoordinations": 0,
+    "rollbackCoordinations": 0
+  },
+  "lastEvent": "2026-05-26T06:55:53.302Z",
+  "lastUpdated": "2026-05-26T06:55:53.305Z"
+}

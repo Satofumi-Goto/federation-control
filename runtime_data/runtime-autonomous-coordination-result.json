@@ -1,0 +1,61 @@
+{
+  "coordination": {
+    "execution": {
+      "total": 1,
+      "blocked": 1,
+      "queuePressure": 0,
+      "actions": [],
+      "autonomous": true
+    },
+    "recovery": {
+      "recoveries": 2,
+      "crashes": 0,
+      "actions": [],
+      "autonomous": true
+    },
+    "congestion": {
+      "composite": 3,
+      "pressures": {
+        "memory": 1,
+        "cpu": 0,
+        "queue": 0,
+        "deploy": 0,
+        "recovery": 20,
+        "composite": 3
+      },
+      "actions": [],
+      "autonomous": true
+    },
+    "emergency": {
+      "activated": false,
+      "crashes": 0,
+      "pressure": 3,
+      "actions": [],
+      "autonomous": false
+    },
+    "governanceSync": {
+      "safetyLocked": true,
+      "registryCanonical": true,
+      "blocked": 0,
+      "actions": [],
+      "autonomous": true
+    },
+    "deploy": {
+      "paused": false,
+      "failures": 0,
+      "deployPressure": 0,
+      "actions": [],
+      "autonomous": true
+    }
+  },
+  "actions": [],
+  "summary": {
+    "totalActions": 0,
+    "criticalActions": 0,
+    "highActions": 0,
+    "emergencyActivated": false,
+    "governanceSynced": true,
+    "autonomousMode": true
+  },
+  "timestamp": "2026-05-26T06:55:53.305Z"
+}
