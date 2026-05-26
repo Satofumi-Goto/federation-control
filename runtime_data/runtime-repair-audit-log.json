@@ -1,0 +1,38 @@
+[
+  {
+    "monitorState": "warning",
+    "driftCount": 0,
+    "proposalCount": 0,
+    "decision": "no_action",
+    "applied": false,
+    "verificationPass": true,
+    "timestamp": "2026-05-26T03:04:11.021Z"
+  },
+  {
+    "monitorState": "warning",
+    "driftCount": 0,
+    "proposalCount": 0,
+    "decision": "no_action",
+    "applied": false,
+    "verificationPass": true,
+    "timestamp": "2026-05-26T03:07:02.642Z"
+  },
+  {
+    "monitorState": "warning",
+    "driftCount": 0,
+    "proposalCount": 0,
+    "decision": "no_action",
+    "applied": false,
+    "verificationPass": true,
+    "timestamp": "2026-05-26T03:07:28.219Z"
+  },
+  {
+    "monitorState": "warning",
+    "driftCount": 0,
+    "proposalCount": 0,
+    "decision": "no_action",
+    "applied": false,
+    "verificationPass": true,
+    "timestamp": "2026-05-26T03:21:28.962Z"
+  }
+]

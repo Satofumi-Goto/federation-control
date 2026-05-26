@@ -1,0 +1,89 @@
+[
+  {
+    "type": "repair_cycle",
+    "ok": true,
+    "timestamp": "2026-05-26T03:07:02.660Z"
+  },
+  {
+    "type": "policy_evaluation",
+    "mode": "normal",
+    "policies": {
+      "deploy": "allowed",
+      "repair": "allowed",
+      "rollback": "restricted",
+      "registryMutation": "allowed",
+      "topologyMutation": "allowed",
+      "propagation": "allowed",
+      "cardCreation": "allowed"
+    },
+    "timestamp": "2026-05-26T03:07:02.663Z"
+  },
+  {
+    "type": "pressure_evaluation",
+    "pressure": 3,
+    "level": "nominal",
+    "timestamp": "2026-05-26T03:07:02.668Z"
+  },
+  {
+    "type": "governance_decision",
+    "decision": "repair_first",
+    "timestamp": "2026-05-26T03:07:02.669Z"
+  },
+  {
+    "type": "verification",
+    "ok": true,
+    "timestamp": "2026-05-26T03:07:03.499Z"
+  },
+  {
+    "type": "health_propagation",
+    "healthGraph": {
+      "pressure": 3,
+      "level": "nominal"
+    },
+    "timestamp": "2026-05-26T03:07:03.500Z"
+  },
+  {
+    "type": "repair_cycle",
+    "decision": "no_action",
+    "ok": true,
+    "timestamp": "2026-05-26T03:07:28.237Z"
+  },
+  {
+    "type": "policy_evaluation",
+    "mode": "normal",
+    "policies": {
+      "deploy": "allowed",
+      "repair": "allowed",
+      "rollback": "restricted",
+      "registryMutation": "allowed",
+      "topologyMutation": "allowed",
+      "propagation": "allowed",
+      "cardCreation": "allowed"
+    },
+    "timestamp": "2026-05-26T03:07:28.241Z"
+  },
+  {
+    "type": "pressure_evaluation",
+    "pressure": 3,
+    "level": "nominal",
+    "timestamp": "2026-05-26T03:07:28.247Z"
+  },
+  {
+    "type": "governance_decision",
+    "decision": "autonomous_proceed",
+    "timestamp": "2026-05-26T03:07:28.248Z"
+  },
+  {
+    "type": "verification",
+    "ok": true,
+    "timestamp": "2026-05-26T03:07:28.985Z"
+  },
+  {
+    "type": "health_propagation",
+    "healthGraph": {
+      "pressure": 3,
+      "level": "nominal"
+    },
+    "timestamp": "2026-05-26T03:07:28.987Z"
+  }
+]

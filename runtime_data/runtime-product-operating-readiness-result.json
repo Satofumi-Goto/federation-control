@@ -1,0 +1,99 @@
+{
+  "checks": [
+    {
+      "id": "operating-model",
+      "label": "Product operating model exists",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "responsibility-matrix",
+      "label": "Business responsibility matrix exists",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "sla-slo-model",
+      "label": "SLA/SLO model defined",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "business-control-engine",
+      "label": "Business control engine exists",
+      "passed": true,
+      "detail": "File exists"
+    },
+    {
+      "id": "sla-slo-engine",
+      "label": "SLA/SLO execution engine exists",
+      "passed": true,
+      "detail": "File exists"
+    },
+    {
+      "id": "product-kpi-engine",
+      "label": "Product KPI engine exists",
+      "passed": true,
+      "detail": "File exists"
+    },
+    {
+      "id": "governance-enforced",
+      "label": "Runtime governance remains enforced",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "registry-canonical",
+      "label": "Runtime Registry remains canonical",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "safety-locks-active",
+      "label": "Runtime safety locks remain active",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "business-control-live",
+      "label": "Business control engine operational",
+      "passed": true,
+      "detail": "Composite: 98/100"
+    },
+    {
+      "id": "sla-slo-live",
+      "label": "SLA/SLO engine operational",
+      "passed": true,
+      "detail": "Status: at-risk"
+    },
+    {
+      "id": "kpi-live",
+      "label": "Product KPI engine operational",
+      "passed": true,
+      "detail": "Score: 88%"
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0,
+    "ready": true
+  },
+  "liveResults": {
+    "businessControl": {
+      "compositeScore": 98,
+      "priority": "none"
+    },
+    "slaSlo": {
+      "status": "at-risk",
+      "risks": 2,
+      "alerts": 2
+    },
+    "productKpi": {
+      "score": 88,
+      "met": 7,
+      "below": 1
+    }
+  },
+  "timestamp": "2026-05-26T06:55:54.961Z"
+}

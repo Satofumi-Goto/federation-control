@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "product": {
+    "name": "Federation Runtime",
+    "scope": "Autonomous federated operational governance and execution platform",
+    "tier": "enterprise",
+    "status": "operational"
+  },
+  "userSegments": [
+    { "id": "operator", "label": "Runtime Operator", "description": "Day-to-day operational execution and monitoring" },
+    { "id": "reviewer", "label": "Runtime Reviewer", "description": "Change review, governance validation, deploy approval" },
+    { "id": "business-owner", "label": "Business Owner", "description": "Business impact assessment, cost/revenue oversight" },
+    { "id": "service-owner", "label": "Service Owner", "description": "SLA/SLO management, service-level accountability" },
+    { "id": "platform-admin", "label": "Platform Admin", "description": "Infrastructure, topology, and module management" }
+  ],
+  "operatorRoles": [
+    { "id": "deploy-approver", "permissions": ["approve-deploy", "review-change", "view-audit"] },
+    { "id": "repair-approver", "permissions": ["approve-repair", "trigger-repair", "view-repair-report"] },
+    { "id": "emergency-controller", "permissions": ["emergency-stop", "force-recovery", "bypass-queue"] },
+    { "id": "governance-admin", "permissions": ["modify-policy", "adjust-pressure-thresholds", "manage-safety-locks"] },
+    { "id": "readonly-observer", "permissions": ["view-dashboard", "view-audit", "view-kpi"] }
+  ],
+  "businessResponsibilities": {
+    "costResponsibility": {
+      "owner": "business-owner",
+      "metrics": ["infrastructure-cost", "execution-cost", "repair-cost", "idle-cost"],
+      "budgetCycle": "monthly"
+    },
+    "revenueResponsibility": {
+      "owner": "business-owner",
+      "metrics": ["service-availability-value", "sla-compliance-value", "operational-efficiency-gain"],
+      "reportingCycle": "monthly"
+    },
+    "slaResponsibility": {
+      "owner": "service-owner",
+      "targets": ["availability-99.5", "deploy-success-95", "repair-lead-time-30min"],
+      "reviewCycle": "weekly"
+    },
+    "governanceResponsibility": {
+      "owner": "governance-admin",
+      "scope": ["policy-enforcement", "safety-lock-management", "evolution-governance"],
+      "auditCycle": "weekly"
+    }
+  },
+  "lastUpdated": null
+}

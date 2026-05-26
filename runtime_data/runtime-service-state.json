@@ -1,0 +1,31 @@
+{
+  "service": {
+    "active": true,
+    "startupTime": "2026-05-26T06:17:56.719Z",
+    "restartCount": 2,
+    "pid": 33928
+  },
+  "execution": {
+    "active": false,
+    "currentInstructionHash": null,
+    "queueDepth": 0
+  },
+  "orchestration": {
+    "active": true,
+    "mode": "standard"
+  },
+  "monitor": {
+    "active": true,
+    "lastCheck": "2026-05-26T06:17:56.719Z"
+  },
+  "recovery": {
+    "lastEvent": "2026-05-26T06:17:56.633Z",
+    "lastEventType": "clean-recovery",
+    "recoveryCount": 2
+  },
+  "crash": {
+    "lastEvent": null,
+    "lastReason": null,
+    "crashCount": 0
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "changedFiles": [
+    "M .gitignore",
+    " M dashboards/runtime-workspace-v2.json",
+    " M grafana/runtime-workspace-routes.json",
+    " M grafana/runtime-workspace-v2.json",
+    " M package.json",
+    " M runtime_data/runtime-federation-memory.json",
+    " M scripts/build-runtime-workspace-v2.mjs",
+    " M scripts/lib/federation-live-state.mjs",
+    " M scripts/lib/runtime-federation-brain-panels.mjs",
+    " M scripts/lib/runtime-registry-cards.mjs",
+    " M src/runtime/registry/runtimeRegistryData.json",
+    "?? .cursor/rules/federation-runtime.mdc",
+    "?? .cursor/tasks/",
+    "?? .env.runtime.example",
+    "?? docs/cursor-direct-bridge-spec.md",
+    "?? docs/cursor-direct-runtime-control.md",
+    "?? docs/cursor-invocation-capabilities.md",
+    "?? runtime_data/runtime-cursor-capability-report.json",
+    "?? runtime_data/runtime-cursor-session-state.json",
+    "?? runtime_data/runtime-federation-health-graph.json",
+    "?? runtime_data/runtime-governance-timeline.json",
+    "?? runtime_data/runtime-invocation-lock-state.json",
+    "?? runtime_data/runtime-operational-snapshot.json",
+    "?? runtime_data/runtime-repair-audit-log.json",
+    "?? scripts/chatgpt-runtime-bridge.mjs",
+    "?? scripts/lib/runtime-execution-surface.mjs",
+    "?? scripts/lib/runtime-operational-surface.mjs",
+    "?? scripts/runtime/",
+    "?? src/runtime/apply/",
+    "?? src/runtime/collapse/",
+    "?? src/runtime/dependency/",
+    "?? src/runtime/drift/",
+    "?? src/runtime/execution/",
+    "?? src/runtime/forecast/",
+    "?? src/runtime/governance/",
+    "?? src/runtime/memory/",
+    "?? src/runtime/operations/",
+    "?? src/runtime/repair/",
+    "?? src/runtime/sync/",
+    "?? src/runtime/telemetry/",
+    "?? src/runtime/throughput/",
+    "?? src/runtime/timeline/",
+    "?? src/runtime/topology/"
+  ],
+  "changedFileCount": 43,
+  "build": {
+    "ok": true,
+    "panels": 35,
+    "version": 39
+  },
+  "verification": {
+    "registry": true,
+    "topology": true,
+    "semantic": true,
+    "governance": true
+  },
+  "verificationPass": true,
+  "git": {
+    "branch": "main",
+    "commitSha": "7542d1cd788a54cdfdf22a6b9f25f05370700d95",
+    "commitShort": "7542d1c"
+  },
+  "pushStatus": {
+    "commitsAhead": 0,
+    "pushed": true
+  },
+  "health": {
+    "state": "healthy",
+    "governanceMode": "normal",
+    "pressure": 3
+  },
+  "timestamp": "2026-05-26T03:18:22.229Z"
+}

@@ -1,0 +1,34 @@
+{
+  "startupMode": "minimal",
+  "activeModules": [
+    "governance",
+    "safety-layer",
+    "policy-engine"
+  ],
+  "moduleFailures": [],
+  "moduleRecovery": [],
+  "pressure": {
+    "memory": 1,
+    "cpu": 0,
+    "queue": 0,
+    "deploy": 0,
+    "recovery": 20,
+    "composite": 3
+  },
+  "health": {
+    "status": "healthy",
+    "score": 97,
+    "lastCheck": "2026-05-26T07:21:37.661Z"
+  },
+  "boot": {
+    "state": "completed",
+    "startedAt": "2026-05-26T06:17:56.631Z",
+    "completedAt": "2026-05-26T06:17:56.720Z",
+    "duration": 89
+  },
+  "recovery": {
+    "state": "idle",
+    "lastRecovery": null,
+    "recoveryCount": 0
+  }
+}

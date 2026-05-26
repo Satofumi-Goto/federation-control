@@ -1,0 +1,25 @@
+{
+  "activeMode": "autonomous",
+  "activeHealth": "warning",
+  "activeQueue": [],
+  "activeRepairState": "no_action",
+  "activeDeployState": "blocked",
+  "governanceState": "normal",
+  "driftState": "healthy",
+  "pressureScore": 3,
+  "recoveryState": null,
+  "supervisorDecision": "proceed",
+  "supervisorCounters": {
+    "repair": 0,
+    "deploy": 0,
+    "rollback": 0,
+    "drift": 0,
+    "totalEvents": 0,
+    "pressure": 0
+  },
+  "violations": 0,
+  "stormDetected": false,
+  "loopCount": 1,
+  "lastLoopTime": "2026-05-26T03:21:27.080Z",
+  "timestamp": "2026-05-26T03:21:38.317Z"
+}

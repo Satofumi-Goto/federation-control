@@ -1,0 +1,51 @@
+{
+  "version": "2.0",
+  "nodes": [
+    { "id": "registry", "type": "core", "label": "Runtime Registry" },
+    { "id": "memory", "type": "core", "label": "Federation Memory" },
+    { "id": "pressure", "type": "metric", "label": "Governance Pressure" },
+    { "id": "drift", "type": "metric", "label": "Drift State" },
+    { "id": "repair", "type": "engine", "label": "Repair Engine" },
+    { "id": "deploy", "type": "engine", "label": "Deploy Engine" },
+    { "id": "governance", "type": "engine", "label": "Governance Engine" },
+    { "id": "recovery", "type": "engine", "label": "Recovery Engine" },
+    { "id": "throughput", "type": "metric", "label": "Throughput Engine" },
+    { "id": "intelligence", "type": "engine", "label": "Intelligence Engine" },
+    { "id": "stability", "type": "metric", "label": "Federation Stability" },
+    { "id": "authority", "type": "federation", "label": "Authority Engine" },
+    { "id": "conflicts", "type": "federation", "label": "Conflict Engine" },
+    { "id": "cross-federation", "type": "federation", "label": "Cross-Federation Engine" }
+  ],
+  "edges": [
+    { "from": "registry", "to": "memory", "type": "dependency" },
+    { "from": "memory", "to": "pressure", "type": "metric" },
+    { "from": "pressure", "to": "governance", "type": "trigger" },
+    { "from": "drift", "to": "repair", "type": "trigger" },
+    { "from": "repair", "to": "recovery", "type": "sequence" },
+    { "from": "governance", "to": "deploy", "type": "gate" },
+    { "from": "deploy", "to": "throughput", "type": "metric" },
+    { "from": "throughput", "to": "intelligence", "type": "feed" },
+    { "from": "intelligence", "to": "stability", "type": "feed" },
+    { "from": "authority", "to": "cross-federation", "type": "federation_authority" },
+    { "from": "cross-federation", "to": "governance", "type": "federation_governance" },
+    { "from": "cross-federation", "to": "repair", "type": "federation_repair" },
+    { "from": "cross-federation", "to": "deploy", "type": "federation_deploy" },
+    { "from": "conflicts", "to": "authority", "type": "conflict_resolution" },
+    { "from": "conflicts", "to": "cross-federation", "type": "conflict_propagation" },
+    { "from": "stability", "to": "cross-federation", "type": "federation_stability" },
+    { "from": "stability", "to": "governance", "type": "stability_governance" },
+    { "from": "authority", "to": "governance", "type": "authority_governance" }
+  ],
+  "federationDomainEdges": [
+    { "from": "runtime-core", "to": "fleet-runtime", "type": "authority" },
+    { "from": "runtime-core", "to": "urban-runtime", "type": "authority" },
+    { "from": "runtime-core", "to": "service-hub-runtime", "type": "authority" },
+    { "from": "runtime-core", "to": "governance-runtime", "type": "authority" },
+    { "from": "runtime-core", "to": "repair-runtime", "type": "authority" },
+    { "from": "governance-runtime", "to": "repair-runtime", "type": "governance_propagation" },
+    { "from": "governance-runtime", "to": "execution-runtime", "type": "governance_propagation" },
+    { "from": "execution-runtime", "to": "fleet-runtime", "type": "execution_coordination" },
+    { "from": "seneschal-runtime", "to": "governance-runtime", "type": "knowledge_feed" }
+  ],
+  "timestamp": "2026-05-26T00:00:00.000Z"
+}

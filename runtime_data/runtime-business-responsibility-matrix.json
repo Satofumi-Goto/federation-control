@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "roles": {
+    "runtimeOwner": {
+      "label": "Runtime Owner",
+      "responsibilities": ["overall-product-accountability", "strategic-direction", "budget-approval"],
+      "escalationLevel": 1
+    },
+    "operator": {
+      "label": "Runtime Operator",
+      "responsibilities": ["daily-execution", "monitoring", "incident-response", "queue-management"],
+      "escalationLevel": 4
+    },
+    "reviewer": {
+      "label": "Runtime Reviewer",
+      "responsibilities": ["change-review", "deploy-validation", "governance-compliance-check"],
+      "escalationLevel": 3
+    },
+    "deployApprover": {
+      "label": "Deploy Approver",
+      "responsibilities": ["deploy-gate-approval", "rollback-decision", "release-sign-off"],
+      "escalationLevel": 3
+    },
+    "repairApprover": {
+      "label": "Repair Approver",
+      "responsibilities": ["repair-authorization", "repair-scope-validation", "repair-impact-assessment"],
+      "escalationLevel": 3
+    },
+    "emergencyController": {
+      "label": "Emergency Controller",
+      "responsibilities": ["emergency-stop", "force-recovery", "incident-command", "bypass-authorization"],
+      "escalationLevel": 2
+    },
+    "businessOwner": {
+      "label": "Business Owner",
+      "responsibilities": ["cost-management", "revenue-tracking", "business-impact-assessment", "budget-planning"],
+      "escalationLevel": 1
+    },
+    "serviceOwner": {
+      "label": "Service Owner",
+      "responsibilities": ["sla-management", "slo-monitoring", "service-availability", "customer-impact-assessment"],
+      "escalationLevel": 2
+    },
+    "costOwner": {
+      "label": "Cost Owner",
+      "responsibilities": ["infrastructure-cost-tracking", "execution-cost-optimization", "budget-compliance"],
+      "escalationLevel": 2
+    }
+  },
+  "escalationChain": [
+    { "level": 1, "roles": ["runtimeOwner", "businessOwner"], "responseTime": "4h" },
+    { "level": 2, "roles": ["emergencyController", "serviceOwner", "costOwner"], "responseTime": "1h" },
+    { "level": 3, "roles": ["reviewer", "deployApprover", "repairApprover"], "responseTime": "30min" },
+    { "level": 4, "roles": ["operator"], "responseTime": "15min" }
+  ],
+  "raciMatrix": {
+    "deploy": { "responsible": "operator", "accountable": "deployApprover", "consulted": "reviewer", "informed": "serviceOwner" },
+    "repair": { "responsible": "operator", "accountable": "repairApprover", "consulted": "reviewer", "informed": "serviceOwner" },
+    "emergency": { "responsible": "emergencyController", "accountable": "runtimeOwner", "consulted": "serviceOwner", "informed": "businessOwner" },
+    "costOptimization": { "responsible": "costOwner", "accountable": "businessOwner", "consulted": "operator", "informed": "runtimeOwner" },
+    "slaManagement": { "responsible": "serviceOwner", "accountable": "runtimeOwner", "consulted": "operator", "informed": "businessOwner" },
+    "governanceChange": { "responsible": "reviewer", "accountable": "runtimeOwner", "consulted": "operator", "informed": "serviceOwner" }
+  },
+  "lastUpdated": null
+}

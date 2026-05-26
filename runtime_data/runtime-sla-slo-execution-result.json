@@ -1,0 +1,75 @@
+{
+  "metrics": {
+    "availability": {
+      "current": 98,
+      "target": 99.5,
+      "unit": "%"
+    },
+    "deploySuccess": {
+      "current": 100,
+      "target": 95,
+      "unit": "%"
+    },
+    "repairLeadTime": {
+      "current": 10,
+      "target": 30,
+      "unit": "min"
+    },
+    "meanRecoveryTime": {
+      "current": 20,
+      "target": 15,
+      "unit": "min"
+    }
+  },
+  "risks": [
+    {
+      "metric": "availability",
+      "severity": "warning",
+      "current": 98,
+      "target": 99.5,
+      "unit": "%",
+      "detail": "availability 98% below target 99.5%"
+    },
+    {
+      "metric": "meanRecoveryTime",
+      "severity": "warning",
+      "current": 20,
+      "target": 15,
+      "unit": "min",
+      "detail": "meanRecoveryTime 20min exceeds target 15min"
+    }
+  ],
+  "serviceImpacts": [
+    {
+      "metric": "availability",
+      "serviceImpact": "service-at-risk",
+      "customerImpact": "none-yet",
+      "recoveryAction": "Monitor and optimize availability",
+      "urgency": "within-1h"
+    },
+    {
+      "metric": "meanRecoveryTime",
+      "serviceImpact": "service-at-risk",
+      "customerImpact": "none-yet",
+      "recoveryAction": "Monitor and optimize meanRecoveryTime",
+      "urgency": "within-1h"
+    }
+  ],
+  "alerts": [
+    {
+      "level": "warning",
+      "metric": "availability",
+      "message": "SLO AT RISK: availability — Monitor and optimize availability",
+      "requiresAck": false
+    },
+    {
+      "level": "warning",
+      "metric": "meanRecoveryTime",
+      "message": "SLO AT RISK: meanRecoveryTime — Monitor and optimize meanRecoveryTime",
+      "requiresAck": false
+    }
+  ],
+  "overallStatus": "at-risk",
+  "slaModelDefined": true,
+  "timestamp": "2026-05-26T06:55:54.964Z"
+}

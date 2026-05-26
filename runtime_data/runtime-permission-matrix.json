@@ -1,0 +1,234 @@
+[
+  {
+    "id": "owner",
+    "label": "オーナー",
+    "level": 100,
+    "description": "Full control over all Runtime operations",
+    "permissions": {
+      "allowed": [
+        "build",
+        "verify",
+        "repair-approve",
+        "repair-reject",
+        "deploy",
+        "deploy-verify",
+        "rollback",
+        "rollback-confirm",
+        "registry-edit",
+        "card-create",
+        "drift-acknowledge",
+        "incident-close",
+        "mode-change",
+        "emergency-halt",
+        "emergency-recover"
+      ],
+      "blocked": [],
+      "approvalRequired": [],
+      "auditRequired": [
+        "deploy",
+        "rollback",
+        "registry-edit",
+        "mode-change",
+        "emergency-halt",
+        "emergency-recover"
+      ]
+    },
+    "actionCount": {
+      "allowed": 15,
+      "blocked": 0,
+      "approvalRequired": 0,
+      "auditRequired": 6
+    }
+  },
+  {
+    "id": "runtime-admin",
+    "label": "Runtime管理者",
+    "level": 90,
+    "description": "Administer Runtime configuration and deployment",
+    "permissions": {
+      "allowed": [
+        "build",
+        "verify",
+        "repair-approve",
+        "repair-reject",
+        "deploy",
+        "deploy-verify",
+        "rollback",
+        "rollback-confirm",
+        "registry-edit",
+        "card-create",
+        "drift-acknowledge",
+        "incident-close",
+        "mode-change"
+      ],
+      "blocked": [
+        "emergency-halt",
+        "emergency-recover"
+      ],
+      "approvalRequired": [
+        "rollback",
+        "mode-change"
+      ],
+      "auditRequired": [
+        "deploy",
+        "rollback",
+        "registry-edit",
+        "mode-change"
+      ]
+    },
+    "actionCount": {
+      "allowed": 13,
+      "blocked": 2,
+      "approvalRequired": 2,
+      "auditRequired": 4
+    }
+  },
+  {
+    "id": "operator",
+    "label": "オペレーター",
+    "level": 70,
+    "description": "Execute Runtime operations within governance",
+    "permissions": {
+      "allowed": [
+        "build",
+        "verify",
+        "repair-approve",
+        "repair-reject",
+        "deploy-verify",
+        "card-create",
+        "drift-acknowledge",
+        "incident-close"
+      ],
+      "blocked": [
+        "registry-edit",
+        "mode-change",
+        "emergency-halt",
+        "emergency-recover"
+      ],
+      "approvalRequired": [
+        "deploy",
+        "rollback",
+        "rollback-confirm"
+      ],
+      "auditRequired": [
+        "deploy",
+        "repair-approve"
+      ]
+    },
+    "actionCount": {
+      "allowed": 8,
+      "blocked": 4,
+      "approvalRequired": 3,
+      "auditRequired": 2
+    }
+  },
+  {
+    "id": "reviewer",
+    "label": "レビュアー",
+    "level": 50,
+    "description": "Review and approve changes, read-write on approvals only",
+    "permissions": {
+      "allowed": [
+        "verify",
+        "deploy-verify",
+        "repair-approve",
+        "repair-reject",
+        "drift-acknowledge",
+        "incident-close"
+      ],
+      "blocked": [
+        "build",
+        "deploy",
+        "rollback",
+        "rollback-confirm",
+        "registry-edit",
+        "card-create",
+        "mode-change",
+        "emergency-halt",
+        "emergency-recover"
+      ],
+      "approvalRequired": [],
+      "auditRequired": [
+        "repair-approve"
+      ]
+    },
+    "actionCount": {
+      "allowed": 6,
+      "blocked": 9,
+      "approvalRequired": 0,
+      "auditRequired": 1
+    }
+  },
+  {
+    "id": "observer",
+    "label": "オブザーバー",
+    "level": 10,
+    "description": "Read-only access to Runtime state and reports",
+    "permissions": {
+      "allowed": [
+        "verify",
+        "deploy-verify"
+      ],
+      "blocked": [
+        "build",
+        "repair-approve",
+        "repair-reject",
+        "deploy",
+        "rollback",
+        "rollback-confirm",
+        "registry-edit",
+        "card-create",
+        "drift-acknowledge",
+        "incident-close",
+        "mode-change",
+        "emergency-halt",
+        "emergency-recover"
+      ],
+      "approvalRequired": [],
+      "auditRequired": []
+    },
+    "actionCount": {
+      "allowed": 2,
+      "blocked": 13,
+      "approvalRequired": 0,
+      "auditRequired": 0
+    }
+  },
+  {
+    "id": "emergency-controller",
+    "label": "緊急制御者",
+    "level": 95,
+    "description": "Emergency halt/recover operations only",
+    "permissions": {
+      "allowed": [
+        "verify",
+        "deploy-verify",
+        "emergency-halt",
+        "emergency-recover",
+        "rollback",
+        "rollback-confirm",
+        "mode-change"
+      ],
+      "blocked": [
+        "build",
+        "deploy",
+        "registry-edit",
+        "card-create",
+        "repair-approve"
+      ],
+      "approvalRequired": [],
+      "auditRequired": [
+        "emergency-halt",
+        "emergency-recover",
+        "rollback",
+        "mode-change"
+      ]
+    },
+    "actionCount": {
+      "allowed": 7,
+      "blocked": 5,
+      "approvalRequired": 0,
+      "auditRequired": 4
+    }
+  }
+]

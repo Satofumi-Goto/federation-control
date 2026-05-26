@@ -1,0 +1,29 @@
+{
+  "evaluations": [
+    {
+      "id": "evo-1",
+      "type": "queue-optimization",
+      "title": "Reduce execution block rate",
+      "decision": "auto-approved",
+      "safetyScore": 100,
+      "violations": [],
+      "warnings": [],
+      "requiresManualApproval": false
+    }
+  ],
+  "summary": {
+    "totalEvaluated": 1,
+    "autoApproved": 1,
+    "pendingApproval": 0,
+    "blocked": 0,
+    "rejected": 0,
+    "safetyLocks": {
+      "forbiddenRulesActive": 7,
+      "manualApprovalRulesActive": 4,
+      "allEnforced": true
+    }
+  },
+  "registryCanonical": true,
+  "orchestrationStable": true,
+  "timestamp": "2026-05-26T06:55:53.312Z"
+}

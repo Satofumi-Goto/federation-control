@@ -1,0 +1,37 @@
+{
+  "impacts": {
+    "operational": {
+      "score": 100,
+      "factors": []
+    },
+    "service": {
+      "score": 100,
+      "factors": []
+    },
+    "cost": {
+      "score": 90,
+      "factors": [
+        {
+          "factor": "execution-waste",
+          "impact": -10,
+          "detail": "50% executions blocked — wasted compute"
+        }
+      ]
+    },
+    "revenue": {
+      "score": 100,
+      "factors": []
+    },
+    "sla": {
+      "score": 100,
+      "factors": []
+    }
+  },
+  "compositeScore": 98,
+  "actionPriority": {
+    "priority": "none",
+    "action": "All systems nominal"
+  },
+  "operatingModelActive": true,
+  "timestamp": "2026-05-26T06:55:54.963Z"
+}

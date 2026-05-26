@@ -1,0 +1,14 @@
+[
+  {
+    "changeId": "rc-7542d1c-1779766385137",
+    "changeType": "release-candidate",
+    "proposedBy": "runtime-orchestrator",
+    "reviewedBy": null,
+    "approvedBy": null,
+    "riskLevel": "low",
+    "rolloutPlan": "standard-deploy",
+    "rollbackPlan": "git revert to 7542d1c",
+    "decision": "auto-validated",
+    "timestamp": "2026-05-26T03:33:05.829Z"
+  }
+]

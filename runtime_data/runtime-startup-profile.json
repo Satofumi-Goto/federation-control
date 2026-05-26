@@ -1,0 +1,70 @@
+{
+  "startupMode": "standard",
+  "startupSequence": [
+    "environment-state",
+    "module-loader",
+    "governance",
+    "trigger-daemon",
+    "execution-queue",
+    "watchdog",
+    "monitor",
+    "service"
+  ],
+  "modules": {
+    "enabled": [
+      "governance",
+      "trigger-daemon",
+      "execution-queue",
+      "watchdog",
+      "monitor",
+      "headless-executor",
+      "safety-layer",
+      "loop-supervisor",
+      "recovery-engine"
+    ],
+    "disabled": []
+  },
+  "dependencyOrder": {
+    "governance": [],
+    "safety-layer": [
+      "governance"
+    ],
+    "loop-supervisor": [],
+    "trigger-daemon": [
+      "governance",
+      "safety-layer",
+      "loop-supervisor"
+    ],
+    "execution-queue": [
+      "governance",
+      "safety-layer"
+    ],
+    "headless-executor": [
+      "execution-queue",
+      "safety-layer"
+    ],
+    "watchdog": [
+      "trigger-daemon",
+      "execution-queue"
+    ],
+    "monitor": [
+      "governance"
+    ],
+    "recovery-engine": [],
+    "service": [
+      "trigger-daemon",
+      "execution-queue",
+      "watchdog"
+    ]
+  },
+  "health": {
+    "status": "healthy",
+    "checkedAt": "2026-05-26T06:18:04.755Z",
+    "modulesLoaded": 3,
+    "modulesFailed": 0
+  },
+  "duration": {
+    "lastBootMs": 89,
+    "lastBootAt": "2026-05-26T06:17:56.720Z"
+  }
+}

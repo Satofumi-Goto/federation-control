@@ -1,0 +1,26 @@
+[
+  {
+    "type": "runtime.loop_tick",
+    "data": {
+      "decision": "proceed",
+      "mode": "autonomous"
+    },
+    "timestamp": "2026-05-26T03:21:27.081Z"
+  },
+  {
+    "type": "runtime.mode_change",
+    "data": {
+      "from": "normal",
+      "to": "autonomous"
+    },
+    "timestamp": "2026-05-26T03:21:29.562Z"
+  },
+  {
+    "type": "runtime.loop_tick",
+    "data": {
+      "source": "event-bus-test",
+      "mode": "diagnostic"
+    },
+    "timestamp": "2026-05-26T03:21:37.567Z"
+  }
+]

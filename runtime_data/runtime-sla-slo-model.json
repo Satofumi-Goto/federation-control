@@ -1,0 +1,17 @@
+{
+  "sla": {
+    "runtimeAvailability": { "target": 99.5, "unit": "percent", "window": "monthly" },
+    "deploySuccessRate": { "target": 95, "unit": "percent", "window": "monthly" },
+    "incidentResponseTime": { "target": 30, "unit": "minutes", "window": "per-incident" },
+    "rollbackCompletionTime": { "target": 15, "unit": "minutes", "window": "per-incident" }
+  },
+  "slo": {
+    "repairRecoveryTime": { "target": 60, "unit": "minutes", "description": "Time from detection to repair completion" },
+    "driftDetectionLatency": { "target": 5, "unit": "minutes", "description": "Time from drift occurrence to detection" },
+    "verificationPassRate": { "target": 98, "unit": "percent", "description": "Percentage of verification runs that pass" },
+    "operatorResponseTime": { "target": 15, "unit": "minutes", "description": "Time from incident notification to operator acknowledgment" },
+    "deployRollbackTime": { "target": 10, "unit": "minutes", "description": "Time to rollback a failed deployment" },
+    "governancePressureThreshold": { "target": 50, "unit": "score", "description": "Maximum sustained governance pressure" }
+  },
+  "timestamp": "2026-05-26T00:00:00.000Z"
+}

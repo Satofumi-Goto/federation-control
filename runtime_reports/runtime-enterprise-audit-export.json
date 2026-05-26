@@ -1,0 +1,151 @@
+{
+  "exportVersion": "1.0",
+  "exportTimestamp": "2026-05-26T03:33:11.837Z",
+  "runtimeState": {
+    "mode": "autonomous",
+    "health": "warning",
+    "pressure": 3,
+    "loopCount": 1
+  },
+  "sections": {
+    "governanceDecisions": {
+      "count": 4,
+      "entries": [
+        {
+          "type": "policy_evaluation",
+          "mode": "normal",
+          "policies": {
+            "deploy": "allowed",
+            "repair": "allowed",
+            "rollback": "restricted",
+            "registryMutation": "allowed",
+            "topologyMutation": "allowed",
+            "propagation": "allowed",
+            "cardCreation": "allowed"
+          },
+          "timestamp": "2026-05-26T03:07:02.663Z"
+        },
+        {
+          "type": "governance_decision",
+          "decision": "repair_first",
+          "timestamp": "2026-05-26T03:07:02.669Z"
+        },
+        {
+          "type": "policy_evaluation",
+          "mode": "normal",
+          "policies": {
+            "deploy": "allowed",
+            "repair": "allowed",
+            "rollback": "restricted",
+            "registryMutation": "allowed",
+            "topologyMutation": "allowed",
+            "propagation": "allowed",
+            "cardCreation": "allowed"
+          },
+          "timestamp": "2026-05-26T03:07:28.241Z"
+        },
+        {
+          "type": "governance_decision",
+          "decision": "autonomous_proceed",
+          "timestamp": "2026-05-26T03:07:28.248Z"
+        }
+      ]
+    },
+    "repairDecisions": {
+      "count": 4,
+      "entries": [
+        {
+          "type": "repair",
+          "monitorState": "warning",
+          "decision": "no_action",
+          "applied": false,
+          "verificationPass": true,
+          "timestamp": "2026-05-26T03:04:11.021Z"
+        },
+        {
+          "type": "repair",
+          "monitorState": "warning",
+          "decision": "no_action",
+          "applied": false,
+          "verificationPass": true,
+          "timestamp": "2026-05-26T03:07:02.642Z"
+        },
+        {
+          "type": "repair",
+          "monitorState": "warning",
+          "decision": "no_action",
+          "applied": false,
+          "verificationPass": true,
+          "timestamp": "2026-05-26T03:07:28.219Z"
+        },
+        {
+          "type": "repair",
+          "monitorState": "warning",
+          "decision": "no_action",
+          "applied": false,
+          "verificationPass": true,
+          "timestamp": "2026-05-26T03:21:28.962Z"
+        }
+      ]
+    },
+    "deployDecisions": {
+      "count": 0,
+      "entries": []
+    },
+    "operatorActions": {
+      "count": 1,
+      "entries": [
+        {
+          "type": "execution",
+          "instructionId": "2026-05-26T03-15-02-950Z",
+          "mode": "safe-apply",
+          "buildOk": true,
+          "verifyOk": true,
+          "startTime": "2026-05-26T03:15:02.950Z",
+          "endTime": "2026-05-26T03:18:22.230Z"
+        }
+      ]
+    },
+    "modeChanges": {
+      "count": 1,
+      "entries": [
+        {
+          "type": "mode_change",
+          "from": "normal",
+          "to": "autonomous",
+          "timestamp": "2026-05-26T03:21:29.562Z"
+        }
+      ]
+    },
+    "changeControlBoard": {
+      "count": 1,
+      "entries": [
+        {
+          "changeId": "rc-7542d1c-1779766385137",
+          "changeType": "release-candidate",
+          "proposedBy": "runtime-orchestrator",
+          "reviewedBy": null,
+          "approvedBy": null,
+          "riskLevel": "low",
+          "rolloutPlan": "standard-deploy",
+          "rollbackPlan": "git revert to 7542d1c",
+          "decision": "auto-validated",
+          "timestamp": "2026-05-26T03:33:05.829Z"
+        }
+      ]
+    },
+    "incidents": {
+      "count": 0,
+      "entries": []
+    }
+  },
+  "totals": {
+    "governanceDecisions": 4,
+    "repairDecisions": 4,
+    "deployDecisions": 0,
+    "operatorActions": 1,
+    "modeChanges": 1,
+    "changeControlEntries": 1,
+    "incidents": 0
+  }
+}

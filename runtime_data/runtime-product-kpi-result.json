@@ -1,0 +1,59 @@
+{
+  "kpis": {
+    "availability": {
+      "value": 98,
+      "unit": "%",
+      "target": 99.5,
+      "status": "below"
+    },
+    "deploySuccessRate": {
+      "value": 100,
+      "unit": "%",
+      "target": 95,
+      "status": "met"
+    },
+    "driftRecoveryTime": {
+      "value": 12,
+      "unit": "min",
+      "target": 60,
+      "status": "met"
+    },
+    "repairLeadTime": {
+      "value": 10,
+      "unit": "min",
+      "target": 30,
+      "status": "met"
+    },
+    "operatorResponseTime": {
+      "value": 0,
+      "unit": "min",
+      "target": 15,
+      "status": "met"
+    },
+    "slaRecoveryTime": {
+      "value": 6,
+      "unit": "min",
+      "target": 15,
+      "status": "met"
+    },
+    "businessImpactReduction": {
+      "value": 97,
+      "unit": "%",
+      "target": 80,
+      "status": "met"
+    },
+    "governanceInterventionRate": {
+      "value": 0,
+      "unit": "%",
+      "target": 20,
+      "status": "met"
+    }
+  },
+  "summary": {
+    "total": 8,
+    "met": 7,
+    "below": 1,
+    "overallScore": 88
+  },
+  "timestamp": "2026-05-26T06:55:54.966Z"
+}

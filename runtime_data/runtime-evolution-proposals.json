@@ -1,0 +1,36 @@
+{
+  "proposals": [
+    {
+      "id": "evo-1",
+      "type": "queue-optimization",
+      "title": "Reduce execution block rate",
+      "description": "50% of execution attempts blocked. Propose relaxing throttling when consecutive failures are zero.",
+      "impact": {
+        "area": "execution-queue",
+        "risk": "low",
+        "stabilityImpact": "positive"
+      },
+      "action": {
+        "target": "loop-supervisor",
+        "operation": "parameter-adjust"
+      },
+      "risk": "low",
+      "requiresApproval": false
+    }
+  ],
+  "totalProposals": 1,
+  "requiresApproval": 0,
+  "autoApplicable": 1,
+  "riskSummary": {
+    "high": 0,
+    "medium": 0,
+    "low": 1,
+    "none": 0
+  },
+  "analysis": {
+    "bottlenecks": 0,
+    "instability": 0,
+    "overallHealth": true
+  },
+  "timestamp": "2026-05-26T06:55:53.310Z"
+}
