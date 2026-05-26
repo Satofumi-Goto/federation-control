@@ -26,6 +26,7 @@ import {
   timelineEvent,
   makeDashboard, makeTextPanel,
   stateTransitionPanelHtml,
+  collapsePredictionPanelHtml, governanceBlockPanelHtml,
   loadEvolutionProposals, loadRepairAudit,
   loadAdaptiveTopology, loadChangeControl, loadStructuralEvolution,
 } from '../lib/runtime-surface-shared.mjs';
@@ -236,7 +237,9 @@ export function buildRepairProposal() {
       makeTextPanel({ id: 20, gridPos: { h: 6, w: 8, x: 0, y: 9 }, content: repairDecisionPanel() }),
       makeTextPanel({ id: 21, gridPos: { h: 6, w: 8, x: 8, y: 9 }, content: businessImpactPanel() }),
       makeTextPanel({ id: 22, gridPos: { h: 6, w: 8, x: 16, y: 9 }, content: adaptationDensityPanel() }),
-      makeTextPanel({ id: 30, gridPos: { h: 5, w: 24, x: 0, y: 15 }, content: stateTransitionPanelHtml() }),
+      makeTextPanel({ id: 30, gridPos: { h: 5, w: 8, x: 0, y: 15 }, content: stateTransitionPanelHtml() }),
+      makeTextPanel({ id: 31, gridPos: { h: 5, w: 8, x: 8, y: 15 }, content: collapsePredictionPanelHtml() }),
+      makeTextPanel({ id: 32, gridPos: { h: 5, w: 8, x: 16, y: 15 }, content: governanceBlockPanelHtml() }),
     ],
   });
 }

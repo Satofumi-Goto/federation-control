@@ -22,6 +22,7 @@ import {
   timelineEvent, dependencyArc, pressureHeatmapSvg,
   makeDashboard, makeTextPanel,
   driftTimelinePanelHtml,
+  blastRadiusPanelHtml, governanceBlockPanelHtml,
   loadDigitalTwin, loadHealthGraph, loadRepairAudit,
   loadAdaptiveTopology, loadFederationMemory, loadOrchestrationState,
   loadStructuralEvolution,
@@ -273,7 +274,9 @@ export function buildCollapseAnalysis() {
       makeTextPanel({ id: 20, gridPos: { h: 6, w: 8, x: 0, y: 9 }, content: driftHistoryPanel() }),
       makeTextPanel({ id: 21, gridPos: { h: 6, w: 8, x: 8, y: 9 }, content: predictedCollapsePanel() }),
       makeTextPanel({ id: 22, gridPos: { h: 6, w: 8, x: 16, y: 9 }, content: topologyAdaptationPanel() }),
-      makeTextPanel({ id: 30, gridPos: { h: 5, w: 24, x: 0, y: 15 }, content: driftTimelinePanelHtml() }),
+      makeTextPanel({ id: 30, gridPos: { h: 5, w: 8, x: 0, y: 15 }, content: driftTimelinePanelHtml() }),
+      makeTextPanel({ id: 31, gridPos: { h: 5, w: 8, x: 8, y: 15 }, content: blastRadiusPanelHtml() }),
+      makeTextPanel({ id: 32, gridPos: { h: 5, w: 8, x: 16, y: 15 }, content: governanceBlockPanelHtml() }),
     ],
   });
 }

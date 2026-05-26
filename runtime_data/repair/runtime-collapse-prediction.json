@@ -1,0 +1,64 @@
+{
+  "timestamp": "2026-05-26T10:26:39.356Z",
+  "snapshotId": "2fac3b0e-4c0a-4056-97cf-90fc0887bd5f",
+  "overallScore": 6,
+  "overallLevel": "stable",
+  "criticalCount": 0,
+  "predictions": [
+    {
+      "label": "ドリフト拡大リスク",
+      "score": 0,
+      "level": "stable",
+      "evidence": {
+        "unresolvedDrifts": 0,
+        "recurringDrifts": 0,
+        "totalEvents": 0
+      }
+    },
+    {
+      "label": "同期劣化リスク",
+      "score": 0,
+      "level": "stable",
+      "evidence": {
+        "dataPoints": 1
+      }
+    },
+    {
+      "label": "依存関係断片化リスク",
+      "score": 0,
+      "level": "stable",
+      "evidence": {
+        "brokenDeps": 0,
+        "totalDeps": 12
+      }
+    },
+    {
+      "label": "修復遅延リスク",
+      "score": 0,
+      "level": "stable",
+      "evidence": {
+        "pendingRepairs": 0,
+        "failedRepairs": 0
+      }
+    },
+    {
+      "label": "実行停止リスク",
+      "score": 30,
+      "level": "stable",
+      "evidence": {
+        "deployBlocked": true,
+        "governanceLocked": false,
+        "violations": 0
+      }
+    },
+    {
+      "label": "ランタイム圧力伝播リスク",
+      "score": 4,
+      "level": "stable",
+      "evidence": {
+        "pressureScore": 3,
+        "nodeCount": 14
+      }
+    }
+  ]
+}

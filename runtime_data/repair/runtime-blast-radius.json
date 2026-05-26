@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-05-26T10:26:27.784Z",
+  "targetDomains": [],
+  "blastRadiusScore": 0,
+  "cascadingCollapseRisk": "low",
+  "directlyAffected": [],
+  "secondaryAffected": [],
+  "tertiaryAffected": [],
+  "totalAffectedDomains": 0,
+  "totalDomains": 14,
+  "affectedDashboards": [],
+  "affectedMcpTools": [],
+  "unstableDependencies": [],
+  "executionPaths": []
+}

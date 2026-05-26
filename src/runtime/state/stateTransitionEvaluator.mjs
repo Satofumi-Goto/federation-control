@@ -36,6 +36,16 @@ export const STATES = {
   EXECUTION_LOCKED: { id: 'EXECUTION_LOCKED', label: '実行ロック', severity: 60 },
   COLLAPSE_RISK: { id: 'COLLAPSE_RISK', label: '崩壊リスク', severity: 80 },
   RECOVERING: { id: 'RECOVERING', label: '復旧中', severity: 45 },
+  // Phase 28: Autonomous Runtime Repair states
+  ANALYZING: { id: 'ANALYZING', label: '解析中', severity: 25 },
+  PREDICTING: { id: 'PREDICTING', label: '予測中', severity: 28 },
+  VERIFYING: { id: 'VERIFYING', label: '検証中', severity: 30 },
+  GOVERNANCE_REVIEW: { id: 'GOVERNANCE_REVIEW', label: 'ガバナンス確認中', severity: 55 },
+  SAFE_EXECUTE_READY: { id: 'SAFE_EXECUTE_READY', label: '安全実行可能', severity: 38 },
+  EXECUTING_SAFE: { id: 'EXECUTING_SAFE', label: '安全実行中', severity: 42 },
+  RECOVERY_VALIDATION: { id: 'RECOVERY_VALIDATION', label: '復旧確認中', severity: 35 },
+  PARTIAL_RECOVERY: { id: 'PARTIAL_RECOVERY', label: '部分復旧', severity: 48 },
+  BLOCKED_BY_GOVERNANCE: { id: 'BLOCKED_BY_GOVERNANCE', label: 'ガバナンス停止', severity: 65 },
 };
 
 export function evaluateState(snapshot) {
@@ -47,6 +57,18 @@ export function evaluateState(snapshot) {
   const drift = snapshot.drift ?? {};
   const repair = snapshot.repair ?? {};
   const verify = snapshot.verification ?? {};
+  const repairPipeline = snapshot.repairPipeline ?? {};
+
+  // Phase 28 repair pipeline states take priority when active
+  if (repairPipeline.stage === 'blocked-by-governance') return STATES.BLOCKED_BY_GOVERNANCE;
+  if (repairPipeline.stage === 'executing-safe') return STATES.EXECUTING_SAFE;
+  if (repairPipeline.stage === 'recovery-validation') return STATES.RECOVERY_VALIDATION;
+  if (repairPipeline.stage === 'partial-recovery') return STATES.PARTIAL_RECOVERY;
+  if (repairPipeline.stage === 'governance-review') return STATES.GOVERNANCE_REVIEW;
+  if (repairPipeline.stage === 'safe-execute-ready') return STATES.SAFE_EXECUTE_READY;
+  if (repairPipeline.stage === 'verifying') return STATES.VERIFYING;
+  if (repairPipeline.stage === 'predicting') return STATES.PREDICTING;
+  if (repairPipeline.stage === 'analyzing') return STATES.ANALYZING;
 
   if (gov.lockDecision === 'blocked' || exec.deployState === 'blocked') {
     return STATES.EXECUTION_LOCKED;

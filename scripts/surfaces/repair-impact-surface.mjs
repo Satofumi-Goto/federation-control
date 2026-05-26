@@ -22,6 +22,7 @@ import {
   timelineEvent, dependencyArc,
   makeDashboard, makeTextPanel,
   repairHistoryPanelHtml, rollbackLineagePanelHtml,
+  recoveryEvaluationPanelHtml, repairExecutionStagePanelHtml,
   loadRepairAudit, loadDigitalTwin, loadSlaExecution,
   loadGovernanceTimeline, loadHealthGraph, loadChangeControl,
   loadAutonomousCoord,
@@ -277,8 +278,10 @@ export function buildRepairImpact() {
       makeTextPanel({ id: 20, gridPos: { h: 6, w: 8, x: 0, y: 9 }, content: governanceSafetyPanel() }),
       makeTextPanel({ id: 21, gridPos: { h: 6, w: 8, x: 8, y: 9 }, content: recoveryActionsPanel() }),
       makeTextPanel({ id: 22, gridPos: { h: 6, w: 8, x: 16, y: 9 }, content: healthPropagationPanel() }),
-      makeTextPanel({ id: 30, gridPos: { h: 5, w: 12, x: 0, y: 15 }, content: repairHistoryPanelHtml() }),
-      makeTextPanel({ id: 31, gridPos: { h: 5, w: 12, x: 12, y: 15 }, content: rollbackLineagePanelHtml() }),
+      makeTextPanel({ id: 30, gridPos: { h: 5, w: 8, x: 0, y: 15 }, content: repairHistoryPanelHtml() }),
+      makeTextPanel({ id: 31, gridPos: { h: 5, w: 8, x: 8, y: 15 }, content: rollbackLineagePanelHtml() }),
+      makeTextPanel({ id: 32, gridPos: { h: 5, w: 8, x: 16, y: 15 }, content: recoveryEvaluationPanelHtml() }),
+      makeTextPanel({ id: 40, gridPos: { h: 5, w: 24, x: 0, y: 20 }, content: repairExecutionStagePanelHtml() }),
     ],
   });
 }

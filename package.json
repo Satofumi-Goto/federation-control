@@ -97,7 +97,16 @@
     "runtime:remote-mcp-tunnel": "node scripts/runtime/runtimeRemoteMcpTunnelAdapter.mjs",
     "runtime:mcp-http": "node scripts/runtime/runtimeMcpHttpBridge.mjs",
     "runtime:remote-mcp-readiness": "node scripts/runtime/runtimeRemoteMcpReadiness.mjs",
-    "runtime:remote-mcp-endpoint-validate": "node scripts/runtime/runtimeRemoteMcpEndpointValidator.mjs"
+    "runtime:remote-mcp-endpoint-validate": "node scripts/runtime/runtimeRemoteMcpEndpointValidator.mjs",
+    "runtime:repair-plan": "node src/runtime/repair/runtimeRepairPlanner.mjs",
+    "runtime:repair-analyze": "node src/runtime/repair/dependencyBlastRadiusAnalyzer.mjs",
+    "runtime:collapse-predict": "node src/runtime/repair/collapsePredictionEngine.mjs",
+    "runtime:repair-orchestrate": "node src/runtime/repair/safeRepairOrchestrator.mjs",
+    "runtime:safety-gate": "node src/runtime/repair/executionSafetyGate.mjs",
+    "runtime:repair-queue": "node src/runtime/repair/repairQueueRuntime.mjs",
+    "runtime:recovery-evaluate": "node src/runtime/repair/autonomousRecoveryEvaluator.mjs",
+    "runtime:repair-graph": "node src/runtime/repair/runtimeRepairGraph.mjs",
+    "runtime:repair-verify": "node src/runtime/repair/repairEngineVerify.mjs"
   },
   "dependencies": {
     "@cursor/sdk": "^1.0.13",

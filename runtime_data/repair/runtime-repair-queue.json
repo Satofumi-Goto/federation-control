@@ -1,0 +1,27 @@
+{
+  "items": [
+    {
+      "queueId": "148da605-4fef-4a35-862b-05c753d36333",
+      "repairId": "cc5fb311-61ad-4125-a8ac-d4cd24cbee17",
+      "issueType": "deploy-blocked",
+      "issueSeverity": "medium",
+      "targetDomains": [],
+      "estimatedRisk": 40,
+      "state": "ready-for-safe-execute",
+      "stateLabel": "安全実行可能",
+      "enqueuedAt": "2026-05-26T10:27:16.132Z",
+      "updatedAt": "2026-05-26T10:27:16.134Z",
+      "history": [
+        {
+          "state": "pending",
+          "at": "2026-05-26T10:27:16.132Z"
+        },
+        {
+          "state": "ready-for-safe-execute",
+          "at": "2026-05-26T10:27:16.134Z"
+        }
+      ]
+    }
+  ],
+  "updated": "2026-05-26T10:27:16.134Z"
+}

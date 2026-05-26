@@ -1,0 +1,51 @@
+{
+  "timestamp": "2026-05-26T10:26:49.947Z",
+  "proposalCount": 1,
+  "readyCount": 1,
+  "reviewCount": 0,
+  "blockedCount": 0,
+  "collapseLevel": "stable",
+  "orchestrated": [
+    {
+      "repairId": "cc5fb311-61ad-4125-a8ac-d4cd24cbee17",
+      "issueType": "deploy-blocked",
+      "issueSeverity": "medium",
+      "estimatedRisk": 40,
+      "decision": "SAFE_EXECUTE_READY",
+      "gates": [
+        {
+          "gate": "verify",
+          "status": "PASS",
+          "detail": "検証要件: governance"
+        },
+        {
+          "gate": "governance",
+          "status": "PASS",
+          "detail": "リスク 40: 許容範囲"
+        },
+        {
+          "gate": "dependency",
+          "status": "PASS",
+          "detail": "影響範囲 0%"
+        },
+        {
+          "gate": "mcp-safety",
+          "status": "PASS",
+          "detail": "MCP安全確認済み"
+        },
+        {
+          "gate": "execution-lock",
+          "status": "PASS",
+          "detail": "実行ロック解除済み"
+        },
+        {
+          "gate": "rollback-readiness",
+          "status": "PASS",
+          "detail": "ロールバック準備完了"
+        }
+      ],
+      "blockReasons": [],
+      "reviewReasons": []
+    }
+  ]
+}

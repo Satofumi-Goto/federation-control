@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-05-26T10:27:29.392Z",
+  "nodeCount": 6,
+  "edgeCount": 2,
+  "nodes": [
+    {
+      "id": "repair:cc5fb311-61ad-4125-a8ac-d4cd24cbee17",
+      "type": "repair-proposal",
+      "label": "修復: deploy-blocked",
+      "severity": "medium",
+      "risk": 40,
+      "status": "proposed"
+    },
+    {
+      "id": "gate:cc5fb311-61ad-4125-a8ac-d4cd24cbee17",
+      "type": "governance-gate",
+      "label": "ゲート: SAFE_EXECUTE_READY",
+      "decision": "SAFE_EXECUTE_READY"
+    },
+    {
+      "id": "queue:cc5fb311-61ad-4125-a8ac-d4cd24cbee17",
+      "type": "queue-entry",
+      "label": "安全実行可能",
+      "state": "ready-for-safe-execute"
+    },
+    {
+      "id": "collapse:overall",
+      "type": "collapse-prediction",
+      "label": "崩壊予測: stable",
+      "score": 6,
+      "level": "stable"
+    },
+    {
+      "id": "recovery:evaluation",
+      "type": "recovery",
+      "label": "部分復旧",
+      "verdict": "partially-recovered",
+      "passCount": 5,
+      "totalChecks": 6
+    },
+    {
+      "id": "rollback:2fac3b0e-4c0a-4056-97cf-90fc0887bd5f",
+      "type": "rollback-safepoint",
+      "label": "ロールバック安全点",
+      "snapshotId": "2fac3b0e-4c0a-4056-97cf-90fc0887bd5f"
+    }
+  ],
+  "edges": [
+    {
+      "from": "repair:cc5fb311-61ad-4125-a8ac-d4cd24cbee17",
+      "to": "gate:cc5fb311-61ad-4125-a8ac-d4cd24cbee17",
+      "type": "orchestration"
+    },
+    {
+      "from": "repair:cc5fb311-61ad-4125-a8ac-d4cd24cbee17",
+      "to": "queue:cc5fb311-61ad-4125-a8ac-d4cd24cbee17",
+      "type": "queued"
+    }
+  ],
+  "summary": {
+    "repairProposals": 1,
+    "blastRadiusScore": 0,
+    "collapseLevel": "stable",
+    "queueSize": 1,
+    "recoveryVerdict": "partially-recovered"
+  }
+}

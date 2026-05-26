@@ -93,6 +93,16 @@ export function loadTriggerSupervisor() { return loadJson('runtime-trigger-super
 export function loadChangeControl() { return loadJson('runtime-change-control-board.json'); }
 export function loadStructuralEvolution() { return loadJson('runtime-structural-evolution-model.json'); }
 
+// Repair Engine data (Phase 28)
+export function loadRepairPlan() { return loadJson('repair/runtime-repair-plan.json'); }
+export function loadBlastRadius() { return loadJson('repair/runtime-blast-radius.json'); }
+export function loadCollapsePrediction() { return loadJson('repair/runtime-collapse-prediction.json'); }
+export function loadOrchestrationResult() { return loadJson('repair/runtime-orchestration-result.json'); }
+export function loadSafetyGateResult() { return loadJson('repair/runtime-safety-gate-result.json'); }
+export function loadRepairQueue() { return loadJson('repair/runtime-repair-queue.json'); }
+export function loadRecoveryEvaluation() { return loadJson('repair/runtime-recovery-evaluation.json'); }
+export function loadRepairGraph() { return loadJson('repair/runtime-repair-graph.json'); }
+
 // ── Escape helper ──
 
 export function esc(s) {
@@ -247,12 +257,21 @@ export function pressureHeatmapSvg(nodes, width = 300, height = 80) {
 const STATE_LABELS = {
   HEALTHY: '正常', DEGRADED: '劣化', DRIFTING: '乖離進行', CONSTRAINED: '制約中',
   REPAIR_READY: '改修準備可', EXECUTION_LOCKED: '実行ロック', COLLAPSE_RISK: '崩壊リスク', RECOVERING: '復旧中',
+  // Phase 28
+  ANALYZING: '解析中', PREDICTING: '予測中', VERIFYING: '検証中', GOVERNANCE_REVIEW: 'ガバナンス確認中',
+  SAFE_EXECUTE_READY: '安全実行可能', EXECUTING_SAFE: '安全実行中', RECOVERY_VALIDATION: '復旧確認中',
+  PARTIAL_RECOVERY: '部分復旧', BLOCKED_BY_GOVERNANCE: 'ガバナンス停止',
 };
 
 const STATE_SEVERITY_COLORS = {
   HEALTHY: SURFACE_COLORS.healthy, DEGRADED: SURFACE_COLORS.degraded, DRIFTING: SURFACE_COLORS.warning,
   CONSTRAINED: SURFACE_COLORS.blocked, REPAIR_READY: SURFACE_COLORS.repairing,
   EXECUTION_LOCKED: SURFACE_COLORS.critical, COLLAPSE_RISK: SURFACE_COLORS.collapsed, RECOVERING: SURFACE_COLORS.accentTeal,
+  // Phase 28
+  ANALYZING: SURFACE_COLORS.accentCyan, PREDICTING: SURFACE_COLORS.accentIce, VERIFYING: SURFACE_COLORS.accentSteel,
+  GOVERNANCE_REVIEW: SURFACE_COLORS.warning, SAFE_EXECUTE_READY: SURFACE_COLORS.healthy,
+  EXECUTING_SAFE: SURFACE_COLORS.accentTeal, RECOVERY_VALIDATION: SURFACE_COLORS.repairing,
+  PARTIAL_RECOVERY: SURFACE_COLORS.degraded, BLOCKED_BY_GOVERNANCE: SURFACE_COLORS.critical,
 };
 
 export function stateTransitionPanelHtml() {
@@ -340,6 +359,203 @@ export function repairHistoryPanelHtml() {
     <div style="margin-top:6px;">${rows || '<div style="font-size:8px;color:' + SURFACE_COLORS.textDim + ';">記録なし</div>'}</div>`;
 
   return surfaceCard(SURFACE_COLORS.repairing, content);
+}
+
+// ── Phase 28 Repair Engine panels ──
+
+export function repairQueuePanelHtml() {
+  const queue = loadRepairQueue();
+  const items = queue?.items ?? [];
+  const pending = items.filter(i => i.state === 'pending').length;
+  const blocked = items.filter(i => i.state === 'blocked').length;
+  const ready = items.filter(i => i.state === 'ready-for-safe-execute').length;
+  const total = items.length;
+
+  const pressureScore = Math.min(100, pending * 10 + blocked * 20 + ready * 5);
+  const pressureColor = pressureScore > 70 ? SURFACE_COLORS.critical
+    : pressureScore > 40 ? SURFACE_COLORS.warning : SURFACE_COLORS.healthy;
+
+  const rows = items.slice(0, 6).map(i => {
+    const stColor = i.state === 'completed' ? SURFACE_COLORS.healthy
+      : i.state === 'blocked' ? SURFACE_COLORS.critical
+      : i.state === 'ready-for-safe-execute' ? SURFACE_COLORS.accentTeal
+      : SURFACE_COLORS.warning;
+    return `<div style="display:flex;align-items:center;gap:4px;padding:2px 0;border-bottom:1px solid ${SURFACE_COLORS.cardBorder};font-size:9px;">
+      <span style="font-weight:700;color:${stColor};">${esc(i.stateLabel ?? i.state)}</span>
+      <span style="flex:1;color:${SURFACE_COLORS.textMuted};overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(i.issueType ?? '')}</span>
+      <span style="font-size:7px;color:${SURFACE_COLORS.textDim};">R:${i.estimatedRisk ?? 0}</span>
+    </div>`;
+  }).join('');
+
+  const content = `${surfaceHeader('Repair · Queue', '修復キュー', pressureColor)}
+    <div style="margin-top:4px;display:flex;gap:8px;">
+      <div>${bigMetric(total, 'キュー', pressureColor)}</div>
+      <div>${bigMetric(pressureScore, '圧力', pressureColor)}</div>
+    </div>
+    <div style="margin-top:4px;display:flex;gap:4px;flex-wrap:wrap;">
+      ${stateChip('待機:' + pending, pending > 0 ? 'warning' : 'healthy')}
+      ${stateChip('停止:' + blocked, blocked > 0 ? 'critical' : 'healthy')}
+      ${stateChip('実行可:' + ready, ready > 0 ? 'active' : 'healthy')}
+    </div>
+    <div style="margin-top:6px;">${rows || '<div style="font-size:8px;color:' + SURFACE_COLORS.textDim + ';">キュー空</div>'}</div>`;
+
+  return surfaceCard(pressureColor, content);
+}
+
+export function collapsePredictionPanelHtml() {
+  const pred = loadCollapsePrediction();
+  const overall = pred?.overallScore ?? 0;
+  const level = pred?.overallLevel ?? 'stable';
+  const predictions = pred?.predictions ?? [];
+
+  const levelColor = level === 'collapse-imminent' ? SURFACE_COLORS.collapsed
+    : level === 'collapse-risk' ? SURFACE_COLORS.critical
+    : level === 'elevated' ? SURFACE_COLORS.warning : SURFACE_COLORS.healthy;
+
+  const LEVEL_LABELS = {
+    'collapse-imminent': '崩壊切迫', 'collapse-risk': '崩壊リスク',
+    'elevated': '上昇', 'stable': '安定',
+  };
+
+  const rows = predictions.map(p => {
+    const c = p.level === 'critical' ? SURFACE_COLORS.critical
+      : p.level === 'warning' ? SURFACE_COLORS.warning : SURFACE_COLORS.healthy;
+    return miniGauge(p.label, p.score, c);
+  }).join('');
+
+  const content = `${surfaceHeader('Collapse · Prediction', '崩壊予測', levelColor)}
+    <div style="margin-top:4px;display:flex;align-items:baseline;gap:6px;">
+      ${bigMetric(overall, 'リスク', levelColor)}
+      ${stateChip(LEVEL_LABELS[level] ?? level, level === 'stable' ? 'healthy' : level.includes('collapse') ? 'critical' : 'warning')}
+    </div>
+    <div style="margin-top:6px;">${rows}</div>`;
+
+  return surfaceCard(levelColor, content);
+}
+
+export function blastRadiusPanelHtml() {
+  const br = loadBlastRadius();
+  const score = br?.blastRadiusScore ?? 0;
+  const cascade = br?.cascadingCollapseRisk ?? 'low';
+
+  const scoreColor = score > 60 ? SURFACE_COLORS.critical
+    : score > 30 ? SURFACE_COLORS.warning : SURFACE_COLORS.healthy;
+
+  const content = `${surfaceHeader('Blast · Radius', '影響範囲', scoreColor)}
+    <div style="margin-top:4px;display:flex;gap:8px;">
+      <div>${bigMetric(score + '%', '影響度', scoreColor)}</div>
+      <div>${stateChip('連鎖:' + cascade, cascade === 'high' ? 'critical' : cascade === 'medium' ? 'warning' : 'healthy')}</div>
+    </div>
+    <div style="margin-top:6px;">
+      ${dataRow('直接影響', (br?.directlyAffected ?? []).length, SURFACE_COLORS.critical)}
+      ${dataRow('二次影響', (br?.secondaryAffected ?? []).length, SURFACE_COLORS.warning)}
+      ${dataRow('影響ダッシュボード', (br?.affectedDashboards ?? []).length, SURFACE_COLORS.nominal)}
+    </div>
+    <div style="margin-top:4px;">
+      ${miniGauge('影響範囲', score, scoreColor)}
+    </div>`;
+
+  return surfaceCard(scoreColor, content);
+}
+
+export function governanceBlockPanelHtml() {
+  const orch = loadOrchestrationResult();
+  const blockedItems = (orch?.orchestrated ?? []).filter(o => o.decision === 'BLOCKED');
+  const reviewItems = (orch?.orchestrated ?? []).filter(o => o.decision === 'GOVERNANCE_REVIEW');
+
+  const blockedCount = blockedItems.length;
+  const reviewCount = reviewItems.length;
+  const readyCount = orch?.readyCount ?? 0;
+  const color = blockedCount > 0 ? SURFACE_COLORS.critical
+    : reviewCount > 0 ? SURFACE_COLORS.warning : SURFACE_COLORS.healthy;
+
+  const reasonsHtml = blockedItems.slice(0, 4).map(b =>
+    `<div style="padding:2px 0;border-bottom:1px solid ${SURFACE_COLORS.cardBorder};font-size:8px;color:${SURFACE_COLORS.critical};">
+      ${esc(b.issueType ?? 'unknown')}: ${esc((b.blockReasons ?? []).join(', '))}
+    </div>`
+  ).join('');
+
+  const content = `${surfaceHeader('Governance · Block', 'ガバナンスブロック', color)}
+    <div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap;">
+      ${stateChip('停止:' + blockedCount, blockedCount > 0 ? 'critical' : 'healthy')}
+      ${stateChip('確認:' + reviewCount, reviewCount > 0 ? 'warning' : 'healthy')}
+      ${stateChip('実行可:' + readyCount, readyCount > 0 ? 'active' : 'healthy')}
+    </div>
+    <div style="margin-top:6px;font-size:8px;font-weight:600;color:${SURFACE_COLORS.textDim};text-transform:uppercase;">ブロック理由</div>
+    <div style="margin-top:2px;">${reasonsHtml || '<div style="font-size:8px;color:' + SURFACE_COLORS.healthy + ';">ブロックなし</div>'}</div>`;
+
+  return surfaceCard(color, content);
+}
+
+export function recoveryEvaluationPanelHtml() {
+  const recovery = loadRecoveryEvaluation();
+  const verdict = recovery?.verdict ?? 'unknown';
+  const label = recovery?.verdictLabel ?? verdict;
+  const passCount = recovery?.passCount ?? 0;
+  const totalChecks = recovery?.totalChecks ?? 0;
+
+  const verdictColor = verdict === 'recovered' ? SURFACE_COLORS.healthy
+    : verdict === 'partially-recovered' ? SURFACE_COLORS.warning
+    : verdict === 'rollback-recommended' ? SURFACE_COLORS.critical : SURFACE_COLORS.degraded;
+
+  const checksHtml = (recovery?.checks ?? []).map(c => {
+    const icon = c.pass ? '✓' : '✗';
+    const color = c.pass ? SURFACE_COLORS.healthy : SURFACE_COLORS.critical;
+    return `<div style="display:flex;align-items:center;gap:4px;padding:2px 0;border-bottom:1px solid ${SURFACE_COLORS.cardBorder};">
+      <span style="font-size:10px;font-weight:700;color:${color};">${icon}</span>
+      <span style="font-size:9px;color:${SURFACE_COLORS.text};">${esc(c.name)}</span>
+    </div>`;
+  }).join('');
+
+  const content = `${surfaceHeader('Recovery · Evaluation', '復旧評価', verdictColor)}
+    <div style="margin-top:4px;display:flex;align-items:baseline;gap:6px;">
+      ${bigMetric(label, '判定', verdictColor)}
+    </div>
+    <div style="margin-top:2px;">${miniGauge('検証合格率', totalChecks > 0 ? Math.round((passCount / totalChecks) * 100) : 0, verdictColor)}</div>
+    <div style="margin-top:6px;">${checksHtml}</div>`;
+
+  return surfaceCard(verdictColor, content);
+}
+
+export function repairExecutionStagePanelHtml() {
+  const queue = loadRepairQueue();
+  const items = queue?.items ?? [];
+
+  const STAGE_LABELS = {
+    'pending': '待機中', 'analyzing': '解析中', 'verify-running': '検証中',
+    'governance-review': 'ガバナンス確認中', 'ready-for-safe-execute': '安全実行可能',
+    'blocked': '停止中', 'recovering': '復旧中', 'completed': '完了',
+  };
+
+  const stageCounts = {};
+  for (const item of items) {
+    const s = item.state ?? 'pending';
+    stageCounts[s] = (stageCounts[s] || 0) + 1;
+  }
+
+  const stages = ['pending', 'analyzing', 'verify-running', 'governance-review',
+    'ready-for-safe-execute', 'blocked', 'recovering', 'completed'];
+
+  const pipelineHtml = stages.map(s => {
+    const count = stageCounts[s] ?? 0;
+    const color = count > 0
+      ? (s === 'blocked' ? SURFACE_COLORS.critical
+        : s === 'completed' ? SURFACE_COLORS.healthy
+        : s === 'ready-for-safe-execute' ? SURFACE_COLORS.accentTeal
+        : SURFACE_COLORS.warning)
+      : SURFACE_COLORS.cardBorder;
+    return `<div style="display:flex;align-items:center;gap:4px;padding:2px 0;border-bottom:1px solid ${SURFACE_COLORS.cardBorder};">
+      <div style="width:5px;height:5px;border-radius:50%;background:${color};"></div>
+      <span style="font-size:8px;color:${count > 0 ? SURFACE_COLORS.text : SURFACE_COLORS.textDim};flex:1;">${esc(STAGE_LABELS[s] ?? s)}</span>
+      <span style="font-size:9px;font-weight:700;color:${color};">${count}</span>
+    </div>`;
+  }).join('');
+
+  const content = `${surfaceHeader('Repair · Stage', '修復実行段階', SURFACE_COLORS.accentCyan)}
+    <div style="margin-top:4px;">${bigMetric(items.length, '総キュー', SURFACE_COLORS.accentCyan)}</div>
+    <div style="margin-top:6px;">${pipelineHtml}</div>`;
+
+  return surfaceCard(SURFACE_COLORS.accentCyan, content);
 }
 
 // ── Grafana dashboard skeleton ──

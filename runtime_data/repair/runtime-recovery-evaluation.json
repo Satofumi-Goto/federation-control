@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-05-26T10:27:22.646Z",
+  "verdict": "partially-recovered",
+  "verdictLabel": "部分復旧",
+  "passCount": 5,
+  "totalChecks": 6,
+  "checks": [
+    {
+      "name": "トポロジー検証",
+      "pass": true
+    },
+    {
+      "name": "セマンティック検証",
+      "pass": true
+    },
+    {
+      "name": "ランタイム状態",
+      "pass": false
+    },
+    {
+      "name": "依存関係安定性",
+      "pass": true
+    },
+    {
+      "name": "ガバナンス整合性",
+      "pass": true
+    },
+    {
+      "name": "ドリフト低減",
+      "pass": true
+    }
+  ],
+  "detail": {
+    "topology": true,
+    "semantic": true,
+    "runtimeState": "EXECUTION_LOCKED",
+    "brokenDependencies": 0,
+    "totalDependencies": 12,
+    "governanceViolations": 0,
+    "governanceLocked": false,
+    "activeDrifts": 0
+  }
+}

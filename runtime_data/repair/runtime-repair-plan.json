@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-05-26T10:26:14.986Z",
+  "snapshotId": "2fac3b0e-4c0a-4056-97cf-90fc0887bd5f",
+  "issueCount": 1,
+  "proposalCount": 1,
+  "issues": [
+    {
+      "type": "deploy-blocked",
+      "severity": "medium",
+      "detail": "デプロイブロック中"
+    }
+  ],
+  "proposals": [
+    {
+      "id": "cc5fb311-61ad-4125-a8ac-d4cd24cbee17",
+      "repairIndex": 0,
+      "timestamp": "2026-05-26T10:26:14.985Z",
+      "snapshotId": "2fac3b0e-4c0a-4056-97cf-90fc0887bd5f",
+      "issue": {
+        "type": "deploy-blocked",
+        "severity": "medium",
+        "detail": "デプロイブロック中"
+      },
+      "targetDomains": [],
+      "requiredActions": [
+        "evaluate-deploy-block",
+        "request-deploy-unlock"
+      ],
+      "verifyRequirements": [
+        "governance"
+      ],
+      "dependencyRequirements": [],
+      "rollbackReadiness": true,
+      "estimatedRisk": 40,
+      "priority": 2,
+      "status": "proposed"
+    }
+  ]
+}

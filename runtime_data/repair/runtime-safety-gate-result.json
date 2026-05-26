@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-05-26T10:27:07.020Z",
+  "total": 1,
+  "safeCount": 1,
+  "reviewCount": 0,
+  "blockedCount": 0,
+  "results": [
+    {
+      "repairId": "cc5fb311-61ad-4125-a8ac-d4cd24cbee17",
+      "decision": "SAFE",
+      "reasons": [],
+      "forbiddenViolations": 0,
+      "routingViolations": 0,
+      "dependencyStatus": "SAFE",
+      "timestamp": "2026-05-26T10:27:06.931Z"
+    }
+  ]
+}
