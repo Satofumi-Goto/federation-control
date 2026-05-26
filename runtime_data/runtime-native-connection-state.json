@@ -1,0 +1,36 @@
+{
+  "nativeChatGPTConnection": "pending-ui-rollout",
+  "remoteMcpEndpoint": "ready",
+  "auth": "bearer-token",
+  "safeToolsOnly": true,
+  "exposedTools": [
+    "runtime_status",
+    "runtime_dry_run",
+    "runtime_verify",
+    "runtime_execute_safe"
+  ],
+  "blockedTools": [
+    "runtime_deploy",
+    "runtime_execute_reviewed",
+    "runtime_execute_emergency"
+  ],
+  "writeCapableTool": "runtime_execute_safe",
+  "dangerousToolsBlocked": true,
+  "businessEnterpriseRequiredForFullWrite": true,
+  "fallbackMode": "cursor-agent-instruction-loop",
+  "tunnelType": "cloudflare-trycloudflare",
+  "tunnelUrlIsTemporary": true,
+  "governanceMode": "enforced",
+  "auditEnabled": true,
+  "secretsExposed": false,
+  "phase": 29,
+  "phasesCompleted": [
+    "Phase 1-25: Runtime OS Infrastructure",
+    "Phase 26: Operational Runtime Surface",
+    "Phase 27: Federation State Engine",
+    "Phase 28: Autonomous Runtime Repair",
+    "Phase 29: ChatGPT Native Runtime Connection"
+  ],
+  "completionStatus": "connection-ready",
+  "lastUpdated": "2026-05-26T19:30:00.000Z"
+}

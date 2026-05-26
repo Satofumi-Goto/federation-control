@@ -1,154 +1,213 @@
 # Runtime External Invocation Contract
 
-Defines the contract for external callers (ChatGPT, MCP servers, CI pipelines) to invoke
-the Federation Runtime execution pipeline through the governed tool surface.
+外部呼び出し元（ChatGPT, MCP, CI）が Federation Runtime 実行パイプラインを
+governed tool surface 経由で呼び出す際の契約。
 
 ---
 
-## Invocation Schema
+## MCP Tool Call フォーマット
+
+### runtime_status
 
 ```json
 {
-  "toolId": "runtime-execute | runtime-dry-run | runtime-verify | runtime-deploy | runtime-governance | runtime-status | runtime-result",
-  "permission": "dry-run | verify-only | execute-safe | execute-reviewed | execute-emergency",
-  "payload": {
-    "instruction": "string — the normalized Runtime instruction",
-    "instructionId": "string — unique instruction identifier",
-    "source": "chatgpt-runtime-bridge | mcp | ci | manual",
-    "timestamp": "ISO 8601"
-  },
-  "options": {
-    "dryRun": false,
-    "skipPostExecution": false
+  "name": "runtime_status",
+  "arguments": {}
+}
+```
+
+| 項目 | 値 |
+|------|-----|
+| 権限 | dry-run |
+| 副作用 | なし |
+| 用途 | オーケストレーション状態・最終セッション・ツール数を読み取る |
+
+### runtime_dry_run
+
+```json
+{
+  "name": "runtime_dry_run",
+  "arguments": {
+    "prompt": "Verify Runtime Registry consistency"
   }
 }
 ```
 
----
+| 項目 | 値 |
+|------|-----|
+| 権限 | dry-run |
+| 副作用 | なし |
+| 用途 | Agent.prompt() なしで実行パイプラインをシミュレーション |
 
-## Allowed Commands
+### runtime_verify
 
-| Tool ID | Permission Required | Description |
-|---------|-------------------|-------------|
-| `runtime-execute` | `execute-safe` | Execute governed prompt via `Agent.prompt()` |
-| `runtime-dry-run` | `dry-run` | Simulate execution without `Agent.prompt()` |
-| `runtime-verify` | `verify-only` | Run verification pipeline (topology, semantic, build) |
-| `runtime-deploy` | `execute-reviewed` | Deploy Grafana dashboards (requires approval) |
-| `runtime-governance` | `verify-only` | Evaluate governance policies |
-| `runtime-status` | `dry-run` | Read orchestration state |
-| `runtime-result` | `dry-run` | Read latest execution result |
+```json
+{
+  "name": "runtime_verify",
+  "arguments": {
+    "scope": "topology-semantic-tool"
+  }
+}
+```
 
----
+| 項目 | 値 |
+|------|-----|
+| 権限 | verify-only |
+| 副作用 | なし |
+| 用途 | トポロジー・セマンティック・ツール検証を実行 |
+| scope 選択肢 | `topology`, `semantic`, `tool`, `topology-semantic-tool` |
 
-## Forbidden Commands
+### runtime_execute_safe
 
-The following operations are **unconditionally blocked** by the Runtime safety layer:
+```json
+{
+  "name": "runtime_execute_safe",
+  "arguments": {
+    "prompt": "Verify all dashboard routes are correct",
+    "governance": true,
+    "safeExecuteOnly": true
+  }
+}
+```
 
-- `rm -rf` / destructive filesystem operations
-- `git push --force` / force push to protected branches
-- Credential exposure (`CURSOR_API_KEY`, `.env.runtime` contents)
-- Runtime Registry deletion or replacement
-- Canonical document replacement without governance approval
-- Governance bypass or safety lock override
-- Direct database operations
-- Arbitrary shell execution outside governed entrypoints
-
----
-
-## Governance Requirements
-
-### Execute-level tools (`runtime-execute`, `runtime-deploy`)
-
-1. **Pre-flight gates** must all pass:
-   - Workspace binding to `federation-control`
-   - Safety lock evaluation
-   - `@cursor/sdk` installed and API key configured
-   - Governance policy evaluation
-   - Payload validation
-
-2. **Governance pressure** must be below critical threshold (< 80/100).
-
-3. **Instruction safety** validation — no forbidden patterns detected.
-
-### Verify-level tools (`runtime-verify`, `runtime-governance`)
-
-- No governance gate required
-- Read-only operations
-
-### Dry-run / status tools
-
-- No governance gate required
-- No side effects
+| 項目 | 値 |
+|------|-----|
+| 権限 | execute-safe |
+| 副作用 | あり（@cursor/sdk Agent.prompt() 実行） |
+| 用途 | ガバナンス審査済みプロンプトを安全実行 |
+| governance | 必須: true |
+| safeExecuteOnly | 必須: true |
 
 ---
 
-## Safety Requirements
+## 許可コマンド一覧
 
-| Requirement | Enforced By |
-|-------------|-------------|
-| Workspace binding | `runtimeCursorWorkspaceBinding.mjs` |
-| Payload validation | `runtimeInvocationSafetyLayer.mjs` |
-| Instruction safety | `runtimeInvocationSafetyLayer.mjs` |
-| Safety lock | `runtimeInvocationSafetyLock.mjs` |
-| Loop prevention | `runtimeTriggerLoopSupervisor.mjs` |
-| Governance policy | `runtimePolicyEngine.mjs` |
-| Credential isolation | `runtimeCredentialResolver.mjs` |
+| Tool | 権限 | 副作用 | 説明 |
+|------|------|--------|------|
+| `runtime_status` | dry-run | なし | Runtime OS 状態読み取り |
+| `runtime_dry_run` | dry-run | なし | 実行シミュレーション |
+| `runtime_verify` | verify-only | なし | 検証パイプライン実行 |
+| `runtime_execute_safe` | execute-safe | あり | governed safe execution |
 
----
+## 禁止コマンド
 
-## Verification Requirements
+以下は **無条件ブロック**:
 
-After any `runtime-execute` invocation:
-
-1. Build verification: `node scripts/build-runtime-workspace-v2.mjs`
-2. Auto-verification: `node scripts/runtime/runtimeAutoVerificationPipeline.mjs`
-3. Topology verification: `node scripts/verify-runtime-topology-links.mjs`
-4. Semantic verification: `node scripts/verify-federation-semantic.mjs`
+| Tool | 理由 |
+|------|------|
+| `runtime_deploy` | 手動承認必要 |
+| `runtime_execute_reviewed` | 手動承認必要 |
+| `runtime_execute_emergency` | 危険操作 — 公開禁止 |
 
 ---
 
-## Approval Requirements
+## 禁止パターン（命令内容フィルタ）
 
-| Action | Approval Required |
-|--------|-------------------|
-| Dry-run | No |
-| Verify | No |
-| Execute (safe) | No — governed by safety lock |
-| Execute (reviewed) | Yes — manual approval |
-| Deploy | Yes — manual approval |
-| Emergency execute | Bypasses normal approval, logged for audit |
+以下のパターンを含む命令は `FORBIDDEN_PATTERN` として拒否:
+
+- `rm -rf` / 破壊的ファイル操作
+- `git push --force` / force push
+- `CURSOR_API_KEY` / credential 露出
+- `REMOTE_MCP_AUTH_TOKEN` / token 露出
+- `.env.runtime` / 環境ファイル操作
+- `reset --hard` / 破壊的git操作
+- `--no-verify` / 検証スキップ
+- `registry replace` / Registry 破壊
+- `governance bypass` / ガバナンスバイパス
+- `auto-delete` / 自動削除
+- `execute-emergency` / 緊急実行
 
 ---
 
-## Response Schema
+## ガバナンス要件
+
+### execute-safe レベル
+
+1. **事前ゲート** 全通過必須:
+   - workspace binding: `federation-control`
+   - safety lock evaluation
+   - `@cursor/sdk` installed + API key configured
+   - governance policy evaluation
+   - payload validation
+   - forbidden pattern filter
+
+2. **ガバナンス圧力** < 80/100
+
+3. **命令安全性検証** — 禁止パターン非検出
+
+### verify / dry-run / status レベル
+
+- ガバナンスゲート不要
+- 読み取り専用
+
+---
+
+## レスポンス形式
+
+### 成功
 
 ```json
 {
   "ok": true,
-  "toolId": "runtime-execute",
-  "permission": "execute-safe",
+  "toolId": "runtime_status",
   "result": {
-    "status": "completed | blocked | failed | dry-run",
-    "agentResult": { "status": "finished", "id": "run-..." },
-    "postExecution": { "buildOk": true, "verifyOk": true },
-    "governanceResult": { "passed": true },
-    "safetyResult": { "decision": "proceed" }
+    "status": "completed",
+    "data": { ... }
   },
-  "timestamp": "ISO 8601"
+  "timestamp": "2026-05-26T19:30:00.000Z"
+}
+```
+
+### エラー
+
+```json
+{
+  "ok": false,
+  "error": "GOVERNANCE_BLOCKED",
+  "detail": "ガバナンスポリシー評価失敗",
+  "timestamp": "2026-05-26T19:30:00.000Z"
 }
 ```
 
 ---
 
-## Error Codes
+## エラーコード一覧
 
-| Code | Meaning |
-|------|---------|
-| `PERMISSION_DENIED` | Caller permission insufficient for tool |
-| `GOVERNANCE_BLOCKED` | Governance policy evaluation failed |
-| `SAFETY_BLOCKED` | Safety lock blocked execution |
-| `APPROVAL_REQUIRED` | Tool requires manual approval |
-| `PAYLOAD_INVALID` | Invocation payload failed validation |
-| `SDK_UNAVAILABLE` | `@cursor/sdk` not installed or API key missing |
-| `EXECUTION_FAILED` | `Agent.prompt()` returned error |
-| `GATEWAY_ERROR` | External execution gateway internal error |
+| コード | 意味 |
+|--------|------|
+| `TOOL_NOT_ALLOWED` | 禁止ツール呼び出し |
+| `GOVERNANCE_BLOCKED` | ガバナンスポリシー評価失敗 |
+| `SAFETY_BLOCKED` | 安全ロックによる実行拒否 |
+| `FORBIDDEN_PATTERN` | 禁止パターン検出 |
+| `PAYLOAD_INVALID` | リクエスト形式不正 |
+| `SDK_UNAVAILABLE` | @cursor/sdk 未導入またはAPI key未設定 |
+| `EXECUTION_FAILED` | Agent.prompt() 実行エラー |
+| `GATEWAY_ERROR` | ゲートウェイ内部エラー |
+
+---
+
+## 安全性レイヤー
+
+| レイヤー | 担当 |
+|---------|------|
+| workspace binding | `runtimeCursorWorkspaceBinding.mjs` |
+| payload validation | `runtimeInvocationSafetyLayer.mjs` |
+| forbidden pattern filter | `runtimeInvocationSafetyLayer.mjs` |
+| safety lock | `runtimeInvocationSafetyLock.mjs` |
+| loop prevention | `runtimeTriggerLoopSupervisor.mjs` |
+| governance policy | `runtimePolicyEngine.mjs` |
+| credential isolation | `runtimeCredentialResolver.mjs` |
+| remote MCP policy | `runtime-remote-mcp-policy.json` |
+| remote auth | `runtimeRemoteMcpAuth.mjs` |
+| audit log | `runtime-remote-mcp-audit-log.json` |
+
+---
+
+## 実行後検証
+
+`runtime_execute_safe` 実行後:
+
+1. Build verification: `node scripts/build-runtime-workspace-v2.mjs`
+2. Auto-verification: `node scripts/runtime/runtimeAutoVerificationPipeline.mjs`
+3. Topology verification: `npm run verify:runtime-topology`
+4. Semantic verification: `npm run verify:federation-semantic`

@@ -1,67 +1,96 @@
-# Runtime Remote MCP — Final Connection Checklist
+# Runtime Remote MCP — 最終接続チェックリスト
 
-Use this checklist to confirm every layer is operational before
-registering the Federation Runtime as a ChatGPT custom MCP app.
+Federation Runtime を ChatGPT Custom MCP App として登録する前に、
+全レイヤーの動作確認を行う。
 
 ---
 
-## Infrastructure
+## インフラストラクチャ
 
-| # | Check | Command | Expected |
-|---|-------|---------|----------|
+| # | 確認項目 | コマンド | 期待結果 |
+|---|---------|---------|---------|
 | 1 | Local MCP gateway | `npm run runtime:mcp-test` | 9/9 PASS |
 | 2 | Tool exposure layer | `npm run runtime:tool-validation` | 17/17 PASS |
-| 3 | Headless executor | `npm run runtime:headless-check` | 0 blockers |
+| 3 | Headless executor | `npm run runtime:headless-check` | 0 blockers, FULLY HEADLESS READY |
 | 4 | HTTP bridge | `npm run runtime:remote-mcp-readiness` | 11/11 PASS |
 | 5 | Remote policy | `npm run runtime:remote-mcp-policy` | 20/20 PASS |
 | 6 | Endpoint manifest | `npm run runtime:remote-mcp-endpoint-validate` | ALL PASS |
+| 7 | Topology verify | `npm run verify:runtime-topology` | ok: true |
+| 8 | Semantic verify | `npm run verify:federation-semantic` | ok: true |
+| 9 | State Engine | `npm run runtime:state-verify` | 23/23 PASS |
+| 10 | Repair Engine | `npm run runtime:repair-verify` | 55/55 PASS |
 
-## Authentication
+## 認証
 
-| # | Check | How to verify |
-|---|-------|---------------|
-| 7 | `CURSOR_API_KEY` set | Present in `.env.runtime` |
-| 8 | `REMOTE_MCP_AUTH_TOKEN` set | Present in `.env.runtime` (>= 16 chars) |
-| 9 | `.env.runtime` gitignored | `git check-ignore .env.runtime` returns the path |
+| # | 確認項目 | 検証方法 |
+|---|---------|---------|
+| 11 | `CURSOR_API_KEY` 設定済み | `.env.runtime` に存在 |
+| 12 | `REMOTE_MCP_AUTH_TOKEN` 設定済み | `.env.runtime` に存在 (16文字以上) |
+| 13 | `.env.runtime` gitignored | `git check-ignore .env.runtime` がパスを返す |
 
-## Tunnel
+## トンネル
 
-| # | Check | How to verify |
-|---|-------|---------------|
-| 10 | Tunnel tool installed | `cloudflared --version` or `tailscale version` |
-| 11 | HTTP bridge running | `npm run runtime:mcp-http` shows "Listening on 127.0.0.1:3100" |
-| 12 | Tunnel running | `cloudflared tunnel --url http://localhost:3100` shows HTTPS URL |
-| 13 | Health endpoint reachable | `curl https://<TUNNEL_URL>/health` returns `{"ok": true}` |
-| 14 | Endpoint is HTTPS | URL starts with `https://` |
+| # | 確認項目 | 検証方法 |
+|---|---------|---------|
+| 14 | Tunnel ツール導入済み | `cloudflared --version` |
+| 15 | HTTP Bridge 起動 | `npm run runtime:mcp-http` → "Listening on 127.0.0.1:3100" |
+| 16 | Tunnel 起動 | `cloudflared tunnel --url http://localhost:3100` → HTTPS URL |
+| 17 | `/health` 到達可能 | `curl https://<URL>/health` → `{"ok": true}` |
+| 18 | HTTPS確認 | URLが `https://` で始まる |
 
-## ChatGPT Registration
+## Remote Endpoint 検証
 
-| # | Check | How to verify |
-|---|-------|---------------|
-| 15 | ChatGPT custom app created | App appears in ChatGPT Apps list |
-| 16 | `runtime_status` works | Ask ChatGPT to check runtime status |
-| 17 | `runtime_dry_run` works | Ask ChatGPT to dry-run a verification |
-| 18 | `runtime_verify` works | Ask ChatGPT to verify topology and semantics |
-| 19 | `runtime_execute_safe` works | Ask ChatGPT to execute a safe instruction |
+| # | 確認項目 | 検証方法 |
+|---|---------|---------|
+| 19 | 認証なし → 401 | token無しPOST → 401 Unauthorized |
+| 20 | 認証あり → 200 | token付きPOST → 200 OK |
+| 21 | tools/list 取得可能 | GET /mcp/tools/list → ツール一覧 |
+| 22 | runtime_status 呼び出し可能 | POST runtime_status → 結果返却 |
+| 23 | runtime_dry_run 呼び出し可能 | POST runtime_dry_run → シミュレーション結果 |
+| 24 | runtime_verify 呼び出し可能 | POST runtime_verify → 検証結果 |
+| 25 | runtime_execute_safe 公開確認 | tools/list に含まれる |
+| 26 | execute-emergency 非公開確認 | POST → 403 TOOL_NOT_ALLOWED |
 
-## Safety
+## 安全性
 
-| # | Check | How to verify |
-|---|-------|---------------|
-| 20 | Destructive tools not exposed | `runtime_deploy` etc. return TOOL_NOT_ALLOWED |
-| 21 | Unauthenticated requests rejected | Request without token returns 401 |
-| 22 | Credential exposure blocked | Instruction with "CURSOR_API_KEY" returns FORBIDDEN_PATTERN |
-| 23 | Force push blocked | Instruction with "git push --force" returns FORBIDDEN_PATTERN |
-| 24 | Governance bypass blocked | Instruction with "bypass governance" returns FORBIDDEN_PATTERN |
-| 25 | Audit log recording | `runtime_data/runtime-remote-mcp-audit-log.json` has entries |
+| # | 確認項目 | 検証方法 |
+|---|---------|---------|
+| 27 | 破壊ツール非公開 | `runtime_deploy` 等 → TOOL_NOT_ALLOWED |
+| 28 | 認証なし拒否 | token無しリクエスト → 401 |
+| 29 | credential露出ブロック | "CURSOR_API_KEY" 含む命令 → FORBIDDEN_PATTERN |
+| 30 | force push ブロック | "git push --force" 含む命令 → FORBIDDEN_PATTERN |
+| 31 | governance bypass ブロック | "bypass governance" 含む命令 → FORBIDDEN_PATTERN |
+| 32 | 監査ログ記録 | `runtime_data/runtime-remote-mcp-audit-log.json` にエントリ |
+
+## ChatGPT 登録
+
+| # | 確認項目 | 検証方法 |
+|---|---------|---------|
+| 33 | ChatGPT Custom App 作成 | ChatGPT Apps一覧に表示 |
+| 34 | `runtime_status` 動作 | ChatGPTでRuntime状態確認を質問 |
+| 35 | `runtime_dry_run` 動作 | ChatGPTでdry-run検証を質問 |
+| 36 | `runtime_verify` 動作 | ChatGPTでトポロジー/セマンティック検証を質問 |
+| 37 | `runtime_execute_safe` 動作 | ChatGPTで安全実行を質問 |
 
 ---
 
-## Completion Status
+## 完成判定
 
-When all 25 checks pass, the Federation Runtime is fully connected
-to ChatGPT as a governed remote MCP app.
+全37チェックがPASSした場合、Federation Runtime は
+ChatGPT governed remote MCP app として完全接続完了。
 
 ```
-ChatGPT → Remote MCP → Secure Tunnel → HTTP Bridge → Governance → Safety → Agent.prompt() → Federation Runtime OS
+ChatGPT
+  ↓ Custom App / MCP
+Remote MCP Endpoint (HTTPS)
+  ↓ Bearer Token Auth
+Cloudflare Tunnel
+  ↓
+HTTP Bridge (localhost:3100)
+  ↓ Policy + Audit
+Runtime Gateway
+  ↓ Governance + Safety Gate
+Headless Cursor Executor
+  ↓ @cursor/sdk Agent.prompt()
+Federation Runtime OS
 ```

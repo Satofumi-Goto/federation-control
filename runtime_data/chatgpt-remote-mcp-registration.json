@@ -1,46 +1,99 @@
 {
   "appName": "Federation Runtime Gateway",
-  "description": "Governed remote execution gateway for the Federation Runtime OS. Exposes safe Runtime tools via MCP over HTTPS with bearer token authentication.",
-  "version": "1.0.0",
+  "description": "Federation Runtime OS のgoverned remote execution gateway。MCP over HTTPSでsafe Runtime toolsを公開。Bearer token認証必須。",
+  "version": "2.0.0",
   "remoteMcpEndpoint": {
-    "url": "https://<TUNNEL_URL>",
+    "url": "https://directed-configuration-nam-evidence.trycloudflare.com",
+    "healthPath": "/health",
     "toolsListPath": "/mcp/tools/list",
     "toolsCallPath": "/mcp/tools/call",
-    "healthPath": "/health",
-    "placeholder": true,
-    "note": "Replace <TUNNEL_URL> with the actual Cloudflare Tunnel or Tailscale Funnel URL after tunnel activation."
+    "placeholder": false,
+    "tunnelType": "cloudflare-trycloudflare",
+    "tunnelNote": "trycloudflare URLは一時URL。cloudflaredを再起動するとURLが変更される。再起動時はこのファイルとChatGPTのCustom App設定のURLを更新すること。"
+  },
+  "tunnelRestartProcedure": {
+    "step1": "npm run runtime:mcp-http でHTTP Bridge起動",
+    "step2": "cloudflared tunnel --url http://localhost:3100 で新URL取得",
+    "step3": "このファイルの remoteMcpEndpoint.url を新URLへ更新",
+    "step4": "ChatGPT Custom App設定のEndpoint URLを新URLへ更新",
+    "step5": "npm run runtime:remote-mcp-readiness で接続確認"
   },
   "authentication": {
     "type": "bearer",
     "headerName": "Authorization",
     "headerFormat": "Bearer <REMOTE_MCP_AUTH_TOKEN>",
-    "tokenSource": ".env.runtime (REMOTE_MCP_AUTH_TOKEN)",
-    "required": true
+    "tokenSource": ".env.runtime ファイル内の REMOTE_MCP_AUTH_TOKEN",
+    "required": true,
+    "tokenNeverCommit": true
+  },
+  "requestFormat": {
+    "method": "POST",
+    "contentType": "application/json",
+    "toolCallBody": {
+      "name": "<tool_name>",
+      "arguments": {}
+    },
+    "example_runtime_status": {
+      "name": "runtime_status",
+      "arguments": {}
+    },
+    "example_runtime_dry_run": {
+      "name": "runtime_dry_run",
+      "arguments": {
+        "prompt": "Verify Runtime Registry consistency"
+      }
+    },
+    "example_runtime_verify": {
+      "name": "runtime_verify",
+      "arguments": {
+        "scope": "topology-semantic-tool"
+      }
+    },
+    "example_runtime_execute_safe": {
+      "name": "runtime_execute_safe",
+      "arguments": {
+        "prompt": "Verify all dashboard routes are correct",
+        "governance": true,
+        "safeExecuteOnly": true
+      }
+    }
+  },
+  "responseFormat": {
+    "success": { "ok": true, "result": {} },
+    "authError": { "error": "unauthorized", "status": 401 },
+    "forbiddenTool": { "error": "TOOL_NOT_ALLOWED", "status": 403 },
+    "forbiddenPattern": { "error": "FORBIDDEN_PATTERN", "status": 403 }
   },
   "allowedTools": [
     {
       "name": "runtime_status",
       "permission": "dry-run",
-      "description": "Read orchestration state, latest session, tool count",
-      "sideEffects": false
+      "description": "Runtime OS の現在状態を読み取る（オーケストレーション状態・最終セッション・ツール数）",
+      "sideEffects": false,
+      "safeForReadOnly": true
     },
     {
       "name": "runtime_dry_run",
       "permission": "dry-run",
-      "description": "Simulate execution pipeline without Agent.prompt()",
-      "sideEffects": false
+      "description": "実行パイプラインをAgent.prompt()なしでシミュレーション",
+      "sideEffects": false,
+      "safeForReadOnly": true
     },
     {
       "name": "runtime_verify",
       "permission": "verify-only",
-      "description": "Run topology, semantic, and tool validation",
-      "sideEffects": false
+      "description": "トポロジー・セマンティック・ツール検証を実行",
+      "sideEffects": false,
+      "safeForReadOnly": true
     },
     {
       "name": "runtime_execute_safe",
       "permission": "execute-safe",
-      "description": "Execute governed prompt via @cursor/sdk Agent.prompt()",
-      "sideEffects": true
+      "description": "ガバナンス審査済みプロンプトを@cursor/sdk Agent.prompt()で実行",
+      "sideEffects": true,
+      "safeForReadOnly": false,
+      "governanceRequired": true,
+      "businessEnterpriseRecommended": true
     }
   ],
   "forbiddenTools": [
@@ -48,13 +101,22 @@
     "runtime_execute_reviewed",
     "runtime_execute_emergency"
   ],
-  "safetyDisclaimer": "All execution passes through governance policy evaluation, safety lock enforcement, and forbidden pattern filtering. Destructive operations, credential exposure, force push, registry deletion, and governance bypass are unconditionally blocked. Every remote call is audited.",
-  "governanceMode": "enforced",
-  "permissionMode": "execute-safe",
-  "maximumPermission": "execute-safe",
-  "auditEnabled": true,
-  "secretsExposed": false,
-  "destructiveToolsExposed": false,
-  "registrationStatus": "pending-tunnel-activation",
-  "lastUpdated": "2026-05-26T08:45:00.000Z"
+  "safetyPolicy": {
+    "governanceMode": "enforced",
+    "permissionMode": "execute-safe",
+    "maximumPermission": "execute-safe",
+    "auditEnabled": true,
+    "secretsExposed": false,
+    "destructiveToolsExposed": false,
+    "forbiddenPatterns": [
+      "force push", "--force", "--no-verify", "reset --hard",
+      "execute-emergency", "registry replace", "governance bypass",
+      "auto-delete", "credential modify", "env modify", ".env.runtime",
+      "CURSOR_API_KEY", "REMOTE_MCP_AUTH_TOKEN"
+    ]
+  },
+  "registrationStatus": "connection-ready",
+  "nativeChatGPTConnection": "pending-openai-ui-rollout",
+  "fallbackMode": "cursor-agent-instruction-loop",
+  "lastUpdated": "2026-05-26T19:30:00.000Z"
 }

@@ -1,168 +1,179 @@
-# ChatGPT Remote MCP Setup Guide
+# ChatGPT Remote MCP セットアップガイド
 
-Step-by-step guide for connecting ChatGPT to the Federation Runtime
-MCP Gateway as a remote MCP custom app.
-
----
-
-## Prerequisites
-
-Before starting, ensure:
-
-- [ ] HTTP bridge passes readiness: `npm run runtime:remote-mcp-readiness` → ALL PASS
-- [ ] `REMOTE_MCP_AUTH_TOKEN` is set in `.env.runtime`
-- [ ] `CURSOR_API_KEY` is set in `.env.runtime`
-- [ ] Tunnel tool is installed (`cloudflared`, `tailscale`, or `ngrok`)
+Federation Runtime OS を ChatGPT Custom App として接続する手順。
 
 ---
 
-## Step 1: Start the local HTTP bridge
+## 前提条件
+
+| # | 確認項目 | コマンド |
+|---|---------|---------|
+| 1 | HTTP Bridge readiness | `npm run runtime:remote-mcp-readiness` → ALL PASS |
+| 2 | REMOTE_MCP_AUTH_TOKEN 設定済み | `.env.runtime` に記載 |
+| 3 | CURSOR_API_KEY 設定済み | `.env.runtime` に記載 |
+| 4 | Tunnel ツール導入済み | `cloudflared --version` |
+
+---
+
+## Step 1: HTTP Bridge 起動
 
 ```powershell
 npm run runtime:mcp-http
 ```
 
-Verify output shows:
+確認: `[mcp-http] Listening on http://127.0.0.1:3100` が表示される。
 
-```
-[mcp-http] Listening on http://127.0.0.1:3100
-```
-
-Leave this terminal running.
+このターミナルは閉じない。
 
 ---
 
-## Step 2: Start the secure tunnel
+## Step 2: Secure Tunnel 起動
 
-Open a **new terminal** and run:
-
-**Cloudflare Tunnel (recommended):**
+**新しいターミナル**で実行:
 
 ```powershell
 cloudflared tunnel --url http://localhost:3100
 ```
 
-**Tailscale Funnel:**
+出力されるHTTPS URLを控える（例: `https://xxxx.trycloudflare.com`）。
+
+---
+
+## Step 3: Remote Endpoint 検証
 
 ```powershell
-tailscale funnel 3100
-```
-
-Note the HTTPS URL printed by the tunnel (e.g. `https://xxxx.trycloudflare.com`).
-
----
-
-## Step 3: Verify the remote endpoint
-
-In a browser or with curl, test:
-
-```bash
+# ヘルスチェック
 curl https://<TUNNEL_URL>/health
-```
 
-Expected response:
+# 期待レスポンス
+# {"ok": true, "service": "federation-runtime-mcp"}
 
-```json
-{"ok": true, "service": "federation-runtime-mcp"}
+# 認証なしリクエスト → 401
+curl -X POST https://<TUNNEL_URL>/mcp/tools/call -H "Content-Type: application/json" -d '{"name":"runtime_status","arguments":{}}'
+# → 401 Unauthorized
+
+# 認証ありリクエスト → 200
+curl -X POST https://<TUNNEL_URL>/mcp/tools/call -H "Content-Type: application/json" -H "Authorization: Bearer <TOKEN>" -d '{"name":"runtime_status","arguments":{}}'
+# → 200 OK
 ```
 
 ---
 
-## Step 4: Enable Developer Mode in ChatGPT
+## Step 4: ChatGPT Developer Mode 有効化
 
-1. Open [chat.openai.com](https://chat.openai.com)
-2. Go to **Settings** → **Developer** (or **Beta Features**)
-3. Enable **Developer Mode** or **Plugins / Apps / MCP**
+1. [chat.openai.com](https://chat.openai.com) を開く
+2. **Settings** → **Developer** (または **Beta Features**)
+3. **Developer Mode** または **Plugins / Apps / MCP** を有効化
 
-> The exact UI path may vary. Look for "Custom Apps", "MCP", or
-> "Developer Tools" in ChatGPT settings.
+> ChatGPT Pro/Business/Enterprise のプランにより UI が異なる場合がある。
+> 2026年5月時点で Custom MCP UI が未提供の場合は「Fallback運用ガイド」を参照。
 
 ---
 
-## Step 5: Create Custom App / MCP App
+## Step 5: Custom App 登録
 
-1. Go to **Apps** (or **GPTs** → **Create**)
-2. Select **Add MCP Server** or **Custom Tool / Action**
-3. Enter the following:
+1. **Apps** (または **GPTs** → **Create**) を開く
+2. **Add MCP Server** または **Custom Tool / Action** を選択
+3. 以下を入力:
 
-| Field | Value |
-|-------|-------|
-| Name | Federation Runtime Gateway |
+| フィールド | 値 |
+|-----------|-----|
+| 名前 | Federation Runtime Gateway |
 | Endpoint URL | `https://<TUNNEL_URL>/mcp/tools` |
 | Auth Type | Bearer Token |
-| Token | `<REMOTE_MCP_AUTH_TOKEN from .env.runtime>` |
+| Token | `.env.runtime` の `REMOTE_MCP_AUTH_TOKEN` の値 |
 
-4. Save the app configuration
-
----
-
-## Step 6: Test runtime_status
-
-In ChatGPT, ask:
-
-> "Use the Federation Runtime Gateway to check the current runtime status."
-
-Expected: ChatGPT calls `runtime_status` and returns orchestration state,
-last session info, and tool count.
-
-**If this fails**: check tunnel is running, auth token matches, endpoint URL is correct.
+4. 保存
 
 ---
 
-## Step 7: Test runtime_dry_run
+## Step 6: ツール動作確認
 
-Ask:
+### runtime_status
 
-> "Use the Federation Runtime Gateway to dry-run a verification of the Runtime Registry."
+ChatGPTで以下を質問:
 
-Expected: ChatGPT calls `runtime_dry_run` and returns a simulation result
-showing pre-flight gates and execution plan.
+> 「Federation Runtime Gateway を使って、現在のRuntime状態を確認して」
 
----
+期待: `runtime_status` が呼ばれ、オーケストレーション状態が返る。
 
-## Step 8: Test runtime_verify
+### runtime_dry_run
 
-Ask:
+> 「Federation Runtime Gateway で、Runtime Registry の検証をdry-runして」
 
-> "Use the Federation Runtime Gateway to verify Runtime topology and semantic consistency."
+### runtime_verify
 
-Expected: ChatGPT calls `runtime_verify` and returns topology and semantic
-check results (both should be `ok: true`).
+> 「Federation Runtime Gateway で、トポロジーとセマンティックをverifyして」
 
----
+### runtime_execute_safe
 
-## Step 9: Test runtime_execute_safe (with caution)
-
-Only after steps 6-8 pass. Ask:
-
-> "Use the Federation Runtime Gateway to execute: Verify Runtime Registry
-> consistency and confirm all dashboard routes are correct."
-
-Expected: ChatGPT calls `runtime_execute_safe`, which:
-1. Validates governance (must pass)
-2. Checks safety lock (must be cleared)
-3. Filters forbidden patterns (must pass)
-4. Invokes `Agent.prompt()` via `@cursor/sdk`
-5. Returns execution result
+> 「Federation Runtime Gateway で、ダッシュボードルートの整合性を検証して実行して。force pushは禁止」
 
 ---
 
-## Troubleshooting
+## Tunnel URL 更新手順
 
-| Problem | Solution |
-|---------|----------|
-| 401 Unauthorized | Check auth token matches `.env.runtime` |
-| 403 Forbidden | Token is wrong, or request contains forbidden pattern |
-| Connection refused | Tunnel is not running, or bridge is not started |
-| TOOL_NOT_ALLOWED | You're trying to call a forbidden tool |
-| GOVERNANCE_BLOCKED | Governance policy check failed |
-| SAFETY_BLOCKED | Safety lock is in blocked state |
-| FORBIDDEN_PATTERN | Instruction contains a blocked pattern |
+trycloudflare URL は一時的。cloudflared を再起動すると変更される。
+
+1. `cloudflared tunnel --url http://localhost:3100` を再実行
+2. 新しいHTTPS URLを控える
+3. `runtime_data/chatgpt-remote-mcp-registration.json` の `remoteMcpEndpoint.url` を更新
+4. ChatGPT Custom App 設定の Endpoint URL を更新
+5. `npm run runtime:remote-mcp-readiness` で接続確認
 
 ---
 
-## Shutdown
+## Request/Response フォーマット
 
-1. Stop the tunnel (Ctrl+C in tunnel terminal)
-2. Stop the HTTP bridge (Ctrl+C in bridge terminal)
-3. The remote endpoint becomes immediately unreachable
+### リクエスト
+
+```json
+POST /mcp/tools/call
+Authorization: Bearer <TOKEN>
+Content-Type: application/json
+
+{
+  "name": "runtime_status",
+  "arguments": {}
+}
+```
+
+### レスポンス（成功）
+
+```json
+{
+  "ok": true,
+  "result": { ... }
+}
+```
+
+### レスポンス（エラー）
+
+| Status | 意味 |
+|--------|------|
+| 401 | 認証トークンなし/不正 |
+| 403 | 禁止ツール/禁止パターン |
+| 400 | リクエスト形式不正 |
+| 500 | 内部エラー |
+
+---
+
+## トラブルシューティング
+
+| 問題 | 対処 |
+|------|------|
+| 401 Unauthorized | auth token が `.env.runtime` と一致しているか確認 |
+| 403 Forbidden | 禁止ツール呼び出しか禁止パターン検出 |
+| Connection refused | Tunnel または Bridge が停止している |
+| TOOL_NOT_ALLOWED | `runtime_deploy` 等の禁止ツールを呼んでいる |
+| GOVERNANCE_BLOCKED | ガバナンスポリシー評価失敗 |
+| SAFETY_BLOCKED | 安全ロック状態がblocked |
+| FORBIDDEN_PATTERN | 命令に禁止パターン（force push等）が含まれている |
+
+---
+
+## シャットダウン
+
+1. Tunnel 停止 (Ctrl+C)
+2. HTTP Bridge 停止 (Ctrl+C)
+3. Remote endpoint は即座にアクセス不可になる
