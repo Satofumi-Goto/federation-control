@@ -1,10 +1,18 @@
 {
   "updatedAt": "2026-05-23T12:00:00.000Z",
-  "title": "Runtime Federation Memory",
+  "title": "Federation Memory",
+  "federationLive": {
+    "federationHealth": 74,
+    "queueDrift": 12,
+    "etaDrift": 9,
+    "throughputDrift": 6,
+    "runtimeAlignment": 82,
+    "collapseRisk": 32
+  },
   "knowledgeGraph": {
     "title": "Growing Runtime Knowledge Graph",
     "growthSources": [
-      "自システム",
+      "Operational Systems",
       "Runtime Card",
       "Seneschal Event",
       "Queue collapse",

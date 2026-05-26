@@ -14,19 +14,19 @@ export const RUNTIME_MEMORY_SCOPE = {
       storageKey: RUNTIME_MEMORY_STORAGE_KEYS.systems,
     },
     {
-      id: 'collaboration-discovery',
-      label: '連携探索',
-      responsibility: '他者システムを探索し、候補として把握する',
+      id: 'intake',
+      label: '入力統合',
+      responsibility: 'Need / KPI / Drift / 外部入力を統合し分類する',
     },
     {
-      id: 'needs-translation',
-      label: 'ニーズ翻訳',
-      responsibility: 'Need を Runtime / Queue / ODD / Constraint / ETA へ翻訳する',
+      id: 'intent',
+      label: '意図整理',
+      responsibility: '自然言語要求を運行意味・KPI・Constraintへ変換する',
     },
     {
-      id: 'alignment',
-      label: '関係整理',
-      responsibility: '責務・依存・影響・同期対象を整理する',
+      id: 'responsibility',
+      label: '責務解析',
+      responsibility: '責務境界・依存・同期範囲を解析する',
     },
     {
       id: 'sync-refactor',
@@ -62,7 +62,7 @@ export function runtimeMemoryPanelHtml() {
     <button type="button" id="rt-memory-refresh" style="border:1px solid rgba(56,189,248,.45);background:#0f172a;color:#67e8f9;border-radius:7px;padding:3px 8px;font-size:10px;font-weight:800;cursor:pointer;">再読込</button>
   </div>
   <div id="rt-memory-summary" style="margin-top:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;font-size:10px;"></div>
-  <div style="margin-top:8px;font-size:10px;color:#94a3b8;line-height:1.45;">連携探索・ニーズ翻訳・関係整理・同期改修・出力は、このRuntime全体記憶を参照する。</div>
+  <div style="margin-top:8px;font-size:10px;color:#94a3b8;line-height:1.45;">入力統合・意図整理・責務解析・同期改修・検証は、このRuntime全体記憶を参照する。</div>
 </div>
 <script>
 (function(){
@@ -87,7 +87,7 @@ export function runtimeMemoryPanelHtml() {
     [
       ['自システム',systems.length,'#3b82f6'],
       ['Runtimeカード',drafts.length,'#fbbf24'],
-      ['連携探索','全体参照','#22c55e'],
+      ['入力統合','全体参照','#22c55e'],
       ['同期改修','全体参照','#a78bfa']
     ].forEach(function(x){
       var d=document.createElement('div');

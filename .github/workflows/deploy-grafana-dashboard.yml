@@ -15,6 +15,8 @@ on:
       - 'scripts/ensure-grafana-iframe-plugin.mjs'
       - 'scripts/build-runtime-workspace-v2.mjs'
       - 'scripts/verify-runtime-topology-links.mjs'
+      - 'scripts/verify-federation-governance.mjs'
+      - 'src/federation/**'
       - 'scripts/runtime-visual-check.mjs'
       - 'scripts/diagnose-federation-iframe-sandbox.mjs'
       - 'scripts/lib/**'
@@ -43,6 +45,15 @@ jobs:
           GRAFANA_URL: ${{ secrets.GRAFANA_URL }}
         run: node scripts/ensure-grafana-iframe-plugin.mjs
         continue-on-error: true
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify federation governance structure
+        run: npm run verify:federation-governance
+
+      - name: Build federation governance SPA
+        run: npm run build:federation-governance
 
       - name: Build Runtime Workspace router
         run: node scripts/build-runtime-workspace-v2.mjs

@@ -1,26 +1,31 @@
 {
   "description": "Canonical link map for /runtime. Row3 → Base44 /viewer/* public read-only URLs (runtime_embed=grafana).",
-  "layoutVersion": 37,
+  "layoutVersion": 43,
   "theme": "adaptive",
   "runtimeUid": "sa8ljn4",
   "runtimeTopPath": "/d/sa8ljn4/runtime",
   "routeTopology": "grafana/runtime-topology-routes.json",
   "row1": {
-    "discovery": "/runtime_discovery",
-    "discoveryLabel": "連携探索",
+    "discovery": "/federation/intake",
+    "discoveryLabel": "入力統合",
     "discoveryIcon": "🤝",
-    "needsTranslation": "/need_impact",
-    "alignment": "/d/external-federation-view/external-federation-view"
+    "needsTranslation": "/federation/intent",
+    "needsTranslationLabel": "意図整理",
+    "alignment": "/federation/responsibility",
+    "alignmentLabel": "責務解析",
+    "alignmentIcon": "🧩"
   },
+  "federationGovernance": "grafana/federation-governance-routes.json",
   "row2": {
     "obsidianGraph": "/d/go-program-index/grafana-obsidian-program-index",
+    "runtimeFederationGraph": "/d/sa8ljn4/runtime",
     "runtimePanel": "/d/sa8ljn4/runtime",
-    "operationalArchitecture": "/d/sa8ljn4/runtime",
     "calendar": "/calendar",
     "map": "/map"
   },
   "row3": {
-    "title": "自システム",
+    "title": "Operational Systems",
+    "addAction": "overlay-drawer",
     "fleetOperation": "https://fleet-operations-console.base44.app/viewer/fleet?runtime_embed=grafana",
     "serviceHub": "https://service-hub-console.base44.app/viewer/service-hub?runtime_embed=grafana",
     "lifeTransaction": "https://life-transaction-console.base44.app/viewer/life?runtime_embed=grafana",
@@ -51,7 +56,12 @@
     "snapshotPath": "runtime_data/runtime-federation-memory.json"
   },
   "federationConnect": {
+    "panelTitle": "Federation Add",
+    "panelRole": "Scoped federation onboarding",
+    "scopes": ["Runtime", "Knowledge", "KPI", "Operational", "Artifact"],
     "storageKey": "runtimeFederationConnectSystems",
+    "persistenceBackend": "localStorage-poc",
+    "persistenceTarget": "federation-api",
     "urlPatterns": [
       "base44.app",
       "grafana.net",
@@ -70,6 +80,9 @@
     "seedSystems": []
   },
   "row4": {
+    "title": "System Artifacts",
+    "addAction": "overlay-drawer",
+    "artifactsStorageKey": "runtimeSystemArtifacts",
     "collapseArchitecture": "/d/go-integrated-analysis/integrated-control-analysis",
     "functionalArchitecture": "/mieruka_discovery",
     "sequenceDiagram": "/mieruka_discovery",
@@ -80,9 +93,27 @@
     "pl": "/d/application-toyota-logic/application-for-toyota-parameter-driven-federation-model",
     "irr": "/d/go-investment-recovery/investment-recovery-plan"
   },
+  "row4ArtifactMeta": {
+    "collapseArchitecture": { "label": "Collapse Control", "accent": "#ef4444" },
+    "functionalArchitecture": { "label": "Functional Topology", "accent": "#0ea5e9" },
+    "sequenceDiagram": { "label": "Federation Sequence", "accent": "#f59e0b" },
+    "plSimulation": { "label": "Business Simulation", "accent": "#22c55e" },
+    "costRecoveryPlan": { "label": "Cost Recovery", "accent": "#14b8a6" },
+    "wbs": { "label": "Execution Planning", "accent": "#94a3b8" },
+    "serviceOperation": { "label": "Service Operations", "accent": "#3b82f6" },
+    "pl": { "label": "Profit & Loss", "accent": "#a855f7" },
+    "irr": { "label": "Investment Return", "accent": "#eab308" }
+  },
+  "runtimeCards": {
+    "sectionTitle": "Runtime Cards",
+    "storageKey": "runtimeRegistryCards",
+    "registrySource": "src/runtime/registry/runtimeRegistry.js",
+    "panelIds": [250, 251, 252]
+  },
   "row4Layout": {
     "mode": "grafana-grid-3x3",
     "panelIds": [401, 402, 403, 404, 405, 406, 407, 408, 409],
-    "gridPos": { "w": 8, "h": 2, "cols": 3, "rows": 3, "y": 13 }
+    "headerPanelId": 350,
+    "gridPos": { "w": 8, "h": 2, "cols": 3, "rows": 3, "y": 18 }
   }
 }

@@ -5,11 +5,7 @@ import {
   ensureGrafanaLogin,
   resolveGrafanaAuthEnv,
 } from './lib/grafana-github-oauth-login.mjs';
-import {
-  loadRuntimeTopology,
-  resolveOperationalArchitectureHref,
-  resolveRuntimeCenterHref,
-} from './lib/runtime-topology.mjs';
+import { loadRuntimeTopology, resolveRuntimeCenterHref } from './lib/runtime-topology.mjs';
 
 const { grafanaUrl } = resolveGrafanaAuthEnv();
 const outDir = path.resolve(process.env.VISUAL_CHECK_OUT || 'artifacts/runtime-visual-check');
@@ -18,8 +14,6 @@ const routesPath = path.resolve('grafana/runtime-workspace-routes.json');
 const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
 const topology = loadRuntimeTopology();
 const runtimeCenterHref = resolveRuntimeCenterHref(routes, topology);
-const operationalArchitectureHref = resolveOperationalArchitectureHref(routes, topology);
-
 const row3Expectations = [
   { key: 'fleetOperation', host: 'fleet-operations-console.base44.app' },
   { key: 'serviceHub', host: 'service-hub-console.base44.app' },
@@ -30,8 +24,9 @@ const row3Expectations = [
 const targets = [{ name: 'runtime-router', path: '/d/sa8ljn4/runtime', checkRow3: true }];
 
 async function checkRuntimeRouter(page) {
-  const discoveryLabel = routes.row1?.discoveryLabel ?? '連携探索';
-  const row3Title = routes.row3?.title ?? '自システム';
+  const discoveryLabel = routes.row1?.discoveryLabel ?? '入力統合';
+  const row3Title = routes.row3?.title ?? 'Operational Systems';
+  const row4Title = routes.row4?.title ?? 'System Artifacts';
   const html = await page.content();
   const row3Checks = {};
 
@@ -55,6 +50,17 @@ async function checkRuntimeRouter(page) {
 
   const discoveryVisible = await page.getByText(discoveryLabel, { exact: true }).count();
   const row3TitleVisible = await page.getByText(row3Title, { exact: true }).count();
+  const row4TitleVisible = await page.getByText(row4Title, { exact: true }).count();
+  const row3SectionPlus = await page
+    .locator('.section-header')
+    .filter({ hasText: row3Title })
+    .locator('details.section-add summary')
+    .count();
+  const row4SectionPlus = await page
+    .locator('.section-header')
+    .filter({ hasText: row4Title })
+    .locator('details.section-add summary')
+    .count();
   const discoveryHref = await page
     .locator(`a[href="${routes.row1.discovery}"]`)
     .first()
@@ -65,16 +71,15 @@ async function checkRuntimeRouter(page) {
     .first()
     .getAttribute('href')
     .catch(() => null);
-  const opArchLink = page.locator(`a[href="${operationalArchitectureHref}"]`).filter({
-    hasText: '運行制御アーキテクチャ',
-  });
-  const opArchCount = await opArchLink.count();
-  const opArchHref = opArchCount ? await opArchLink.first().getAttribute('href') : null;
-  const federationConnectPlus = await page.locator('details summary').count();
+  const obsidianGraphVisible = await page.getByText('Obsidian Knowledge Graph', { exact: true }).count();
+  const federationGraphVisible = await page.getByText('Runtime Federation Graph', { exact: true }).count();
+  const legacyOpArchVisible = await page.getByText('運行制御アーキテクチャ', { exact: true }).count();
+  const federationAddVisible = await page.getByText('Federation Add', { exact: true }).count();
+  const federationConnectPlus = await page.locator('.federation-add-panel details summary').count();
 
   const themeAdaptive =
     html.includes('--background-primary') &&
-    (html.includes('知識グラフ') || html.includes('Knowledge Graph'));
+    (html.includes('Obsidian Knowledge Graph') || html.includes('Runtime Federation Graph'));
   const noNavyDemo =
     !html.includes('#0b1220') &&
     !html.includes('#02060c') &&
@@ -83,12 +88,20 @@ async function checkRuntimeRouter(page) {
     !html.includes('&lt;svg') &&
     !html.includes('&lt;style') &&
     !html.includes('&lt;div') &&
-    (await page.locator('img[alt="Knowledge Graph"]').count()) > 0;
+    (await page.locator('img[alt="Obsidian Knowledge Graph"], img[alt="Runtime Federation Graph"]').count()) >
+      0;
 
   return {
     discoveryRenamed: discoveryVisible > 0,
     row3SectionTitle: row3TitleVisible > 0,
-    federationConnectPresent: federationConnectPlus > 0,
+    row4SectionTitle: row4TitleVisible > 0,
+    row3SectionPlus: row3SectionPlus > 0,
+    row4SectionPlus: row4SectionPlus > 0,
+    federationAddVisible: federationAddVisible > 0,
+    federationConnectPresent: federationAddVisible > 0 && federationConnectPlus > 0,
+    obsidianGraphVisible: obsidianGraphVisible > 0,
+    federationGraphVisible: federationGraphVisible > 0,
+    legacyOpArchRemoved: legacyOpArchVisible === 0,
     themeAdaptive,
     noNavyDemo,
     htmlRenderedNotEscaped,
@@ -107,17 +120,15 @@ async function checkRuntimeRouter(page) {
     topologyLinks: {
       discoveryHref,
       needsHref,
-      operationalArchitectureHref: opArchHref,
       runtimeCenterHref,
       discoveryConnected: discoveryHref === routes.row1.discovery,
       needsConnected: needsHref === routes.row1.needsTranslation,
-      opArchToRuntimeCenter: opArchHref === runtimeCenterHref,
       noIntegratedSurfaceDeadLink: !html.includes('go-integrated-surface/integrated-control-surface'),
     },
     topologyOk:
       discoveryHref === routes.row1.discovery &&
       needsHref === routes.row1.needsTranslation &&
-      opArchHref === runtimeCenterHref &&
+      legacyOpArchVisible === 0 &&
       !html.includes('go-integrated-surface/integrated-control-surface'),
   };
 }
@@ -188,7 +199,7 @@ async function main() {
         }
         const topLevelLogin =
           /log in|login|サインイン/i.test(bodyText) &&
-          !/Runtime|自システム|連携探索/i.test(bodyText);
+          !/Runtime|Operational Systems|連携探索|自システム/i.test(bodyText);
         const ok =
           manifest.oauthLoginSuccess &&
           !topLevelLogin &&
@@ -196,6 +207,12 @@ async function main() {
             (routerCheck.row3AllOk &&
               routerCheck.discoveryRenamed &&
               routerCheck.row3SectionTitle &&
+              routerCheck.row4SectionTitle &&
+              routerCheck.row3SectionPlus &&
+              routerCheck.row4SectionPlus &&
+              routerCheck.obsidianGraphVisible &&
+              routerCheck.federationGraphVisible &&
+              routerCheck.legacyOpArchRemoved &&
               routerCheck.noFederationViewerInHtml &&
               routerCheck.themeAdaptive &&
               routerCheck.noNavyDemo &&

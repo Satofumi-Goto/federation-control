@@ -1,0 +1,17 @@
+{
+  "capturedAt": "2026-05-23T09:02:11.400Z",
+  "grafanaUrl": "https://satofumigoto.grafana.net",
+  "authMode": "github-oauth",
+  "oauthLoginSuccess": false,
+  "loginMethod": "none",
+  "loginError": "GitHub OAuth button not found on Grafana login page",
+  "iframePresent": false,
+  "federationViewerBanner": false,
+  "runtimeEmbedDetected": false,
+  "row3SameTabNavigation": false,
+  "discoveryRenamed": false,
+  "themeAdaptive": false,
+  "noNavyDemo": false,
+  "htmlRenderedNotEscaped": false,
+  "results": []
+}

@@ -1,0 +1,30 @@
+{
+  "workspaceTitle": "Federated Operational Governance Workspace",
+  "brainTitle": "Federation Brain",
+  "routes": {
+    "intake": { "path": "/federation/intake", "role": "入力統合", "replaces": "/runtime_discovery" },
+    "intent": { "path": "/federation/intent", "role": "意図整理", "replaces": "/need_impact" },
+    "responsibility": { "path": "/federation/responsibility", "role": "責務解析" },
+    "impact": { "path": "/federation/impact", "role": "影響解析" },
+    "syncPlan": { "path": "/federation/sync-plan", "role": "同期設計" },
+    "syncApply": { "path": "/federation/sync-apply", "role": "同期改修" },
+    "validation": { "path": "/federation/validation", "role": "検証" }
+  },
+  "deprecatedUiPaths": ["/runtime_discovery", "/need_impact"],
+  "sections": {
+    "obsidian": { "title": "Obsidian Knowledge Graph", "roles": ["ADR", "Runtime Note", "Collapse Note", "Federation Link", "Knowledge Cluster"] },
+    "federationGraph": { "title": "Federation Graph", "mode": "live", "metrics": ["Federation Health", "Queue Drift", "ETA Drift", "Throughput Drift", "Runtime Alignment", "Collapse Risk"] },
+    "operationalSystems": { "title": "Operational Systems", "add": "systems-onboarding", "viewerBadges": ["Federated", "Viewer", "Live", "Read-only"] },
+    "systemArtifacts": { "title": "System Artifacts", "add": "artifact-create" },
+    "federationAdd": { "title": "Federation Add", "scopes": ["Runtime", "Knowledge", "KPI", "Operational", "Artifact"] }
+  },
+  "artifactLinks": {
+    "collapseArchitecture": { "runtime": "Federation Graph", "kpi": "Collapse Risk" },
+    "functionalArchitecture": { "runtime": "Operational Systems", "kpi": "Alignment" },
+    "sequenceDiagram": { "runtime": "Federation Graph", "kpi": "Queue Drift" },
+    "plSimulation": { "runtime": "Throughput", "kpi": "Throughput Drift" },
+    "costRecoveryPlan": { "runtime": "IRR", "kpi": "Federation Health" },
+    "pl": { "runtime": "Throughput", "kpi": "Throughput Drift" },
+    "irr": { "runtime": "Queue", "kpi": "Queue Drift" }
+  }
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "collapse-control",
+    "title": "崩壊制御",
+    "label": "要注意",
+    "count": 12,
+    "icon": "◉",
+    "accent": "#FF5C5C",
+    "border": "rgba(255,92,92,0.55)",
+    "target": {
+      "type": "grafana-runtime",
+      "url": "https://satofumigoto.grafana.net/d/sa8ljn4/runtime?orgId=1"
+    },
+    "visibility": "active",
+    "source": "runtime-registry"
+  },
+  {
+    "id": "collapse-analysis",
+    "title": "崩壊解析",
+    "label": "解析対象",
+    "count": 4,
+    "icon": "⌕",
+    "accent": "#A8E7FF",
+    "border": "rgba(168,231,255,0.36)",
+    "target": {
+      "type": "grafana-dashboard",
+      "url": "https://satofumigoto.grafana.net/runtime_discovery"
+    },
+    "visibility": "active",
+    "source": "runtime-registry"
+  },
+  {
+    "id": "repair-impact",
+    "title": "改修影響",
+    "label": "影響箇所",
+    "count": 9,
+    "icon": "◎",
+    "accent": "#F5B84B",
+    "border": "rgba(245,184,75,0.52)",
+    "target": {
+      "type": "grafana-dashboard",
+      "url": "https://satofumigoto.grafana.net/need_impact"
+    },
+    "visibility": "active",
+    "source": "runtime-registry"
+  },
+  {
+    "id": "repair-proposal",
+    "title": "改修提案",
+    "label": "提案対象",
+    "count": 6,
+    "icon": "↺",
+    "accent": "#39D98A",
+    "border": "rgba(57,217,138,0.40)",
+    "target": {
+      "type": "grafana-dashboard",
+      "url": "https://satofumigoto.grafana.net/d/external-federation-view/external-federation-view?orgId=1"
+    },
+    "visibility": "active",
+    "source": "runtime-registry"
+  },
+  {
+    "id": "implement-progress",
+    "title": "実装進捗",
+    "label": "進行中",
+    "count": 3,
+    "icon": "▣",
+    "accent": "#32D9FF",
+    "border": "rgba(50,217,255,0.48)",
+    "target": {
+      "type": "grafana-dashboard",
+      "url": "https://satofumigoto.grafana.net/d/go-execution-tasks/execution-tasks?orgId=1"
+    },
+    "visibility": "active",
+    "source": "runtime-registry"
+  }
+]

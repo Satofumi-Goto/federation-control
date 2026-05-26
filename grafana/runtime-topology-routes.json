@@ -19,19 +19,23 @@
   },
   "headerNavigation": {
     "discovery": {
-      "label": "連携探索",
-      "path": "/runtime_discovery",
+      "label": "入力統合",
+      "path": "/federation/intake",
+      "legacyPath": "/runtime_discovery",
       "dashboardFallback": "/d/runtime-discovery-command-center/runtime-discovery-command-center",
       "dashboardUid": "runtime-discovery-command-center"
     },
     "needsTranslation": {
-      "label": "Needs翻訳",
-      "path": "/need_impact",
+      "label": "意図整理",
+      "path": "/federation/intent",
+      "legacyPath": "/need_impact",
       "dashboardFallback": "/d/mieruka-discovery/mieruka-discovery-board",
       "dashboardUid": "mieruka-discovery"
     },
     "alignment": {
-      "path": "/d/external-federation-view/external-federation-view"
+      "label": "責務解析",
+      "path": "/federation/responsibility",
+      "legacyPath": "/d/external-federation-view/external-federation-view"
     }
   },
   "row2Panels": {
@@ -53,6 +57,9 @@
     "target=_blank"
   ],
   "deprecatedPaths": [
-    "/d/go-integrated-surface/integrated-control-surface"
-  ]
+    "/d/go-integrated-surface/integrated-control-surface",
+    "/runtime_discovery",
+    "/need_impact"
+  ],
+  "forbiddenUiPaths": ["/runtime_discovery", "/need_impact"]
 }

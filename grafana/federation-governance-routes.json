@@ -1,0 +1,57 @@
+{
+  "title": "Federated Operational Governance — 7-step workspace",
+  "layoutVersion": 1,
+  "legacyRedirects": {
+    "/runtime_discovery": "/federation/intake",
+    "/need_impact": "/federation/intent",
+    "/d/external-federation-view/external-federation-view": "/federation/responsibility"
+  },
+  "steps": [
+    {
+      "id": "intake",
+      "path": "/federation/intake",
+      "label": "入力統合",
+      "replaces": ["連携探索", "runtime_discovery"]
+    },
+    {
+      "id": "intent",
+      "path": "/federation/intent",
+      "label": "意図整理",
+      "replaces": ["ニーズ翻訳", "Needs翻訳", "need_impact"]
+    },
+    {
+      "id": "responsibility",
+      "path": "/federation/responsibility",
+      "label": "責務解析",
+      "replaces": ["関係整理", "アライメント", "external-federation-view"]
+    },
+    {
+      "id": "impact",
+      "path": "/federation/impact",
+      "label": "影響解析"
+    },
+    {
+      "id": "sync-plan",
+      "path": "/federation/sync-plan",
+      "label": "同期設計"
+    },
+    {
+      "id": "sync-apply",
+      "path": "/federation/sync-apply",
+      "label": "同期改修"
+    },
+    {
+      "id": "validation",
+      "path": "/federation/validation",
+      "label": "検証"
+    }
+  ],
+  "runtimeHeader": {
+    "intake": "/federation/intake",
+    "intent": "/federation/intent",
+    "responsibility": "/federation/responsibility",
+    "intakeIcon": "🤝",
+    "intentIcon": "🗣️",
+    "responsibilityIcon": "🧩"
+  }
+}

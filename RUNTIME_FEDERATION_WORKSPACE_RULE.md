@@ -41,9 +41,24 @@ Operational Console handles:
 * Runtime Federation Workspace
 * Operational Console Router (same-tab navigation)
 
-### Row3 — 自システム
+### Row2 — Brain panels
 
-Row3 opens **Base44 Runtime Public Viewer** (`/viewer/*`) in the **same browser tab** (`runtime_embed=grafana`). Login-free, read-only. No root app URL (avoids Base44 auth/login).
+| Position | Panel | Link |
+|----------|-------|------|
+| Top-left | **Obsidian Knowledge Graph** | `row2.obsidianGraph` |
+| Top-right | **Runtime Federation Graph** | `row2.runtimeFederationGraph` (Runtime center) |
+
+The former **運行制御アーキテクチャ** static collapse panel is removed.
+
+### Row3 — Operational Systems
+
+Section header: **Operational Systems** with **+** on the title row (inline `details` — system add; does **not** navigate to federation governance routes). Cards use Base44 `/viewer/*?runtime_embed=grafana` (フリート運用, サービス拠点, 生活取引, 都市運行).
+
+Row3 opens **Base44 Runtime Public Viewer** (`/viewer/*`) in the **same browser tab** (`runtime_embed=grafana`). Login-free. No root app URL (avoids Base44 auth/login).
+
+### Row4 — System Artifacts
+
+Section header: **System Artifacts** with **+** on the title row (inline `details` — artifact add). Artifact cards use English labels (Collapse Control, Functional Topology, …).
 
 Browser **Back** returns to Runtime Top: `/d/sa8ljn4/runtime`.
 
@@ -62,11 +77,13 @@ Build: `node scripts/build-runtime-workspace-v2.mjs`
 
 Middle row, right: **＋** opens Federation Connect (name, URL, optional repository). Supports Base44, Grafana, Excel Online, Google Sheets, Planner, HILS, Queue tool, ETA tool, Internal SaaS. Added systems persist in `localStorage` (`runtimeFederationConnectSystems`).
 
-### Header
+### Header (Federated Operational Governance — row1)
 
-* **連携探索** (handshake 🤝) — was Discovery → `/runtime_discovery`
-* Needs翻訳 → `/need_impact`
-* アライメント
+* **入力統合** (🤝) — replaces 連携探索 → `/federation/intake` (legacy `/runtime_discovery`)
+* **意図整理** (🗣️) — replaces Needs翻訳 → `/federation/intent` (legacy `/need_impact`)
+* **責務解析** (🧩) — replaces アライメント → `/federation/responsibility`
+
+Full 7-step workspace: see `FEDERATION_GOVERNANCE.md` and `npm run dev` (SPA under `src/federation/`).
 
 ### Route topology (`grafana/runtime-topology-routes.json`)
 

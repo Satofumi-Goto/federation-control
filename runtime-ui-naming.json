@@ -4,26 +4,41 @@
     "left": "Runtime",
     "right": [
       {
-        "title": "連携探索",
-        "icon": "🤝"
+        "title": "入力統合",
+        "icon": "🤝",
+        "path": "/federation/intake"
       },
       {
-        "title": "Needs翻訳",
-        "icon": "🗣️"
+        "title": "意図整理",
+        "icon": "🗣️",
+        "path": "/federation/intent"
       },
       {
-        "title": "アライメント",
-        "icon": "🧩"
+        "title": "責務解析",
+        "icon": "🧩",
+        "path": "/federation/responsibility"
       }
     ]
   },
+  "federationGovernanceSteps": [
+    "入力統合",
+    "意図整理",
+    "責務解析",
+    "影響解析",
+    "同期設計",
+    "同期改修",
+    "検証"
+  ],
   "row3": {
-    "sectionTitle": "自システム",
+    "sectionTitle": "Operational Systems",
     "cardsNameOnly": true
+  },
+  "row4": {
+    "sectionTitle": "System Artifacts"
   },
   "forbidden": [
     "Federation rename drift",
-    "Alliance naming",
+    "duplicate legacy 3-icon row alongside 7-icon sidebar",
     "target=_blank on row3",
     "window.open on row3",
     "federation-viewer row3 links"

@@ -3,6 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "vite",
+    "build:federation-governance": "vite build",
+    "verify:federation-governance": "node scripts/verify-federation-governance.mjs",
+    "verify:federation-semantic": "node scripts/verify-federation-semantic.mjs",
     "build:operational-surfaces": "node scripts/build-operational-surfaces.mjs",
     "build:federation-viewer": "node scripts/build-federation-viewer-surfaces.mjs",
     "ensure:grafana-iframe-plugin": "node scripts/ensure-grafana-iframe-plugin.mjs",
@@ -15,7 +19,21 @@
     "visual-check": "node scripts/runtime-visual-check.mjs",
     "apply:base44-runtime-viewers": "node scripts/apply-all-base44-runtime-viewers.mjs"
   },
+  "dependencies": {
+    "lucide-react": "^0.511.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.1",
+    "zustand": "^5.0.5"
+  },
   "devDependencies": {
-    "playwright": "^1.52.0"
+    "@tailwindcss/vite": "^4.1.8",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^4.5.1",
+    "playwright": "^1.52.0",
+    "tailwindcss": "^4.1.8",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
   }
 }

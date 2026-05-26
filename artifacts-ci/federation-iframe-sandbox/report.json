@@ -1,0 +1,21 @@
+{
+  "capturedAt": "2026-05-23T09:02:06.117Z",
+  "grafanaUrl": "https://satofumigoto.grafana.net",
+  "authMode": "github-oauth",
+  "oauthLoginSuccess": false,
+  "loginMethod": "none",
+  "loginError": "GitHub OAuth button not found on Grafana login page",
+  "iframePresent": false,
+  "federationViewerBanner": false,
+  "runtimeEmbedDetected": false,
+  "pluginSourceAudit": {
+    "pluginId": "nmcclain-iframe-panel",
+    "version": "1.0.1",
+    "sandboxAttributeInPluginSource": false,
+    "note": "Upstream IframePanel.tsx renders <iframe src=...> with no sandbox attribute."
+  },
+  "iframeDom": null,
+  "inFrame": null,
+  "consoleErrors": [],
+  "error": "GitHub OAuth button not found on Grafana login page"
+}

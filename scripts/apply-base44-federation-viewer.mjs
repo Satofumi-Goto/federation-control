@@ -156,20 +156,6 @@ html.runtime-embed-grafana #root {
   background: #0b1020;
   box-sizing: border-box;
 }
-.federation-viewer-banner {
-  flex: 0 0 auto;
-  position: sticky;
-  top: 0;
-  z-index: 99999;
-  padding: 4px 12px;
-  font-size: 10px;
-  font-weight: 700;
-  color: #67e8f9;
-  background: linear-gradient(90deg, #0b1220, #02060c);
-  border-bottom: 1px solid rgba(56, 189, 248, 0.35);
-  pointer-events: none;
-  text-align: center;
-}
 .federation-viewer-operational {
   flex: 1 1 auto;
   min-height: 100vh;
@@ -182,7 +168,7 @@ html.runtime-embed-grafana #root {
 html.federation-viewer-runtime [data-federation-viewer-shell],
 html.runtime-embed-grafana [data-federation-viewer-shell] {
   flex: 1 1 auto;
-  min-height: calc(100vh - 28px);
+  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -231,9 +217,6 @@ export default function FederationViewerShell({ children }) {
 
   return (
     <div className="federation-viewer-root">
-      <div className="federation-viewer-banner">
-        Runtime Federation Viewer · read-only · Operational Runtime
-      </div>
       <div className="federation-viewer-operational" data-federation-viewer-shell>
         {children}
       </div>

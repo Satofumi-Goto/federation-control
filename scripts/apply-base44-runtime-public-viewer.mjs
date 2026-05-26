@@ -105,16 +105,6 @@ html.runtime-public-view #root {
   min-height: 100vh;
   background: var(--background-primary, #f8fafc);
 }
-.runtime-public-viewer-banner {
-  flex: 0 0 auto;
-  padding: 6px 12px;
-  font-size: 11px;
-  font-weight: 700;
-  color: #0891b2;
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
-  text-align: center;
-}
 .runtime-public-viewer-operational {
   flex: 1 1 auto;
   min-height: 0;
@@ -175,9 +165,6 @@ export default function RuntimePublicViewerShell({ children }) {
 
   return (
     <div className="runtime-public-viewer-root" data-runtime-public-view="true">
-      <div className="runtime-public-viewer-banner">
-        都市OS Runtime Viewer · ${consoleSpec.labelJa} · read-only · runtime_embed=grafana
-      </div>
       <div className="runtime-public-viewer-operational" data-runtime-viewer-shell>
         {children}
       </div>
