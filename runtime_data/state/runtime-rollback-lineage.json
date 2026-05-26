@@ -1,0 +1,17 @@
+{
+  "safepoints": [
+    {
+      "snapshotId": "2fac3b0e-4c0a-4056-97cf-90fc0887bd5f",
+      "timestamp": "2026-05-26T10:10:18.142Z",
+      "commitSha": "2f7c7f580bd4af79ada8078d7899cdf89dd74bbd",
+      "safe": true,
+      "reason": "all-verify-pass-no-degradation",
+      "summary": {
+        "healthLevel": "nominal",
+        "pressureScore": 3,
+        "deployVersion": 0
+      }
+    }
+  ],
+  "version": 1
+}

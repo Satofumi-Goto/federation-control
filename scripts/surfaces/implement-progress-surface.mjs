@@ -25,6 +25,7 @@ import {
   miniBar, miniGauge, stateDot, bigMetric, stateChip, dataRow,
   timelineEvent,
   makeDashboard, makeTextPanel,
+  stateTransitionPanelHtml, repairHistoryPanelHtml,
   loadLockState, loadOrchestrationState, loadHeadlessSession,
   loadExecutionResult, loadOperationalSnapshot, loadTriggerSupervisor,
   loadServiceState, loadGovernanceTimeline, loadEnvironmentState,
@@ -300,6 +301,8 @@ export function buildImplementProgress() {
       makeTextPanel({ id: 20, gridPos: { h: 6, w: 8, x: 0, y: 9 }, content: triggerSupervisorPanel() }),
       makeTextPanel({ id: 21, gridPos: { h: 6, w: 8, x: 8, y: 9 }, content: operationalTimelinePanel() }),
       makeTextPanel({ id: 22, gridPos: { h: 6, w: 8, x: 16, y: 9 }, content: environmentHealthPanel() }),
+      makeTextPanel({ id: 30, gridPos: { h: 5, w: 12, x: 0, y: 15 }, content: stateTransitionPanelHtml() }),
+      makeTextPanel({ id: 31, gridPos: { h: 5, w: 12, x: 12, y: 15 }, content: repairHistoryPanelHtml() }),
     ],
   });
 }

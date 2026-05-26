@@ -77,6 +77,15 @@ export function loadServiceState() { return loadJson('runtime-service-state.json
 export function loadInfraTopology() { return loadJson('runtime-infrastructure-topology-graph.json'); }
 export function loadDomainModel() { return loadJson('runtime-federation-domain-model.json'); }
 export function loadAutonomousCoord() { return loadJson('runtime-autonomous-coordination-result.json'); }
+
+// State Engine data (Phase 27)
+export function loadStateSnapshot() { return loadJson('state/runtime-snapshot-latest.json'); }
+export function loadStateHistory() { return loadJson('state/runtime-state-history.json'); }
+export function loadDriftTimeline() { return loadJson('state/runtime-drift-timeline.json'); }
+export function loadRepairHistory() { return loadJson('state/runtime-repair-history.json'); }
+export function loadRollbackLineage() { return loadJson('state/runtime-rollback-lineage.json'); }
+export function loadStateTransitions() { return loadJson('state/runtime-state-transitions.json'); }
+export function loadMemoryGraph() { return loadJson('state/federation-memory-graph.json'); }
 export function loadEvolutionProposals() { return loadJson('runtime-evolution-proposals.json'); }
 export function loadEmergencyCommand() { return loadJson('runtime-emergency-command-result.json'); }
 export function loadOperationalSnapshot() { return loadJson('runtime-operational-snapshot.json'); }
@@ -231,6 +240,106 @@ export function pressureHeatmapSvg(nodes, width = 300, height = 80) {
   }).join('');
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">${cells}</svg>`;
+}
+
+// ── State Engine panels (Phase 27) ──
+
+const STATE_LABELS = {
+  HEALTHY: '正常', DEGRADED: '劣化', DRIFTING: '乖離進行', CONSTRAINED: '制約中',
+  REPAIR_READY: '改修準備可', EXECUTION_LOCKED: '実行ロック', COLLAPSE_RISK: '崩壊リスク', RECOVERING: '復旧中',
+};
+
+const STATE_SEVERITY_COLORS = {
+  HEALTHY: SURFACE_COLORS.healthy, DEGRADED: SURFACE_COLORS.degraded, DRIFTING: SURFACE_COLORS.warning,
+  CONSTRAINED: SURFACE_COLORS.blocked, REPAIR_READY: SURFACE_COLORS.repairing,
+  EXECUTION_LOCKED: SURFACE_COLORS.critical, COLLAPSE_RISK: SURFACE_COLORS.collapsed, RECOVERING: SURFACE_COLORS.accentTeal,
+};
+
+export function stateTransitionPanelHtml() {
+  const data = loadStateTransitions();
+  const currentState = data?.currentState ?? 'HEALTHY';
+  const label = STATE_LABELS[currentState] ?? currentState;
+  const color = STATE_SEVERITY_COLORS[currentState] ?? SURFACE_COLORS.textMuted;
+  const transitions = (data?.transitions ?? []).slice(-6).reverse();
+
+  const transHtml = transitions.map(t => {
+    const toColor = STATE_SEVERITY_COLORS[t.to] || SURFACE_COLORS.textMuted;
+    const fromLabel = STATE_LABELS[t.from] ?? t.from ?? '初期';
+    const toLabel = STATE_LABELS[t.to] ?? t.to;
+    const time = t.timestamp ? new Date(t.timestamp).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' }) : '';
+    return `<div style="display:flex;align-items:center;gap:4px;padding:2px 0;border-bottom:1px solid ${SURFACE_COLORS.cardBorder};font-size:9px;">
+      <span style="color:${SURFACE_COLORS.textMuted};">${esc(fromLabel)}</span>
+      <span style="color:${SURFACE_COLORS.textDim};">→</span>
+      <span style="font-weight:700;color:${toColor};">${esc(toLabel)}</span>
+      <span style="margin-left:auto;font-size:7px;color:${SURFACE_COLORS.textDim};">${time}</span>
+    </div>`;
+  }).join('');
+
+  const content = `${surfaceHeader('State · Transition', '状態遷移', color)}
+    <div style="margin-top:4px;display:flex;align-items:baseline;gap:6px;">
+      ${bigMetric(label, '現在状態', color)}
+    </div>
+    <div style="margin-top:6px;font-size:8px;font-weight:600;color:${SURFACE_COLORS.textDim};text-transform:uppercase;">遷移履歴</div>
+    <div style="margin-top:2px;">${transHtml || '<div style="font-size:8px;color:' + SURFACE_COLORS.textDim + ';">遷移なし</div>'}</div>`;
+
+  return surfaceCard(color, content);
+}
+
+export function rollbackLineagePanelHtml() {
+  const lineage = loadRollbackLineage();
+  const safepoints = lineage?.safepoints ?? [];
+  const latest = safepoints[safepoints.length - 1];
+
+  const rows = safepoints.slice(-4).reverse().map(sp => {
+    const time = sp.timestamp ? new Date(sp.timestamp).toLocaleString('ja-JP', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+    return dataRow(time, sp.commitSha?.slice(0, 7) ?? '--', SURFACE_COLORS.healthy);
+  }).join('');
+
+  const content = `${surfaceHeader('Rollback · Lineage', 'ロールバック系譜', SURFACE_COLORS.accentSteel)}
+    <div style="margin-top:4px;">${bigMetric(safepoints.length, '安全復帰点', SURFACE_COLORS.accentSteel)}</div>
+    <div style="margin-top:6px;font-size:8px;font-weight:600;color:${SURFACE_COLORS.textDim};text-transform:uppercase;">復帰可能ポイント</div>
+    <div style="margin-top:2px;">${rows || '<div style="font-size:8px;color:' + SURFACE_COLORS.textDim + ';">なし</div>'}</div>`;
+
+  return surfaceCard(SURFACE_COLORS.accentSteel, content);
+}
+
+export function driftTimelinePanelHtml() {
+  const timeline = loadDriftTimeline();
+  const events = (timeline?.events ?? []).slice(-5).reverse();
+
+  const eventsHtml = events.map(e => {
+    const color = e.resolved ? SURFACE_COLORS.healthy : SURFACE_COLORS.warning;
+    const type = e.resolved ? '復旧済' : '進行中';
+    const domains = (e.affectedDomains ?? []).join(', ') || 'なし';
+    return timelineEvent(type, `影響: ${domains}`, e.timestamp, color);
+  }).join('');
+
+  const content = `${surfaceHeader('Drift · Timeline', 'ドリフトタイムライン', SURFACE_COLORS.warning)}
+    <div style="margin-top:6px;">${eventsHtml || '<div style="font-size:8px;color:' + SURFACE_COLORS.textDim + ';">イベントなし</div>'}</div>`;
+
+  return surfaceCard(SURFACE_COLORS.warning, content);
+}
+
+export function repairHistoryPanelHtml() {
+  const history = loadRepairHistory();
+  const entries = (history?.entries ?? []).slice(-4).reverse();
+
+  const rows = entries.map(e => {
+    const verifyOk = e.verifyResult?.topology && e.verifyResult?.semantic;
+    const color = verifyOk ? SURFACE_COLORS.healthy : SURFACE_COLORS.warning;
+    const time = e.timestamp ? new Date(e.timestamp).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' }) : '';
+    return `<div style="padding:2px 0;border-bottom:1px solid ${SURFACE_COLORS.cardBorder};display:flex;align-items:center;gap:4px;">
+      <span style="font-size:9px;font-weight:700;color:${color};">${verifyOk ? '✓' : '✗'}</span>
+      <span style="font-size:8px;color:${SURFACE_COLORS.text};flex:1;">${esc(e.governanceDecision?.mode ?? '')}</span>
+      <span style="font-size:7px;color:${SURFACE_COLORS.textDim};">${time}</span>
+    </div>`;
+  }).join('');
+
+  const content = `${surfaceHeader('Repair · History', '改修履歴', SURFACE_COLORS.repairing)}
+    <div style="margin-top:4px;">${bigMetric((history?.entries ?? []).length, '改修記録', SURFACE_COLORS.repairing)}</div>
+    <div style="margin-top:6px;">${rows || '<div style="font-size:8px;color:' + SURFACE_COLORS.textDim + ';">記録なし</div>'}</div>`;
+
+  return surfaceCard(SURFACE_COLORS.repairing, content);
 }
 
 // ── Grafana dashboard skeleton ──

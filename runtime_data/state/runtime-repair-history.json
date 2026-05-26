@@ -1,0 +1,38 @@
+{
+  "entries": [
+    {
+      "id": "da1f58ac-0135-408a-b954-73562d0890b7",
+      "timestamp": "2026-05-26T10:10:18.142Z",
+      "snapshotId": "2fac3b0e-4c0a-4056-97cf-90fc0887bd5f",
+      "commitSha": "2f7c7f580bd4af79ada8078d7899cdf89dd74bbd",
+      "repairType": "auto",
+      "affectedSurface": [],
+      "dependencyImpact": {
+        "degradedCount": 0,
+        "congestionLevel": "none",
+        "propagationSeverity": 0
+      },
+      "governanceDecision": {
+        "mode": "normal",
+        "lockDecision": "proceed",
+        "pressureScore": 3
+      },
+      "executionResult": {
+        "mode": "autonomous",
+        "deployState": "blocked",
+        "headlessStatus": "completed"
+      },
+      "verifyResult": {
+        "topology": true,
+        "semantic": true
+      },
+      "repairState": "no_action",
+      "totalCycles": 4,
+      "lastDecision": "no_action",
+      "verificationPassRate": 100,
+      "slaStatus": "at-risk",
+      "rollbackRequired": false
+    }
+  ],
+  "version": 1
+}

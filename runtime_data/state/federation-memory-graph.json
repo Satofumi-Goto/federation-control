@@ -1,0 +1,374 @@
+{
+  "version": 1,
+  "timestamp": "2026-05-26T10:10:18.474Z",
+  "snapshotId": "2fac3b0e-4c0a-4056-97cf-90fc0887bd5f",
+  "currentState": "EXECUTION_LOCKED",
+  "currentStateLabel": "実行ロック",
+  "nodes": [
+    {
+      "id": "state-engine",
+      "type": "core",
+      "label": "状態エンジン",
+      "state": "EXECUTION_LOCKED",
+      "stateLabel": "実行ロック",
+      "severity": 60
+    },
+    {
+      "id": "snapshot",
+      "type": "engine",
+      "label": "スナップショット",
+      "snapshotId": "2fac3b0e-4c0a-4056-97cf-90fc0887bd5f",
+      "timestamp": "2026-05-26T10:10:18.142Z",
+      "commitSha": "2f7c7f580bd4af79ada8078d7899cdf89dd74bbd"
+    },
+    {
+      "id": "drift",
+      "type": "engine",
+      "label": "ドリフト",
+      "totalEvents": 0,
+      "activeEvents": 0,
+      "resolvedEvents": 0,
+      "avgRecoveryMs": 0
+    },
+    {
+      "id": "repair",
+      "type": "engine",
+      "label": "改修履歴",
+      "totalEntries": 1,
+      "verifyPassRate": 100
+    },
+    {
+      "id": "rollback",
+      "type": "engine",
+      "label": "ロールバック",
+      "safepointCount": 1,
+      "rollbackAvailable": true,
+      "blastRadius": "none",
+      "recommendation": "no-rollback-needed"
+    },
+    {
+      "id": "history",
+      "type": "engine",
+      "label": "状態メモリ",
+      "totalEntries": 1,
+      "maxEntries": 50
+    },
+    {
+      "id": "transitions",
+      "type": "engine",
+      "label": "状態遷移",
+      "totalTransitions": 1,
+      "currentState": "EXECUTION_LOCKED",
+      "currentLabel": "実行ロック",
+      "distribution": {
+        "EXECUTION_LOCKED": 1
+      }
+    },
+    {
+      "id": "domain-core",
+      "type": "domain",
+      "label": "runtime-core",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-governance",
+      "type": "domain",
+      "label": "governance",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-execution",
+      "type": "domain",
+      "label": "execution",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-repair",
+      "type": "domain",
+      "label": "repair",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-fleet",
+      "type": "domain",
+      "label": "fleet",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-urban",
+      "type": "domain",
+      "label": "urban",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-service-hub",
+      "type": "domain",
+      "label": "service-hub",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-life-tx",
+      "type": "domain",
+      "label": "life-transaction",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-mobility",
+      "type": "domain",
+      "label": "mobility",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-energy",
+      "type": "domain",
+      "label": "energy",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-logistics",
+      "type": "domain",
+      "label": "logistics",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-emergency",
+      "type": "domain",
+      "label": "emergency",
+      "state": "standby",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-infrastructure",
+      "type": "domain",
+      "label": "infrastructure",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    },
+    {
+      "id": "domain-seneschal",
+      "type": "domain",
+      "label": "seneschal",
+      "state": "active",
+      "health": "healthy",
+      "pressure": 0,
+      "congestion": 0
+    }
+  ],
+  "edges": [
+    {
+      "from": "state-engine",
+      "to": "snapshot",
+      "type": "captures"
+    },
+    {
+      "from": "state-engine",
+      "to": "drift",
+      "type": "monitors"
+    },
+    {
+      "from": "state-engine",
+      "to": "repair",
+      "type": "tracks"
+    },
+    {
+      "from": "state-engine",
+      "to": "rollback",
+      "type": "manages"
+    },
+    {
+      "from": "state-engine",
+      "to": "history",
+      "type": "stores"
+    },
+    {
+      "from": "state-engine",
+      "to": "transitions",
+      "type": "evaluates"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-core",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-governance",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-execution",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-repair",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-fleet",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-urban",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-service-hub",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-life-tx",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-mobility",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-energy",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-logistics",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-emergency",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-infrastructure",
+      "type": "observes"
+    },
+    {
+      "from": "state-engine",
+      "to": "domain-seneschal",
+      "type": "observes"
+    },
+    {
+      "from": "domain-core",
+      "to": "domain-governance",
+      "type": "authority",
+      "healthy": true
+    },
+    {
+      "from": "domain-core",
+      "to": "domain-execution",
+      "type": "authority",
+      "healthy": true
+    },
+    {
+      "from": "domain-core",
+      "to": "domain-repair",
+      "type": "authority",
+      "healthy": true
+    },
+    {
+      "from": "domain-execution",
+      "to": "domain-fleet",
+      "type": "execution",
+      "healthy": true
+    },
+    {
+      "from": "domain-fleet",
+      "to": "domain-mobility",
+      "type": "coordination",
+      "healthy": true
+    },
+    {
+      "from": "domain-mobility",
+      "to": "domain-logistics",
+      "type": "coordination",
+      "healthy": true
+    },
+    {
+      "from": "domain-infrastructure",
+      "to": "domain-energy",
+      "type": "control",
+      "healthy": true
+    },
+    {
+      "from": "domain-infrastructure",
+      "to": "domain-urban",
+      "type": "monitoring",
+      "healthy": true
+    },
+    {
+      "from": "domain-urban",
+      "to": "domain-service-hub",
+      "type": "data",
+      "healthy": true
+    },
+    {
+      "from": "domain-service-hub",
+      "to": "domain-life-tx",
+      "type": "service",
+      "healthy": true
+    },
+    {
+      "from": "domain-governance",
+      "to": "domain-emergency",
+      "type": "escalation",
+      "healthy": true
+    },
+    {
+      "from": "domain-seneschal",
+      "to": "domain-governance",
+      "type": "intelligence",
+      "healthy": true
+    }
+  ],
+  "summary": {
+    "totalNodes": 21,
+    "totalEdges": 32,
+    "engineNodes": 6,
+    "domainNodes": 14
+  }
+}

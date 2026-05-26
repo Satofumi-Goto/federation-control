@@ -1,0 +1,26 @@
+{
+  "entries": [
+    {
+      "id": "2fac3b0e-4c0a-4056-97cf-90fc0887bd5f",
+      "timestamp": "2026-05-26T10:10:18.142Z",
+      "commitSha": "2f7c7f580bd4af79ada8078d7899cdf89dd74bbd",
+      "summary": {
+        "governanceMode": "normal",
+        "pressureScore": 3,
+        "executionMode": "autonomous",
+        "queueDepth": 0,
+        "healthLevel": "nominal",
+        "driftState": "healthy",
+        "degradedCount": 0,
+        "repairCycles": 4,
+        "slaStatus": "at-risk",
+        "slaRisks": 2,
+        "verifyTopology": true,
+        "verifySemantic": true,
+        "deployVersion": 0,
+        "environmentHealth": 0
+      }
+    }
+  ],
+  "version": 1
+}

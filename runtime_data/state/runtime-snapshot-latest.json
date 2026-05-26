@@ -1,0 +1,139 @@
+{
+  "id": "2fac3b0e-4c0a-4056-97cf-90fc0887bd5f",
+  "timestamp": "2026-05-26T10:10:18.142Z",
+  "commitSha": "2f7c7f580bd4af79ada8078d7899cdf89dd74bbd",
+  "verification": {
+    "topology": {
+      "ok": true
+    },
+    "semantic": {
+      "ok": true
+    }
+  },
+  "governance": {
+    "mode": "normal",
+    "deployPolicy": "allowed",
+    "repairPolicy": "allowed",
+    "lockDecision": "proceed",
+    "lockChecks": [
+      {
+        "check": "workspace-binding",
+        "pass": true
+      },
+      {
+        "check": "payload-safety",
+        "pass": true
+      },
+      {
+        "check": "governance-deploy",
+        "pass": true
+      },
+      {
+        "check": "execution-mode",
+        "pass": true
+      }
+    ],
+    "pressureScore": 3,
+    "violations": 0,
+    "stormDetected": false
+  },
+  "execution": {
+    "mode": "autonomous",
+    "queueDepth": 0,
+    "deployState": "blocked",
+    "headlessStatus": "completed",
+    "triggerPaused": false,
+    "triggerBlockRate": 50,
+    "loopCount": 1
+  },
+  "health": {
+    "overallLevel": "nominal",
+    "dependencyHealth": "healthy",
+    "governancePressure": 3,
+    "executionPressure": 0,
+    "repairPressure": 0,
+    "deployPressure": 10,
+    "propagationSeverity": 0,
+    "nodes": [
+      {
+        "id": "registry",
+        "health": "healthy",
+        "pressure": 0
+      },
+      {
+        "id": "topology",
+        "health": "healthy",
+        "pressure": 0
+      },
+      {
+        "id": "deploy",
+        "health": "healthy",
+        "pressure": 10
+      },
+      {
+        "id": "repair",
+        "health": "operational",
+        "pressure": 0
+      },
+      {
+        "id": "governance",
+        "health": "healthy",
+        "pressure": 3
+      }
+    ]
+  },
+  "drift": {
+    "state": "healthy",
+    "activeCount": 1,
+    "degradedDomains": [],
+    "congestionLevel": "none",
+    "hotspots": []
+  },
+  "repair": {
+    "activeRepairState": "no_action",
+    "totalCycles": 4,
+    "lastDecision": "no_action",
+    "verificationPassRate": 100,
+    "adaptiveActions": 1,
+    "safetyLocksEnforced": true
+  },
+  "sla": {
+    "overallStatus": "at-risk",
+    "metrics": {
+      "availability": {
+        "current": 98,
+        "target": 99.5,
+        "unit": "%"
+      },
+      "deploySuccess": {
+        "current": 100,
+        "target": 95,
+        "unit": "%"
+      },
+      "repairLeadTime": {
+        "current": 10,
+        "target": 30,
+        "unit": "min"
+      },
+      "meanRecoveryTime": {
+        "current": 20,
+        "target": 15,
+        "unit": "min"
+      }
+    },
+    "riskCount": 2
+  },
+  "deploy": {
+    "version": 0,
+    "panelCount": 0,
+    "registryCount": 5,
+    "verificationPass": true
+  },
+  "environment": {
+    "healthScore": 0,
+    "activeModules": 3
+  },
+  "tools": {
+    "exposedCount": 7
+  }
+}
