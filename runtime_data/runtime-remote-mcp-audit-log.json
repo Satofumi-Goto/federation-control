@@ -1,0 +1,121 @@
+{
+  "entries": [
+    {
+      "timestamp": "2026-05-26T08:43:51.120Z",
+      "tool": "auth-check",
+      "permissionLevel": "none",
+      "requestHash": "n/a",
+      "blockedReason": "MISSING_AUTH"
+    },
+    {
+      "timestamp": "2026-05-26T08:43:51.123Z",
+      "tool": "auth-check",
+      "permissionLevel": "none",
+      "requestHash": "n/a",
+      "blockedReason": "INVALID_TOKEN"
+    },
+    {
+      "timestamp": "2026-05-26T08:43:51.129Z",
+      "tool": "runtime_deploy",
+      "permissionLevel": "denied",
+      "requestHash": "ad22a8c7de6f52c7",
+      "blockedReason": "TOOL_NOT_ALLOWED"
+    },
+    {
+      "timestamp": "2026-05-26T08:43:51.135Z",
+      "tool": "runtime_status",
+      "permissionLevel": "execute-safe",
+      "requestHash": "85d1573d947941d6",
+      "governanceResult": "n/a",
+      "safetyResult": "n/a",
+      "executionResult": "success",
+      "blockedReason": null
+    },
+    {
+      "timestamp": "2026-05-26T08:43:51.138Z",
+      "tool": "runtime_execute_safe",
+      "permissionLevel": "blocked",
+      "requestHash": "f5f4bb72146298f6",
+      "safetyResult": "blocked",
+      "blockedReason": "FORBIDDEN_PATTERN: CURSOR_API_KEY"
+    },
+    {
+      "timestamp": "2026-05-26T08:43:51.141Z",
+      "tool": "runtime_dry_run",
+      "permissionLevel": "blocked",
+      "requestHash": "724dcbc006894d8f",
+      "safetyResult": "blocked",
+      "blockedReason": "FORBIDDEN_PATTERN: bypass.*governance"
+    },
+    {
+      "timestamp": "2026-05-26T08:43:51.147Z",
+      "tool": "runtime_status",
+      "permissionLevel": "execute-safe",
+      "requestHash": "85d1573d947941d6",
+      "governanceResult": "n/a",
+      "safetyResult": "n/a",
+      "executionResult": "success",
+      "blockedReason": null
+    },
+    {
+      "timestamp": "2026-05-26T08:47:54.079Z",
+      "tool": "auth-check",
+      "permissionLevel": "none",
+      "requestHash": "n/a",
+      "blockedReason": "MISSING_AUTH"
+    },
+    {
+      "timestamp": "2026-05-26T08:47:54.090Z",
+      "tool": "auth-check",
+      "permissionLevel": "none",
+      "requestHash": "n/a",
+      "blockedReason": "INVALID_TOKEN"
+    },
+    {
+      "timestamp": "2026-05-26T08:47:54.106Z",
+      "tool": "runtime_deploy",
+      "permissionLevel": "denied",
+      "requestHash": "ad22a8c7de6f52c7",
+      "blockedReason": "TOOL_NOT_ALLOWED"
+    },
+    {
+      "timestamp": "2026-05-26T08:47:54.124Z",
+      "tool": "runtime_status",
+      "permissionLevel": "execute-safe",
+      "requestHash": "85d1573d947941d6",
+      "governanceResult": "n/a",
+      "safetyResult": "n/a",
+      "executionResult": "success",
+      "blockedReason": null
+    },
+    {
+      "timestamp": "2026-05-26T08:47:54.128Z",
+      "tool": "runtime_execute_safe",
+      "permissionLevel": "blocked",
+      "requestHash": "f5f4bb72146298f6",
+      "safetyResult": "blocked",
+      "blockedReason": "FORBIDDEN_PATTERN: CURSOR_API_KEY"
+    },
+    {
+      "timestamp": "2026-05-26T08:47:54.136Z",
+      "tool": "runtime_dry_run",
+      "permissionLevel": "blocked",
+      "requestHash": "724dcbc006894d8f",
+      "safetyResult": "blocked",
+      "blockedReason": "FORBIDDEN_PATTERN: bypass.*governance"
+    },
+    {
+      "timestamp": "2026-05-26T08:47:54.145Z",
+      "tool": "runtime_status",
+      "permissionLevel": "execute-safe",
+      "requestHash": "85d1573d947941d6",
+      "governanceResult": "n/a",
+      "safetyResult": "n/a",
+      "executionResult": "success",
+      "blockedReason": null
+    }
+  ],
+  "maxEntries": 500,
+  "createdAt": "2026-05-26T08:00:00.000Z",
+  "lastUpdated": "2026-05-26T08:47:54.145Z"
+}

@@ -1,0 +1,94 @@
+{
+  "tools": [
+    {
+      "id": "runtime-execute",
+      "name": "Runtime Execute",
+      "description": "Execute a governed prompt via @cursor/sdk Agent.prompt()",
+      "entrypoint": "scripts/runtime/runtimeHeadlessCursorExecutor.mjs --execute",
+      "requiredPermission": "execute-safe",
+      "governanceRequired": true,
+      "safetyLockRequired": true,
+      "approvalRequired": false
+    },
+    {
+      "id": "runtime-dry-run",
+      "name": "Runtime Dry-Run",
+      "description": "Simulate execution pipeline without invoking Agent.prompt()",
+      "entrypoint": "scripts/runtime/runtimeHeadlessCursorExecutor.mjs --dry-run",
+      "requiredPermission": "dry-run",
+      "governanceRequired": false,
+      "safetyLockRequired": false,
+      "approvalRequired": false
+    },
+    {
+      "id": "runtime-verify",
+      "name": "Runtime Verify",
+      "description": "Run auto-verification pipeline (topology, semantic, build)",
+      "entrypoint": "scripts/runtime/runtimeAutoVerificationPipeline.mjs",
+      "requiredPermission": "verify-only",
+      "governanceRequired": false,
+      "safetyLockRequired": false,
+      "approvalRequired": false
+    },
+    {
+      "id": "runtime-deploy",
+      "name": "Runtime Deploy",
+      "description": "Deploy Grafana dashboards via deploy pipeline",
+      "entrypoint": "scripts/runtime/runtimeDeployPipeline.mjs",
+      "requiredPermission": "execute-reviewed",
+      "governanceRequired": true,
+      "safetyLockRequired": true,
+      "approvalRequired": true
+    },
+    {
+      "id": "runtime-governance",
+      "name": "Runtime Governance",
+      "description": "Run governance orchestrator and policy evaluation",
+      "entrypoint": "scripts/runtime/runtimeGovernanceOrchestrator.mjs",
+      "requiredPermission": "verify-only",
+      "governanceRequired": false,
+      "safetyLockRequired": false,
+      "approvalRequired": false
+    },
+    {
+      "id": "runtime-status",
+      "name": "Runtime Orchestration Status",
+      "description": "Read current orchestration state, environment, and pressure",
+      "entrypoint": null,
+      "requiredPermission": "dry-run",
+      "governanceRequired": false,
+      "safetyLockRequired": false,
+      "approvalRequired": false
+    },
+    {
+      "id": "runtime-result",
+      "name": "Runtime Execution Result",
+      "description": "Read the latest execution result and session state",
+      "entrypoint": null,
+      "requiredPermission": "dry-run",
+      "governanceRequired": false,
+      "safetyLockRequired": false,
+      "approvalRequired": false
+    }
+  ],
+  "permissionLevels": [
+    "dry-run",
+    "verify-only",
+    "execute-safe",
+    "execute-reviewed",
+    "execute-emergency"
+  ],
+  "invocationModes": {
+    "cli": "node scripts/runtime/runtimeExternalExecutionGateway.mjs --invoke <toolId>",
+    "module": "import { invokeToolById } from './runtimeExternalExecutionGateway.mjs'",
+    "sdk": "@cursor/sdk Agent.prompt() via runtimeHeadlessCursorExecutor.mjs"
+  },
+  "restrictions": {
+    "destructiveExecutionRequiresApproval": true,
+    "governanceBypassForbidden": true,
+    "registryDeletionForbidden": true,
+    "canonicalReplacementForbidden": true,
+    "credentialExposureForbidden": true
+  },
+  "lastSync": "2026-05-26T09:02:03.271Z"
+}

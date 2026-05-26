@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-05-26T07:19:48.935Z",
+  "timestamp": "2026-05-26T09:02:00.756Z",
   "summary": {
-    "bestMode": "cursor-sdk",
-    "availableModeCount": 4,
-    "fullyHeadless": true,
+    "bestMode": "cursor-cmd-agent",
+    "availableModeCount": 3,
+    "fullyHeadless": false,
     "sdkInstalled": true,
     "sdkVersion": "1.0.13",
-    "apiKeyConfigured": true,
-    "apiKeyMasked": "crsr***7886",
-    "blockerCount": 0
+    "apiKeyConfigured": false,
+    "apiKeyMasked": "(not set)",
+    "blockerCount": 1
   },
   "modes": [
     {
       "id": "cursor-sdk",
       "label": "Cursor SDK (@cursor/sdk)",
-      "available": true,
+      "available": false,
       "version": "1.0.13",
       "installed": true,
-      "apiKeyConfigured": true,
-      "apiKeyMasked": "crsr***7886",
+      "apiKeyConfigured": false,
+      "apiKeyMasked": "(not set)",
       "authSources": {
-        "apiKeyEnv": true,
-        "apiKeyMasked": "crsr***7886",
+        "apiKeyEnv": false,
+        "apiKeyMasked": "(not set)",
         "desktopSessionDetected": true,
         "desktopAppInstalled": true,
         "browserSessionDetected": false,
@@ -106,6 +106,8 @@
     "spawn": true,
     "execSync": true
   },
-  "blockers": [],
-  "recommendation": "Cursor SDK ready — fully headless execution available via Agent.prompt()."
+  "blockers": [
+    "CURSOR_API_KEY not set in environment"
+  ],
+  "recommendation": "Cursor SDK installed. Set CURSOR_API_KEY to enable fully headless execution."
 }

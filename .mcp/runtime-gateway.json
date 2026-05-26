@@ -1,0 +1,6 @@
+{
+  "name": "federation-runtime-gateway",
+  "command": "node",
+  "args": ["mcp/runtime-gateway-server.mjs"],
+  "cwd": "."
+}

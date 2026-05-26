@@ -1,0 +1,60 @@
+{
+  "appName": "Federation Runtime Gateway",
+  "description": "Governed remote execution gateway for the Federation Runtime OS. Exposes safe Runtime tools via MCP over HTTPS with bearer token authentication.",
+  "version": "1.0.0",
+  "remoteMcpEndpoint": {
+    "url": "https://<TUNNEL_URL>",
+    "toolsListPath": "/mcp/tools/list",
+    "toolsCallPath": "/mcp/tools/call",
+    "healthPath": "/health",
+    "placeholder": true,
+    "note": "Replace <TUNNEL_URL> with the actual Cloudflare Tunnel or Tailscale Funnel URL after tunnel activation."
+  },
+  "authentication": {
+    "type": "bearer",
+    "headerName": "Authorization",
+    "headerFormat": "Bearer <REMOTE_MCP_AUTH_TOKEN>",
+    "tokenSource": ".env.runtime (REMOTE_MCP_AUTH_TOKEN)",
+    "required": true
+  },
+  "allowedTools": [
+    {
+      "name": "runtime_status",
+      "permission": "dry-run",
+      "description": "Read orchestration state, latest session, tool count",
+      "sideEffects": false
+    },
+    {
+      "name": "runtime_dry_run",
+      "permission": "dry-run",
+      "description": "Simulate execution pipeline without Agent.prompt()",
+      "sideEffects": false
+    },
+    {
+      "name": "runtime_verify",
+      "permission": "verify-only",
+      "description": "Run topology, semantic, and tool validation",
+      "sideEffects": false
+    },
+    {
+      "name": "runtime_execute_safe",
+      "permission": "execute-safe",
+      "description": "Execute governed prompt via @cursor/sdk Agent.prompt()",
+      "sideEffects": true
+    }
+  ],
+  "forbiddenTools": [
+    "runtime_deploy",
+    "runtime_execute_reviewed",
+    "runtime_execute_emergency"
+  ],
+  "safetyDisclaimer": "All execution passes through governance policy evaluation, safety lock enforcement, and forbidden pattern filtering. Destructive operations, credential exposure, force push, registry deletion, and governance bypass are unconditionally blocked. Every remote call is audited.",
+  "governanceMode": "enforced",
+  "permissionMode": "execute-safe",
+  "maximumPermission": "execute-safe",
+  "auditEnabled": true,
+  "secretsExposed": false,
+  "destructiveToolsExposed": false,
+  "registrationStatus": "pending-tunnel-activation",
+  "lastUpdated": "2026-05-26T08:45:00.000Z"
+}

@@ -1,0 +1,59 @@
+{
+  "allowedTools": [
+    "runtime_status",
+    "runtime_dry_run",
+    "runtime_verify",
+    "runtime_execute_safe"
+  ],
+  "forbiddenTools": [
+    "runtime_deploy",
+    "runtime_execute_reviewed",
+    "runtime_execute_emergency"
+  ],
+  "allowedPermissionLevels": [
+    "dry-run",
+    "verify-only",
+    "execute-safe"
+  ],
+  "forbiddenPermissionLevels": [
+    "execute-reviewed",
+    "execute-emergency"
+  ],
+  "forbiddenOperations": [
+    "credential-modification",
+    "credential-exposure",
+    "force-push",
+    "repo-wide-delete",
+    "canonical-replacement",
+    "governance-bypass",
+    "safety-bypass",
+    "registry-deletion",
+    "federation-memory-deletion",
+    "no-verify-push",
+    "unrelated-repository-access",
+    "destructive-rewrite"
+  ],
+  "requiredGovernanceChecks": [
+    "policy-engine-evaluation",
+    "workspace-binding-enforcement",
+    "instruction-safety-validation",
+    "forbidden-pattern-filter"
+  ],
+  "requiredSafetyLocks": [
+    "invocation-safety-lock",
+    "payload-validation",
+    "execution-scope-validation",
+    "secret-masking"
+  ],
+  "auditRequired": true,
+  "auditLogPath": "runtime_data/runtime-remote-mcp-audit-log.json",
+  "maxAuditEntries": 500,
+  "tunnelPolicy": {
+    "requireAuthentication": true,
+    "requireHttps": true,
+    "requireAllowlist": true,
+    "forbidOpenPublicExposure": true,
+    "requireShutdownCapability": true
+  },
+  "lastUpdated": "2026-05-26T08:00:00.000Z"
+}
