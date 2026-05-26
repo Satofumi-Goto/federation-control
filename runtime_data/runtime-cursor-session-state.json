@@ -1,0 +1,23 @@
+{
+  "executionState": "completed",
+  "lastInstructionId": "2026-05-26T03-15-02-950Z",
+  "lastTriggerTime": "2026-05-26T03:18:21.007Z",
+  "activePayload": "2026-05-26T03-15-02-950Z",
+  "executionStartTime": "2026-05-26T03:18:21.007Z",
+  "executionEndTime": "2026-05-26T03:18:22.230Z",
+  "executionResult": {
+    "agentOk": false,
+    "agentFallback": false,
+    "buildOk": true,
+    "verifyOk": true
+  },
+  "verificationResult": {
+    "registry": true,
+    "topology": true,
+    "semantic": true,
+    "governance": true
+  },
+  "deployResult": null,
+  "rollbackState": null,
+  "timestamp": "2026-05-26T03:18:22.230Z"
+}

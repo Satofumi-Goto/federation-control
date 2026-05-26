@@ -1,0 +1,16 @@
+{
+  "lastInstructionHash": "73269c47ba9dc7d2",
+  "lastTriggerTimestamp": "2026-05-26T06:08:02.372Z",
+  "lastExecutionTimestamp": "2026-05-26T06:08:50.909Z",
+  "lastExecutionStatus": "completed",
+  "lastExecutionMode": "headless-sdk",
+  "debounce": {
+    "active": false,
+    "pendingSince": null
+  },
+  "watcher": {
+    "active": false,
+    "startedAt": "2026-05-26T06:09:09.538Z",
+    "pid": 21264
+  }
+}

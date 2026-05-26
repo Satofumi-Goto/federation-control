@@ -1,0 +1,111 @@
+{
+  "timestamp": "2026-05-26T07:19:48.935Z",
+  "summary": {
+    "bestMode": "cursor-sdk",
+    "availableModeCount": 4,
+    "fullyHeadless": true,
+    "sdkInstalled": true,
+    "sdkVersion": "1.0.13",
+    "apiKeyConfigured": true,
+    "apiKeyMasked": "crsr***7886",
+    "blockerCount": 0
+  },
+  "modes": [
+    {
+      "id": "cursor-sdk",
+      "label": "Cursor SDK (@cursor/sdk)",
+      "available": true,
+      "version": "1.0.13",
+      "installed": true,
+      "apiKeyConfigured": true,
+      "apiKeyMasked": "crsr***7886",
+      "authSources": {
+        "apiKeyEnv": true,
+        "apiKeyMasked": "crsr***7886",
+        "desktopSessionDetected": true,
+        "desktopAppInstalled": true,
+        "browserSessionDetected": false,
+        "localTokenCache": false,
+        "fallbackAvailable": false,
+        "envRuntimeFile": true
+      },
+      "installCommand": "npm install @cursor/sdk",
+      "capabilities": {
+        "headless": true,
+        "programmatic": true,
+        "stdinPrompt": true,
+        "workspaceTargeting": true,
+        "streaming": true,
+        "multiTurn": true,
+        "modelSelection": true
+      },
+      "priority": 1,
+      "recommended": true
+    },
+    {
+      "id": "cursor-cmd-agent",
+      "label": "cursor.cmd agent subcommand",
+      "available": true,
+      "executablePath": "C:\\Users\\satof\\AppData\\Local\\Programs\\cursor\\Cursor.exe",
+      "agentSubcommand": true,
+      "version": "3.4.20",
+      "cliJsPath": "C:\\Users\\satof\\AppData\\Local\\Programs\\cursor\\resources\\app\\out\\cli.js",
+      "cursorCmdPath": "C:\\Users\\satof\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin\\cursor.cmd",
+      "invocationMethod": "ELECTRON_RUN_AS_NODE=1 Cursor.exe cli.js agent",
+      "capabilities": {
+        "headless": false,
+        "terminalAgent": true,
+        "stdinPrompt": false,
+        "workspaceTargeting": true,
+        "requiresDisplay": true
+      },
+      "priority": 2,
+      "recommended": false
+    },
+    {
+      "id": "cursor-tunnel",
+      "label": "cursor-tunnel.exe standalone",
+      "available": true,
+      "executablePath": "C:\\Users\\satof\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin\\cursor-tunnel.exe",
+      "version": "3.4.20",
+      "hasAgentSubcommand": false,
+      "hasTunnelSubcommand": true,
+      "capabilities": {
+        "headless": true,
+        "tunnel": true,
+        "agentSubcommand": false,
+        "stdinPrompt": false,
+        "workspaceTargeting": false
+      },
+      "priority": 3,
+      "recommended": false
+    },
+    {
+      "id": "file-trigger",
+      "label": "File-trigger execution",
+      "available": true,
+      "payloadPath": "C:\\Users\\satof\\OneDrive\\デスクトップ\\federation-control\\.cursor\\tasks\\runtime-bridge-payload.json",
+      "inboxPath": "C:\\Users\\satof\\OneDrive\\デスクトップ\\federation-control\\.cursor\\tasks\\chatgpt-runtime-inbox.md",
+      "payloadExists": true,
+      "inboxExists": true,
+      "capabilities": {
+        "headless": false,
+        "requiresRunningCursor": true,
+        "stdinPrompt": false,
+        "workspaceTargeting": true,
+        "asyncOnly": true
+      },
+      "priority": 4,
+      "recommended": false
+    }
+  ],
+  "spawn": {
+    "available": true,
+    "nodeVersion": "v22.22.0",
+    "spawnSync": true,
+    "spawn": true,
+    "execSync": true
+  },
+  "blockers": [],
+  "recommendation": "Cursor SDK ready — fully headless execution available via Agent.prompt()."
+}

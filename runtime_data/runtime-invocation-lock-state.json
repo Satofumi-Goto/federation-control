@@ -1,0 +1,32 @@
+{
+  "decision": "proceed",
+  "checks": [
+    {
+      "check": "workspace-binding",
+      "pass": true,
+      "detail": "Bound to federation-control"
+    },
+    {
+      "check": "payload-safety",
+      "pass": true,
+      "detail": "No forbidden operations"
+    },
+    {
+      "check": "governance-deploy",
+      "pass": true,
+      "detail": "Deploy policy: allowed"
+    },
+    {
+      "check": "execution-mode",
+      "pass": true,
+      "detail": "Mode: unknown"
+    }
+  ],
+  "blocked": [],
+  "governance": {
+    "mode": "normal",
+    "deployPolicy": "allowed",
+    "repairPolicy": "allowed"
+  },
+  "timestamp": "2026-05-26T06:42:16.597Z"
+}

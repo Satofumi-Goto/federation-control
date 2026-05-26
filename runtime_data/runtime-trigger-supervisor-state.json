@@ -1,0 +1,14 @@
+{
+  "executions": [
+    {
+      "timestamp": 1779775730908,
+      "success": true
+    }
+  ],
+  "consecutiveFailures": 0,
+  "paused": false,
+  "pausedUntil": null,
+  "lastExecution": 1779775730908,
+  "totalExecutions": 1,
+  "totalBlocked": 1
+}

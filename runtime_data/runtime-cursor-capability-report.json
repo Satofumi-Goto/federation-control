@@ -1,0 +1,54 @@
+{
+  "cursorExecutable": {
+    "detected": true,
+    "path": "C:\\Users\\satof\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin\\cursor.cmd"
+  },
+  "cursorVersion": "3.4.20",
+  "agentExecutable": {
+    "detected": false,
+    "path": null
+  },
+  "cursorAgentExecutable": {
+    "detected": false,
+    "path": null
+  },
+  "primaryExecutable": {
+    "name": "cursor",
+    "path": "C:\\Users\\satof\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin\\cursor.cmd"
+  },
+  "agentSubcommand": {
+    "available": true,
+    "listedInHelp": true,
+    "agentHelpWorks": false,
+    "isGuiCliWrapper": false,
+    "reason": "Agent listed in help but subcommand may need standalone binary"
+  },
+  "standaloneCli": {
+    "detected": true,
+    "path": "C:\\Users\\satof\\AppData\\Local\\Programs\\cursor\\resources\\app\\bin\\cursor-tunnel.exe",
+    "hasAgentSubcommand": false,
+    "version": "3.4.20"
+  },
+  "spawnSupported": true,
+  "workspace": {
+    "detected": true,
+    "root": "C:\\Users\\satof\\OneDrive\\デスクトップ\\federation-control",
+    "name": "federation-control",
+    "isFederationControl": true
+  },
+  "repository": {
+    "gitDetected": true,
+    "branch": "main",
+    "remote": "https://github.com/Satofumi-Goto/federation-control.git",
+    "lastCommit": "7542d1c",
+    "isFederationControl": true
+  },
+  "headlessAgentReady": false,
+  "localInvocationReady": true,
+  "invocationMethod": "fallback (build+verify pipeline)",
+  "unsupported": [
+    "Standalone agent binary not installed",
+    "Headless agent invocation not available"
+  ],
+  "timestamp": "2026-05-26T03:45:19.459Z"
+}
