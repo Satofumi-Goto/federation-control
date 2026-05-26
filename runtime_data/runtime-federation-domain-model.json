@@ -1,0 +1,199 @@
+{
+  "version": "1.0",
+  "domains": [
+    {
+      "id": "runtime-core",
+      "label": "Runtime Core",
+      "description": "Central Runtime orchestration and state management",
+      "ownership": "runtime-admin",
+      "authorityLevel": "primary",
+      "executionScope": ["orchestration", "state-management", "event-propagation"],
+      "governanceScope": ["policy-enforcement", "mode-control", "safety-gates"],
+      "dependencies": [],
+      "dependents": ["fleet-runtime", "urban-runtime", "service-hub-runtime", "life-transaction-runtime", "seneschal-runtime", "governance-runtime", "repair-runtime", "execution-runtime"]
+    },
+    {
+      "id": "fleet-runtime",
+      "label": "Fleet Runtime",
+      "description": "Fleet management, vehicle dispatch, and logistics operations",
+      "ownership": "operator",
+      "authorityLevel": "secondary",
+      "executionScope": ["fleet-dispatch", "vehicle-tracking", "route-optimization"],
+      "governanceScope": ["fleet-policy", "dispatch-safety"],
+      "dependencies": ["runtime-core", "execution-runtime"],
+      "dependents": ["urban-runtime"]
+    },
+    {
+      "id": "urban-runtime",
+      "label": "Urban Runtime",
+      "description": "Urban OS integration, city infrastructure, and environmental monitoring",
+      "ownership": "operator",
+      "authorityLevel": "secondary",
+      "executionScope": ["urban-monitoring", "infrastructure-control", "environmental-data"],
+      "governanceScope": ["urban-policy", "infrastructure-safety"],
+      "dependencies": ["runtime-core", "fleet-runtime"],
+      "dependents": ["service-hub-runtime"]
+    },
+    {
+      "id": "service-hub-runtime",
+      "label": "Service Hub Runtime",
+      "description": "Service registry, API orchestration, and integration hub",
+      "ownership": "operator",
+      "authorityLevel": "secondary",
+      "executionScope": ["service-registry", "api-orchestration", "integration"],
+      "governanceScope": ["service-policy", "api-safety"],
+      "dependencies": ["runtime-core", "urban-runtime"],
+      "dependents": ["life-transaction-runtime"]
+    },
+    {
+      "id": "life-transaction-runtime",
+      "label": "Life Transaction Runtime",
+      "description": "Life event transactions, citizen services, and financial operations",
+      "ownership": "operator",
+      "authorityLevel": "secondary",
+      "executionScope": ["transaction-processing", "citizen-services", "financial-ops"],
+      "governanceScope": ["transaction-policy", "financial-safety", "privacy-compliance"],
+      "dependencies": ["runtime-core", "service-hub-runtime"],
+      "dependents": []
+    },
+    {
+      "id": "seneschal-runtime",
+      "label": "Seneschal Runtime",
+      "description": "Knowledge management, intent processing, and operational intelligence",
+      "ownership": "operator",
+      "authorityLevel": "secondary",
+      "executionScope": ["knowledge-graph", "intent-processing", "intelligence"],
+      "governanceScope": ["knowledge-policy", "intent-safety"],
+      "dependencies": ["runtime-core"],
+      "dependents": ["governance-runtime"]
+    },
+    {
+      "id": "governance-runtime",
+      "label": "Governance Runtime",
+      "description": "Federation governance, policy enforcement, and compliance",
+      "ownership": "runtime-admin",
+      "authorityLevel": "primary",
+      "executionScope": ["policy-evaluation", "compliance-check", "audit"],
+      "governanceScope": ["governance-policy", "compliance-enforcement", "audit-trail"],
+      "dependencies": ["runtime-core", "seneschal-runtime"],
+      "dependents": ["repair-runtime", "execution-runtime"]
+    },
+    {
+      "id": "repair-runtime",
+      "label": "Repair Runtime",
+      "description": "Self-repair orchestration, drift detection, and recovery",
+      "ownership": "runtime-admin",
+      "authorityLevel": "primary",
+      "executionScope": ["drift-detection", "repair-proposal", "recovery-execution"],
+      "governanceScope": ["repair-policy", "recovery-safety"],
+      "dependencies": ["runtime-core", "governance-runtime"],
+      "dependents": []
+    },
+    {
+      "id": "execution-runtime",
+      "label": "Execution Runtime",
+      "description": "Task execution, queue management, and throughput control",
+      "ownership": "operator",
+      "authorityLevel": "secondary",
+      "executionScope": ["task-execution", "queue-management", "throughput-control"],
+      "governanceScope": ["execution-policy", "throughput-safety"],
+      "dependencies": ["runtime-core", "governance-runtime"],
+      "dependents": ["fleet-runtime"]
+    },
+    {
+      "id": "mobility-runtime",
+      "label": "Mobility Runtime",
+      "description": "Urban mobility coordination, transit orchestration, and route federation",
+      "ownership": "operator",
+      "authorityLevel": "secondary",
+      "executionScope": ["mobility-dispatch", "transit-coordination", "route-federation"],
+      "governanceScope": ["mobility-policy", "transit-safety", "congestion-control"],
+      "dependencies": ["runtime-core", "fleet-runtime", "urban-runtime"],
+      "dependents": ["logistics-runtime"]
+    },
+    {
+      "id": "energy-runtime",
+      "label": "Energy Runtime",
+      "description": "Energy grid federation, demand management, and sustainability coordination",
+      "ownership": "operator",
+      "authorityLevel": "secondary",
+      "executionScope": ["energy-distribution", "demand-management", "grid-balancing"],
+      "governanceScope": ["energy-policy", "grid-safety", "sustainability-compliance"],
+      "dependencies": ["runtime-core", "infrastructure-runtime"],
+      "dependents": ["urban-runtime"]
+    },
+    {
+      "id": "logistics-runtime",
+      "label": "Logistics Runtime",
+      "description": "Supply chain federation, delivery orchestration, and warehouse coordination",
+      "ownership": "operator",
+      "authorityLevel": "secondary",
+      "executionScope": ["supply-chain", "delivery-dispatch", "warehouse-coordination"],
+      "governanceScope": ["logistics-policy", "delivery-safety", "chain-compliance"],
+      "dependencies": ["runtime-core", "fleet-runtime", "mobility-runtime"],
+      "dependents": ["service-hub-runtime"]
+    },
+    {
+      "id": "emergency-runtime",
+      "label": "Emergency Runtime",
+      "description": "Emergency response coordination, incident management, and crisis federation",
+      "ownership": "runtime-admin",
+      "authorityLevel": "primary",
+      "executionScope": ["emergency-dispatch", "incident-coordination", "crisis-management"],
+      "governanceScope": ["emergency-policy", "crisis-authority", "override-control"],
+      "dependencies": ["runtime-core", "governance-runtime"],
+      "dependents": ["mobility-runtime", "infrastructure-runtime", "urban-runtime"]
+    },
+    {
+      "id": "infrastructure-runtime",
+      "label": "Infrastructure Runtime",
+      "description": "Physical infrastructure federation, facility management, and asset coordination",
+      "ownership": "operator",
+      "authorityLevel": "secondary",
+      "executionScope": ["facility-management", "asset-monitoring", "infrastructure-control"],
+      "governanceScope": ["infrastructure-policy", "asset-safety", "maintenance-compliance"],
+      "dependencies": ["runtime-core"],
+      "dependents": ["energy-runtime", "urban-runtime"]
+    }
+  ],
+  "topology": {
+    "edges": [
+      { "from": "runtime-core", "to": "fleet-runtime", "type": "authority" },
+      { "from": "runtime-core", "to": "urban-runtime", "type": "authority" },
+      { "from": "runtime-core", "to": "service-hub-runtime", "type": "authority" },
+      { "from": "runtime-core", "to": "life-transaction-runtime", "type": "authority" },
+      { "from": "runtime-core", "to": "seneschal-runtime", "type": "authority" },
+      { "from": "runtime-core", "to": "governance-runtime", "type": "authority" },
+      { "from": "runtime-core", "to": "repair-runtime", "type": "authority" },
+      { "from": "runtime-core", "to": "execution-runtime", "type": "authority" },
+      { "from": "runtime-core", "to": "mobility-runtime", "type": "authority" },
+      { "from": "runtime-core", "to": "energy-runtime", "type": "authority" },
+      { "from": "runtime-core", "to": "logistics-runtime", "type": "authority" },
+      { "from": "runtime-core", "to": "emergency-runtime", "type": "authority" },
+      { "from": "runtime-core", "to": "infrastructure-runtime", "type": "authority" },
+      { "from": "fleet-runtime", "to": "urban-runtime", "type": "dependency" },
+      { "from": "urban-runtime", "to": "service-hub-runtime", "type": "dependency" },
+      { "from": "service-hub-runtime", "to": "life-transaction-runtime", "type": "dependency" },
+      { "from": "seneschal-runtime", "to": "governance-runtime", "type": "dependency" },
+      { "from": "governance-runtime", "to": "repair-runtime", "type": "governance" },
+      { "from": "governance-runtime", "to": "execution-runtime", "type": "governance" },
+      { "from": "execution-runtime", "to": "fleet-runtime", "type": "execution" },
+      { "from": "fleet-runtime", "to": "mobility-runtime", "type": "dependency" },
+      { "from": "mobility-runtime", "to": "logistics-runtime", "type": "dependency" },
+      { "from": "infrastructure-runtime", "to": "energy-runtime", "type": "dependency" },
+      { "from": "infrastructure-runtime", "to": "urban-runtime", "type": "dependency" },
+      { "from": "governance-runtime", "to": "emergency-runtime", "type": "governance" },
+      { "from": "emergency-runtime", "to": "mobility-runtime", "type": "override" },
+      { "from": "emergency-runtime", "to": "infrastructure-runtime", "type": "override" },
+      { "from": "logistics-runtime", "to": "service-hub-runtime", "type": "dependency" },
+      { "from": "energy-runtime", "to": "urban-runtime", "type": "dependency" }
+    ]
+  },
+  "authorityHierarchy": [
+    { "level": 0, "domains": ["runtime-core"] },
+    { "level": 1, "domains": ["governance-runtime", "repair-runtime", "emergency-runtime"] },
+    { "level": 2, "domains": ["seneschal-runtime", "execution-runtime", "infrastructure-runtime"] },
+    { "level": 3, "domains": ["fleet-runtime", "urban-runtime", "service-hub-runtime", "life-transaction-runtime", "mobility-runtime", "energy-runtime", "logistics-runtime"] }
+  ],
+  "timestamp": "2026-05-26T00:00:00.000Z"
+}

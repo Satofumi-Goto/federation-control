@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "ecosystem": {
+    "name": "Federation Runtime Business Ecosystem",
+    "status": "operational",
+    "tier": "platform"
+  },
+  "participants": [
+    { "id": "primary-operator", "type": "operator", "label": "Primary Runtime Operator", "authority": "full" },
+    { "id": "secondary-operator", "type": "operator", "label": "Secondary Runtime Operator", "authority": "delegated" },
+    { "id": "service-provider", "type": "provider", "label": "Runtime Service Provider", "authority": "scoped" },
+    { "id": "platform-admin", "type": "admin", "label": "Platform Administrator", "authority": "platform" },
+    { "id": "business-stakeholder", "type": "stakeholder", "label": "Business Stakeholder", "authority": "advisory" }
+  ],
+  "operators": [
+    { "id": "ops-deploy", "domain": "deployment", "responsibilities": ["deploy-execution", "rollback", "release-management"] },
+    { "id": "ops-repair", "domain": "repair", "responsibilities": ["incident-response", "repair-orchestration", "recovery"] },
+    { "id": "ops-governance", "domain": "governance", "responsibilities": ["policy-enforcement", "approval-workflow", "audit"] },
+    { "id": "ops-emergency", "domain": "emergency", "responsibilities": ["emergency-stop", "force-recovery", "escalation"] }
+  ],
+  "providers": [
+    { "id": "infra-provider", "service": "infrastructure", "scope": ["compute", "storage", "network"] },
+    { "id": "monitoring-provider", "service": "monitoring", "scope": ["metrics", "alerts", "dashboards"] },
+    { "id": "governance-provider", "service": "governance", "scope": ["policy", "compliance", "audit"] }
+  ],
+  "serviceDomains": [
+    { "id": "execution", "label": "Runtime Execution", "owner": "ops-deploy", "slaTarget": 99.5 },
+    { "id": "repair", "label": "Runtime Repair", "owner": "ops-repair", "slaTarget": 95 },
+    { "id": "governance", "label": "Runtime Governance", "owner": "ops-governance", "slaTarget": 99 },
+    { "id": "federation", "label": "Runtime Federation", "owner": "platform-admin", "slaTarget": 99 },
+    { "id": "evolution", "label": "Runtime Evolution", "owner": "platform-admin", "slaTarget": 90 }
+  ],
+  "revenueFlows": [
+    { "from": "execution", "to": "platform", "type": "operational-value", "model": "per-execution" },
+    { "from": "repair", "to": "platform", "type": "recovery-value", "model": "per-recovery" },
+    { "from": "governance", "to": "platform", "type": "compliance-value", "model": "subscription" }
+  ],
+  "costFlows": [
+    { "from": "platform", "to": "infra-provider", "type": "infrastructure-cost", "model": "usage-based" },
+    { "from": "platform", "to": "monitoring-provider", "type": "monitoring-cost", "model": "fixed" },
+    { "from": "platform", "to": "governance-provider", "type": "governance-cost", "model": "fixed" }
+  ],
+  "authorityFlows": [
+    { "from": "platform-admin", "to": "primary-operator", "type": "delegation", "scope": "full-operations" },
+    { "from": "primary-operator", "to": "secondary-operator", "type": "delegation", "scope": "scoped-operations" },
+    { "from": "primary-operator", "to": "ops-emergency", "type": "escalation", "scope": "emergency-only" }
+  ],
+  "governanceHierarchy": [
+    { "level": 1, "authority": "platform-admin", "scope": "ecosystem-wide" },
+    { "level": 2, "authority": "primary-operator", "scope": "runtime-operations" },
+    { "level": 3, "authority": "secondary-operator", "scope": "delegated-domain" },
+    { "level": 4, "authority": "service-provider", "scope": "service-specific" }
+  ],
+  "operationalDependencies": [
+    { "service": "execution", "dependsOn": ["infrastructure", "monitoring", "governance"] },
+    { "service": "repair", "dependsOn": ["execution", "monitoring"] },
+    { "service": "governance", "dependsOn": ["monitoring", "audit"] },
+    { "service": "federation", "dependsOn": ["execution", "governance"] },
+    { "service": "evolution", "dependsOn": ["federation", "governance", "execution"] }
+  ],
+  "lastUpdated": null
+}

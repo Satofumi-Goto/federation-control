@@ -1,0 +1,37 @@
+{
+  "governancePressure": 3,
+  "governanceLevel": "nominal",
+  "nodes": [
+    {
+      "id": "registry",
+      "health": "healthy",
+      "pressure": 0
+    },
+    {
+      "id": "topology",
+      "health": "healthy",
+      "pressure": 0
+    },
+    {
+      "id": "deploy",
+      "health": "healthy",
+      "pressure": 10
+    },
+    {
+      "id": "repair",
+      "health": "operational",
+      "pressure": 0
+    },
+    {
+      "id": "governance",
+      "health": "healthy",
+      "pressure": 3
+    }
+  ],
+  "executionPressure": 0,
+  "repairPressure": 0,
+  "deployPressure": 10,
+  "propagationSeverity": 0,
+  "dependencyHealth": "healthy",
+  "timestamp": "2026-05-26T03:21:28.972Z"
+}

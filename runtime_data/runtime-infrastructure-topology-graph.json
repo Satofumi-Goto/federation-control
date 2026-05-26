@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "nodes": [
+    { "id": "core-orchestrator", "type": "compute", "domain": "runtime-core", "status": "active", "capacity": 100, "utilization": 15 },
+    { "id": "governance-node", "type": "compute", "domain": "governance-runtime", "status": "active", "capacity": 80, "utilization": 10 },
+    { "id": "execution-queue", "type": "queue", "domain": "execution-runtime", "status": "active", "capacity": 500, "utilization": 5 },
+    { "id": "fleet-dispatcher", "type": "compute", "domain": "fleet-runtime", "status": "active", "capacity": 60, "utilization": 8 },
+    { "id": "urban-monitor", "type": "sensor-hub", "domain": "urban-runtime", "status": "active", "capacity": 200, "utilization": 12 },
+    { "id": "service-registry", "type": "registry", "domain": "service-hub-runtime", "status": "active", "capacity": 100, "utilization": 10 },
+    { "id": "mobility-coordinator", "type": "compute", "domain": "mobility-runtime", "status": "active", "capacity": 80, "utilization": 5 },
+    { "id": "energy-grid-controller", "type": "controller", "domain": "energy-runtime", "status": "active", "capacity": 150, "utilization": 20 },
+    { "id": "logistics-hub", "type": "compute", "domain": "logistics-runtime", "status": "active", "capacity": 60, "utilization": 7 },
+    { "id": "emergency-dispatcher", "type": "compute", "domain": "emergency-runtime", "status": "standby", "capacity": 100, "utilization": 0 },
+    { "id": "infra-controller", "type": "controller", "domain": "infrastructure-runtime", "status": "active", "capacity": 120, "utilization": 15 },
+    { "id": "life-tx-processor", "type": "compute", "domain": "life-transaction-runtime", "status": "active", "capacity": 80, "utilization": 6 },
+    { "id": "repair-engine", "type": "compute", "domain": "repair-runtime", "status": "active", "capacity": 50, "utilization": 3 },
+    { "id": "seneschal-brain", "type": "compute", "domain": "seneschal-runtime", "status": "active", "capacity": 70, "utilization": 8 }
+  ],
+  "dependencies": [
+    { "from": "core-orchestrator", "to": "governance-node", "type": "control", "latency": "low" },
+    { "from": "core-orchestrator", "to": "execution-queue", "type": "dispatch", "latency": "low" },
+    { "from": "execution-queue", "to": "fleet-dispatcher", "type": "execution", "latency": "medium" },
+    { "from": "fleet-dispatcher", "to": "mobility-coordinator", "type": "coordination", "latency": "medium" },
+    { "from": "mobility-coordinator", "to": "logistics-hub", "type": "coordination", "latency": "medium" },
+    { "from": "infra-controller", "to": "energy-grid-controller", "type": "control", "latency": "low" },
+    { "from": "infra-controller", "to": "urban-monitor", "type": "monitoring", "latency": "low" },
+    { "from": "urban-monitor", "to": "service-registry", "type": "data", "latency": "low" },
+    { "from": "service-registry", "to": "life-tx-processor", "type": "service", "latency": "low" },
+    { "from": "governance-node", "to": "emergency-dispatcher", "type": "escalation", "latency": "low" },
+    { "from": "governance-node", "to": "repair-engine", "type": "governance", "latency": "low" },
+    { "from": "seneschal-brain", "to": "governance-node", "type": "intelligence", "latency": "low" },
+    { "from": "emergency-dispatcher", "to": "mobility-coordinator", "type": "override", "latency": "critical" },
+    { "from": "emergency-dispatcher", "to": "infra-controller", "type": "override", "latency": "critical" }
+  ],
+  "constraints": [
+    { "type": "latency", "from": "emergency-dispatcher", "to": "mobility-coordinator", "maxMs": 100, "enforced": true },
+    { "type": "latency", "from": "emergency-dispatcher", "to": "infra-controller", "maxMs": 100, "enforced": true },
+    { "type": "capacity", "node": "execution-queue", "maxUtilization": 80, "enforced": true },
+    { "type": "capacity", "node": "energy-grid-controller", "maxUtilization": 90, "enforced": true },
+    { "type": "availability", "node": "governance-node", "minUptime": 99.9, "enforced": true }
+  ],
+  "congestion": {
+    "thresholds": { "low": 30, "medium": 60, "high": 80, "critical": 95 },
+    "currentLevel": "low",
+    "hotspots": []
+  },
+  "recoveryPaths": [
+    { "scenario": "core-orchestrator-failure", "path": ["governance-node", "repair-engine"], "estimatedRecoveryMs": 30000 },
+    { "scenario": "execution-queue-overflow", "path": ["core-orchestrator", "execution-queue"], "estimatedRecoveryMs": 15000 },
+    { "scenario": "energy-grid-failure", "path": ["infra-controller", "energy-grid-controller"], "estimatedRecoveryMs": 60000 },
+    { "scenario": "emergency-activation", "path": ["governance-node", "emergency-dispatcher"], "estimatedRecoveryMs": 5000 }
+  ],
+  "lastUpdated": null
+}

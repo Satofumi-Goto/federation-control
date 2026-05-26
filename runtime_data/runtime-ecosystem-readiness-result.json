@@ -1,0 +1,103 @@
+{
+  "checks": [
+    {
+      "id": "ecosystem-model",
+      "label": "Ecosystem business model exists",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "operating-model",
+      "label": "Product operating model exists",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "responsibility-matrix",
+      "label": "Responsibility matrix exists",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "governance-enforced",
+      "label": "Governance enforcement active",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "registry-canonical",
+      "label": "Runtime Registry canonical",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "safety-locks",
+      "label": "Safety locks enforced",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "authority-boundaries",
+      "label": "Authority boundaries defined",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "ecosystem-ownership",
+      "label": "Ecosystem ownership defined",
+      "passed": true,
+      "detail": "Validated"
+    },
+    {
+      "id": "coordination-live",
+      "label": "Multi-operator coordination operational",
+      "passed": true,
+      "detail": "4 operators, 0 conflicts"
+    },
+    {
+      "id": "federation-live",
+      "label": "Service federation operational",
+      "passed": true,
+      "detail": "Health: 100/100, 5 services"
+    },
+    {
+      "id": "economic-live",
+      "label": "Economic model operational",
+      "passed": true,
+      "detail": "Efficiency: 8%, V/C ratio: 2.94"
+    },
+    {
+      "id": "kpi-live",
+      "label": "Ecosystem KPI engine operational",
+      "passed": true,
+      "detail": "Score: 88%, 7/8 met"
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0,
+    "ready": true
+  },
+  "liveResults": {
+    "coordination": {
+      "operators": 4,
+      "conflicts": 0,
+      "active": true
+    },
+    "federation": {
+      "healthScore": 100,
+      "services": 5
+    },
+    "economic": {
+      "efficiency": 8,
+      "valueToCostratio": 2.94
+    },
+    "kpi": {
+      "overallScore": 88,
+      "met": 7,
+      "total": 8
+    }
+  },
+  "timestamp": "2026-05-26T06:55:53.294Z"
+}

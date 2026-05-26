@@ -1,0 +1,139 @@
+{
+  "coordination": {
+    "deploy": {
+      "status": "assigned",
+      "owner": "ops-deploy",
+      "responsibilities": [
+        "deploy-execution",
+        "rollback",
+        "release-management"
+      ],
+      "escalationPath": [
+        "ops-deploy",
+        "primary-operator",
+        "platform-admin"
+      ]
+    },
+    "repair": {
+      "status": "assigned",
+      "owner": "ops-repair",
+      "responsibilities": [
+        "incident-response",
+        "repair-orchestration",
+        "recovery"
+      ],
+      "escalationPath": [
+        "ops-repair",
+        "primary-operator",
+        "ops-emergency"
+      ]
+    },
+    "governance": {
+      "governanceOperator": "ops-governance",
+      "approvalPaths": {
+        "deploy": {
+          "requester": "operator",
+          "approver": "deployApprover",
+          "reviewer": "reviewer",
+          "notified": "serviceOwner"
+        },
+        "repair": {
+          "requester": "operator",
+          "approver": "repairApprover",
+          "reviewer": "reviewer",
+          "notified": "serviceOwner"
+        },
+        "emergency": {
+          "requester": "emergencyController",
+          "approver": "runtimeOwner",
+          "reviewer": "serviceOwner",
+          "notified": "businessOwner"
+        },
+        "costOptimization": {
+          "requester": "costOwner",
+          "approver": "businessOwner",
+          "reviewer": "operator",
+          "notified": "runtimeOwner"
+        },
+        "slaManagement": {
+          "requester": "serviceOwner",
+          "approver": "runtimeOwner",
+          "reviewer": "operator",
+          "notified": "businessOwner"
+        },
+        "governanceChange": {
+          "requester": "reviewer",
+          "approver": "runtimeOwner",
+          "reviewer": "operator",
+          "notified": "serviceOwner"
+        }
+      },
+      "totalApprovalFlows": 6
+    },
+    "escalation": {
+      "escalationLevels": 4,
+      "chain": [
+        {
+          "level": 1,
+          "roles": [
+            "runtimeOwner",
+            "businessOwner"
+          ],
+          "responseTime": "4h",
+          "authority": "ecosystem-wide"
+        },
+        {
+          "level": 2,
+          "roles": [
+            "emergencyController",
+            "serviceOwner",
+            "costOwner"
+          ],
+          "responseTime": "1h",
+          "authority": "runtime-operations"
+        },
+        {
+          "level": 3,
+          "roles": [
+            "reviewer",
+            "deployApprover",
+            "repairApprover"
+          ],
+          "responseTime": "30min",
+          "authority": "delegated-domain"
+        },
+        {
+          "level": 4,
+          "roles": [
+            "operator"
+          ],
+          "responseTime": "15min",
+          "authority": "service-specific"
+        }
+      ],
+      "emergencyController": "ops-emergency"
+    },
+    "emergency": {
+      "controller": "ops-emergency",
+      "responsibilities": [
+        "emergency-stop",
+        "force-recovery",
+        "escalation"
+      ],
+      "currentLevel": "none",
+      "serviceActive": true,
+      "crashCount": 0
+    }
+  },
+  "conflicts": [],
+  "summary": {
+    "totalOperators": 4,
+    "assignedDomains": 4,
+    "approvalFlows": 6,
+    "escalationLevels": 4,
+    "emergencyLevel": "none",
+    "conflictCount": 0,
+    "coordinationActive": true
+  },
+  "timestamp": "2026-05-26T06:55:53.296Z"
+}

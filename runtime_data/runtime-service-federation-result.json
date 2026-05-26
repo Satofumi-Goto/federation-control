@@ -1,0 +1,253 @@
+{
+  "federation": {
+    "services": [
+      {
+        "id": "execution",
+        "label": "Runtime Execution",
+        "owner": "ops-deploy",
+        "slaTarget": 99.5,
+        "federated": true,
+        "federationType": "service-domain"
+      },
+      {
+        "id": "repair",
+        "label": "Runtime Repair",
+        "owner": "ops-repair",
+        "slaTarget": 95,
+        "federated": true,
+        "federationType": "service-domain"
+      },
+      {
+        "id": "governance",
+        "label": "Runtime Governance",
+        "owner": "ops-governance",
+        "slaTarget": 99,
+        "federated": true,
+        "federationType": "service-domain"
+      },
+      {
+        "id": "federation",
+        "label": "Runtime Federation",
+        "owner": "platform-admin",
+        "slaTarget": 99,
+        "federated": true,
+        "federationType": "service-domain"
+      },
+      {
+        "id": "evolution",
+        "label": "Runtime Evolution",
+        "owner": "platform-admin",
+        "slaTarget": 90,
+        "federated": true,
+        "federationType": "service-domain"
+      }
+    ],
+    "execution": [
+      {
+        "operatorId": "ops-deploy",
+        "domain": "deployment",
+        "responsibilities": [
+          "deploy-execution",
+          "rollback",
+          "release-management"
+        ],
+        "federated": true,
+        "federationType": "execution-domain"
+      },
+      {
+        "operatorId": "ops-repair",
+        "domain": "repair",
+        "responsibilities": [
+          "incident-response",
+          "repair-orchestration",
+          "recovery"
+        ],
+        "federated": true,
+        "federationType": "execution-domain"
+      },
+      {
+        "operatorId": "ops-governance",
+        "domain": "governance",
+        "responsibilities": [
+          "policy-enforcement",
+          "approval-workflow",
+          "audit"
+        ],
+        "federated": true,
+        "federationType": "execution-domain"
+      },
+      {
+        "operatorId": "ops-emergency",
+        "domain": "emergency",
+        "responsibilities": [
+          "emergency-stop",
+          "force-recovery",
+          "escalation"
+        ],
+        "federated": true,
+        "federationType": "execution-domain"
+      }
+    ],
+    "governance": [
+      {
+        "level": 1,
+        "authority": "platform-admin",
+        "scope": "ecosystem-wide",
+        "federated": true,
+        "federationType": "governance-domain"
+      },
+      {
+        "level": 2,
+        "authority": "primary-operator",
+        "scope": "runtime-operations",
+        "federated": true,
+        "federationType": "governance-domain"
+      },
+      {
+        "level": 3,
+        "authority": "secondary-operator",
+        "scope": "delegated-domain",
+        "federated": true,
+        "federationType": "governance-domain"
+      },
+      {
+        "level": 4,
+        "authority": "service-provider",
+        "scope": "service-specific",
+        "federated": true,
+        "federationType": "governance-domain"
+      }
+    ],
+    "business": {
+      "revenueStreams": [
+        {
+          "from": "execution",
+          "to": "platform",
+          "type": "operational-value",
+          "model": "per-execution",
+          "federated": true
+        },
+        {
+          "from": "repair",
+          "to": "platform",
+          "type": "recovery-value",
+          "model": "per-recovery",
+          "federated": true
+        },
+        {
+          "from": "governance",
+          "to": "platform",
+          "type": "compliance-value",
+          "model": "subscription",
+          "federated": true
+        }
+      ],
+      "costCenters": [
+        {
+          "from": "platform",
+          "to": "infra-provider",
+          "type": "infrastructure-cost",
+          "model": "usage-based",
+          "federated": true
+        },
+        {
+          "from": "platform",
+          "to": "monitoring-provider",
+          "type": "monitoring-cost",
+          "model": "fixed",
+          "federated": true
+        },
+        {
+          "from": "platform",
+          "to": "governance-provider",
+          "type": "governance-cost",
+          "model": "fixed",
+          "federated": true
+        }
+      ],
+      "totalRevenueStreams": 3,
+      "totalCostCenters": 3
+    },
+    "sla": [
+      {
+        "serviceId": "execution",
+        "owner": "ops-deploy",
+        "slaTarget": 99.5,
+        "globalTargets": {
+          "availability": 99.5,
+          "deploySuccess": 95
+        },
+        "federated": true,
+        "compliant": true
+      },
+      {
+        "serviceId": "repair",
+        "owner": "ops-repair",
+        "slaTarget": 95,
+        "globalTargets": {
+          "availability": 99.5,
+          "deploySuccess": 95
+        },
+        "federated": true,
+        "compliant": true
+      },
+      {
+        "serviceId": "governance",
+        "owner": "ops-governance",
+        "slaTarget": 99,
+        "globalTargets": {
+          "availability": 99.5,
+          "deploySuccess": 95
+        },
+        "federated": true,
+        "compliant": true
+      },
+      {
+        "serviceId": "federation",
+        "owner": "platform-admin",
+        "slaTarget": 99,
+        "globalTargets": {
+          "availability": 99.5,
+          "deploySuccess": 95
+        },
+        "federated": true,
+        "compliant": true
+      },
+      {
+        "serviceId": "evolution",
+        "owner": "platform-admin",
+        "slaTarget": 90,
+        "globalTargets": {
+          "availability": 99.5,
+          "deploySuccess": 95
+        },
+        "federated": true,
+        "compliant": true
+      }
+    ],
+    "deploy": {
+      "primaryOwner": "ops-deploy",
+      "responsible": "operator",
+      "accountable": "deployApprover",
+      "consulted": "reviewer",
+      "informed": "serviceOwner",
+      "federated": true
+    }
+  },
+  "health": {
+    "score": 100,
+    "issues": []
+  },
+  "summary": {
+    "federatedServices": 5,
+    "federatedExecution": 4,
+    "federatedGovernance": 4,
+    "revenueStreams": 3,
+    "costCenters": 3,
+    "slaCompliant": 5,
+    "slaNonCompliant": 0,
+    "deployFederated": true,
+    "healthScore": 100
+  },
+  "timestamp": "2026-05-26T06:55:53.298Z"
+}

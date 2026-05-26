@@ -1,0 +1,59 @@
+{
+  "kpis": {
+    "ecosystemStability": {
+      "value": 93,
+      "unit": "%",
+      "target": 90,
+      "status": "met"
+    },
+    "crossRuntimeEfficiency": {
+      "value": 50,
+      "unit": "%",
+      "target": 80,
+      "status": "below"
+    },
+    "governanceOverhead": {
+      "value": 3,
+      "unit": "%",
+      "target": 30,
+      "status": "met"
+    },
+    "deployRecoveryEfficiency": {
+      "value": 100,
+      "unit": "%",
+      "target": 85,
+      "status": "met"
+    },
+    "operationalThroughput": {
+      "value": 1,
+      "unit": "exec",
+      "target": 1,
+      "status": "met"
+    },
+    "ecosystemAvailability": {
+      "value": 100,
+      "unit": "%",
+      "target": 99,
+      "status": "met"
+    },
+    "businessContinuity": {
+      "value": 100,
+      "unit": "%",
+      "target": 90,
+      "status": "met"
+    },
+    "federationResilience": {
+      "value": 100,
+      "unit": "%",
+      "target": 85,
+      "status": "met"
+    }
+  },
+  "summary": {
+    "total": 8,
+    "met": 7,
+    "below": 1,
+    "overallScore": 88
+  },
+  "timestamp": "2026-05-26T06:55:53.303Z"
+}

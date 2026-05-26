@@ -1,0 +1,53 @@
+{
+  "costs": {
+    "operational": {
+      "executionCost": 2,
+      "wastedCost": 1,
+      "totalExecutions": 1,
+      "blockedExecutions": 1,
+      "total": 3
+    },
+    "governance": {
+      "baseCost": 15,
+      "pressurePenalty": 0,
+      "total": 15
+    },
+    "recovery": {
+      "recoveries": 2,
+      "crashes": 0,
+      "recoveryCost": 10,
+      "crashCost": 0,
+      "total": 10
+    },
+    "deployment": {
+      "deploys": 1,
+      "perDeployCost": 10,
+      "total": 10
+    }
+  },
+  "efficiency": {
+    "totalCost": 158,
+    "productiveCost": 12,
+    "overheadCost": 146,
+    "efficiency": 8,
+    "infrastructureBase": 100,
+    "monitoringFixed": 20
+  },
+  "platformValue": {
+    "serviceValue": 250,
+    "providerValue": 90,
+    "revenueValue": 120,
+    "efficiencyBonus": 4,
+    "totalValue": 464,
+    "valueToCostratio": 2.94
+  },
+  "summary": {
+    "totalCost": 158,
+    "productiveCost": 12,
+    "overheadCost": 146,
+    "efficiency": 8,
+    "platformValue": 464,
+    "valueToCostratio": 2.94
+  },
+  "timestamp": "2026-05-26T06:55:53.300Z"
+}
