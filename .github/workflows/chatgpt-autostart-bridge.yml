@@ -1,0 +1,38 @@
+name: ChatGPT Autostart Bridge
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Prepare inbox
+        run: |
+          mkdir -p .cursor/tasks
+          cat > .cursor/tasks/chatgpt-runtime-inbox.md <<'EOF'
+          # ChatGPT Runtime Inbox
+
+          Connect the external ChatGPT thread to the same Federation Studio ChatGPT command path used by sendFederationPortalCommand. Target Satofumi-Goto/federation-portal. Execution mode commit-push. Report commit SHA or failure reason.
+          EOF
+
+      - name: Generate prompt
+        run: node scripts/chatgpt-runtime-bridge.mjs --agent-prompt
+
+      - name: Execute headless runtime
+        continue-on-error: true
+        run: node scripts/runtime/runtimeHeadlessCursorExecutor.mjs --execute
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: chore: apply ChatGPT autostart bridge execution
