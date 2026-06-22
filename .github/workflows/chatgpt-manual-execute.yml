@@ -1,0 +1,42 @@
+name: ChatGPT Manual Execute
+
+on:
+  workflow_dispatch:
+    inputs:
+      request:
+        description: ChatGPT implementation request
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Prepare inbox
+        run: |
+          mkdir -p .cursor/tasks
+          cat > .cursor/tasks/chatgpt-runtime-inbox.md <<'EOF'
+          # ChatGPT Runtime Inbox
+
+          ${{ inputs.request }}
+          EOF
+
+      - name: Generate prompt
+        run: node scripts/chatgpt-runtime-bridge.mjs --agent-prompt
+
+      - name: Execute headless runtime
+        continue-on-error: true
+        run: node scripts/runtime/runtimeHeadlessCursorExecutor.mjs --execute
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: chore: apply ChatGPT manual execution
