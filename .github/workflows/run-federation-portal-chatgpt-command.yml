@@ -1,0 +1,102 @@
+name: Federation Portal — ChatGPT Command
+
+on:
+  workflow_dispatch:
+    inputs:
+      request:
+        description: "Natural-language modification request for federation-portal"
+        required: true
+        type: string
+      execution_mode:
+        description: "Execution mode"
+        required: false
+        default: "commit-push"
+        type: choice
+        options:
+          - draft
+          - python-engine
+          - commit-push
+      portal_branch:
+        description: "federation-portal branch to check out and push to"
+        required: false
+        default: "main"
+        type: string
+
+jobs:
+  apply-portal-command:
+    name: Apply ChatGPT Command to federation-portal
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout federation-control
+        uses: actions/checkout@v4
+        with:
+          repository: Satofumi-Goto/federation-control
+          ref: main
+          path: federation-control
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout federation-portal
+        uses: actions/checkout@v4
+        with:
+          repository: Satofumi-Goto/federation-portal
+          ref: ${{ inputs.portal_branch }}
+          path: federation-portal
+          token: ${{ secrets.FEDERATION_PORTAL_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install openai requests
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: federation-portal/package-lock.json
+
+      - name: Install Node dependencies
+        working-directory: federation-portal
+        run: npm ci
+
+      - name: Configure git identity
+        run: |
+          git config --global user.name "Federation Control Bot"
+          git config --global user.email "bot@federation-control"
+
+      - name: Run ChatGPT portal command
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          FEDERATION_PORTAL_PATH: ${{ github.workspace }}/federation-portal
+        run: |
+          python federation-control/scripts/run_chatgpt_portal_command.py \
+            --request "${{ inputs.request }}" \
+            --execution-mode "${{ inputs.execution_mode }}" \
+            --portal-path "${{ github.workspace }}/federation-portal"
+
+      - name: Build federation-portal
+        if: inputs.execution_mode != 'draft'
+        working-directory: federation-portal
+        run: npm run build
+
+      - name: Commit and push to federation-portal
+        if: inputs.execution_mode == 'commit-push'
+        working-directory: federation-portal
+        env:
+          FEDERATION_PORTAL_TOKEN: ${{ secrets.FEDERATION_PORTAL_TOKEN }}
+        run: |
+          git remote set-url origin \
+            https://x-access-token:${FEDERATION_PORTAL_TOKEN}@github.com/Satofumi-Goto/federation-portal.git
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "feat: apply Federation Portal ChatGPT command"
+            git push origin ${{ inputs.portal_branch }}
+          fi

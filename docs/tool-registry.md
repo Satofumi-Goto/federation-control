@@ -89,6 +89,56 @@ python scripts/fix_inputs_documents.py \
 
 ---
 
+## ChatGPT Portal Command
+
+| Field | Value |
+|-------|-------|
+| **Tool Name** | ChatGPT Portal Command |
+| **Endpoint** | `POST /api/chatgpt-command` |
+| **Script** | `scripts/run_chatgpt_portal_command.py` |
+| **Dispatch** | `scripts/dispatch_portal_workflow.py` |
+| **Target** | federation-portal (fixed — `Satofumi-Goto/federation-portal` only) |
+| **API Server** | `python api/chatgpt_command_gateway.py` |
+| **Workflow** | `.github/workflows/run-federation-portal-chatgpt-command.yml` |
+
+### Purpose
+
+Receives natural-language modification requests from Federation Portal Studio,
+calls OpenAI to generate a file-level patch, and applies it to federation-portal
+(build / commit / push). See `docs/chatgpt-portal-command.md` for full details.
+
+### Request
+
+```json
+{
+  "targetRepository": "Satofumi-Goto/federation-portal",
+  "targetArea": "federation-portal",
+  "request": "...",
+  "executionMode": "draft | python-engine | github-workflow | commit-push"
+}
+```
+
+### Response (success)
+
+```json
+{
+  "ok": true,
+  "summary": "...",
+  "modifiedFiles": ["..."],
+  "commitSha": "...",
+  "build": "success",
+  "push": "success"
+}
+```
+
+### Security constraints
+
+- `targetRepository` locked to `Satofumi-Goto/federation-portal`
+- File writes restricted to `src/`, `docs/`, `public/`
+- `OPENAI_API_KEY` and `GITHUB_TOKEN` from env only — never logged
+
+---
+
 ## Adding New Tools
 
 To register a new URL-executable tool:
