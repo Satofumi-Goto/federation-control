@@ -1,0 +1,32 @@
+name: ChatGPT Issue Intake
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  intake:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run intake runner
+        run: node scripts/chatgpt-issue-intake-runner.mjs
+
+      - name: Comment result
+        if: github.event_name == 'issues' && contains(join(github.event.issue.labels.*.name, ','), 'chatgpt-intake')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: 'ChatGPT Issue Intake received. Next commands: `npm run chatgpt:runtime-bridge` and `npm run chatgpt:runtime-agent-prompt`.'
+            });
