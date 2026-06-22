@@ -1,0 +1,3 @@
+Place the generated fix_inputs_documents.py here and run it against federation-portal.
+Command:
+python scripts/fix_inputs_documents.py --repo C:\GitHub\federation-portal
