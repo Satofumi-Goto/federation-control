@@ -29,6 +29,18 @@ function readBody(req) {
   });
 }
 
+function parsePayload(body, contentType = '') {
+  if (!body) return {};
+  if (contentType.includes('application/x-www-form-urlencoded')) {
+    const params = new URLSearchParams(body);
+    return Object.fromEntries(params.entries());
+  }
+  if (contentType.includes('text/plain')) {
+    try { return JSON.parse(body); } catch { return { request: body }; }
+  }
+  return JSON.parse(body);
+}
+
 function writeInbox(payload) {
   fs.mkdirSync(path.dirname(INBOX), { recursive: true });
   fs.writeFileSync(INBOX, [
@@ -66,7 +78,7 @@ const server = http.createServer(async (req, res) => {
 
   try {
     const body = await readBody(req);
-    const payload = JSON.parse(body || '{}');
+    const payload = parsePayload(body, req.headers['content-type'] || '');
     if (!payload.request && !payload.message) return json(res, 400, { ok: false, error: 'request_required' });
 
     const record = { ...payload, receivedAt: new Date().toISOString(), status: 'accepted' };
