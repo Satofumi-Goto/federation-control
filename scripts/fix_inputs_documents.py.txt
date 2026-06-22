@@ -1,0 +1,6 @@
+# fix_inputs_documents.py
+
+The Python artifact was generated in ChatGPT and should be saved here as scripts/fix_inputs_documents.py.
+
+Run target:
+python scripts/fix_inputs_documents.py --repo C:\GitHub\federation-portal
