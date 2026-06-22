@@ -42,18 +42,25 @@ function writeInbox(payload) {
   ].join('\n'));
 }
 
-function json(res, status, data) {
-  res.writeHead(status, {
-    'Content-Type': 'application/json',
+function corsHeaders() {
+  return {
+    'Content-Type': 'application/json; charset=utf-8',
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-  });
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, Access-Control-Request-Private-Network',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Private-Network': 'true',
+    'Vary': 'Origin, Access-Control-Request-Headers, Access-Control-Request-Private-Network'
+  };
+}
+
+function json(res, status, data) {
+  res.writeHead(status, corsHeaders());
   res.end(JSON.stringify(data));
 }
 
 const server = http.createServer(async (req, res) => {
-  if (req.method === 'OPTIONS') return json(res, 200, { ok: true });
+  console.log(`[chatgpt-command-server] ${req.method} ${req.url}`);
+  if (req.method === 'OPTIONS') return json(res, 204, { ok: true });
   if (req.method === 'GET' && req.url === '/health') return json(res, 200, { ok: true, service: 'chatgpt-command-server' });
   if (req.method !== 'POST' || req.url !== '/api/chatgpt-command') return json(res, 404, { ok: false, error: 'not_found' });
 
