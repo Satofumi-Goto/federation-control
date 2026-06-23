@@ -177,12 +177,17 @@ function json(res, status, data) {
   res.end(JSON.stringify(data));
 }
 
+function pathOnly(url = '/') {
+  return String(url || '/').split('?')[0];
+}
+
 const server = http.createServer(async (req, res) => {
-  console.log(`[chatgpt-command-server] ${req.method} ${req.url}`);
+  const requestPath = pathOnly(req.url);
+  console.log(`[chatgpt-command-server] ${req.method} ${requestPath}`);
   if (req.method === 'OPTIONS') return json(res, 204, { ok: true });
-  if (req.method === 'GET' && (req.url === '/health' || req.url === '/api/health')) return json(res, 200, health());
-  if (req.method === 'GET' && req.url === '/api/chatgpt-command/status') return json(res, 200, { ok: true, lastCommand: readJson(COMMAND_LOG), health: health() });
-  if (req.method !== 'POST' || req.url !== '/api/chatgpt-command') return json(res, 404, { ok: false, error: 'not_found' });
+  if (req.method === 'GET' && (requestPath === '/health' || requestPath === '/api/health')) return json(res, 200, health());
+  if (req.method === 'GET' && requestPath === '/api/chatgpt-command/status') return json(res, 200, { ok: true, lastCommand: readJson(COMMAND_LOG), health: health() });
+  if (req.method !== 'POST' || requestPath !== '/api/chatgpt-command') return json(res, 404, { ok: false, error: 'not_found' });
 
   try {
     const body = await readBody(req);
