@@ -15,6 +15,12 @@ const ROOT = process.cwd();
 const COMMAND_LOG = path.resolve(ROOT, 'runtime_data/chatgpt-command-log.json');
 const INBOX = path.resolve(ROOT, '.cursor/tasks/chatgpt-runtime-inbox.md');
 
+const FIXED_TARGET_REPOSITORY = 'Satofumi-Goto/federation-portal';
+const DEFAULT_TARGET_BRANCH = process.env.FEDERATION_PORTAL_BRANCH || 'main';
+const DEFAULT_WORKFLOW_FILE = process.env.FEDERATION_PORTAL_WORKFLOW || 'chatgpt-command.yml';
+const GITHUB_API_BASE = process.env.GITHUB_API_BASE || 'https://api.github.com';
+const EXECUTION_MODES = new Set(['draft', 'python-engine', 'github-workflow', 'commit-push']);
+
 function saveJson(file, data) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
@@ -41,17 +47,87 @@ function parsePayload(body, contentType = '') {
   return JSON.parse(body);
 }
 
+function normalizePayload(rawPayload) {
+  const executionMode = rawPayload.executionMode || 'commit-push';
+  if (!EXECUTION_MODES.has(executionMode)) {
+    throw new Error(`unsupported_execution_mode:${executionMode}`);
+  }
+
+  return {
+    ...rawPayload,
+    targetRepository: FIXED_TARGET_REPOSITORY,
+    targetArea: rawPayload.targetArea || 'federation-portal',
+    targetBranch: rawPayload.targetBranch || DEFAULT_TARGET_BRANCH,
+    executionMode
+  };
+}
+
 function writeInbox(payload) {
   fs.mkdirSync(path.dirname(INBOX), { recursive: true });
   fs.writeFileSync(INBOX, [
     '# ChatGPT Runtime Inbox',
     '',
-    `targetRepository: ${payload.targetRepository || 'Satofumi-Goto/federation-portal'}`,
-    `targetArea: ${payload.targetArea || 'federation-portal'}`,
-    `executionMode: ${payload.executionMode || 'commit-push'}`,
+    `targetRepository: ${payload.targetRepository}`,
+    `targetArea: ${payload.targetArea}`,
+    `targetBranch: ${payload.targetBranch}`,
+    `executionMode: ${payload.executionMode}`,
     '',
     payload.request || payload.message || ''
   ].join('\n'));
+}
+
+function buildWorkflowInputs(payload) {
+  return {
+    request: payload.request || payload.message || '',
+    executionMode: payload.executionMode,
+    targetRepository: FIXED_TARGET_REPOSITORY,
+    targetBranch: payload.targetBranch
+  };
+}
+
+async function dispatchPortalWorkflow(payload) {
+  const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+  if (!token) {
+    return {
+      dispatched: false,
+      skipped: true,
+      reason: 'GITHUB_TOKEN_missing'
+    };
+  }
+
+  const workflowFile = payload.workflowFile || DEFAULT_WORKFLOW_FILE;
+  const url = `${GITHUB_API_BASE}/repos/${FIXED_TARGET_REPOSITORY}/actions/workflows/${encodeURIComponent(workflowFile)}/dispatches`;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/vnd.github+json',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      'User-Agent': 'federation-chatgpt-command-server'
+    },
+    body: JSON.stringify({
+      ref: payload.targetBranch,
+      inputs: buildWorkflowInputs(payload)
+    })
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`workflow_dispatch_failed:${response.status}:${errorText}`);
+  }
+
+  return {
+    dispatched: true,
+    skipped: false,
+    workflowFile,
+    targetRepository: FIXED_TARGET_REPOSITORY,
+    targetBranch: payload.targetBranch
+  };
+}
+
+function shouldDispatch(payload) {
+  return payload.executionMode === 'github-workflow' || payload.executionMode === 'commit-push';
 }
 
 function corsHeaders() {
@@ -78,21 +154,35 @@ const server = http.createServer(async (req, res) => {
 
   try {
     const body = await readBody(req);
-    const payload = parsePayload(body, req.headers['content-type'] || '');
-    if (!payload.request && !payload.message) return json(res, 400, { ok: false, error: 'request_required' });
+    const rawPayload = parsePayload(body, req.headers['content-type'] || '');
+    if (!rawPayload.request && !rawPayload.message) return json(res, 400, { ok: false, error: 'request_required' });
 
-    const record = { ...payload, receivedAt: new Date().toISOString(), status: 'accepted' };
+    const payload = normalizePayload(rawPayload);
+    const dispatchResult = shouldDispatch(payload)
+      ? await dispatchPortalWorkflow(payload)
+      : { dispatched: false, skipped: true, reason: 'executionMode_does_not_dispatch' };
+
+    const record = {
+      ...payload,
+      receivedAt: new Date().toISOString(),
+      status: dispatchResult.dispatched ? 'dispatched' : 'accepted',
+      dispatchResult
+    };
     saveJson(COMMAND_LOG, record);
     writeInbox(payload);
 
     return json(res, 200, {
       ok: true,
-      status: 'accepted',
+      status: dispatchResult.dispatched ? 'dispatched' : 'accepted',
       inboxPath: '.cursor/tasks/chatgpt-runtime-inbox.md',
-      next: 'run chatgpt-runtime-bridge and execution pipeline'
+      targetRepository: FIXED_TARGET_REPOSITORY,
+      targetBranch: payload.targetBranch,
+      executionMode: payload.executionMode,
+      ...dispatchResult
     });
   } catch (err) {
-    return json(res, 500, { ok: false, error: err.message });
+    const message = err instanceof Error ? err.message : String(err);
+    return json(res, 500, { ok: false, error: message });
   }
 });
 
