@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "chatgpt:command-server": "node scripts/chatgpt-command-server.mjs",
+    "chatgpt:command-smoke": "node scripts/chatgpt-command-smoke-test.mjs",
     "build:federation-governance": "vite build",
     "verify:federation-governance": "node scripts/verify-federation-governance.mjs",
     "verify:federation-semantic": "node scripts/verify-federation-semantic.mjs",
