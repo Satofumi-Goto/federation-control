@@ -26,6 +26,14 @@ function saveJson(file, data) {
   fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
 }
 
+function readJson(file) {
+  try {
+    return JSON.parse(fs.readFileSync(file, 'utf-8'));
+  } catch {
+    return null;
+  }
+}
+
 function readBody(req) {
   return new Promise((resolve, reject) => {
     let body = '';
@@ -58,7 +66,8 @@ function normalizePayload(rawPayload) {
     targetRepository: FIXED_TARGET_REPOSITORY,
     targetArea: rawPayload.targetArea || 'federation-portal',
     targetBranch: rawPayload.targetBranch || DEFAULT_TARGET_BRANCH,
-    executionMode
+    executionMode,
+    commandId: rawPayload.commandId || `fc-${Date.now()}`
   };
 }
 
@@ -67,6 +76,7 @@ function writeInbox(payload) {
   fs.writeFileSync(INBOX, [
     '# ChatGPT Runtime Inbox',
     '',
+    `commandId: ${payload.commandId}`,
     `targetRepository: ${payload.targetRepository}`,
     `targetArea: ${payload.targetArea}`,
     `targetBranch: ${payload.targetBranch}`,
@@ -76,23 +86,30 @@ function writeInbox(payload) {
   ].join('\n'));
 }
 
+function buildWorkflowRequest(payload) {
+  const request = payload.request || payload.message || '';
+  return [
+    '[Federation ChatGPT Command]',
+    `commandId: ${payload.commandId}`,
+    `executionMode: ${payload.executionMode}`,
+    `targetRepository: ${FIXED_TARGET_REPOSITORY}`,
+    `targetBranch: ${payload.targetBranch}`,
+    '',
+    request
+  ].join('\n');
+}
+
 function buildWorkflowInputs(payload) {
-  return {
-    request: payload.request || payload.message || '',
-    executionMode: payload.executionMode,
-    targetRepository: FIXED_TARGET_REPOSITORY,
-    targetBranch: payload.targetBranch
-  };
+  // The existing federation-portal workflow currently declares only `request`.
+  // Keep dispatch deterministic by sending only declared input and embedding
+  // command metadata inside the request body.
+  return { request: buildWorkflowRequest(payload) };
 }
 
 async function dispatchPortalWorkflow(payload) {
   const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
   if (!token) {
-    return {
-      dispatched: false,
-      skipped: true,
-      reason: 'GITHUB_TOKEN_missing'
-    };
+    throw new Error('GITHUB_TOKEN_missing: commit-push/github-workflow requires GITHUB_TOKEN or GH_TOKEN on federation-control');
   }
 
   const workflowFile = payload.workflowFile || DEFAULT_WORKFLOW_FILE;
@@ -122,12 +139,26 @@ async function dispatchPortalWorkflow(payload) {
     skipped: false,
     workflowFile,
     targetRepository: FIXED_TARGET_REPOSITORY,
-    targetBranch: payload.targetBranch
+    targetBranch: payload.targetBranch,
+    commandId: payload.commandId
   };
 }
 
 function shouldDispatch(payload) {
   return payload.executionMode === 'github-workflow' || payload.executionMode === 'commit-push';
+}
+
+function health() {
+  return {
+    ok: true,
+    service: 'chatgpt-command-server',
+    targetRepository: FIXED_TARGET_REPOSITORY,
+    targetBranch: DEFAULT_TARGET_BRANCH,
+    workflowFile: DEFAULT_WORKFLOW_FILE,
+    modes: [...EXECUTION_MODES],
+    canDispatch: Boolean(process.env.GITHUB_TOKEN || process.env.GH_TOKEN),
+    endpoints: ['/health', '/api/health', '/api/chatgpt-command', '/api/chatgpt-command/status']
+  };
 }
 
 function corsHeaders() {
@@ -149,7 +180,8 @@ function json(res, status, data) {
 const server = http.createServer(async (req, res) => {
   console.log(`[chatgpt-command-server] ${req.method} ${req.url}`);
   if (req.method === 'OPTIONS') return json(res, 204, { ok: true });
-  if (req.method === 'GET' && req.url === '/health') return json(res, 200, { ok: true, service: 'chatgpt-command-server' });
+  if (req.method === 'GET' && (req.url === '/health' || req.url === '/api/health')) return json(res, 200, health());
+  if (req.method === 'GET' && req.url === '/api/chatgpt-command/status') return json(res, 200, { ok: true, lastCommand: readJson(COMMAND_LOG), health: health() });
   if (req.method !== 'POST' || req.url !== '/api/chatgpt-command') return json(res, 404, { ok: false, error: 'not_found' });
 
   try {
@@ -160,7 +192,7 @@ const server = http.createServer(async (req, res) => {
     const payload = normalizePayload(rawPayload);
     const dispatchResult = shouldDispatch(payload)
       ? await dispatchPortalWorkflow(payload)
-      : { dispatched: false, skipped: true, reason: 'executionMode_does_not_dispatch' };
+      : { dispatched: false, skipped: true, reason: 'executionMode_does_not_dispatch', commandId: payload.commandId };
 
     const record = {
       ...payload,
@@ -178,11 +210,12 @@ const server = http.createServer(async (req, res) => {
       targetRepository: FIXED_TARGET_REPOSITORY,
       targetBranch: payload.targetBranch,
       executionMode: payload.executionMode,
+      commandId: payload.commandId,
       ...dispatchResult
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    return json(res, 500, { ok: false, error: message });
+    return json(res, 500, { ok: false, error: message, health: health() });
   }
 });
 
